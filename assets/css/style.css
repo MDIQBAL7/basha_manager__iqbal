@@ -51,69 +51,6 @@ body {
   border-radius: 2px;
 }
 
-/* Navbar Styles */
-/* .navbar {
-  padding: 0.5rem 0;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  background-color: var(--bg-color);
-  opacity: 0.8;
-  backdrop-filter: blur(10px);        
-  -webkit-backdrop-filter: blur(10px);  
-  border: 1px solid rgba(255, 255, 255, 0.2); 
-}
-.nav-icon{
-  font-size: 2rem;
-}
-
-.gradient-text {
-  font-weight: bold;
-  background: linear-gradient(to right, #1e3a8a, #1e3b8a87);
-  -webkit-background-clip: text;  
-  -webkit-text-fill-color: transparent;
-  background-clip: text; 
-  color: transparent;   
-}
-.navbar-brand {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--dark-color);
-}
-
-.navbar-light .navbar-nav .nav-link {
-  color: #111827;
-  font-weight: 700;
-  padding: 0.5rem 1rem;
-  font-size: 17px;
-  transition: 0.2s ;
-}
-
-.navbar-light .navbar-nav .nav-link:hover{
-  font-size: 18px;
-}
-.navbar-light .navbar-nav .nav-link:active{
-  background-color: #6c757d28;
-  border-radius: 8px;
-} */
-
-
-
-/* nav dropdown style  */
-/* .dropdown-menu {
-  border: none;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  border-radius: 0.5rem;
-}
-
-.dropdown-item {
-  padding: 0.5rem 1.5rem;
-  font-weight: 600;
-  transition: var(--transition);
-}
-
-.dropdown-item:hover {
-  background-color: rgba(80, 86, 90, 0.10);
-  color: #111827;
-} */
 
 /* Navbar Styles */
 .navbar {
@@ -155,6 +92,19 @@ body {
   background-color: #6c757d28;
   border-radius: 8px;
 }
+.nav-btn{
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: black;
+  border: 2px solid black;
+  border-radius: 8px;
+  transition: 1s;
+  outline: none;
+}
+.nav-btn:hover{
+background-color: #64505018;
+color: black;
+}
 
 .dropdown-menu {
   border: none;
@@ -179,18 +129,6 @@ body {
   align-items: center;
 }
 
-/* Mobile view adjustments */
-@media (max-width: 991.98px) {
-  .user-section {
-    width: 100%;
-    justify-content: center; /* centered below Basha Manager */
-    margin-top: 0.5rem;
-  }
-  .user-section .btn {
-    margin: 0 0.25rem; /* Login + profile icon spacing */
-  }
-}
-/* extra some  */
 
 /* User Dropdown Menu */
 .user-dropdown {
@@ -673,5 +611,13 @@ body {
 
   .section-title {
     font-size: 1.75rem;
+  }
+    .user-section {
+    width: 100%;
+    justify-content: center; /* centered below Basha Manager */
+    margin-top: 0.5rem;
+  }
+  .user-section .btn {
+    margin: 0 0.25rem; /* Login + profile icon spacing */
   }
 }
