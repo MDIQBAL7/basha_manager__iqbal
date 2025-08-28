@@ -1,0 +1,125 @@
+  <div
+      class="modal fade"
+      id="registerModal"
+      tabindex="-1"
+      aria-labelledby="registerModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="registerModalLabel">
+              Create an Account
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="auth-form-container">
+              <p class="auth-form-subtitle">
+                Create an account to get started with Basha Manager.
+              </p>
+              <form id="registerForm">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="auth-form-group">
+                      <label for="firstName" class="auth-form-label"
+                        >First Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control auth-form-control"
+                        id="firstName"
+                        placeholder="Enter first name"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="auth-form-group">
+                      <label for="lastName" class="auth-form-label"
+                        >Last Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control auth-form-control"
+                        id="lastName"
+                        placeholder="Enter last name"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="auth-form-group">
+                  <label for="registerEmail" class="auth-form-label"
+                    >Email Address</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control auth-form-control"
+                    id="registerEmail"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+                <div class="auth-form-group">
+                  <label for="registerPassword" class="auth-form-label"
+                    >Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control auth-form-control"
+                    id="registerPassword"
+                    placeholder="Create a password"
+                    required
+                  />
+                </div>
+                <div class="auth-form-group">
+                  <label for="confirmPassword" class="auth-form-label"
+                    >Confirm Password</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control auth-form-control"
+                    id="confirmPassword"
+                    placeholder="Confirm your password"
+                    required
+                  />
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="termsCheck"
+                    required
+                  />
+                  <label class="form-check-label" for="termsCheck">
+                    I agree to the
+                    <a href="#" class="auth-form-link">Terms of Service</a> and
+                    <a href="#" class="auth-form-link">Privacy Policy</a>
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary auth-form-button">
+                  Register
+                </button>
+              </form>
+              <p class="auth-form-footer">
+                Already have an account?
+                <a
+                  href="#"
+                  class="auth-form-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                  data-bs-dismiss="modal"
+                  >Login</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
