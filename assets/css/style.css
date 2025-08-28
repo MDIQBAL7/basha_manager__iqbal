@@ -93,7 +93,8 @@ body {
   border-radius: 8px;
 }
 .nav-btn{
-  font-size: 1.1rem;
+  /* font-size: 1.1rem; */
+  font-size: 5jrem;
   font-weight: bold;
   color: black;
   border: 2px solid black;
