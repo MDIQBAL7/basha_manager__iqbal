@@ -119,31 +119,18 @@ body {
 
 /* extra some  */
 /* User dropdown button styling */
-.user-dropdown-toggle {
-  background: none;
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-  color: #111827;
-}
-
-.user-dropdown-toggle:focus {
-  outline: none;
-}
-
-.user-dropdown-menu {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  background: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
-  z-index: 1000;
-}
-
-.user-dropdown:hover .user-dropdown-menu {
-  display: block;
+/* ছোট ডিভাইসে login & profile নিচে সুন্দরভাবে stack হবে */
+@media (max-width: 991px) {
+  .navbar .btn {
+    width: 100%;        /* ছোট স্ক্রিনে login বাটন full width */
+  }
+  .navbar .dropdown {
+    width: 100%;        /* profile dropdown full width */
+  }
+  .navbar .dropdown-toggle {
+    width: 100%;        /* profile বাটনও full width */
+    text-align: left;
+  }
 }
 /* User Dropdown Menu */
 .user-dropdown {

@@ -124,7 +124,7 @@
     </nav> -->
 
 
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <div class="container">
     <!-- Brand -->
     <a class="navbar-brand" href="#">
@@ -132,72 +132,19 @@
       <span class="gradient-text fs-3">Basha Manager</span>
     </a>
 
-    <!-- Right side buttons (Always visible, even on mobile) -->
-    <div class="d-flex align-items-center order-lg-2">
-      <button
-        class="btn btn-outline-primary me-2"
-        data-bs-toggle="modal"
-        data-bs-target="#loginModal"
-      >
-        Login
-      </button>
-      <div class="user-dropdown">
-        <button class="user-dropdown-toggle" id="userDropdownToggle">
-          <i class="fas fa-user"></i>
-        </button>
-        <div class="user-dropdown-menu" id="userDropdownMenu">
-          <div class="user-dropdown-header">
-            <div class="user-dropdown-name">John Doe</div>
-            <div class="user-dropdown-email">john.doe@example.com</div>
-          </div>
-          <a href="dashboard.html" class="user-dropdown-item">
-            <i class="fas fa-tachometer-alt user-dropdown-icon"></i>
-            Dashboard
-          </a>
-          <a href="profile.html" class="user-dropdown-item">
-            <i class="fas fa-user user-dropdown-icon"></i>
-            My Profile
-          </a>
-          <a href="my-properties.html" class="user-dropdown-item">
-            <i class="fas fa-list user-dropdown-icon"></i>
-            My Properties
-          </a>
-          <a href="saved-properties.html" class="user-dropdown-item">
-            <i class="fas fa-bookmark user-dropdown-icon"></i>
-            Saved Properties
-          </a>
-          <div class="user-dropdown-divider"></div>
-          <a href="settings.html" class="user-dropdown-item">
-            <i class="fas fa-cog user-dropdown-icon"></i>
-            Settings
-          </a>
-          <a href="#" class="user-dropdown-item" id="logoutBtn">
-            <i class="fas fa-sign-out-alt user-dropdown-icon"></i>
-            Logout
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Navbar Toggler -->
-    <button
-      class="navbar-toggler order-lg-3 ms-2"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navbar Links -->
-    <div class="collapse navbar-collapse order-lg-1" id="navbarNav">
+    <!-- Navbar Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="propertyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Properties</a>
+          <a class="nav-link dropdown-toggle" href="#" id="propertyDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Properties</a>
           <ul class="dropdown-menu" aria-labelledby="propertyDropdown">
             <li><a class="dropdown-item" href="#">All Properties</a></li>
             <li><a class="dropdown-item" href="#">For Rent</a></li>
@@ -207,7 +154,8 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+          <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Services</a>
           <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
             <li><a class="dropdown-item" href="#">Property Management</a></li>
             <li><a class="dropdown-item" href="#">Tenant Screening</a></li>
@@ -219,6 +167,36 @@
         <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
       </ul>
+
+      <!-- User Section (Login + Profile) -->
+      <div class="d-lg-flex align-items-center ms-lg-3 mt-3 mt-lg-0">
+        <!-- Login Button -->
+        <button class="btn btn-outline-primary me-lg-2 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">
+          Login
+        </button>
+
+        <!-- Profile Dropdown -->
+        <div class="dropdown">
+          <button class="btn btn-light dropdown-toggle" type="button" id="userMenuBtn" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuBtn">
+            <li class="dropdown-header">
+              <strong>John Doe</strong><br>
+              <small>john.doe@example.com</small>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="dashboard.html"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a></li>
+            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> My Profile</a></li>
+            <li><a class="dropdown-item" href="my-properties.html"><i class="fas fa-list me-2"></i> My Properties</a></li>
+            <li><a class="dropdown-item" href="saved-properties.html"><i class="fas fa-bookmark me-2"></i> Saved Properties</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog me-2"></i> Settings</a></li>
+            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
