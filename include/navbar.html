@@ -124,6 +124,7 @@
     </nav> -->
 
 
+
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
   <div class="container">
     <!-- Brand -->
@@ -141,7 +142,7 @@
     <!-- Navbar Menu -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="propertyDropdown" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">Properties</a>
@@ -149,7 +150,7 @@
             <li><a class="dropdown-item" href="#">All Properties</a></li>
             <li><a class="dropdown-item" href="#">For Rent</a></li>
             <li><a class="dropdown-item" href="#">For Sale</a></li>
-            <li><hr class="dropdown-divider" /></li>
+            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Premium Listings</a></li>
           </ul>
         </li>
@@ -163,40 +164,17 @@
             <li><a class="dropdown-item" href="#">Maintenance</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
       </ul>
 
       <!-- User Section (Login + Profile) -->
-      <div class="d-lg-flex align-items-center ms-lg-3 mt-3 mt-lg-0">
-        <!-- Login Button -->
-        <button class="btn btn-outline-primary me-lg-2 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#loginModal">
-          Login
-        </button>
-
-        <!-- Profile Dropdown -->
-        <div class="dropdown">
-          <button class="btn btn-light dropdown-toggle" type="button" id="userMenuBtn" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <i class="fas fa-user"></i>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuBtn">
-            <li class="dropdown-header">
-              <strong>John Doe</strong><br>
-              <small>john.doe@example.com</small>
-            </li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="dashboard.html"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a></li>
-            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user me-2"></i> My Profile</a></li>
-            <li><a class="dropdown-item" href="my-properties.html"><i class="fas fa-list me-2"></i> My Properties</a></li>
-            <li><a class="dropdown-item" href="saved-properties.html"><i class="fas fa-bookmark me-2"></i> Saved Properties</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog me-2"></i> Settings</a></li>
-            <li><a class="dropdown-item text-danger" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
-          </ul>
-        </div>
+      <div class="user-section mt-3 mt-lg-0">
+        <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+        <button class="btn btn-light"><i class="fas fa-user"></i></button>
       </div>
+
     </div>
   </div>
 </nav>
