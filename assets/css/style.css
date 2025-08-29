@@ -834,4 +834,8 @@ color: black;
      .status-line {
     height: 50px;
   }
+   .status-line i {
+    font-size: 10px;
+    margin-right: 5px;
+  }
 }
