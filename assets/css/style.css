@@ -700,6 +700,11 @@ color: black;
 .to-let-hero-sub-title{
   font-size: 1.2rem;
 }
+.to-let-hero-section {
+  min-height: 35vh;
+  /* background: linear-gradient(to right, #1e3a8a, #1e3b8a87); */
+  padding: 30px 5px 15px 5px;
+}
 }
 
 @media (max-width: 576px) {
@@ -743,6 +748,5 @@ color: black;
   min-height: 35vh;
   /* background: linear-gradient(to right, #1e3a8a, #1e3b8a87); */
   padding: 30px 5px 15px 5px;
-
 }
 }
