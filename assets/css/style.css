@@ -347,7 +347,7 @@ color: black;
   position: relative;
   display: inline-block;
   padding: 12px 10px;
-  border-radius: 20px; /* pill style */
+  border-radius: 10px; /* pill style */
   font-size: 15px;
   font-weight: 600;
   color: #fff;

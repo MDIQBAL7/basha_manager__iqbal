@@ -17,79 +17,88 @@
 
     <!-- start Main Content -->
     <main>
-                    <!--============= To-let Hero Section ===============-->
+      <!--============= To-let Hero Section ===============-->
       <section class="to-let-hero-section text-center">
-        <div >
+        <div>
           <h1 class="to-let-hero-title">To-Let Properties</h1>
           <p class="to-let-hero-sub-title">Find your perfect home for rent</p>
         </div>
       </section>
 
       <!-- Filters -->
-     
-<section class="container my-5">
-  <div class=" shadow-sm border-5 rounded-5 border-black p-4">
-    <form class="row g-3 align-items-end">
-      <!-- Location -->
-      <div class="col-md-3">
-        <label class="form-label fw-bold">Location</label>
-        <select class="form-select outline-btn">
-          <option selected>Select Location</option>
-          <option>Dhaka</option>
-          <option>Chittagong</option>
-          <option>Sylhet</option>
-        </select>
-      </div>
 
-      <!-- Property Type -->
-      <div class="col-md-2">
-        <label class="form-label fw-bold">Property Type</label>
-        <select class="form-select outline-btn">
-          <option selected>Select Type</option>
-          <option>Apartment</option>
-          <option>House</option>
-          <option>Flat</option>
-        </select>
-      </div>
+      <section class="container my-5">
+        <div class="shadow-sm border-5 rounded-5 border-black p-4">
+          <form class="row g-3 align-items-end">
+            <!-- Location -->
+            <div class="col-md-3">
+              <label class="form-label fw-bold">Location</label>
+              <select class="form-select outline-btn">
+                <option selected>Select Location</option>
+                <option>Dhaka</option>
+                <option>Chittagong</option>
+                <option>Sylhet</option>
+              </select>
+            </div>
 
-      <!-- Min Rent -->
-      <div class="col-md-2">
-        <label class="form-label fw-bold">Min Rent</label>
-        <div class="input-group">
-          <span class="input-group-text">৳</span>
-          <input type="number" class="form-control outline-btn" placeholder="0">
+            <!-- Property Type -->
+            <div class="col-md-2">
+              <label class="form-label fw-bold">Property Type</label>
+              <select class="form-select outline-btn">
+                <option selected>Select Type</option>
+                <option>Apartment</option>
+                <option>House</option>
+                <option>Flat</option>
+              </select>
+            </div>
+
+            <!-- Min Rent -->
+            <div class="col-md-2">
+              <label class="form-label fw-bold">Min Rent</label>
+              <div class="input-group">
+                <span class="input-group-text">৳</span>
+                <input
+                  type="number"
+                  class="form-control outline-btn"
+                  placeholder="0"
+                />
+              </div>
+            </div>
+
+            <!-- Max Rent -->
+            <div class="col-md-2">
+              <label class="form-label fw-bold">Max Rent</label>
+              <div class="input-group">
+                <span class="input-group-text">৳</span>
+                <input
+                  type="number"
+                  class="form-control outline-btn"
+                  placeholder="100,000"
+                />
+              </div>
+            </div>
+
+            <!-- Bedrooms -->
+            <div class="col-md-2">
+              <label class="form-label fw-bold">Bedrooms</label>
+              <select class="form-select outline-btn">
+                <option selected>Any</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3+</option>
+              </select>
+            </div>
+
+            <!-- Search Button -->
+            <div class="col-md-1 d-grid">
+              <button class="btn-custom btn w-100 rounded-3 outline-btn">
+                Search
+              </button>
+            </div>
+          </form>
         </div>
-      </div>
+      </section>
 
-      <!-- Max Rent -->
-      <div class="col-md-2">
-        <label class="form-label fw-bold">Max Rent</label>
-        <div class="input-group">
-          <span class="input-group-text">৳</span>
-          <input type="number" class="form-control outline-btn" placeholder="100,000">
-        </div>
-      </div>
-
-      <!-- Bedrooms -->
-      <div class="col-md-2">
-        <label class="form-label fw-bold">Bedrooms</label>
-        <select class="form-select outline-btn">
-          <option selected>Any</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3+</option>
-        </select>
-      </div>
-
-      <!-- Search Button -->
-      <div class="col-md-1 d-grid">
-        <button class="btn-custom btn w-100 rounded-3 outline-btn">Search</button>
-      </div>
-    </form>
-  </div>
-</section>
-     
-     
       <!-- Property Listings -->
       <section class="container my-4">
         <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -113,7 +122,16 @@
                   <i class="fas fa-bed"></i> 2 Bedrooms &nbsp;
                   <i class="fas fa-bath"></i> 2 Bathrooms
                 </p>
-                <a href="#" class="btn-custom btn w-100">View Details</a>
+                <div class="d-flex gap-3">
+                  <!-- left btn  -->
+                  <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >View Details</a
+                  >
+                  <!-- right btn  -->
+                  <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >View Details</a
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -137,7 +155,16 @@
                   <i class="fas fa-bed"></i> 2 Bedrooms &nbsp;
                   <i class="fas fa-bath"></i> 2 Bathrooms
                 </p>
-                <a href="#" class="btn-custom btn w-100">View Details</a>
+                <div class="d-flex gap-3">
+                  <!-- left btn  -->
+                  <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >View Details</a
+                  >
+                  <!-- right btn  -->
+                  <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >View Details</a
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -162,13 +189,21 @@
                   <i class="fas fa-bed"></i> 3 Bedrooms &nbsp;
                   <i class="fas fa-bath"></i> 3 Bathrooms
                 </p>
-                <a href="#" class="btn-custom btn w-100">View Details</a>
+                <div class="d-flex gap-3">
+                  <!-- left btn  -->
+                  <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >View Details</a
+                  >
+                  <!-- right btn  -->
+                  <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >View Details</a
+                  >
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
     </main>
     <!-- End Main Content -->
 
