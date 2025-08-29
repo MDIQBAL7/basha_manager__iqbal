@@ -415,6 +415,10 @@ color: black;
       overflow: hidden;
     }
 
+    .To-let-details-title{
+     font-size: 2rem;
+    }
+
 /* Features Section Styles */
 .features-section {
   padding: 5rem 0;
@@ -777,4 +781,8 @@ color: black;
   /* background: linear-gradient(to right, #1e3a8a, #1e3b8a87); */
   padding: 30px 5px 15px 5px;
 }
+   .To-let-details-title{
+     font-size: 1.2rem;
+     font-weight: bold;
+    }
 }
