@@ -418,7 +418,49 @@ color: black;
     .To-let-details-title{
      font-size: 2rem;
     }
+    .To-let-details-text{
+      font-size: 1.3rem;
+    }
 
+    /* sweet alert style for add to cart  */
+
+  .custom-popup {
+    border-radius: 16px;
+    padding: 25px;
+    background: black;
+    box-shadow: 0 5px 20px rgba(223, 216, 216, 0.2);
+  }
+
+  /* Each Line Style */
+  .status-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    background: black;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  /* .custom-text{
+    background-color: black;
+  } */
+
+  .status-line i {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .online {
+    color: #27ae60;
+    font-weight: 600;
+    padding: 5px;
+  }
+
+  .offline {
+    color: #e74c3c;
+    font-weight: 600;
+    padding: 5px;
+  }
 /* Features Section Styles */
 .features-section {
   padding: 5rem 0;

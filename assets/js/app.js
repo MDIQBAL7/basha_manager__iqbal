@@ -88,18 +88,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Here you would typically send an AJAX request to your server
       // For demo purposes, we'll use SweetAlert to show success
-      Swal.fire({
-        title: "Success!",
-        text: "You have successfully logged in",
-        icon: "success",
-        confirmButtonText: "Go to Dashboard",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          window.location.href = "dashboard.html";
-        }
-      });
-    });
-  }
+  //     Swal.fire({
+  //       title: "Success!",
+  //       text: "You have successfully logged in",
+  //       icon: "success",
+  //       confirmButtonText: "Go to Dashboard",
+  //     }).then((result) => {
+  //       if (result.isConfirmed) {
+  //         window.location.href = "dashboard.html";
+  //       }
+  //     });
+  //   });
+  // }
 
   // Register Form Submission
   const registerForm = document.getElementById("registerForm");

@@ -32,19 +32,18 @@
           <!-- Right: House Info -->
           <div class="col-lg-6">
             <h2 class="To-let-details-title gradient-text">Luxury Apartment in Gulshan</h2>
-            <p><strong>Location:</strong> Dhaka, Gulshan</p>
-            <p><strong>Type:</strong> Apartment</p>
-            <p><strong>Bedrooms:</strong> 3</p>
-            <p><strong>Bathrooms:</strong> 2</p>
-            <p><strong>Size:</strong> 1400 sqft</p>
-            <p class="fw-bold text-primary">
+            <p class="To-let-details-text"><strong>Location:</strong> Dhaka, Gulshan</p>
+            <p class="To-let-details-text"><strong>Type:</strong> Apartment</p>
+            <p class="To-let-details-text"><strong>Bedrooms:</strong> 3</p>
+            <p class="To-let-details-text"><strong>Bathrooms:</strong> 2</p>
+            <p class="To-let-details-text"><strong>Size:</strong> 1400 sqft</p>
+            <p class="fw-bold To-let-details-text">
               <strong>Rent:</strong> 25,000 BDT
             </p>
-            <p>
-              Spacious luxury apartment located in the heart of Gulshan. Modern
-              facilities, 24/7 security, parking space, near shopping malls and
-              public transport.
-            </p>
+           <!-- add to cart button  -->
+             <!-- <a href="to-let-details.html" class="btn-custom btn w-25"
+                    ></a> -->
+                    <button onclick="showDetails()" class="btn-custom btn w-25">ADD TO CART</button>
           </div>
         </div>
 
@@ -115,6 +114,31 @@
         </div>
       </div>
     </main>
+<script>
+  function showDetails() {
+  Swal.fire({
+    title: "House Availability",
+    html: `
+      <div class="custom-text status-line gap-3">
+        <button class="status-line btn-custom btn w-50">
+          <i class="fas fa-wifi online"></i> 
+          <span class="online">Online</span>
+        </button>
+        <button class="status-line btn-custom btn w-50">
+          <i class="fas fa-user-slash offline"></i> 
+          <span class="offline">Offline</span>
+        </button>
+      </div>
+    `,
+    confirmButtonText: "Close",
+    customClass: {
+      popup: "custom-popup",
+      title: "custom-title",
+      htmlContainer: "custom-text"
+    }
+  });
+}
+</script>
     <!-- End Main Content -->
 
     <!-- Top Footer -->
