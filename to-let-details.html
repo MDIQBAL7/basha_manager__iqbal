@@ -22,7 +22,14 @@
           <!-- Left: Video -->
           <div class="col-lg-6 mb-4">
             <div class="house-video">
-              <video controls  autoplay muted loop width="100%" poster="house1.jpg">
+              <video
+                controls
+                autoplay
+                muted
+                loop
+                width="100%"
+                poster="house1.jpg"
+              >
                 <source src="assets/Videos/video-1.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
@@ -31,8 +38,12 @@
 
           <!-- Right: House Info -->
           <div class="col-lg-6">
-            <h2 class="To-let-details-title gradient-text">Luxury Apartment in Gulshan</h2>
-            <p class="To-let-details-text"><strong>Location:</strong> Dhaka, Gulshan</p>
+            <h2 class="To-let-details-title gradient-text">
+              Luxury Apartment in Gulshan
+            </h2>
+            <p class="To-let-details-text">
+              <strong>Location:</strong> Dhaka, Gulshan
+            </p>
             <p class="To-let-details-text"><strong>Type:</strong> Apartment</p>
             <p class="To-let-details-text"><strong>Bedrooms:</strong> 3</p>
             <p class="To-let-details-text"><strong>Bathrooms:</strong> 2</p>
@@ -40,10 +51,12 @@
             <p class="fw-bold To-let-details-text">
               <strong>Rent:</strong> 25,000 BDT
             </p>
-           <!-- add to cart button  -->
-             <!-- <a href="to-let-details.html" class="btn-custom btn w-25"
+            <!-- add to cart button  -->
+            <!-- <a href="to-let-details.html" class="btn-custom btn w-25"
                     ></a> -->
-                    <button onclick="showDetails()" class="btn-custom btn w-25">ADD TO CART</button>
+            <button onclick="showDetails()" class="btn-custom btn w-50">
+              ADD TO CART
+            </button>
           </div>
         </div>
 
@@ -68,7 +81,11 @@
               data-lightbox="house-gallery"
               data-title="Bedroom"
             >
-              <img src="assets/image/basa-details/phgalary2.png" class="img-fluid rounded" alt="Bedroom" />
+              <img
+                src="assets/image/basa-details/phgalary2.png"
+                class="img-fluid rounded"
+                alt="Bedroom"
+              />
             </a>
           </div>
           <div class="col-6 col-md-4">
@@ -77,7 +94,11 @@
               data-lightbox="house-gallery"
               data-title="Kitchen"
             >
-              <img src="assets/image/basa-details/phgalary3.png" class="img-fluid rounded" alt="Kitchen" />
+              <img
+                src="assets/image/basa-details/phgalary3.png"
+                class="img-fluid rounded"
+                alt="Kitchen"
+              />
             </a>
           </div>
           <div class="col-6 col-md-4">
@@ -86,7 +107,11 @@
               data-lightbox="house-gallery"
               data-title="Bathroom"
             >
-              <img src="assets/image/basa-details/phgalary6.jpg" class="img-fluid rounded" alt="Bathroom" />
+              <img
+                src="assets/image/basa-details/phgalary6.jpg"
+                class="img-fluid rounded"
+                alt="Bathroom"
+              />
             </a>
           </div>
           <div class="col-6 col-md-4">
@@ -95,7 +120,11 @@
               data-lightbox="house-gallery"
               data-title="Balcony"
             >
-              <img src="assets/image/basa-details/phgalary7.png" class="img-fluid rounded" alt="Balcony" />
+              <img
+                src="assets/image/basa-details/phgalary7.png"
+                class="img-fluid rounded"
+                alt="Balcony"
+              />
             </a>
           </div>
           <div class="col-6 col-md-4">
@@ -114,31 +143,7 @@
         </div>
       </div>
     </main>
-<script>
-  function showDetails() {
-  Swal.fire({
-    title: "House Availability",
-    html: `
-      <div class="custom-text status-line gap-3">
-        <button class="status-line btn-custom btn w-50">
-          <i class="fas fa-wifi online"></i> 
-          <span class="online">Online</span>
-        </button>
-        <button class="status-line btn-custom btn w-50">
-          <i class="fas fa-user-slash offline"></i> 
-          <span class="offline">Offline</span>
-        </button>
-      </div>
-    `,
-    confirmButtonText: "Close",
-    customClass: {
-      popup: "custom-popup",
-      title: "custom-title",
-      htmlContainer: "custom-text"
-    }
-  });
-}
-</script>
+
     <!-- End Main Content -->
 
     <!-- Top Footer -->
@@ -164,5 +169,31 @@
     <script src="assets/js/app.js"></script>
 
     <!-- more link -->
+     <!-- pop up for add to card  -->
+    <script>
+      function showDetails() {
+        Swal.fire({
+          title: "House Availability",
+          html: `
+      <div class="custom-text status-line gap-3">
+        <button class="status-line btn-custom btn w-50">
+          <i class="fas fa-wifi online"></i> 
+          <span class="online">Online</span>
+        </button>
+        <button class="status-line btn-custom btn w-50">
+          <i class="fas fa-user-slash offline"></i> 
+          <span class="offline">Offline</span>
+        </button>
+      </div>
+    `,
+          confirmButtonText: "Close",
+          customClass: {
+            popup: "custom-popup",
+            title: "custom-title",
+            htmlContainer: "custom-text",
+          },
+        });
+      }
+    </script>
   </body>
 </html>

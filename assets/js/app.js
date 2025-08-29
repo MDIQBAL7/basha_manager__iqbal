@@ -100,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //     });
   //   });
   // }
+  
 
   // Register Form Submission
   const registerForm = document.getElementById("registerForm");
