@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basha Manager - Pages</title>
+
+    <!-- Header part include (CSS, meta, etc.) -->
+    <div id="header-include"></div>
+
+    <!-- html including render js -->
+    <script src="assets/js/include.js" defer></script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div id="navbar-include"></div>
+
+    <!-- start Main Content -->
+    <main>
+                    <!--============= To-let Hero Section ===============-->
+      <section class="to-let-hero-section text-center">
+        <div >
+          <h1 class="to-let-hero-title">To-Let Properties</h1>
+          <p class="to-let-hero-sub-title">Find your perfect home for rent</p>
+        </div>
+      </section>
+
+      <!-- Filters -->
+     
+<section class="container my-5">
+  <div class=" shadow-sm border-5 rounded-5 border-black p-4">
+    <form class="row g-3 align-items-end">
+      <!-- Location -->
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Location</label>
+        <select class="form-select">
+          <option selected>Select Location</option>
+          <option>Dhaka</option>
+          <option>Chittagong</option>
+          <option>Sylhet</option>
+        </select>
+      </div>
+
+      <!-- Property Type -->
+      <div class="col-md-2">
+        <label class="form-label fw-bold">Property Type</label>
+        <select class="form-select">
+          <option selected>Select Type</option>
+          <option>Apartment</option>
+          <option>House</option>
+          <option>Flat</option>
+        </select>
+      </div>
+
+      <!-- Min Rent -->
+      <div class="col-md-2">
+        <label class="form-label fw-bold">Min Rent</label>
+        <div class="input-group">
+          <span class="input-group-text">৳</span>
+          <input type="number" class="form-control" placeholder="0">
+        </div>
+      </div>
+
+      <!-- Max Rent -->
+      <div class="col-md-2">
+        <label class="form-label fw-bold">Max Rent</label>
+        <div class="input-group">
+          <span class="input-group-text">৳</span>
+          <input type="number" class="form-control" placeholder="100,000">
+        </div>
+      </div>
+
+      <!-- Bedrooms -->
+      <div class="col-md-2">
+        <label class="form-label fw-bold">Bedrooms</label>
+        <select class="form-select">
+          <option selected>Any</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3+</option>
+        </select>
+      </div>
+
+      <!-- Search Button -->
+      <div class="col-md-1 d-grid">
+        <button class="btn btn-primary btn-lg">Search</button>
+      </div>
+    </form>
+  </div>
+</section>
+     
+     
+      <!-- Property Listings -->
+      <section class="container my-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <!--  Card 1-->
+          <div class="col to-let-card">
+            <div class="card property-card">
+              <img
+                src="assets/image/feature/feature1.png"
+                class="card-img-top"
+                alt="Property"
+              />
+              <div class="card-body">
+                <h5 class="card-title">2 BHK Apartment</h5>
+                <p class="card-text">
+                  <i class="fas fa-map-marker-alt"></i> Gulshan, Dhaka
+                </p>
+                <p class="card-text">
+                  <strong>Rent:</strong> 25,000 BDT / month
+                </p>
+                <p class="card-text">
+                  <i class="fas fa-bed"></i> 2 Bedrooms &nbsp;
+                  <i class="fas fa-bath"></i> 2 Bathrooms
+                </p>
+                <a href="#" class="btn-custom btn w-100">View Details</a>
+              </div>
+            </div>
+          </div>
+          <!-- card 2  -->
+          <div class="col to-let-card">
+            <div class="card property-card">
+              <img
+                src="assets/image/feature/feature2.png"
+                class="card-img-top"
+                alt="Property"
+              />
+              <div class="card-body">
+                <h5 class="card-title">2 BHK Apartment</h5>
+                <p class="card-text">
+                  <i class="fas fa-map-marker-alt"></i> Gulshan, Dhaka
+                </p>
+                <p class="card-text">
+                  <strong>Rent:</strong> 25,000 BDT / month
+                </p>
+                <p class="card-text">
+                  <i class="fas fa-bed"></i> 2 Bedrooms &nbsp;
+                  <i class="fas fa-bath"></i> 2 Bathrooms
+                </p>
+                <a href="#" class="btn-custom btn w-100">View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!--  card 3 -->
+          <div class="col to-let-card">
+            <div class="card property-card">
+              <img
+                src="assets/image/feature/feature3.png"
+                class="card-img-top"
+                alt="Property"
+              />
+              <div class="card-body">
+                <h5 class="card-title">3 BHK House</h5>
+                <p class="card-text">
+                  <i class="fas fa-map-marker-alt"></i> Banani, Dhaka
+                </p>
+                <p class="card-text">
+                  <strong>Rent:</strong> 50,000 BDT / month
+                </p>
+                <p class="card-text">
+                  <i class="fas fa-bed"></i> 3 Bedrooms &nbsp;
+                  <i class="fas fa-bath"></i> 3 Bathrooms
+                </p>
+                <a href="#" class="btn-custom btn w-100">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="bg-light py-4 mt-4">
+        <div class="container text-center">
+          <p>&copy; 2025 Basha Manager. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+    <!-- End Main Content -->
+
+    <!-- Top Footer -->
+    <div id="top-footer-include"></div>
+
+    <!-- Login Modal -->
+    <div id="login-modal-include"></div>
+
+    <!-- Register Modal -->
+    <div id="registration-modal-include"></div>
+
+    <div id="footer-include"></div>
+
+    <!--==============Scripts Link=============== -->
+
+    <!-- Bootstrap Bundle (with Popper) -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SweetAlert2 JS -->
+    <script src="assets/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- more link -->
+  </body>
+</html>
