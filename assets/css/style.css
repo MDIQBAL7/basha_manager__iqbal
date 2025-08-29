@@ -435,9 +435,10 @@ color: black;
   .status-line {
     height: 100px;
     display: flex;
-    flex-direction: row;
     white-space: nowrap;
+    justify-content: center;
     align-items: center;
+    text-align: center;
     margin-bottom: 12px;
     padding: 5px;
     border-radius: 10px;
@@ -448,6 +449,9 @@ color: black;
     background-color: black;
   } */
 
+  .status-line {
+padding: 0px;
+  }
   .status-line i {
     font-size: 20px;
     margin-right: 10px;
