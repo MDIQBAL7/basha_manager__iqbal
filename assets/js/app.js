@@ -262,3 +262,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", animateOnScroll);
   window.addEventListener("scroll", animateOnScroll);
 });
+
+
+
+  
