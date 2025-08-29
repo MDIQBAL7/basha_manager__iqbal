@@ -399,6 +399,22 @@ color: black;
   background-color: #f0f0f0;
   border-radius: 8px 0 0 8px;
 }
+/* To-let details section style  */
+  .gallery img {
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .house-section {
+      padding: 60px 0;
+    }
+    .house-video {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
 /* Features Section Styles */
 .features-section {
   padding: 5rem 0;
