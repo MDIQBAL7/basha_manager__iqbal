@@ -1,18 +1,3 @@
-// page loader function  
-// Wait for full window load
-window.addEventListener('load', function() {
-  const loader = document.getElementById('pageLoader');
-  
-  // Small delay for smooth fade
-  setTimeout(() => {
-    loader.classList.add('fadeOut');
-
-    // Remove from DOM after fade
-    setTimeout(() => {
-      loader.style.display = 'none';
-    }, 800); // match CSS transition
-  }, 300); // optional delay to ensure loader is visible briefly
-});
 
 // sweet alert for add to card   
     
@@ -70,7 +55,7 @@ document.addEventListener("keydown", function(event) {
 });
 
 
-// user login 
+// <====================== user login =====================> 
 const loginModalEl = document.getElementById('loginModal');
 loginModalEl.addEventListener('show.bs.modal', function () {
   const modalContent = loginModalEl.querySelector('.auth-modal');
@@ -82,3 +67,11 @@ loginModalEl.addEventListener('show.bs.modal', function () {
   }, 10);
 });
 
+               // <=========== page Loader ===============>
+
+  // window.addEventListener("load", () => {
+  //   const loader = document.getElementById("pageLoader");
+  //   setTimeout(() => {
+  //     loader.classList.add("hidden");
+  //   }, 500); // 0.5s delay before hide
+  // });

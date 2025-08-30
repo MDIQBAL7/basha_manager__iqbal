@@ -1,4 +1,4 @@
-  <div
+  <!-- <div
       class="modal fade"
       id="registerModal"
       tabindex="-1"
@@ -122,4 +122,129 @@
           </div>
         </div>
       </div>
+    </div> -->
+
+    <div
+  class="modal fade"
+  id="registerModal"
+  tabindex="-1"
+  aria-labelledby="registerModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content glass-card animate-modal">
+      <div class="modal-header border-0">
+        <h5 class="modal-title fw-bold ms-auto fs-3" id="registerModalLabel">
+          ✨ Create an Account
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-form-container">
+          <p class="text-muted mb-4">
+            Join <strong>Basha Manager</strong> and manage everything with ease.
+          </p>
+          <form id="registerForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    placeholder="First Name"
+                    required
+                  />
+                  <label for="firstName">First Name</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    placeholder="Last Name"
+                    required
+                  />
+                  <label for="lastName">Last Name</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-floating mt-3">
+              <input
+                type="email"
+                class="form-control"
+                id="registerEmail"
+                placeholder="Email Address"
+                required
+              />
+              <label for="registerEmail">Email Address</label>
+            </div>
+
+            <div class="form-floating mt-3">
+              <input
+                type="password"
+                class="form-control"
+                id="registerPassword"
+                placeholder="Password"
+                required
+              />
+              <label for="registerPassword">Password</label>
+            </div>
+
+            <div class="form-floating mt-3">
+              <input
+                type="password"
+                class="form-control"
+                id="confirmPassword"
+                placeholder="Confirm Password"
+                required
+              />
+              <label for="confirmPassword">Confirm Password</label>
+            </div>
+
+            <div class="form-check mt-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="termsCheck"
+                required
+              />
+              <label class="form-check-label" for="termsCheck">
+                I agree to the
+                <a href="#" class="auth-form-link fw-bold">Terms of Service</a> &
+                <a href="#" class="auth-form-link">Privacy Policy</a>
+              </label>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary w-100 mt-4 rounded-1 shadow-sm"
+            >
+              🚀 Register Now
+            </button>
+          </form>
+
+          <p class="text-center mt-4 small">
+            Already have an account?
+            <a
+              href="#"
+              class="auth-form-link fw-semibold"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+              data-bs-dismiss="modal"
+              >Login</a
+            >
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
+</div>

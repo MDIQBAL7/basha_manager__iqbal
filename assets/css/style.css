@@ -34,58 +34,54 @@ body {
 }
 
 /* page loader style  */
-/* Fullscreen overlay */
-#pageLoader {
+
+/* #pageLoader {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.85);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  opacity: 1;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-/* Loader wrapper */
-.loader-wrapper {
-  text-align: center;
-}
-
-/* Spinner */
-.loader {
-  width: 60px;
-  height: 60px;
-  border: 6px solid rgba(255,255,255,0.2);
-  border-top: 6px solid #4a90e2;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto;
-}
-
-/* Loading Text */
-.loader-text {
-  color: #fff;
-  font-weight: 600;
-  margin-top: 10px;
-  font-size: 1rem;
-  letter-spacing: 1px;
-}
-
-/* Spin Animation */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Fade out hidden class */
-#pageLoader.fadeOut {
+#pageLoader.hidden {
   opacity: 0;
   visibility: hidden;
 }
+
+/* Loader animation */
+/* .loader-wrapper {
+  text-align: center;
+  color: white;
+}
+
+.loader {
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-top: 6px solid #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-text {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}  */
+
 /* Utility Classes */
 .section-title {
   font-size: 2.5rem;
@@ -624,6 +620,51 @@ padding: 0px;
     font-weight: 600;
     padding: 5px;
   }
+
+
+
+                   /* <============== Registration style =================> */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Smooth modal animation */
+.animate-modal {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+.modal.show .animate-modal {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Floating labels style */
+.form-floating .form-control {
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.form-floating label {
+  color: #555;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #5a67d8, #6b46c1);
+}
 /* Features Section Styles */
 .features-section {
   padding: 5rem 0;
