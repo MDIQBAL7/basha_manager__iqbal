@@ -26,27 +26,28 @@
 
 
 
-    //   view details images animation 
 
-          const modal = document.getElementById("imageModal");
-          const modalImg = document.getElementById("modalImage");
-          const captionText = document.getElementById("caption");
-          const closeBtn = document.getElementById("closeModal");
+// details image animation  
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImage");
+const captionText = document.getElementById("caption");
+const closeBtn = document.getElementById("closeModal");
 
-          document.querySelectorAll(".gallery-img").forEach((img) => {
-            img.onclick = function () {
-              modal.style.display = "block";
-              modalImg.src = this.src;
-              captionText.innerHTML = this.alt;
-              modalImg.style.animation = "zoomIn 0.5s ease-in-out";
-            };
-          });
+document.querySelectorAll(".gallery-img").forEach(img => {
+  img.addEventListener("click", function () {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+  });
+});
 
-          closeBtn.onclick = function () {
-            modalImg.style.animation = "zoomOut 0.5s ease-in-out";
-            setTimeout(() => {
-              modal.style.display = "none";
-            }, 500);
-          };
-     
+closeBtn.onclick = function () {
+  modal.style.display = "none";
+}
 
+// Esc press for cut model
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    modal.style.display = "none";
+  }
+});
