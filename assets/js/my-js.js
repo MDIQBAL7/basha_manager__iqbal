@@ -51,3 +51,16 @@ document.addEventListener("keydown", function(event) {
     modal.style.display = "none";
   }
 });
+
+
+// user login 
+const loginModalEl = document.getElementById('loginModal');
+loginModalEl.addEventListener('show.bs.modal', function () {
+  const modalContent = loginModalEl.querySelector('.auth-modal');
+  modalContent.style.transform = 'scale(0.8)';
+  modalContent.style.opacity = '0';
+  setTimeout(() => {
+    modalContent.style.transform = 'scale(1)';
+    modalContent.style.opacity = '1';
+  }, 10);
+});

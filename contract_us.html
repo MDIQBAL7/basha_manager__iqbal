@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Basha Manager - Pages</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basha Manager - Pages</title>
 
-  <!-- Header part include (CSS, meta, etc.) -->
-  <div id="header-include"></div>
+    <!-- Header part include (CSS, meta, etc.) -->
+    <div id="header-include"></div>
 
-  <!-- html including render js -->
-  <script src="assets/js/include.js" defer></script>
-   <style>
+    <!-- html including render js -->
+    <script src="assets/js/include.js" defer></script>
+    <style>
       .main-div {
         background: linear-gradient(135deg, #446eb7, rgb(20, 104, 172));
         font-family: "Segoe UI", sans-serif;
@@ -100,15 +100,13 @@
         }
       }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div id="navbar-include"></div>
 
-  <!-- navbar -->
-  <div id="navbar-include"></div>
-
-
-  <!-- start Main Content -->
-   <main>
+    <!-- start Main Content -->
+    <main>
       <section class="main-div marin-margin">
         <div
           class="container contact-card"
@@ -118,9 +116,7 @@
           <div class="row g-5 align-items-start">
             <!-- Contact Info -->
             <div class="col-md-4">
-              <h2 class="gradient-text fs-1">
-                Get in Touch
-              </h2>
+              <h2 class="gradient-text fs-1">Get in Touch</h2>
               <div class="info-box d-flex align-items-center">
                 <i class="fa-solid fa-location-pin opacity-50"></i>
                 <span class="fs-6 fw-bold">1234 High Street,Francisco, CA</span>
@@ -143,7 +139,9 @@
                 <span class="fs-5 fw-semibold">+880 184 567 890</span>
               </div>
 
-              <a href="to-let-details.html" class="btn-custom btn w-50 fw-bolder"
+              <a
+                href="to-let-details.html"
+                class="btn-custom btn w-50 fw-bolder"
                 >Send Message</a
               >
             </div>
@@ -183,37 +181,30 @@
         </div>
       </section>
     </main>
-  <!-- End Main Content -->
+    <!-- End Main Content -->
 
+    <!-- Top Footer -->
+    <div id="top-footer-include"></div>
 
-  <!-- Top Footer -->
-  <div id="top-footer-include"></div>
+    <!-- Login Modal -->
+    <div id="login-modal-include"></div>
 
-  <!-- Login Modal -->
-  <div id="login-modal-include"></div>
-  
-  <!-- Register Modal -->
-  <div id="registration-modal-include"></div>
+    <!-- Register Modal -->
+    <div id="registration-modal-include"></div>
 
-  <div id="footer-include"></div>
+    <div id="footer-include"></div>
 
+    <!--==============Scripts Link=============== -->
 
-  <!--==============Scripts Link=============== -->
+    <!-- Bootstrap Bundle (with Popper) -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Bootstrap Bundle (with Popper) -->  
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="assets/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
 
-  <!-- SweetAlert2 JS -->
-  <script src="assets/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/app.js"></script>
 
-
-  <!-- Custom JS -->
-  <script src="assets/js/app.js"></script>
-
-
-  <!-- more link -->
-    
-
-</body>
+    <!-- more link -->
+  </body>
 </html>
-    

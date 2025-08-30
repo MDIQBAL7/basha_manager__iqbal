@@ -1,71 +1,64 @@
-    <div
-      class="modal fade"
-      id="loginModal"
-      tabindex="-1"
-      aria-labelledby="loginModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="loginModalLabel">
-              Login to Your Account
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="auth-form-container">
-              <p class="auth-form-subtitle">
-                Welcome back! Please login to your account.
-              </p>
-              <form id="loginForm">
-                <div class="auth-form-group">
-                  <label for="email" class="auth-form-label"
-                    >Email Address</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control auth-form-control"
-                    id="email"
-                    placeholder="Enter your email"
-                    required
-                  />
-                </div>
-                <div class="auth-form-group">
-                  <label for="password" class="auth-form-label">Password</label>
-                  <input
-                    type="password"
-                    class="form-control auth-form-control"
-                    id="password"
-                    placeholder="Enter your password"
-                    required
-                  />
-                  <div class="d-flex justify-content-end mt-2">
-                    <a href="#" class="auth-form-link">Forgot Password?</a>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-primary auth-form-button">
-                  Login
-                </button>
-              </form>
-              <p class="auth-form-footer">
-                Don't have an account?
-                <a
-                  href="#"
-                  class="auth-form-link"
-                  data-bs-toggle="modal"
-                  data-bs-target="#registerModal"
-                  data-bs-dismiss="modal"
-                  >Register Now</a
-                >
-              </p>
+<div
+  class="modal fade"
+  id="loginModal"
+  tabindex="-1"
+  aria-labelledby="loginModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content auth-modal">
+      <div class="modal-header border-0">
+        <h5 class="modal-title ms-auto" id="loginModalLabel">Login to Your Account</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="auth-form-container">
+          <form id="loginForm" class="form-floating">
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control auth-form-control"
+                id="email"
+                placeholder="Email Address"
+                required
+              />
+              <label for="email">Email Address</label>
             </div>
-          </div>
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control auth-form-control"
+                id="password"
+                placeholder="Password"
+                required
+              />
+              <label for="password">Password</label>
+            </div>
+            <div class="d-flex justify-content-end mb-3">
+              <a href="#" class="auth-form-link">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary btn-custom w-100 fs-5 ">
+              Login
+            </button>
+          </form>
+          <p class="auth-form-footer mt-3">
+            Don't have an account?
+            <a
+              href="#"
+              class="auth-form-link"
+              data-bs-toggle="modal"
+              data-bs-target="#registerModal"
+              data-bs-dismiss="modal"
+              >Register Now</a
+            >
+          </p>
         </div>
       </div>
     </div>
+  </div>
+</div>

@@ -56,7 +56,58 @@ body {
   border-radius: 2px;
 }
 
+/* login modal style  */
 
+.auth-modal {
+  border-radius: 16px;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+.modal.show .auth-modal {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Floating labels input */
+.auth-form-control {
+  border-radius: 12px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  padding: 1rem 0.75rem;
+  color: black;
+  transition: all 0.3s ease;
+}
+.auth-form-control:focus {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 0 10px rgba(74,144,226,0.5);
+  color: black;
+}
+
+/* Animated Gradient Button */
+
+/* Footer Link */
+.auth-form-footer {
+  font-size: 0.9rem;
+  text-align: center;
+  color: #fff;
+}
+.auth-form-link {
+  transition: 0.3s;
+}
+.auth-form-link:hover {
+  text-decoration: underline;
+}
+
+/* Gradient Animation Keyframes */
+@keyframes gradientMove {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
 /* Navbar Styles */
 .navbar {
   padding: 0.5rem 0;
