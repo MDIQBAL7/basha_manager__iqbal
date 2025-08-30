@@ -400,27 +400,75 @@ color: black;
   border-radius: 8px 0 0 8px;
 }
 /* To-let details section style  */
-  .gallery img {
+     .m-max{
+      margin: 100px auto;
+     }
+   /* Modal BG */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 1050;
+      padding-top: 80px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+    }
+
+    /* Image animation */
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 80%;
+      border-radius: 12px;
+      animation: zoomIn 0.5s ease-in-out;
+    }
+    .img-hover{
       cursor: pointer;
       transition: transform 0.3s;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    .house-section {
-      padding: 60px 0;
-    }
-    .house-video {
-      border-radius: 10px;
-      overflow: hidden;
+    .img-hover:hover{
+       transform: scale(1.05);
     }
 
-    .To-let-details-title{
-     font-size: 2rem;
+    /* Caption */
+    #caption {
+      text-align: center;
+      color: #ccc;
+      margin-top: 15px;
+      font-size: 18px;
     }
-    .To-let-details-text{
-      font-size: 1.3rem;
+
+    /* Close Button */
+    .close-btn {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      background: rgba(137, 43, 226, 0.656);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
     }
+    .close-btn:hover {
+      background: blueviolet;
+      transform: scale(1.1);
+    }
+
+    /* Animations */
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    @keyframes zoomOut {
+      from { transform: scale(1); opacity: 1; }
+      to   { transform: scale(0.5); opacity: 0; }
+    }
+
 
     /* sweet alert style for add to cart  */
 
