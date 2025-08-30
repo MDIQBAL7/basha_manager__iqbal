@@ -1,6 +1,23 @@
-// sweet alert for add to card 
+// page loader function  
+// Wait for full window load
+window.addEventListener('load', function() {
+  const loader = document.getElementById('pageLoader');
   
-      function showDetails() {
+  // Small delay for smooth fade
+  setTimeout(() => {
+    loader.classList.add('fadeOut');
+
+    // Remove from DOM after fade
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 800); // match CSS transition
+  }, 300); // optional delay to ensure loader is visible briefly
+});
+
+// sweet alert for add to card   
+    
+
+function showDetails() {
         Swal.fire({
           title: "House Availability",
           html: `
@@ -64,3 +81,4 @@ loginModalEl.addEventListener('show.bs.modal', function () {
     modalContent.style.opacity = '1';
   }, 10);
 });
+
