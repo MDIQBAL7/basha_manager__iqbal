@@ -55,7 +55,8 @@ document.addEventListener("keydown", function(event) {
 });
 
 
-// <====================== user login =====================> 
+// <====================== user login  start =====================> 
+
 const loginModalEl = document.getElementById('loginModal');
 loginModalEl.addEventListener('show.bs.modal', function () {
   const modalContent = loginModalEl.querySelector('.auth-modal');
@@ -66,6 +67,27 @@ loginModalEl.addEventListener('show.bs.modal', function () {
     modalContent.style.opacity = '1';
   }, 10);
 });
+// <====================== user login  end =====================> 
+
+
+// <====================== profile slider function start =====================> 
+  function openSidebar() {
+    document.getElementById('sidebar').classList.add('show');
+    document.getElementById('overlay').classList.add('show');
+    document.getElementById('toggleBtn').style.display = 'none';
+    document.getElementById('closeBtn').style.display = 'block';
+  }
+
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('show');
+    document.getElementById('overlay').classList.remove('show');
+    document.getElementById('toggleBtn').style.display = 'block';
+    document.getElementById('closeBtn').style.display = 'none';
+  }
+
+
+// <====================== profile slider  function end =====================> 
+
 
                // <=========== page Loader ===============>
 
