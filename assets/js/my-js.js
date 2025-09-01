@@ -1,33 +1,33 @@
 
-// sweet alert for add to card   
-    
+// <======================== sweet alert for add to card ‍ start ========================>  
 
-function showDetails() {
-        Swal.fire({
-          title: "House Availability",
-          html: `
-      <div class="custom-text status-line gap-3">
-        <button class="status-line btn-custom btn w-50">
-          <i class="fas fa-wifi online"></i> 
-          <span class="online">Online</span>
-        </button>
-        <button class="status-line btn-custom btn w-50">
-          <i class="fas fa-user-slash offline"></i> 
-          <span class="offline">Offline</span>
-        </button>
-      </div>
-    `,
-          confirmButtonText: "Close",
-          customClass: {
-            popup: "custom-popup",
-            title: "custom-title",
-            htmlContainer: "custom-text",
-          },
-        });
-      }
+      function showDetails() {
+      Swal.fire({
+        title: "House Availability",
+        html: `
+          <div class="add-card-status-line">
+            <button class="add-card-btn">
+              <i class="fas fa-wifi add-card-online"></i> 
+              <span class="add-card-online">Online</span>
+            </button>
+            <button class="add-card-btn">
+              <i class="fas fa-user-slash add-card-offline"></i> 
+              <span class="add-card-offline">Offline</span>
+            </button>
+          </div>
+        `,
+        confirmButtonText: "Close",
+        background: "rgba(0,0,0,0.55)", 
+        color: "#fff",
+        customClass: {
+          popup: "add-card-custom-popup",
+          title: "add-card-custom-title",
+          htmlContainer: "add-card-custom-text",
+        },
+      });
+    }
 
-
-
+    // <======================== sweet alert for add to card end ========================>  
 
 // details image animation  
 const modal = document.getElementById("imageModal");
@@ -71,21 +71,25 @@ loginModalEl.addEventListener('show.bs.modal', function () {
 
 
 // <====================== profile slider function start =====================> 
-  function openSidebar() {
-    document.getElementById('sidebar').classList.add('show');
-    document.getElementById('overlay').classList.add('show');
-    document.getElementById('toggleBtn').style.display = 'none';
-    document.getElementById('closeBtn').style.display = 'block';
-  }
+const profileToggle = document.getElementById("profileToggle");
+const profileToggleDesktop = document.getElementById("profileToggleDesktop");
+const profilePanel = document.getElementById("profilePanel");
+const profileClose = document.getElementById("profileClose");
+const overlay = document.getElementById("overlay");
 
-  function closeSidebar() {
-    document.getElementById('sidebar').classList.remove('show');
-    document.getElementById('overlay').classList.remove('show');
-    document.getElementById('toggleBtn').style.display = 'block';
-    document.getElementById('closeBtn').style.display = 'none';
-  }
+function openProfilePanel() {
+  profilePanel.classList.add("show");
+  overlay.classList.add("show");
+}
+function closeProfilePanel() {
+  profilePanel.classList.remove("show");
+  overlay.classList.remove("show");
+}
 
-
+profileToggle.addEventListener("click", openProfilePanel);
+profileToggleDesktop.addEventListener("click", openProfilePanel);
+profileClose.addEventListener("click", closeProfilePanel);
+overlay.addEventListener("click", closeProfilePanel);
 // <====================== profile slider  function end =====================> 
 
 

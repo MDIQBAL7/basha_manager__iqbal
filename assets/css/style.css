@@ -399,15 +399,17 @@ padding: 6px 12px;
       border-radius: 5px;
     }
 
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      color: white;
-      display: none;
+    .close-btn-nav {
+     background-color: rgba(245, 245, 245, 0.125);
+     border: 0px;
+     border-radius: 50px;
+     color: black;
+     font-size: 1.3rem;
+     height: 40px;
+     width: 40px;
+    }
+    .close-btn-nav:hover {
+     background-color: rgba(245, 245, 245, 0.308);
     }
 
     .overlay {
@@ -460,96 +462,97 @@ padding: 6px 12px;
         transform: translateX(0) !important;
       }
     }
-/*========================== Navbar Styles end ==========================> */
 
-/* User Dropdown Menu
-.user-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.user-dropdown-toggle {
-  background-color: #f8f9fa;
-  border: none;
-  width: 40px;
-  height: 40px;
+    /* nab profile dropdown  */
+/* Profile Trigger */
+.nav-profile-dropdown-toggle {
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  border: 2px solid #eee;
   cursor: pointer;
-  transition: var(--transition);
+  transition: transform 0.3s ease;
+}
+.nav-profile-dropdown-toggle:hover {
+  transform: scale(1.05);
+}
+.nav-profile-dropdown-avatar {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-.user-dropdown-toggle i {
-  color: var(--dark-color);
-  font-size: 1.2rem;
+/* Profile Offcanvas */
+.profile-offcanvas {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.15);
+  transition: right 0.4s ease;
+  z-index: 1050;
+  padding: 20px;
 }
-
-.user-dropdown-toggle:hover {
-  background-color: rgba(52, 152, 219, 0.1);
-}
-
-.user-dropdown-menu {
-  position: absolute;
-  top: 100%;
+.profile-offcanvas.show {
   right: 0;
-  width: 280px;
-  background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: var(--box-shadow);
-  padding: 1rem 0;
-  margin-top: 0.5rem;
-  z-index: 1000;
+}
+.profile-offcanvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+.close-btn:hover {
+  color: #007bff;
+}
+.profile-avatar-large {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #f0f0f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.profile-link {
+  display: block;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  color: #333;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+.profile-link:hover {
+  background: #f7f7f7;
+  color: #007bff;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1040;
   display: none;
 }
-
-.user-dropdown-menu.show {
+.overlay.show {
   display: block;
 }
 
-.user-dropdown-header {
-  padding: 0 1.5rem 1rem;
-  border-bottom: 1px solid var(--light-gray);
-  margin-bottom: 0.5rem;
-}
 
-.user-dropdown-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--dark-color);
-}
+/*========================== Navbar Styles end ==========================> */
 
-.user-dropdown-email {
-  font-size: 0.875rem;
-  color: var(--gray-color);
-}
-
-.user-dropdown-item {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-  color: var(--dark-color);
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.user-dropdown-item:hover {
-  background-color: rgba(52, 152, 219, 0.1);
-  color: var(--primary-color);
-}
-
-.user-dropdown-icon {
-  margin-right: 0.75rem;
-  width: 16px;
-  color: var(--gray-color);
-}
-
-.user-dropdown-divider {
-  height: 1px;
-  background-color: var(--light-gray);
-  margin: 0.5rem 0;
-} */
 
 /* Hero Carousel Styles */
 
@@ -743,55 +746,87 @@ padding: 6px 12px;
 } */
 
     /* sweet alert style for add to cart  */
+  /* SweetAlert Glassmorphism Popup */
+    .add-card-custom-popup {
+      border-radius: 16px;
+      padding: 10px;
+      background: rgba(0,0,0,0.55) !important;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    }
 
-  .custom-popup {
-    border-radius: 16px;
-    padding: 10px;
-    background: black;
-    box-shadow: 0 5px 20px rgba(223, 216, 216, 0.2);
-  }
+    /* Container line */
+    .add-card-status-line {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 12px;
+      padding: 10px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
-  /* Each Line Style */
-  .status-line {
-    height: 100px;
-    display: flex;
-    white-space: nowrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 12px;
-    padding: 5px;
-    border-radius: 10px;
-    background: black;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  }
-  /* .custom-text{
-    background-color: black;
-  } */
+    /* Button style */
+    .add-card-btn {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
 
-  .status-line {
-padding: 0px;
-  }
-  .status-line i {
-    font-size: 20px;
-    margin-right: 10px;
-  }
+    /* Hover glow effect */
+    .add-card-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0, 255, 150, 0.4);
+    }
 
-  .online {
-    color: #27ae60;
-    font-weight: 600;
-    padding: 5px;
-    margin-bottom: 5px;
-  }
+    /* Online text/icon */
+    .add-card-online {
+      color: #27ae60;
+      font-weight: 600;
+      font-size: 16px;
+    }
 
-  .offline {
-    color: #e74c3c;
-    font-weight: 600;
-    padding: 5px;
-  }
+    /* Offline text/icon */
+    .add-card-offline {
+      color: #e74c3c;
+      font-weight: 600;
+      font-size: 16px;
+    }
 
-
-
+    /* Button in main body */
+    .trigger-btn {
+      margin: 50px auto;
+      display: block;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background: #27ae60;
+      color: white;
+      transition: 0.3s;
+    }
+    .trigger-btn:hover {
+      background: #219150;
+    }
                    /* <============== Registration style =================> */
 
 .glass-card {
