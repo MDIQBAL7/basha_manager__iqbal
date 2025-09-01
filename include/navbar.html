@@ -9,7 +9,16 @@
     <!-- ছোট স্ক্রিনে user-section + hamburger -->
     <div class="d-flex d-lg-none mx-auto align-items-center">
       <div class="user-section d-flex align-items-center">
-        <a href="login-modal.html" class="btn btn-custom nav-btn-h">Login</a>
+        <!-- <a href="login-modal.html" class="btn btn-custom nav-btn-h">Login</a> -->
+          <!-- login buton   -->
+        <a 
+  href="#" 
+  class="btn btn-custom nav-btn-h" 
+  data-bs-toggle="modal" 
+  data-bs-target="#loginModal"
+>
+  Login
+</a>
         <a href="#" class="btn btn-custom nav-btn-h">Sign Up</a>
         <!-- Profile dropdown -->
      <div class="dropdown nav-profile-dropdown-wrapper">
@@ -136,7 +145,8 @@
 
       <div class="d-none d-lg-flex user-section gap-3">
         <!-- <a href="login-modal.html" class="btn btn-custom nav-btn-h">Login</a> -->
-         <a 
+        <!-- login buton   -->
+        <a 
   href="#" 
   class="btn btn-custom nav-btn-h" 
   data-bs-toggle="modal" 
@@ -144,7 +154,24 @@
 >
   Login
 </a>
-        <a href="#" class="btn btn-custom nav-btn-h">Sign Up</a>
+         <!-- sign up button  -->
+         <a 
+  href="#" 
+  class="btn btn-custom nav-btn-h" 
+  data-bs-toggle="modal" 
+  data-bs-target="#registerModal"
+>
+  Sign Up
+</a>
+        <!-- <a href="#" class="btn btn-custom nav-btn-h">Sign Up</a> -->
+          <!-- <a
+              href="#"
+              class="auth-form-link"
+              data-bs-toggle="modal"
+              data-bs-target="#registerModal"
+              data-bs-dismiss="modal"
+              >Sign Up</a -->
+            
       <div class="dropdown nav-profile-dropdown-wrapper">
   <div class="nav-profile-dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
     <img

@@ -27,7 +27,59 @@
       });
     }
 
-    // <======================== sweet alert for add to card end ========================>  
+
+// forgat modal 
+const forgotModalEl = document.getElementById('forgotPasswordModal');
+forgotModalEl.addEventListener('show.bs.modal', function () {
+  const modalContent = forgotModalEl.querySelector('.auth-modal');
+  modalContent.style.transform = 'scale(0.8)';
+  modalContent.style.opacity = '0';
+  setTimeout(() => {
+    modalContent.style.transform = 'scale(1)';
+    modalContent.style.opacity = '1';
+  }, 10);
+});
+
+// Optional: Handle form submit
+document.getElementById('forgotPasswordForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const email = document.getElementById('forgotEmail').value;
+  // এখানে আপনি নিজের API বা logic ব্যবহার করতে পারেন
+  alert(`Password reset link sent to ${email}`);
+  const modal = bootstrap.Modal.getInstance(forgotModalEl);
+  modal.hide();
+});
+    // <======================== sweet alert for add to card end ========================>
+
+
+    // <======================== model fr forgat pass word start ========================>
+
+//       document.getElementById("forgotPasswordForm").addEventListener("submit", function(e) {
+//   e.preventDefault(); // পেজ রিলোড আটকানো
+
+//   const email = document.getElementById("forgotEmail").value;
+
+//   if(email){
+//     // এখানে আসল প্রোজেক্টে backend API কল করবেন
+//     Swal.fire({
+//       icon: 'success',
+//       title: 'Password Reset Link Sent!',
+//       text: `We have sent a password reset link to ${email}`,
+//       confirmButtonText: 'OK',
+//       customClass: {
+//         popup: 'custom-popup'
+//       }
+//     });
+
+//     // modal বন্ধ করা
+//     const modalEl = document.getElementById('forgotPasswordModal');
+//     const modal = bootstrap.Modal.getInstance(modalEl);
+//     modal.hide();
+//   }
+// });
+
+    // <======================== model for forgat pass word end ==========================>
+
 
 // details image animation  
 const modal = document.getElementById("imageModal");
