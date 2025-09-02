@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basha Manager - Pages</title>
+
+  <!-- Header part include (CSS, meta, etc.) -->
+  <div id="header-include"></div>
+
+  <!-- html including render js -->
+  <script src="assets/js/include.js" defer></script>
+<style>
+  /* body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fa;
+  } */
+
+  /* Sidebar */
+  /* .user-panel-sidebar {
+    min-height: 100vh;
+    background: #1a1d20;
+    color: #fff;
+    padding-top: 20px;
+  } */
+
+  .user-panel-sidebar h4 {
+    padding-left: 20px;
+    margin-bottom: 30px;
+  }
+
+  .user-panel-sidebar .nav-link {
+    color: #adb5bd;
+    margin: 6px 0;
+    border-radius: 6px;
+    transition: 0.3s;
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+
+  .user-panel-sidebar .nav-link.active,
+  .user-panel-sidebar .nav-link:hover {
+    background: #0d6efd;
+    color: #fff;
+  }
+
+  /* Main content */
+  .user-panel-content {
+    padding: 20px;
+  }
+
+  .user-panel-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    padding: 20px;
+  }
+
+  .user-panel-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .user-panel-hidden {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+  <!-- navbar -->
+  <div id="navbar-include"></div>
+
+
+  <!-- start Main Content -->
+  <main>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav class="col-md-3 col-lg-2 d-md-block bg-dark user-panel-sidebar collapse">
+      <h4 class="text-white"><i class="fa-solid fa-house-chimney me-2"></i>User Panel</h4>
+      <ul class="nav flex-column">
+        <li><a class="nav-link active" data-target="user-panel-dashboard"><i class="fa-solid fa-gauge me-2"></i>Dashboard</a></li>
+        <li><a class="nav-link" data-target="user-panel-rents"><i class="fa-solid fa-house me-2"></i>My Rents</a></li>
+        <li><a class="nav-link" data-target="user-panel-payments"><i class="fa-solid fa-wallet me-2"></i>Payments</a></li>
+        <li><a class="nav-link" data-target="user-panel-bills"><i class="fa-solid fa-file-invoice me-2"></i>Bills</a></li>
+        <li><a class="nav-link" data-target="user-panel-profile"><i class="fa-solid fa-user me-2"></i>Profile</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 col-lg-10 user-panel-content">
+      <!-- Dashboard -->
+      <div id="user-panel-dashboard" class="user-panel-section">
+        <h2 class="mb-4">Welcome, User!</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="user-panel-card">
+              <h5><i class="fa-solid fa-house me-2 text-primary"></i>Total Rents</h5>
+              <p class="fs-4 fw-bold">5</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="user-panel-card">
+              <h5><i class="fa-solid fa-wallet me-2 text-success"></i>Total Payments</h5>
+              <p class="fs-4 fw-bold">৳ 75,000</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="user-panel-card">
+              <h5><i class="fa-solid fa-file-invoice me-2 text-danger"></i>Pending Bills</h5>
+              <p class="fs-4 fw-bold">৳ 5,000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Rents -->
+      <div id="user-panel-rents" class="user-panel-section user-panel-hidden">
+        <h3>My Rents</h3>
+        <div class="user-panel-card mt-3">
+          <ul>
+            <li>Flat A2 - 2nd Floor - ৳ 25,000/month</li>
+            <li>Flat B4 - 4th Floor - ৳ 30,000/month</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Payments -->
+      <div id="user-panel-payments" class="user-panel-section user-panel-hidden">
+        <h3>Payments</h3>
+        <table class="table table-hover mt-3">
+          <thead class="table-light">
+            <tr>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Method</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01 Sep 2025</td>
+              <td>৳ 25,000</td>
+              <td>Bkash</td>
+              <td><span class="badge bg-success">Paid</span></td>
+            </tr>
+            <tr>
+              <td>01 Aug 2025</td>
+              <td>৳ 25,000</td>
+              <td>Cash</td>
+              <td><span class="badge bg-success">Paid</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Bills -->
+      <div id="user-panel-bills" class="user-panel-section user-panel-hidden">
+        <h3>Bills</h3>
+        <table class="table table-striped mt-3">
+          <thead class="table-dark">
+            <tr>
+              <th>Month</th>
+              <th>Electric</th>
+              <th>Gas</th>
+              <th>Water</th>
+              <th>Total</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>August</td>
+              <td>৳ 3,000</td>
+              <td>৳ 1,200</td>
+              <td>৳ 800</td>
+              <td>৳ 5,000</td>
+              <td><span class="badge bg-warning text-dark">Pending</span></td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>৳ 2,500</td>
+              <td>৳ 1,000</td>
+              <td>৳ 700</td>
+              <td>৳ 4,200</td>
+              <td><span class="badge bg-success">Paid</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Profile -->
+      <div id="user-panel-profile" class="user-panel-section user-panel-hidden">
+        <h3>My Profile</h3>
+        <div class="user-panel-card mt-3">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" value="Iqbal Hossain">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" value="iqbal@example.com">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input type="text" class="form-control" value="+8801XXXXXXXXX">
+            </div>
+            <button class="btn btn-primary">Update</button>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+  </main>
+  <!-- End Main Content -->
+
+
+  <!-- Top Footer -->
+  <div id="top-footer-include"></div>
+
+  <!-- Login Modal -->
+  <div id="login-modal-include"></div>
+  
+  <!-- Register Modal -->
+  <div id="registration-modal-include"></div>
+
+  <div id="footer-include"></div>
+
+
+  <!--==============Scripts Link=============== -->
+
+  <!-- Bootstrap Bundle (with Popper) -->  
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- SweetAlert2 JS -->
+  <script src="assets/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
+
+
+  <!-- Custom JS -->
+  <script src="assets/js/app.js"></script>
+
+
+  <!-- more link -->
+<script src="/assets/js/my-js.js"></script>    
+<!-- <script>
+  // Sidebar Navigation
+  const links = document.querySelectorAll('.user-panel-sidebar .nav-link');
+  const sections = document.querySelectorAll('.user-panel-section');
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+
+      sections.forEach(section => section.classList.add('user-panel-hidden'));
+      document.getElementById(link.dataset.target).classList.remove('user-panel-hidden');
+    });
+  });
+</script> -->
+</body>
+</html>
+    
