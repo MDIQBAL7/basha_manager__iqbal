@@ -107,6 +107,15 @@
         .to-let-det-gallery img {
           width: calc(50% - 10px);
         }
+         .to-let-det-info-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 20px; 
+      }
+      .to-let-det-info-cards{
+        padding: 0px 5px;
+      }
       }
       @media (max-width: 480px) {
         .to-let-det-gallery img {
@@ -114,9 +123,12 @@
         }
           .to-let-det-info-cards {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         margin-top: 20px; 
+      }
+      .to-let-det-info-cards{
+        padding: 0px 5px;
       }
       }
 
@@ -260,7 +272,9 @@
             </div>
           </div>
         </div>
-
+ <button onclick="showDetails()" class="btn-custom btn w-25">
+                    ADD TO CART
+                  </button>
         <!-- Gallery -->
         <div class="to-let-det-gallery">
           <img
