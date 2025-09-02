@@ -734,6 +734,11 @@ padding: 0px auto;
   transform: rotate(90deg);
 }
 
+.drop-click:active{
+background-color: rgba(0, 0, 0, 0.1);
+color: black;
+}
+
 /* Animations */
 @keyframes zoomIn {
   from { transform: scale(0.5); opacity: 0; }
