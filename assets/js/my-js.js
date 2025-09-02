@@ -28,7 +28,7 @@
     }
 
 
-// forgat modal 
+                // < = model  forgat pass word start  =>
 const forgotModalEl = document.getElementById('forgotPasswordModal');
 forgotModalEl.addEventListener('show.bs.modal', function () {
   const modalContent = forgotModalEl.querySelector('.auth-modal');
@@ -44,68 +44,43 @@ forgotModalEl.addEventListener('show.bs.modal', function () {
 document.getElementById('forgotPasswordForm').addEventListener('submit', function(e){
   e.preventDefault();
   const email = document.getElementById('forgotEmail').value;
-  // এখানে আপনি নিজের API বা logic ব্যবহার করতে পারেন
   alert(`Password reset link sent to ${email}`);
   const modal = bootstrap.Modal.getInstance(forgotModalEl);
   modal.hide();
 });
+
+                    // <== model for forgat pass word end =>
+
+
     // <======================== sweet alert for add to card end ========================>
 
 
-    // <======================== model fr forgat pass word start ========================>
-
-//       document.getElementById("forgotPasswordForm").addEventListener("submit", function(e) {
-//   e.preventDefault(); // পেজ রিলোড আটকানো
-
-//   const email = document.getElementById("forgotEmail").value;
-
-//   if(email){
-//     // এখানে আসল প্রোজেক্টে backend API কল করবেন
-//     Swal.fire({
-//       icon: 'success',
-//       title: 'Password Reset Link Sent!',
-//       text: `We have sent a password reset link to ${email}`,
-//       confirmButtonText: 'OK',
-//       customClass: {
-//         popup: 'custom-popup'
-//       }
-//     });
-
-//     // modal বন্ধ করা
-//     const modalEl = document.getElementById('forgotPasswordModal');
-//     const modal = bootstrap.Modal.getInstance(modalEl);
-//     modal.hide();
-//   }
-// });
-
-    // <======================== model for forgat pass word end ==========================>
-
-
 // details image animation  
-const modal = document.getElementById("imageModal");
-const modalImg = document.getElementById("modalImage");
-const captionText = document.getElementById("caption");
-const closeBtn = document.getElementById("closeModal");
 
-document.querySelectorAll(".gallery-img").forEach(img => {
-  img.addEventListener("click", function () {
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
+document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById("to-let-d-img-modal");
+  const modalImg = document.getElementById("to-let-d-img-modal-image");
+  const caption = document.getElementById("to-let-d-img-caption");
+  const closeBtn = document.getElementById("to-let-d-img-close-btn");
+
+  document.querySelectorAll(".to-let-d-img-gallery-img").forEach(img => {
+    img.addEventListener("click", function() {
+      modal.style.display = "flex";
+      modalImg.src = this.src;
+      caption.innerHTML = this.alt;
+    });
   });
-});
 
-closeBtn.onclick = function () {
-  modal.style.display = "none";
-}
-
-// Esc press for cut model
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") {
+  closeBtn.onclick = function() {
     modal.style.display = "none";
   }
-});
 
+  document.addEventListener("keydown", function(event) {
+    if(event.key === "Escape") {
+      modal.style.display = "none";
+    }
+  });
+});
 
 // <====================== user login  start =====================> 
 
@@ -153,3 +128,6 @@ overlay.addEventListener("click", closeProfilePanel);
   //     loader.classList.add("hidden");
   //   }, 500); // 0.5s delay before hide
   // });
+
+
+  

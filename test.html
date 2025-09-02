@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basha Manager - Pages</title>
+
+    <!-- Header part include (CSS, meta, etc.) -->
+    <div id="header-include"></div>
+
+    <!-- html including render js -->
+    <script src="assets/js/include.js" defer></script>
+    <style>
+      /* .to-let-det-container {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      } */
+      .to-let-det-container {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      /* Video */
+      .to-let-det-video video {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        margin-bottom: 30px;
+      }
+
+      /* House Details */
+      .to-let-det-details {
+        background: #fff;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 40px;
+      }
+      .to-let-det-details h2 {
+        margin-top: 0;
+        color: #333;
+        font-size: 28px;
+      }
+      .to-let-det-details p {
+        margin: 8px 0;
+        font-size: 16px;
+        color: #555;
+      }
+      .to-let-det-details p strong {
+        color: #000;
+      }
+
+      /* Unique Info Cards */
+      .to-let-det-info-cards {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 15px;
+        margin-top: 20px; 
+      }
+      .to-let-det-info-card {
+        flex: 1 1 120px;
+        background: #fff;
+        padding: 5px 0px;
+        text-align: center;
+        border: 2px solid #ddd;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      .to-let-det-info-card:hover {
+        border-color: #7b68ee;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+      .to-let-det-info-card h3 {
+        margin: 5px 0;
+        font-size: 17px;
+        color: #333;
+      }
+      .to-let-det-info-card p {
+        margin: 0;
+        color: #666;
+        font-size: 10px;
+      }
+
+      /* Gallery */
+      .to-let-det-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 30px;
+      }
+      .to-let-det-gallery img {
+        width: calc(33.333% - 10px);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .to-let-det-gallery img:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+      @media (max-width: 768px) {
+        .to-let-det-gallery img {
+          width: calc(50% - 10px);
+        }
+      }
+      @media (max-width: 480px) {
+        .to-let-det-gallery img {
+          width: 100%;
+        }
+          .to-let-det-info-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 20px; 
+      }
+      }
+
+      /* Modal */
+      .to-let-det-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+        animation: to-let-det-fadeIn 0.5s ease;
+      }
+      .to-let-det-modal-content {
+        margin: auto;
+        display: block;
+        max-width: 80%;
+        max-height: 80vh;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        animation: to-let-det-zoomIn 0.4s ease;
+      }
+      .to-let-det-modal-caption {
+        text-align: center;
+        color: #fff;
+        font-size: 18px;
+        margin: 15px auto;
+      }
+      .to-let-det-close-btn {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #fff;
+        font-size: 35px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .to-let-det-close-btn:hover {
+        color: #bb97dd;
+        transform: rotate(90deg);
+      }
+
+      /* Arrows */
+      .to-let-det-prev,
+      .to-let-det-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #fff;
+        font-size: 50px;
+        cursor: pointer;
+        user-select: none;
+        padding: 10px;
+        transition: 0.3s;
+      }
+      .to-let-det-prev:hover,
+      .to-let-det-next:hover {
+        color: #bb97dd;
+      }
+      .to-let-det-prev {
+        left: 20px;
+      }
+      .to-let-det-next {
+        right: 20px;
+      }
+
+      /* Animations */
+      @keyframes to-let-det-zoomIn {
+        from {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes to-let-det-fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div id="navbar-include"></div>
+
+    <!-- start Main Content -->
+    <main>
+      <div class="to-let-det-container">
+        <!-- Video Section -->
+        <div class="to-let-det-video">
+          <video controls autoplay muted loop poster="assets/image/house1.jpg">
+            <source src="assets/Videos/video-1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <!-- House Details -->
+        <div class="to-let-det-details">
+          <h2>Luxury Apartment in Gulshan</h2>
+          <p><strong>Location:</strong> Dhaka, Gulshan</p>
+          <p><strong> Rent : 30000 BDT</strong></p>
+
+          <!-- Unique Info Cards -->
+          <div class="to-let-det-info-cards">
+            <div class="to-let-det-info-card">
+              <h3>Floor</h3>
+              <p>5th Floor</p>
+            </div>
+            <div class="to-let-det-info-card">
+              <h3>Bedrooms</h3>
+              <p>3 Bedrooms</p>
+            </div>
+            <div class="to-let-det-info-card">
+              <h3>Bathrooms</h3>
+              <p>2 Bathrooms</p>
+            </div>
+            <div class="to-let-det-info-card">
+              <h3>Gas Bill</h3>
+              <p>Included</p>
+            </div>
+            <div class="to-let-det-info-card">
+              <h3>Electricity Bill</h3>
+              <p>Included</p>
+            </div>
+            <div class="to-let-det-info-card">
+              <h3>Kitchens</h3>
+              <p>1 Kitchen</p>
+            </div>
+            <div class="to-let-det-info-card">
+              <h3>Balconies</h3>
+              <p>2 Balconies</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="to-let-det-gallery">
+          <img
+            src="assets/image/basa-details/house-hero.png"
+            alt="Living Room"
+            class="to-let-det-gallery-img"
+          />
+          <img
+            src="assets/image/basa-details/phgalary2.png"
+            alt="Bedroom"
+            class="to-let-det-gallery-img"
+          />
+          <img
+            src="assets/image/basa-details/phgalary3.png"
+            alt="Kitchen"
+            class="to-let-det-gallery-img"
+          />
+          <img
+            src="assets/image/basa-details/phgalary6.jpg"
+            alt="Bathroom"
+            class="to-let-det-gallery-img"
+          />
+          <img
+            src="assets/image/basa-details/phgalary7.png"
+            alt="Balcony"
+            class="to-let-det-gallery-img"
+          />
+          <img
+            src="assets/image/basa-details/phgalary8.jpg"
+            alt="Front View"
+            class="to-let-det-gallery-img"
+          />
+        </div>
+      </div>
+
+      <!-- Modal for Gallery -->
+      <div id="to-let-det-modal" class="to-let-det-modal">
+        <span id="to-let-det-close-btn" class="to-let-det-close-btn"
+          >&times;</span
+        >
+        <img id="to-let-det-modal-image" class="to-let-det-modal-content" />
+        <div id="to-let-det-caption" class="to-let-det-modal-caption"></div>
+        <span class="to-let-det-prev">&#10094;</span>
+        <span class="to-let-det-next">&#10095;</span>
+      </div>
+    </main>
+
+    <script>
+      const modal = document.getElementById("to-let-det-modal");
+      const modalImg = document.getElementById("to-let-det-modal-image");
+      const caption = document.getElementById("to-let-det-caption");
+      const closeBtn = document.getElementById("to-let-det-close-btn");
+      const prevBtn = document.querySelector(".to-let-det-prev");
+      const nextBtn = document.querySelector(".to-let-det-next");
+      const images = document.querySelectorAll(".to-let-det-gallery-img");
+
+      let currentIndex = 0;
+
+      function showModal(index) {
+        currentIndex = index;
+        modal.style.display = "block";
+        modalImg.src = images[index].src;
+        caption.innerHTML = images[index].alt;
+      }
+
+      images.forEach((img, i) => {
+        img.addEventListener("click", () => showModal(i));
+      });
+
+      closeBtn.onclick = () => (modal.style.display = "none");
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") modal.style.display = "none";
+        if (e.key === "ArrowRight") nextImage();
+        if (e.key === "ArrowLeft") prevImage();
+      });
+
+      nextBtn.onclick = () => nextImage();
+      prevBtn.onclick = () => prevImage();
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        modalImg.src = images[currentIndex].src;
+        caption.innerHTML = images[currentIndex].alt;
+      }
+
+      function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        modalImg.src = images[currentIndex].src;
+        caption.innerHTML = images[currentIndex].alt;
+      }
+    </script>
+    <!-- End Main Content -->
+
+    <!-- Top Footer -->
+    <div id="top-footer-include"></div>
+
+    <!-- Login Modal -->
+    <div id="login-modal-include"></div>
+
+    <!-- Register Modal -->
+    <div id="registration-modal-include"></div>
+
+    <div id="footer-include"></div>
+
+    <!--==============Scripts Link=============== -->
+
+    <!-- Bootstrap Bundle (with Popper) -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SweetAlert2 JS -->
+    <script src="assets/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- more link -->
+    <script src="assets/js/my-js.js"></script>
+  </body>
+</html>
