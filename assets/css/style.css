@@ -454,14 +454,14 @@ padding: 0px auto;
       background-color: rgba(37, 64, 85, 0.726);
     } */
 
-    @media (min-width: 768px) {
+    /* @media (min-width: 768px) {
       .toggle-btn, .overlay, .close-btn {
         display: none !important;
       }
       .class-sidebar-wrapper {
         transform: translateX(0) !important;
       }
-    }
+    } */
 
     /* nab profile dropdown  */
 /* Profile Trigger */
@@ -618,11 +618,8 @@ padding: 0px auto;
 }
 
 
-/* To-let or rent section style  */
-/* .property-card img {
-    height: 200px;
-    object-fit: cover;
-} */
+/* < ===================== To-let or rent section style start  ==========================>*/
+
  /* To-let hero section style */
 .to-let-hero-section {
   min-height: 60vh;
@@ -651,7 +648,7 @@ padding: 0px auto;
 }
 .to-let-card:hover{
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  transform: translateY(-6px); /* হালকা উপরে উঠবে */
+  transform: translateY(-6px); 
 }
 
 
@@ -672,7 +669,10 @@ padding: 0px auto;
   background-color: #f0f0f0;
   border-radius: 8px 0 0 8px;
 }
-
+.m-max{
+  margin-top: 60px;
+}
+/* < ===================== To-let or rent section style end  ==========================>*/
 
 
 /*<====================== To-let details section style start ==========================>*/
@@ -752,7 +752,6 @@ color: black;
 
 
 
-/* try  */
 
 
 /*<====================== To-let details section style end ==========================>*/
@@ -1169,7 +1168,8 @@ color: black;
     font-size: 2rem;
   }
 }
-
+  /*<============================ RESPONSIVE DESIGH STYLE START FROM HERE ===========> */
+  /*<=========================Max width 768 px  ======================>*/
 @media (max-width: 768px) {
   #heroCarousel .carousel-item {
     height: 400px;
@@ -1202,8 +1202,16 @@ color: black;
   /* background: linear-gradient(to right, #1e3a8a, #1e3b8a87); */
   padding: 30px 5px 15px 5px;
 }
+  .toggle-btn, .overlay, .close-btn {
+        display: none !important;
+      }
+      .class-sidebar-wrapper {
+        transform: translateX(0) !important;
+      }
 }
 
+
+    /*<========================== Max width 576 px ===========================>*/
 @media (max-width: 576px) {
   #heroCarousel .carousel-item {
     height: 400px;
@@ -1257,5 +1265,8 @@ color: black;
    .status-line i {
     font-size: 10px;
     margin-right: 5px;
+  }
+  .m-max{
+    margin-top: 100px;
   }
 }
