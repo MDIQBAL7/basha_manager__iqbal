@@ -1,294 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User Panel - Basha Manager</title>
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Panel - Basha Manager</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
 
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f8f9fa;
-  }
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa;
+      }
 
-  /* Sidebar */
-  .user-panel-sidebar {
-    background: #1a1d20;
-    color: #fff;
-    min-height: 100vh;
-    max-width: 80vh;
-    padding-top: 20px;
-  }
+      /* Sidebar */
+      .user-panel-sidebar {
+        background: #1a1d20;
+        color: #fff;
+        min-height: 100vh;
+        padding-top: 20px;
+      }
 
-  .user-panel-sidebar h4 {
-    padding-left: 20px;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-  }
+      .user-panel-sidebar h4 {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
 
-  .user-panel-sidebar .nav-link {
-    color: #adb5bd;
-    margin: 6px 0;
-    border-radius: 6px;
-    transition: 0.3s;
-    cursor: pointer;
-    padding: 10px 20px;
-    font-size: 0.95rem;
-  }
+      .user-panel-sidebar .nav-link {
+        color: #adb5bd;
+        margin: 6px 0;
+        border-radius: 6px;
+        transition: 0.3s;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-size: 0.95rem;
+      }
 
-  .user-panel-sidebar .nav-link.active,
-  .user-panel-sidebar .nav-link:hover {
-    background: #0d6efd;
-    color: #fff;
-  }
+      .user-panel-sidebar .nav-link.active,
+      .user-panel-sidebar .nav-link:hover {
+        background: #0d6efd;
+        color: #fff;
+      }
 
-  /* Main content */
-  .user-panel-content {
-    padding: 20px;
-  }
+      /* Main content */
+      .user-panel-content {
+        padding: 20px;
+      }
 
-  .user-panel-card {
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: 0.3s;
-    padding: 20px;
-    background: #fff;
-  }
+      .user-panel-card {
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+        padding: 20px;
+        background: #fff;
+      }
 
-  .user-panel-card:hover {
-    transform: translateY(-3px);
-  }
+      .user-panel-card:hover {
+        transform: translateY(-3px);
+      }
 
-  .user-panel-hidden {
-    display: none;
-  }
+      .user-panel-hidden {
+        display: none;
+      }
 
-  /* Table Responsive */
-  .table-responsive {
-    border-radius: 8px;
-    overflow-x: auto;
-  }
+      /* Table Responsive */
+      .table-responsive {
+        border-radius: 8px;
+        overflow-x: auto;
+      }
 
-  /* Small Devices Fix */
-  @media (max-width: 991px) {
-    .desktop-sidebar {
-      display: none;
-    }
-    .user-panel-content {
-      padding: 15px;
-    }
-  }
-</style>
-</head>
-<body>
-
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="#"><i class="fa-solid fa-house-chimney me-2"></i>Basha Manager</a>
-    <div class="d-flex align-items-center">
-      <!-- Profile Dropdown -->
-      <div class="dropdown me-2 d-none d-sm-block">
-        <a class="btn btn-outline-light dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-          <i class="fa-solid fa-user-circle me-1"></i> User
-        </a>
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
-        </ul>
-      </div>
-
-      <!-- Toggle Button for Mobile -->
-      <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#userPanelSidebarMobile">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-    </div>
-  </div>
-</nav>
-
-<div class="container-fluid">
-  <div class="row">
-    <!-- Desktop Sidebar -->
-    <div class="col-lg-2 d-none d-lg-block desktop-sidebar user-panel-sidebar">
-      <h4><i class="fa-solid fa-user me-2"></i>User Panel</h4>
-      <ul class="nav flex-column">
-        <li><a class="nav-link active" data-target="user-panel-dashboard"><i class="fa-solid fa-gauge me-2"></i>Dashboard</a></li>
-        <li><a class="nav-link" data-target="user-panel-rents"><i class="fa-solid fa-house me-2"></i>My Rents</a></li>
-        <li><a class="nav-link" data-target="user-panel-payments"><i class="fa-solid fa-wallet me-2"></i>Payments</a></li>
-        <li><a class="nav-link" data-target="user-panel-bills"><i class="fa-solid fa-file-invoice me-2"></i>Bills</a></li>
-        <li><a class="nav-link" data-target="user-panel-profile"><i class="fa-solid fa-user me-2"></i>Profile</a></li>
-      </ul>
-    </div>
-
-    <!-- Mobile Sidebar (Offcanvas) -->
-    <div class="offcanvas offcanvas-end user-panel-sidebar" tabindex="-1" id="userPanelSidebarMobile">
-      <div class="offcanvas-header">
-        <h4 class="offcanvas-title text-white"><i class="fa-solid fa-user me-2"></i>User Panel</h4>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="nav flex-column">
-          <li><a class="nav-link active" data-target="user-panel-dashboard"><i class="fa-solid fa-gauge me-2"></i>Dashboard</a></li>
-          <li><a class="nav-link" data-target="user-panel-rents"><i class="fa-solid fa-house me-2"></i>My Rents</a></li>
-          <li><a class="nav-link" data-target="user-panel-payments"><i class="fa-solid fa-wallet me-2"></i>Payments</a></li>
-          <li><a class="nav-link" data-target="user-panel-bills"><i class="fa-solid fa-file-invoice me-2"></i>Bills</a></li>
-          <li><a class="nav-link" data-target="user-panel-profile"><i class="fa-solid fa-user me-2"></i>Profile</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Main Content -->
-    <main class="col-lg-10 user-panel-content">
-      <!-- Dashboard -->
-      <div id="user-panel-dashboard" class="user-panel-section">
-        <h2 class="mb-4">Welcome, User!</h2>
-        <div class="row g-4">
-          <div class="col-md-4 col-sm-6">
-            <div class="user-panel-card">
-              <h5><i class="fa-solid fa-house me-2 text-primary"></i>Total Rents</h5>
-              <p class="fs-4 fw-bold">5</p>
-            </div>
+      /* Small Devices Fix */
+      @media (max-width: 991px) {
+        .desktop-sidebar {
+          display: none;
+        }
+        .user-panel-content {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#"
+          ><i class="fa-solid fa-house-chimney me-2"></i>Basha Manager</a
+        >
+        <div class="d-flex align-items-center">
+          <!-- Profile Dropdown -->
+          <div class="dropdown me-2 d-none d-sm-block">
+            <a
+              class="btn btn-outline-light dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+            >
+              <i class="fa-solid fa-user-circle me-1"></i> User
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+            </ul>
           </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="user-panel-card">
-              <h5><i class="fa-solid fa-wallet me-2 text-success"></i>Total Payments</h5>
-              <p class="fs-4 fw-bold">৳ 75,000</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-6">
-            <div class="user-panel-card">
-              <h5><i class="fa-solid fa-file-invoice me-2 text-danger"></i>Pending Bills</h5>
-              <p class="fs-4 fw-bold">৳ 5,000</p>
-            </div>
-          </div>
+
+          <!-- Toggle Button for Mobile -->
+          <button
+            class="btn btn-outline-light d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#userPanelSidebarMobile"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </div>
       </div>
+    </nav>
 
-      <!-- My Rents -->
-      <div id="user-panel-rents" class="user-panel-section user-panel-hidden">
-        <h3>My Rents</h3>
-        <div class="user-panel-card mt-3">
-          <ul class="mb-0">
-            <li>Flat A2 - 2nd Floor - ৳ 25,000/month</li>
-            <li>Flat B4 - 4th Floor - ৳ 30,000/month</li>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Desktop Sidebar -->
+        <div
+          class="col-lg-2 d-none d-lg-block desktop-sidebar user-panel-sidebar"
+        >
+          <h4><i class="fa-solid fa-user me-2"></i>User Panel</h4>
+          <ul class="nav flex-column">
+            <li>
+              <a class="nav-link active" data-target="user-panel-dashboard"
+                ><i class="fa-solid fa-gauge me-2"></i>Dashboard</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-panel-rents"
+                ><i class="fa-solid fa-house me-2"></i>My Rents</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-panel-payments"
+                ><i class="fa-solid fa-wallet me-2"></i>Payments</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-panel-bills"
+                ><i class="fa-solid fa-file-invoice me-2"></i>Bills</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-panel-profile"
+                ><i class="fa-solid fa-user me-2"></i>Profile</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-panel-calculator"
+                ><i class="fa-solid fa-calculator me-2"></i>Calculator</a
+              >
+            </li>
           </ul>
         </div>
-      </div>
 
-      <!-- Payments -->
-      <div id="user-panel-payments" class="user-panel-section user-panel-hidden">
-        <h3>Payments</h3>
-        <div class="table-responsive mt-3">
-          <table class="table table-hover">
-            <thead class="table-light">
-              <tr>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Method</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>01 Sep 2025</td>
-                <td>৳ 25,000</td>
-                <td>Bkash</td>
-                <td><span class="badge bg-success">Paid</span></td>
-              </tr>
-              <tr>
-                <td>01 Aug 2025</td>
-                <td>৳ 25,000</td>
-                <td>Cash</td>
-                <td><span class="badge bg-success">Paid</span></td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Mobile Sidebar (Offcanvas) -->
+        <div
+          class="offcanvas offcanvas-end user-panel-sidebar"
+          tabindex="-1"
+          id="userPanelSidebarMobile"
+        >
+          <div class="offcanvas-header">
+            <h4 class="offcanvas-title text-white">
+              <i class="fa-solid fa-user me-2"></i>User Panel
+            </h4>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="nav flex-column">
+              <li>
+                <a class="nav-link active" data-target="user-panel-dashboard"
+                  ><i class="fa-solid fa-gauge me-2"></i>Dashboard</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" data-target="user-panel-rents"
+                  ><i class="fa-solid fa-house me-2"></i>My Rents</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" data-target="user-panel-payments"
+                  ><i class="fa-solid fa-wallet me-2"></i>Payments</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" data-target="user-panel-bills"
+                  ><i class="fa-solid fa-file-invoice me-2"></i>Bills</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" data-target="user-panel-profile"
+                  ><i class="fa-solid fa-user me-2"></i>Profile</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" data-target="user-panel-calculator"
+                  ><i class="fa-solid fa-calculator me-2"></i>Calculator</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <!-- Bills -->
-      <div id="user-panel-bills" class="user-panel-section user-panel-hidden">
-        <h3>Bills</h3>
-        <div class="table-responsive mt-3">
-          <table class="table table-striped">
-            <thead class="table-dark">
-              <tr>
-                <th>Month</th>
-                <th>Electric</th>
-                <th>Gas</th>
-                <th>Water</th>
-                <th>Total</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>August</td>
-                <td>৳ 3,000</td>
-                <td>৳ 1,200</td>
-                <td>৳ 800</td>
-                <td>৳ 5,000</td>
-                <td><span class="badge bg-warning text-dark">Pending</span></td>
-              </tr>
-              <tr>
-                <td>July</td>
-                <td>৳ 2,500</td>
-                <td>৳ 1,000</td>
-                <td>৳ 700</td>
-                <td>৳ 4,200</td>
-                <td><span class="badge bg-success">Paid</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Profile -->
-      <div id="user-panel-profile" class="user-panel-section user-panel-hidden">
-        <h3>My Profile</h3>
-        <div class="user-panel-card mt-3">
-          <form>
-            <div class="mb-3">
-              <label class="form-label">Full Name</label>
-              <input type="text" class="form-control" value="Iqbal Hossain">
+        <!-- Main Content -->
+        <main class="col-lg-10 user-panel-content">
+          <!-- Dashboard -->
+          <div id="user-panel-dashboard" class="user-panel-section">
+            <h2 class="mb-4">Welcome, User!</h2>
+            <div class="row g-4">
+              <div class="col-md-4 col-sm-6">
+                <div class="user-panel-card">
+                  <h5>
+                    <i class="fa-solid fa-house me-2 text-primary"></i>Total
+                    Rents
+                  </h5>
+                  <p class="fs-4 fw-bold">5</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="user-panel-card">
+                  <h5>
+                    <i class="fa-solid fa-wallet me-2 text-success"></i>Total
+                    Payments
+                  </h5>
+                  <p class="fs-4 fw-bold">৳ 75,000</p>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                <div class="user-panel-card">
+                  <h5>
+                    <i class="fa-solid fa-file-invoice me-2 text-danger"></i
+                    >Pending Bills
+                  </h5>
+                  <p class="fs-4 fw-bold">৳ 5,000</p>
+                </div>
+              </div>
             </div>
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" value="iqbal@example.com">
+          </div>
+
+          <!-- My Rents -->
+          <div
+            id="user-panel-rents"
+            class="user-panel-section user-panel-hidden"
+          >
+            <h3>My Rents</h3>
+            <div class="user-panel-card mt-3">
+              <ul class="mb-0">
+                <li>Flat A2 - 2nd Floor - ৳ 25,000/month</li>
+                <li>Flat B4 - 4th Floor - ৳ 30,000/month</li>
+              </ul>
             </div>
-            <div class="mb-3">
-              <label class="form-label">Phone</label>
-              <input type="text" class="form-control" value="+8801XXXXXXXXX">
+          </div>
+
+          <!-- Payments -->
+          <div
+            id="user-panel-payments"
+            class="user-panel-section user-panel-hidden"
+          >
+            <h3>Payments</h3>
+            <div class="table-responsive mt-3">
+              <table class="table table-hover">
+                <thead class="table-light">
+                  <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>01 Sep 2025</td>
+                    <td>৳ 25,000</td>
+                    <td>Bkash</td>
+                    <td><span class="badge bg-success">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td>01 Aug 2025</td>
+                    <td>৳ 25,000</td>
+                    <td>Cash</td>
+                    <td><span class="badge bg-success">Paid</span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <button class="btn btn-primary w-100">Update</button>
-          </form>
-        </div>
+          </div>
+
+          <!-- Bills -->
+          <div
+            id="user-panel-bills"
+            class="user-panel-section user-panel-hidden"
+          >
+            <h3>Bills</h3>
+            <div class="table-responsive mt-3 d-none d-md-block">
+              <!-- Normal Table for Desktop -->
+              <table class="table table-striped">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Month</th>
+                    <th>Electric</th>
+                    <th>Gas</th>
+                    <th>Water</th>
+                    <th>Internat</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>August</td>
+                    <td>৳ 3,000</td>
+                    <td>৳ 1,200</td>
+                    <td>৳ 500</td>
+                    <td>৳ 800</td>
+                    <td>৳ 5,000</td>
+                    <td>
+                      <span class="badge bg-warning text-dark">Pending</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>July</td>
+                    <td>৳ 2,500</td>
+                    <td>৳ 1,000</td>
+                    <td>৳ 700</td>
+                    <td>৳ 500</td>
+                    <td>৳ 4,700</td>
+                    <td><span class="badge bg-success">Paid</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Card layout for Mobile -->
+            <div class="d-block d-md-none">
+              <div class="user-panel-card mb-3">
+                <h6 class="fw-bold mb-2 fs-4">Date : August, 2025</h6>
+                <p class="mb-1"><strong>Electric:</strong> ৳ 3,000</p>
+                <p class="mb-1"><strong>Gas:</strong> ৳ 1,200</p>
+                <p class="mb-1"><strong>Water:</strong> ৳ 800</p>
+                <p class="mb-1"><strong>Internet:</strong> ৳ 800</p>
+                <p class="mb-1"><strong>Total:</strong> ৳ 5,000</p>
+                <p>
+                  <strong>Status:</strong>
+                  <span class="badge bg-warning text-dark">Pending</span>
+                </p>
+              </div>
+
+              <div class="user-panel-card mb-3">
+                <h6 class="fw-bold mb-2 fs-4">Date : July, 2025</h6>
+                <p class="mb-1"><strong>Electric:</strong> ৳ 2,500</p>
+                <p class="mb-1"><strong>Gas:</strong> ৳ 1,000</p>
+                <p class="mb-1"><strong>Water:</strong> ৳ 700</p>
+                <p class="mb-1"><strong>Internet:</strong> ৳ 500</p>
+                <p class="mb-1"><strong>Total:</strong> ৳ 4,700</p>
+                <p>
+                  <strong>Status:</strong>
+                  <span class="badge bg-success">Paid</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div
+            id="user-panel-profile"
+            class="user-panel-section user-panel-hidden"
+          >
+            <h3>My Profile</h3>
+            <div class="user-panel-card mt-3">
+              <form>
+                <div class="mb-3">
+                  <label class="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Iqbal Hossain"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="iqbal@example.com"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Phone</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="+8801XXXXXXXXX"
+                  />
+                </div>
+                <button class="btn btn-primary w-100">Update</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Calculator -->
+          <div
+            id="user-panel-calculator"
+            class="user-panel-section user-panel-hidden"
+          >
+            <h3>Calculator</h3>
+            <div class="user-panel-card mt-3 p-4" style="max-width: 400px">
+              <input
+                type="text"
+                id="calc-display"
+                class="form-control text-end mb-3 fs-4"
+                placeholder="0"
+                readonly
+              />
+
+              <div class="row g-2">
+                <div class="col-3">
+                  <button class="btn btn-secondary w-100" onclick="calcClear()">
+                    C
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button
+                    class="btn btn-secondary w-100"
+                    onclick="calcInput('/')"
+                  >
+                    ÷
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button
+                    class="btn btn-secondary w-100"
+                    onclick="calcInput('*')"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-danger w-100" onclick="calcBack()">
+                    ⌫
+                  </button>
+                </div>
+
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('7')">
+                    7
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('8')">
+                    8
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('9')">
+                    9
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button
+                    class="btn btn-secondary w-100"
+                    onclick="calcInput('-')"
+                  >
+                    −
+                  </button>
+                </div>
+
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('4')">
+                    4
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('5')">
+                    5
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('6')">
+                    6
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button
+                    class="btn btn-secondary w-100"
+                    onclick="calcInput('+')"
+                  >
+                    +
+                  </button>
+                </div>
+
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('1')">
+                    1
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('2')">
+                    2
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('3')">
+                    3
+                  </button>
+                </div>
+                <div class="col-3" rowspan="2">
+                  <button
+                    class="btn btn-primary w-100 h-100"
+                    onclick="calcEqual()"
+                  >
+                    =
+                  </button>
+                </div>
+
+                <div class="col-6">
+                  <button class="btn btn-light w-100" onclick="calcInput('0')">
+                    0
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('.')">
+                    .
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
-    </main>
-  </div>
-</div>
+    </div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  // Sidebar Navigation (works for both desktop and mobile)
-  const links = document.querySelectorAll('.user-panel-sidebar .nav-link');
-  const sections = document.querySelectorAll('.user-panel-section');
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Sidebar Navigation
+      const links = document.querySelectorAll(".user-panel-sidebar .nav-link");
+      const sections = document.querySelectorAll(".user-panel-section");
 
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      links.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          links.forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
 
-      sections.forEach(section => section.classList.add('user-panel-hidden'));
-      document.getElementById(link.dataset.target).classList.remove('user-panel-hidden');
-    });
-  });
-</script>
-</body>
+          sections.forEach((section) =>
+            section.classList.add("user-panel-hidden")
+          );
+          document
+            .getElementById(link.dataset.target)
+            .classList.remove("user-panel-hidden");
+        });
+      });
+
+      // Calculator Functions
+      let calcDisplay = document.getElementById("calc-display");
+
+      function calcInput(value) {
+        if (calcDisplay.value === "0") {
+          calcDisplay.value = value;
+        } else {
+          calcDisplay.value += value;
+        }
+      }
+
+      function calcClear() {
+        calcDisplay.value = "0";
+      }
+
+      function calcBack() {
+        calcDisplay.value = calcDisplay.value.slice(0, -1) || "0";
+      }
+
+      function calcEqual() {
+        try {
+          calcDisplay.value = eval(calcDisplay.value);
+        } catch {
+          calcDisplay.value = "Error";
+        }
+      }
+    </script>
+  </body>
 </html>
