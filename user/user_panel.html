@@ -13,6 +13,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
       rel="stylesheet"
     />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
       body {
@@ -226,284 +227,556 @@
         <main class="col-lg-10 user-panel-content">
           <!-- Dashboard -->
           <div id="user-panel-dashboard" class="user-panel-section">
-            <h2 class="mb-4">Welcome, User!</h2>
-            <div class="row g-4">
-              <div class="col-md-4 col-sm-6">
-                <div class="user-panel-card">
-                  <h5>
-                    <i class="fa-solid fa-house me-2 text-primary"></i>Total
-                    Rents
-                  </h5>
-                  <p class="fs-4 fw-bold">5</p>
+            <h2 class="mb-4 fw-bold">Dashboard</h2>
+
+            <!-- Top Stats Cards -->
+            <div class="row g-4 mb-4">
+              <div class="col-md-3 col-sm-6">
+                <div
+                  class="user-panel-card text-white p-4 position-relative overflow-hidden"
+                  style="background: linear-gradient(135deg, #4e73df, #224abe)"
+                >
+                  <i
+                    class="fa-solid fa-users fa-2x position-absolute top-0 end-0 m-3 opacity-25"
+                  ></i>
+                  <h6>Total Tenants</h6>
+                  <p class="fs-3 fw-bold mb-0">12</p>
                 </div>
               </div>
-              <div class="col-md-4 col-sm-6">
-                <div class="user-panel-card">
-                  <h5>
-                    <i class="fa-solid fa-wallet me-2 text-success"></i>Total
-                    Payments
-                  </h5>
-                  <p class="fs-4 fw-bold">৳ 75,000</p>
+              <div class="col-md-3 col-sm-6">
+                <div
+                  class="user-panel-card text-white p-4 position-relative overflow-hidden"
+                  style="background: linear-gradient(135deg, #1cc88a, #0d9b64)"
+                >
+                  <i
+                    class="fa-solid fa-sack-dollar fa-2x position-absolute top-0 end-0 m-3 opacity-25"
+                  ></i>
+                  <h6>Total Rent Collected</h6>
+                  <p class="fs-3 fw-bold mb-0">৳ 75,000</p>
                 </div>
               </div>
-              <div class="col-md-4 col-sm-6">
-                <div class="user-panel-card">
-                  <h5>
-                    <i class="fa-solid fa-file-invoice me-2 text-danger"></i
-                    >Pending Bills
-                  </h5>
-                  <p class="fs-4 fw-bold">৳ 5,000</p>
+              <div class="col-md-3 col-sm-6">
+                <div
+                  class="user-panel-card text-white p-4 position-relative overflow-hidden"
+                  style="background: linear-gradient(135deg, #f6c23e, #dda20a)"
+                >
+                  <i
+                    class="fa-solid fa-file-invoice-dollar fa-2x position-absolute top-0 end-0 m-3 opacity-25"
+                  ></i>
+                  <h6>Pending Bills</h6>
+                  <p class="fs-3 fw-bold mb-0">৳ 5,000</p>
                 </div>
               </div>
+              <div class="col-md-3 col-sm-6">
+                <div
+                  class="user-panel-card text-white p-4 position-relative overflow-hidden"
+                  style="background: linear-gradient(135deg, #e74a3b, #be2617)"
+                >
+                  <i
+                    class="fa-solid fa-building fa-2x position-absolute top-0 end-0 m-3 opacity-25"
+                  ></i>
+                  <h6>Empty Flats</h6>
+                  <p class="fs-3 fw-bold mb-0">3</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Charts + Progress -->
+            <div class="row g-4 mb-4">
+              <div class="col-lg-8">
+                <div class="user-panel-card p-4">
+                  <h5 class="mb-3">Rent Collection (Last 6 Months)</h5>
+                  <canvas id="rentChart" height="120"></canvas>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="user-panel-card p-4">
+                  <h5 class="mb-3">Payment Status</h5>
+                  <canvas id="dueChart" height="200"></canvas>
+                  <div class="mt-3">
+                    <p class="mb-1">Paid <span class="float-end">93%</span></p>
+                    <div class="progress mb-2" style="height: 8px">
+                      <div
+                        class="progress-bar bg-success"
+                        style="width: 93%"
+                      ></div>
+                    </div>
+                    <p class="mb-1">Due <span class="float-end">7%</span></p>
+                    <div class="progress" style="height: 8px">
+                      <div
+                        class="progress-bar bg-danger"
+                        style="width: 7%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Payments -->
+            <div class="user-panel-card p-4 mb-4">
+              <h5 class="mb-3">Recent Payments</h5>
+
+              <!-- Table for Desktop -->
+              <div class="table-responsive d-none d-md-block">
+                <table class="table align-middle">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Date</th>
+                      <th>Tenant</th>
+                      <th>Amount</th>
+                      <th>Method</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>01 Sep 2025</td>
+                      <td>
+                        <i class="fa-solid fa-user me-2 text-primary"></i>Shafiq
+                        Ahmed
+                      </td>
+                      <td>৳ 25,000</td>
+                      <td>Bkash</td>
+                      <td><span class="badge bg-success">Paid</span></td>
+                    </tr>
+                    <tr>
+                      <td>25 Aug 2025</td>
+                      <td>
+                        <i class="fa-solid fa-user me-2 text-primary"></i>Hasan
+                        Ali
+                      </td>
+                      <td>৳ 20,000</td>
+                      <td>Cash</td>
+                      <td>
+                        <span class="badge bg-warning text-dark">Pending</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>01 Aug 2025</td>
+                      <td>
+                        <i class="fa-solid fa-user me-2 text-primary"></i>Rahim
+                        Uddin
+                      </td>
+                      <td>৳ 25,000</td>
+                      <td>Bank</td>
+                      <td><span class="badge bg-success">Paid</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Cards for Mobile -->
+              <div class="d-block d-md-none">
+                <div class="user-panel-card mb-3">
+                  <p class="mb-1"><strong>Date:</strong> 01 Sep 2025</p>
+                  <p class="mb-1"><strong>Tenant:</strong> Shafiq Ahmed</p>
+                  <p class="mb-1"><strong>Amount:</strong> ৳ 25,000</p>
+                  <p class="mb-1"><strong>Method:</strong> Bkash</p>
+                  <p>
+                    <strong>Status:</strong>
+                    <span class="badge bg-success">Paid</span>
+                  </p>
+                </div>
+
+                <div class="user-panel-card mb-3">
+                  <p class="mb-1"><strong>Date:</strong> 25 Aug 2025</p>
+                  <p class="mb-1"><strong>Tenant:</strong> Hasan Ali</p>
+                  <p class="mb-1"><strong>Amount:</strong> ৳ 20,000</p>
+                  <p class="mb-1"><strong>Method:</strong> Cash</p>
+                  <p>
+                    <strong>Status:</strong>
+                    <span class="badge bg-warning text-dark">Pending</span>
+                  </p>
+                </div>
+
+                <div class="user-panel-card mb-3">
+                  <p class="mb-1"><strong>Date:</strong> 01 Aug 2025</p>
+                  <p class="mb-1"><strong>Tenant:</strong> Rahim Uddin</p>
+                  <p class="mb-1"><strong>Amount:</strong> ৳ 25,000</p>
+                  <p class="mb-1"><strong>Method:</strong> Bank</p>
+                  <p>
+                    <strong>Status:</strong>
+                    <span class="badge bg-success">Paid</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity Timeline -->
+            <div class="user-panel-card p-4">
+              <h5 class="mb-3">Recent Activities</h5>
+              <ul class="list-unstyled timeline">
+                <li class="mb-3">
+                  <i class="fa-solid fa-check-circle text-success me-2"></i>
+                  Rent collected from <strong>Shafiq Ahmed</strong> - ৳ 25,000
+                  <small class="text-muted d-block">01 Sep 2025</small>
+                </li>
+                <li class="mb-3">
+                  <i
+                    class="fa-solid fa-exclamation-circle text-warning me-2"
+                  ></i>
+                  Pending payment alert for <strong>Hasan Ali</strong>
+                  <small class="text-muted d-block">25 Aug 2025</small>
+                </li>
+                <li>
+                  <i class="fa-solid fa-user-plus text-primary me-2"></i>
+                  New tenant <strong>Rahim Uddin</strong> added
+                  <small class="text-muted d-block">15 Aug 2025</small>
+                </li>
+              </ul>
             </div>
           </div>
 
           <!-- My Rents -->
-     <!-- My Rents -->
-<div id="user-panel-rents" class="user-panel-section user-panel-hidden">
-  <h3 class="mb-4">My Tenants</h3>
-  <div class="row g-4">
-    
-    <!-- Tenant Card 1 start-->
-   <div class="col-md-6 col-lg-4">
-  <div class="user-panel-card p-3">
-    <div class="d-flex align-items-center mb-3">
-      <img src="/assets/image/reviewprf/rvwprf3.png" class="rounded-circle me-3" alt="Tenant">
-      <div>
-        <h5 class="mb-1">Shafiq Ahmed</h5>
-        <p class="text-muted small mb-0">
-         
-          <a href="tel:+8801812345678" class="text-decoration-none text-muted"> <i class="fa-solid fa-phone me-2"></i>+8801812345678</a>
-        </p>
-        <p class="text-muted small mb-0">
-          
-          <a href="mailto:shafiq@example.com" class="text-decoration-none text-muted"><i class="fa-solid fa-envelope me-2"></i>shafiq@example.com</a>
-        </p>
-      </div>
-    </div>
-    <p class="mb-1"><strong>Flat:</strong> C1, 1st Floor</p>
-    <p class="mb-1"><strong>Address:</strong> 7, Uttara Sector-7, Dhaka</p>
-    <p class="mb-1"><strong>Bedrooms:</strong> 1 | <strong>Washrooms:</strong> 1</p>
-    <p class="mb-1"><strong>Rent:</strong> 30000/month</p>
-    <p class="mb-1"><strong>Paid Months:</strong> 6</p>
-    <p class="mb-3"><strong>Due Months:</strong> 0</p>
-    <span class="badge bg-primary">Fully Paid</span>
-  </div>
-</div>
-<!-- Tenant Card 1 end-->
-<!-- Tenant Card  2 start -->
-    <div class="col-md-6 col-lg-4">
-  <div class="user-panel-card p-3">
-    <div class="d-flex align-items-center mb-3">
-      <img src="/assets/image/reviewprf/rvwprf3.png" class="rounded-circle me-3" alt="Tenant">
-      <div>
-        <h5 class="mb-1">Shafiq Ahmed</h5>
-        <p class="text-muted small mb-0">
-         
-          <a href="tel:+8801812345678" class="text-decoration-none text-muted"> <i class="fa-solid fa-phone me-2"></i>+8801812345678</a>
-        </p>
-        <p class="text-muted small mb-0">
-          
-          <a href="mailto:shafiq@example.com" class="text-decoration-none text-muted"><i class="fa-solid fa-envelope me-2"></i>shafiq@example.com</a>
-        </p>
-      </div>
-    </div>
-    <p class="mb-1"><strong>Flat:</strong> C1, 1st Floor</p>
-    <p class="mb-1"><strong>Address:</strong> 7, Uttara Sector-7, Dhaka</p>
-    <p class="mb-1"><strong>Bedrooms:</strong> 1 | <strong>Washrooms:</strong> 1</p>
-    <p class="mb-1"><strong>Rent:</strong> 30000/month</p>
-    <p class="mb-1"><strong>Paid Months:</strong> 6</p>
-    <p class="mb-3"><strong>Due Months:</strong> 0</p>
-    <span class="badge bg-primary">Fully Paid</span>
-  </div>
-</div>
-<!-- Tenant Card  2 end -->
-<!-- Tenant Card 3 start-->
-    <div class="col-md-6 col-lg-4">
-  <div class="user-panel-card p-3">
-    <div class="d-flex align-items-center mb-3">
-      <img src="/assets/image/reviewprf/rvwprf3.png" class="rounded-circle me-3" alt="Tenant">
-      <div>
-        <h5 class="mb-1">Shafiq Ahmed</h5>
-        <p class="text-muted small mb-0">
-         
-          <a href="tel:+8801812345678" class="text-decoration-none text-muted"> <i class="fa-solid fa-phone me-2"></i>+8801812345678</a>
-        </p>
-        <p class="text-muted small mb-0">
-          
-          <a href="mailto:shafiq@example.com" class="text-decoration-none text-muted"><i class="fa-solid fa-envelope me-2"></i>shafiq@example.com</a>
-        </p>
-      </div>
-    </div>
-    <p class="mb-1"><strong>Flat:</strong> C1, 1st Floor</p>
-    <p class="mb-1"><strong>Address:</strong> 7, Uttara Sector-7, Dhaka</p>
-    <p class="mb-1"><strong>Bedrooms:</strong> 1 | <strong>Washrooms:</strong> 1</p>
-    <p class="mb-1"><strong>Rent:</strong> 30000/month</p>
-    <p class="mb-1"><strong>Paid Months:</strong> 6</p>
-    <p class="mb-3"><strong>Due Months:</strong> 0</p>
-    <span class="badge bg-primary">Fully Paid</span>
-  </div>
-</div>
-<!-- Tenant Card 3 end-->
+          <div
+            id="user-panel-rents"
+            class="user-panel-section user-panel-hidden"
+          >
+            <h3 class="mb-4">My Tenants</h3>
+            <div class="row g-4">
+              <!-- Tenant Card 1 start-->
+              <div class="col-md-6 col-lg-4">
+                <div class="user-panel-card p-3">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      src="/assets/image/reviewprf/rvwprf3.png"
+                      class="rounded-circle me-3"
+                      alt="Tenant"
+                    />
+                    <div>
+                      <h5 class="mb-1">Shafiq Ahmed</h5>
+                      <p class="text-muted small mb-0">
+                        <a
+                          href="tel:+8801812345678"
+                          class="text-decoration-none text-muted"
+                        >
+                          <i class="fa-solid fa-phone me-2"></i
+                          >+8801812345678</a
+                        >
+                      </p>
+                      <p class="text-muted small mb-0">
+                        <a
+                          href="mailto:shafiq@example.com"
+                          class="text-decoration-none text-muted"
+                          ><i class="fa-solid fa-envelope me-2"></i
+                          >shafiq@example.com</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                  <p class="mb-1"><strong>Flat:</strong> C1, 1st Floor</p>
+                  <p class="mb-1">
+                    <strong>Address:</strong> 7, Uttara Sector-7, Dhaka
+                  </p>
+                  <p class="mb-1">
+                    <strong>Bedrooms:</strong> 1 | <strong>Washrooms:</strong> 1
+                  </p>
+                  <p class="mb-1"><strong>Rent:</strong> 30000/month</p>
+                  <p class="mb-1"><strong>Paid Months:</strong> 6</p>
+                  <p class="mb-3"><strong>Due Months:</strong> 0</p>
+                  <span class="badge bg-primary">Fully Paid</span>
+                </div>
+              </div>
+              <!-- Tenant Card 1 end-->
+              <!-- Tenant Card  2 start -->
+              <div class="col-md-6 col-lg-4">
+                <div class="user-panel-card p-3">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      src="/assets/image/reviewprf/rvwprf3.png"
+                      class="rounded-circle me-3"
+                      alt="Tenant"
+                    />
+                    <div>
+                      <h5 class="mb-1">Shafiq Ahmed</h5>
+                      <p class="text-muted small mb-0">
+                        <a
+                          href="tel:+8801812345678"
+                          class="text-decoration-none text-muted"
+                        >
+                          <i class="fa-solid fa-phone me-2"></i
+                          >+8801812345678</a
+                        >
+                      </p>
+                      <p class="text-muted small mb-0">
+                        <a
+                          href="mailto:shafiq@example.com"
+                          class="text-decoration-none text-muted"
+                          ><i class="fa-solid fa-envelope me-2"></i
+                          >shafiq@example.com</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                  <p class="mb-1"><strong>Flat:</strong> C1, 1st Floor</p>
+                  <p class="mb-1">
+                    <strong>Address:</strong> 7, Uttara Sector-7, Dhaka
+                  </p>
+                  <p class="mb-1">
+                    <strong>Bedrooms:</strong> 1 | <strong>Washrooms:</strong> 1
+                  </p>
+                  <p class="mb-1"><strong>Rent:</strong> 30000/month</p>
+                  <p class="mb-1"><strong>Paid Months:</strong> 6</p>
+                  <p class="mb-3"><strong>Due Months:</strong> 0</p>
+                  <span class="badge bg-primary">Fully Paid</span>
+                </div>
+              </div>
+              <!-- Tenant Card  2 end -->
+              <!-- Tenant Card 3 start-->
+              <div class="col-md-6 col-lg-4">
+                <div class="user-panel-card p-3">
+                  <div class="d-flex align-items-center mb-3">
+                    <img
+                      src="/assets/image/reviewprf/rvwprf3.png"
+                      class="rounded-circle me-3"
+                      alt="Tenant"
+                    />
+                    <div>
+                      <h5 class="mb-1">Shafiq Ahmed</h5>
+                      <p class="text-muted small mb-0">
+                        <a
+                          href="tel:+8801812345678"
+                          class="text-decoration-none text-muted"
+                        >
+                          <i class="fa-solid fa-phone me-2"></i
+                          >+8801812345678</a
+                        >
+                      </p>
+                      <p class="text-muted small mb-0">
+                        <a
+                          href="mailto:shafiq@example.com"
+                          class="text-decoration-none text-muted"
+                          ><i class="fa-solid fa-envelope me-2"></i
+                          >shafiq@example.com</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                  <p class="mb-1"><strong>Flat:</strong> C1, 1st Floor</p>
+                  <p class="mb-1">
+                    <strong>Address:</strong> 7, Uttara Sector-7, Dhaka
+                  </p>
+                  <p class="mb-1">
+                    <strong>Bedrooms:</strong> 1 | <strong>Washrooms:</strong> 1
+                  </p>
+                  <p class="mb-1"><strong>Rent:</strong> 30000/month</p>
+                  <p class="mb-1"><strong>Paid Months:</strong> 6</p>
+                  <p class="mb-3"><strong>Due Months:</strong> 0</p>
+                  <span class="badge bg-primary">Fully Paid</span>
+                </div>
+              </div>
+              <!-- Tenant Card 3 end-->
 
-  <!-- extra card for trial start  -->
-      <!-- Tenant Card 1-->
-<div class="col-md-6 col-lg-4">
-  <div class="user-panel-card overflow-hidden">
-    <!-- Card Header -->
-    <div class="bg-light p-3 d-flex align-items-center">
-      <img src="/assets/image/reviewprf/rvwprf3.png" 
-           class="rounded-circle border border-3 border-white shadow me-3" 
-           alt="Tenant">
-      <div>
-        <h5 class="mb-1">Rahim Uddin</h5>
-        <small class="d-block">
-          <a href="tel:+8801712345678" class="text-decoration-none text-muted">
-            <i class="fa-solid fa-phone me-1"></i> +8801712345678
-          </a>
-        </small>
-        <small class="d-block">
-          <a href="mailto:rahim@example.com" class="text-decoration-none text-muted">
-            <i class="fa-solid fa-envelope me-1"></i> rahim@example.com
-          </a>
-        </small>
-      </div>
-    </div>
+              <!-- extra card for trial start  -->
+              <!-- Tenant Card 1-->
+              <div class="col-md-6 col-lg-4">
+                <div class="user-panel-card overflow-hidden">
+                  <!-- Card Header -->
+                  <div class="bg-light p-3 d-flex align-items-center">
+                    <img
+                      src="/assets/image/reviewprf/rvwprf3.png"
+                      class="rounded-circle border border-3 border-white shadow me-3"
+                      alt="Tenant"
+                    />
+                    <div>
+                      <h5 class="mb-1">Rahim Uddin</h5>
+                      <small class="d-block">
+                        <a
+                          href="tel:+8801712345678"
+                          class="text-decoration-none text-muted"
+                        >
+                          <i class="fa-solid fa-phone me-1"></i> +8801712345678
+                        </a>
+                      </small>
+                      <small class="d-block">
+                        <a
+                          href="mailto:rahim@example.com"
+                          class="text-decoration-none text-muted"
+                        >
+                          <i class="fa-solid fa-envelope me-1"></i>
+                          rahim@example.com
+                        </a>
+                      </small>
+                    </div>
+                  </div>
 
-    <!-- Property Details -->
-    <div class="p-3 border-top">
-      <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
-      <p class="mb-1"><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
-      <p class="mb-1"><strong>Bedrooms:</strong> 2 | <strong>Washrooms:</strong> 2</p>
-    </div>
+                  <!-- Property Details -->
+                  <div class="p-3 border-top">
+                    <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
+                    <p class="mb-1">
+                      <strong>Address:</strong> 25/3, Green Road, Dhaka
+                    </p>
+                    <p class="mb-1">
+                      <strong>Bedrooms:</strong> 2 |
+                      <strong>Washrooms:</strong> 2
+                    </p>
+                  </div>
 
-    <!-- Payment Status -->
-    <div class="p-3 border-top">
-      <p class="mb-1"><strong>Paid Months:</strong> 5</p>
-      <p class="mb-2"><strong>Due Months:</strong> 1</p>
-      <div class="progress mb-2" style="height:8px;">
-        <div class="progress-bar bg-success" style="width: 83%;"></div>
-      </div>
-      <span class="badge bg-success">Active Tenant</span>
-    </div>
+                  <!-- Payment Status -->
+                  <div class="p-3 border-top">
+                    <p class="mb-1"><strong>Paid Months:</strong> 5</p>
+                    <p class="mb-2"><strong>Due Months:</strong> 1</p>
+                    <div class="progress mb-2" style="height: 8px">
+                      <div
+                        class="progress-bar bg-success"
+                        style="width: 83%"
+                      ></div>
+                    </div>
+                    <span class="badge bg-success">Active Tenant</span>
+                  </div>
 
-    <!-- Actions -->
-    <div class="p-3 border-top text-end">
-      <button class="btn btn-sm btn-outline-primary">
-        <i class="fa-solid fa-eye me-1"></i> View
-      </button>
-      <button class="btn btn-sm btn-outline-danger">
-        <i class="fa-solid fa-bell me-1"></i> Reminder
-      </button>
-    </div>
-  </div>
-</div>
-      <!-- Tenant Card 2-->
-<div class="col-md-6 col-lg-4">
-  <div class="user-panel-card overflow-hidden">
-    <!-- Card Header -->
-    <div class="bg-light p-3 d-flex align-items-center">
-      <img src="/assets/image/reviewprf/rvwprf3.png" 
-           class="rounded-circle border border-3 border-white shadow me-3" 
-           alt="Tenant">
-      <div>
-        <h5 class="mb-1">Rahim Uddin</h5>
-        <small class="d-block">
-          <a href="tel:+8801712345678" class="text-decoration-none text-muted">
-            <i class="fa-solid fa-phone me-1"></i> +8801712345678
-          </a>
-        </small>
-        <small class="d-block">
-          <a href="mailto:rahim@example.com" class="text-decoration-none text-muted">
-            <i class="fa-solid fa-envelope me-1"></i> rahim@example.com
-          </a>
-        </small>
-      </div>
-    </div>
+                  <!-- Actions -->
+                  <div class="p-3 border-top text-end">
+                    <button class="btn btn-sm btn-outline-primary">
+                      <i class="fa-solid fa-eye me-1"></i> View
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="fa-solid fa-bell me-1"></i> Reminder
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Tenant Card 2-->
+              <div class="col-md-6 col-lg-4">
+                <div class="user-panel-card overflow-hidden">
+                  <!-- Card Header -->
+                  <div class="bg-light p-3 d-flex align-items-center">
+                    <img
+                      src="/assets/image/reviewprf/rvwprf3.png"
+                      class="rounded-circle border border-3 border-white shadow me-3"
+                      alt="Tenant"
+                    />
+                    <div>
+                      <h5 class="mb-1">Rahim Uddin</h5>
+                      <small class="d-block">
+                        <a
+                          href="tel:+8801712345678"
+                          class="text-decoration-none text-muted"
+                        >
+                          <i class="fa-solid fa-phone me-1"></i> +8801712345678
+                        </a>
+                      </small>
+                      <small class="d-block">
+                        <a
+                          href="mailto:rahim@example.com"
+                          class="text-decoration-none text-muted"
+                        >
+                          <i class="fa-solid fa-envelope me-1"></i>
+                          rahim@example.com
+                        </a>
+                      </small>
+                    </div>
+                  </div>
 
-    <!-- Property Details -->
-    <div class="p-3 border-top">
-      <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
-      <p class="mb-1"><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
-      <p class="mb-1"><strong>Bedrooms:</strong> 2 | <strong>Washrooms:</strong> 2</p>
-    </div>
+                  <!-- Property Details -->
+                  <div class="p-3 border-top">
+                    <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
+                    <p class="mb-1">
+                      <strong>Address:</strong> 25/3, Green Road, Dhaka
+                    </p>
+                    <p class="mb-1">
+                      <strong>Bedrooms:</strong> 2 |
+                      <strong>Washrooms:</strong> 2
+                    </p>
+                  </div>
 
-    <!-- Payment Status -->
-    <div class="p-3 border-top">
-      <p class="mb-1"><strong>Paid Months:</strong> 5</p>
-      <p class="mb-2"><strong>Due Months:</strong> 1</p>
-      <div class="progress mb-2" style="height:8px;">
-        <div class="progress-bar bg-success" style="width: 83%;"></div>
-      </div>
-      <span class="badge bg-success">Active Tenant</span>
-    </div>
+                  <!-- Payment Status -->
+                  <div class="p-3 border-top">
+                    <p class="mb-1"><strong>Paid Months:</strong> 5</p>
+                    <p class="mb-2"><strong>Due Months:</strong> 1</p>
+                    <div class="progress mb-2" style="height: 8px">
+                      <div
+                        class="progress-bar bg-success"
+                        style="width: 83%"
+                      ></div>
+                    </div>
+                    <span class="badge bg-success">Active Tenant</span>
+                  </div>
 
-    <!-- Actions -->
-    <div class="p-3 border-top text-end">
-      <button class="btn btn-sm btn-outline-primary">
-        <i class="fa-solid fa-eye me-1"></i> View
-      </button>
-      <button class="btn btn-sm btn-outline-danger">
-        <i class="fa-solid fa-bell me-1"></i> Reminder
-      </button>
-    </div>
-  </div>
-</div>
-      <!-- Tenant Card 3-->
-<div class="col-md-6 col-lg-4">
-  <div class="user-panel-card overflow-hidden">
-    <!-- Card Header -->
-    <div class="bg-light p-3 d-flex align-items-center">
-      <img src="/assets/image/reviewprf/rvwprf3.png" 
-           class="rounded-circle border border-3 border-white shadow me-3" 
-           alt="Tenant">
-      <div>
-        <h5 class="mb-1">Rahim Uddin</h5>
-        <small class="d-block">
-          <a href="tel:+8801712345678" class="text-decoration-none text-muted">
-            <i class="fa-solid fa-phone me-1"></i> +8801712345678
-          </a>
-        </small>
-        <small class="d-block">
-          <a href="mailto:rahim@example.com" class="text-decoration-none text-muted">
-            <i class="fa-solid fa-envelope me-1"></i> rahim@example.com
-          </a>
-        </small>
-      </div>
-    </div>
+                  <!-- Actions -->
+                  <div class="p-3 border-top text-end">
+                    <button class="btn btn-sm btn-outline-primary">
+                      <i class="fa-solid fa-eye me-1"></i> View
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="fa-solid fa-bell me-1"></i> Reminder
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Tenant Card 3-->
+              <div class="col-md-6 col-lg-4">
+                <div class="user-panel-card overflow-hidden">
+                  <!-- Card Header -->
+                  <div class="bg-light p-3 d-flex align-items-center">
+                    <img
+                      src="/assets/image/reviewprf/rvwprf3.png"
+                      class="rounded-circle border border-3 border-white shadow me-3"
+                      alt="Tenant"
+                    />
+                    <div>
+                      <h5 class="mb-1">Rahim Uddin</h5>
+                      <small class="d-block">
+                        <a
+                          href="tel:+8801712345678"
+                          class="text-decoration-none text-muted"
+                        >
+                          <i class="fa-solid fa-phone me-1"></i> +8801712345678
+                        </a>
+                      </small>
+                      <small class="d-block">
+                        <a
+                          href="mailto:rahim@example.com"
+                          class="text-decoration-none text-muted"
+                        >
+                          <i class="fa-solid fa-envelope me-1"></i>
+                          rahim@example.com
+                        </a>
+                      </small>
+                    </div>
+                  </div>
 
-    <!-- Property Details -->
-    <div class="p-3 border-top">
-      <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
-      <p class="mb-1"><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
-      <p class="mb-1"><strong>Bedrooms:</strong> 2 | <strong>Washrooms:</strong> 2</p>
-    </div>
+                  <!-- Property Details -->
+                  <div class="p-3 border-top">
+                    <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
+                    <p class="mb-1">
+                      <strong>Address:</strong> 25/3, Green Road, Dhaka
+                    </p>
+                    <p class="mb-1">
+                      <strong>Bedrooms:</strong> 2 |
+                      <strong>Washrooms:</strong> 2
+                    </p>
+                  </div>
 
-    <!-- Payment Status -->
-    <div class="p-3 border-top">
-      <p class="mb-1"><strong>Paid Months:</strong> 5</p>
-      <p class="mb-2"><strong>Due Months:</strong> 1</p>
-      <div class="progress mb-2" style="height:8px;">
-        <div class="progress-bar bg-success" style="width: 83%;"></div>
-      </div>
-      <span class="badge bg-success">Active Tenant</span>
-    </div>
+                  <!-- Payment Status -->
+                  <div class="p-3 border-top">
+                    <p class="mb-1"><strong>Paid Months:</strong> 5</p>
+                    <p class="mb-2"><strong>Due Months:</strong> 1</p>
+                    <div class="progress mb-2" style="height: 8px">
+                      <div
+                        class="progress-bar bg-success"
+                        style="width: 83%"
+                      ></div>
+                    </div>
+                    <span class="badge bg-success">Active Tenant</span>
+                  </div>
 
-    <!-- Actions -->
-    <div class="p-3 border-top text-end">
-      <button class="btn btn-sm btn-outline-primary">
-        <i class="fa-solid fa-eye me-1"></i> View
-      </button>
-      <button class="btn btn-sm btn-outline-danger">
-        <i class="fa-solid fa-bell me-1"></i> Reminder
-      </button>
-    </div>
-  </div>
-</div>
+                  <!-- Actions -->
+                  <div class="p-3 border-top text-end">
+                    <button class="btn btn-sm btn-outline-primary">
+                      <i class="fa-solid fa-eye me-1"></i> View
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      <i class="fa-solid fa-bell me-1"></i> Reminder
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-<!-- extra card for trial end -->
-  </div>
-</div>
+              <!-- extra card for trial end -->
+            </div>
+          </div>
 
           <!-- Payments -->
           <div
@@ -784,7 +1057,7 @@
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
       // Sidebar Navigation
       const links = document.querySelectorAll(".user-panel-sidebar .nav-link");
@@ -830,6 +1103,146 @@
           calcDisplay.value = "Error";
         }
       }
+
+      // Dashboard function
+      // Rent Chart
+      // Rent Collection Chart
+      const ctx = document.getElementById("rentChart").getContext("2d");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+          datasets: [
+            {
+              label: "Collected Rent (৳)",
+              data: [30000, 28000, 32000, 25000, 27000, 30000],
+              fill: true,
+              backgroundColor: "rgba(13,110,253,0.1)",
+              borderColor: "#0d6efd",
+              tension: 0.4,
+              borderWidth: 3,
+              pointBackgroundColor: "#0d6efd",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } },
+        },
+      });
+
+      // Payment vs Due Pie Chart
+      const ctx2 = document.getElementById("dueChart").getContext("2d");
+      new Chart(ctx2, {
+        type: "doughnut",
+        data: {
+          labels: ["Paid", "Due"],
+          datasets: [
+            {
+              data: [75000, 5000],
+              backgroundColor: ["#28a745", "#dc3545"],
+              hoverOffset: 8,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { position: "bottom" } },
+        },
+      });
+    </script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      // Rent Collection Line Chart
+      const rentCtx = document.getElementById("rentChart").getContext("2d");
+      const rentGradient = rentCtx.createLinearGradient(0, 0, 0, 200);
+      rentGradient.addColorStop(0, "rgba(13,110,253,0.4)");
+      rentGradient.addColorStop(1, "rgba(13,110,253,0)");
+
+      new Chart(rentCtx, {
+        type: "line",
+        data: {
+          labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+          datasets: [
+            {
+              label: "Collected Rent (৳)",
+              data: [30000, 28000, 32000, 25000, 27000, 30000],
+              fill: true,
+              backgroundColor: rentGradient,
+              borderColor: "#0d6efd",
+              tension: 0.4,
+              borderWidth: 3,
+              pointBackgroundColor: "#0d6efd",
+              pointRadius: 6,
+              pointHoverRadius: 8,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "#1a1a1a",
+              titleColor: "#fff",
+              bodyColor: "#fff",
+              cornerRadius: 6,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { stepSize: 5000, color: "#495057" },
+              grid: { color: "rgba(0,0,0,0.05)" },
+            },
+            x: {
+              ticks: { color: "#495057" },
+              grid: { display: false },
+            },
+          },
+        },
+      });
+
+      // Payment Status Doughnut Chart
+      const dueCtx = document.getElementById("dueChart").getContext("2d");
+      new Chart(dueCtx, {
+        type: "doughnut",
+        data: {
+          labels: ["Paid", "Due"],
+          datasets: [
+            {
+              data: [75000, 5000],
+              backgroundColor: ["#28a745", "#dc3545"],
+              hoverBackgroundColor: ["#218838", "#c82333"],
+              borderWidth: 2,
+              borderColor: "#fff",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: {
+                color: "#495057",
+                boxWidth: 20,
+                padding: 15,
+              },
+            },
+            tooltip: {
+              backgroundColor: "#1a1a1a",
+              titleColor: "#fff",
+              bodyColor: "#fff",
+              cornerRadius: 6,
+            },
+          },
+          cutout: "70%",
+        },
+      });
     </script>
   </body>
 </html>
