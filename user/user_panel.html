@@ -16,11 +16,37 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-      body {
+      /* body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background: #f8f9fa;
-      }
+      } */
 
+      .btn-tenent {
+  position: relative;
+  display: inline-block;
+  padding: 12px 10px;
+  border-radius: 10px; /* pill style */
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(74, 144, 226, 0.25);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  overflow: hidden;
+}
+
+.active-btn{
+  color: black;
+}
+.active-btn:active{
+  border: none;
+  outline: none;
+  /* background-color: rgba(255, 255, 255, 0.36); */
+  box-shadow: none;
+}
       /* Sidebar */
       .user-panel-sidebar {
         background: #1a1d20;
@@ -433,7 +459,12 @@
             id="user-panel-rents"
             class="user-panel-section user-panel-hidden"
           >
-            <h3 class="mb-4">My Tenants</h3>
+           <div class="d-flex justify-content-between align-items-center">
+             <h3 class="mb-4 d-inline">My Tenants</h3>
+             <button class=" d-inline btn-tenent" data-bs-toggle="modal"     data-bs-target="#addTenantModal">
+               <i class="fas fa-user-plus me-2"></i> Add Tenant
+              </button>
+           </div>
             <div class="row g-4">
               <!-- Tenant Card 1 start-->
               <div class="col-md-6 col-lg-4">
@@ -570,9 +601,9 @@
 
               <!-- extra card for trial start  -->
               <!-- Tenant Card 1-->
-              <div class="col-md-6 col-lg-4">
+              <!-- <div class="col-md-6 col-lg-4">
                 <div class="user-panel-card overflow-hidden">
-                  <!-- Card Header -->
+
                   <div class="bg-light p-3 d-flex align-items-center">
                     <img
                       src="/assets/image/reviewprf/rvwprf3.png"
@@ -601,7 +632,7 @@
                     </div>
                   </div>
 
-                  <!-- Property Details -->
+
                   <div class="p-3 border-top">
                     <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
                     <p class="mb-1">
@@ -613,7 +644,7 @@
                     </p>
                   </div>
 
-                  <!-- Payment Status -->
+  
                   <div class="p-3 border-top">
                     <p class="mb-1"><strong>Paid Months:</strong> 5</p>
                     <p class="mb-2"><strong>Due Months:</strong> 1</p>
@@ -626,7 +657,7 @@
                     <span class="badge bg-success">Active Tenant</span>
                   </div>
 
-                  <!-- Actions -->
+       
                   <div class="p-3 border-top text-end">
                     <button class="btn btn-sm btn-outline-primary">
                       <i class="fa-solid fa-eye me-1"></i> View
@@ -636,11 +667,11 @@
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!-- Tenant Card 2-->
-              <div class="col-md-6 col-lg-4">
+              <!-- <div class="col-md-6 col-lg-4">
                 <div class="user-panel-card overflow-hidden">
-                  <!-- Card Header -->
+         
                   <div class="bg-light p-3 d-flex align-items-center">
                     <img
                       src="/assets/image/reviewprf/rvwprf3.png"
@@ -669,7 +700,7 @@
                     </div>
                   </div>
 
-                  <!-- Property Details -->
+              
                   <div class="p-3 border-top">
                     <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
                     <p class="mb-1">
@@ -681,7 +712,7 @@
                     </p>
                   </div>
 
-                  <!-- Payment Status -->
+     
                   <div class="p-3 border-top">
                     <p class="mb-1"><strong>Paid Months:</strong> 5</p>
                     <p class="mb-2"><strong>Due Months:</strong> 1</p>
@@ -694,7 +725,7 @@
                     <span class="badge bg-success">Active Tenant</span>
                   </div>
 
-                  <!-- Actions -->
+          
                   <div class="p-3 border-top text-end">
                     <button class="btn btn-sm btn-outline-primary">
                       <i class="fa-solid fa-eye me-1"></i> View
@@ -704,11 +735,11 @@
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!-- Tenant Card 3-->
-              <div class="col-md-6 col-lg-4">
+              <!-- <div class="col-md-6 col-lg-4">
                 <div class="user-panel-card overflow-hidden">
-                  <!-- Card Header -->
+              
                   <div class="bg-light p-3 d-flex align-items-center">
                     <img
                       src="/assets/image/reviewprf/rvwprf3.png"
@@ -737,7 +768,7 @@
                     </div>
                   </div>
 
-                  <!-- Property Details -->
+                 
                   <div class="p-3 border-top">
                     <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
                     <p class="mb-1">
@@ -749,7 +780,7 @@
                     </p>
                   </div>
 
-                  <!-- Payment Status -->
+   
                   <div class="p-3 border-top">
                     <p class="mb-1"><strong>Paid Months:</strong> 5</p>
                     <p class="mb-2"><strong>Due Months:</strong> 1</p>
@@ -762,7 +793,7 @@
                     <span class="badge bg-success">Active Tenant</span>
                   </div>
 
-                  <!-- Actions -->
+ 
                   <div class="p-3 border-top text-end">
                     <button class="btn btn-sm btn-outline-primary">
                       <i class="fa-solid fa-eye me-1"></i> View
@@ -772,11 +803,127 @@
                     </button>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <!-- extra card for trial end -->
             </div>
           </div>
+
+        
+           <!-- Add Tenant Modal -->
+<div class="modal fade" id="addTenantModal" tabindex="-1" aria-labelledby="addTenantModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0 rounded-3">
+      
+      <!-- Header -->
+      <div class="modal-header bg-black text-white">
+        <h5 class="modal-title" id="addTenantModalLabel">
+          <i class="fas fa-user-plus me-2"></i> Add New Tenant
+        </h5>
+        <button type="button" class="btn-close btn-close-white active-btn " data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body p-4">
+        <form id="tenantForm" class="row g-3">
+          
+          <!-- Full Name -->
+          <div class="col-md-6">
+            <label for="tenantName" class="form-label">Full Name</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+              <input type="text" class="form-control" id="tenantName" placeholder="Enter full name" required>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="col-md-6">
+            <label for="tenantPhone" class="form-label">Phone</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-phone"></i></span>
+              <input type="tel" class="form-control" id="tenantPhone" placeholder="+8801XXXXXXXXX" required>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="col-md-6">
+            <label for="tenantEmail" class="form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+              <input type="email" class="form-control" id="tenantEmail" placeholder="example@email.com">
+            </div>
+          </div>
+
+          <!-- Flat -->
+          <div class="col-md-6">
+            <label for="tenantFlat" class="form-label">Flat</label>
+            <input type="text" class="form-control" id="tenantFlat" placeholder="C1, 1st Floor" required>
+          </div>
+
+          <!-- Address -->
+          <div class="col-12">
+            <label for="tenantAddress" class="form-label">Address</label>
+            <textarea id="tenantAddress" class="form-control" rows="2" placeholder="Enter address"></textarea>
+          </div>
+
+          <!-- Bedrooms -->
+          <div class="col-md-4">
+            <label for="tenantBedrooms" class="form-label">Bedrooms</label>
+            <input type="number" class="form-control" id="tenantBedrooms" value="1">
+          </div>
+
+          <!-- Washrooms -->
+          <div class="col-md-4">
+            <label for="tenantWashrooms" class="form-label">Washrooms</label>
+            <input type="number" class="form-control" id="tenantWashrooms" value="1">
+          </div>
+
+          <!-- Rent -->
+          <div class="col-md-4">
+            <label for="tenantRent" class="form-label">Rent (per month)</label>
+            <div class="input-group">
+              <span class="input-group-text">৳</span>
+              <input type="number" class="form-control" id="tenantRent" placeholder="30000" required>
+            </div>
+          </div>
+
+          <!-- Paid Months -->
+          <div class="col-md-6">
+            <label for="tenantPaid" class="form-label">Paid Months</label>
+            <input type="number" class="form-control" id="tenantPaid" value="0">
+          </div>
+
+          <!-- Due Months -->
+          <div class="col-md-6">
+            <label for="tenantDue" class="form-label">Due Months</label>
+            <input type="number" class="form-control" id="tenantDue" value="0">
+          </div>
+
+          <!-- Status -->
+          <div class="col-12">
+            <label for="tenantStatus" class="form-label">Payment Status</label>
+            <select id="tenantStatus" class="form-select">
+              <option value="Fully Paid">✅ Fully Paid</option>
+              <option value="Due">⚠️ Due</option>
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button class="btn btn-light border" data-bs-dismiss="modal">
+          <i class="fas fa-times me-1"></i> Cancel
+        </button>
+        <button type="submit" form="tenantForm" class="btn btn-success">
+          <i class="fas fa-save me-1"></i> Save Tenant
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
           <!-- Payments -->
           <div
@@ -1105,7 +1252,6 @@
       }
 
       // Dashboard function
-      // Rent Chart
       // Rent Collection Chart
       const ctx = document.getElementById("rentChart").getContext("2d");
       new Chart(ctx, {
@@ -1243,6 +1389,9 @@
           cutout: "70%",
         },
       });
+
+      // this is for add tenent funtionality       
     </script>
+
   </body>
 </html>
