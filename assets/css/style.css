@@ -308,24 +308,8 @@
     }
  
 
-    /* Mobile responsive */
-    @media (max-width: 991.98px) {
-      .user-section {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        order: 3;
-      }
-      .navbar-toggler {
-        order: 2;
-        margin-left: 10px;
-      }
-      .navbar-collapse {
-        order: 1;
-        width: 100%;
-      }
-    }
-
+   
+  
     /* Offcanvas custom style */
 .offcanvas-start {
   width: 250px;             
@@ -1158,17 +1142,35 @@ color: black;
   margin-bottom: 0;
 }
 
-/* Media Queries */
-@media (max-width: 992px) {
-  #heroCarousel .carousel-item {
+
+
+  /*<============================ RESPONSIVE DESIGH STYLE START FROM HERE ===========> */
+  /*<=========================Max width 992 px  ======================>*/
+  
+    @media (max-width: 992px) {
+      .user-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        order: 3;
+      }
+      .navbar-toggler {
+        order: 2;
+        margin-left: 10px;
+      }
+      .navbar-collapse {
+        order: 1;
+        width: 100%;
+      }
+      #heroCarousel .carousel-item {
     height: 500px;
   }
 
   #heroCarousel .carousel-caption h2 {
     font-size: 2rem;
   }
-}
-  /*<============================ RESPONSIVE DESIGH STYLE START FROM HERE ===========> */
+    }
+
   /*<=========================Max width 768 px  ======================>*/
 @media (max-width: 768px) {
   #heroCarousel .carousel-item {
