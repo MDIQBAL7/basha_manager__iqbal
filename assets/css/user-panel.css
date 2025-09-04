@@ -86,7 +86,10 @@
         border-radius: 8px;
         overflow-x: auto;
       }
-
+/* footer button  */
+.w-new{
+    width: 25%;
+}
       /* Small Devices Fix */
       @media (max-width: 991px) {
         .desktop-sidebar {
@@ -95,4 +98,7 @@
         .user-panel-content {
           padding: 15px;
         }
+        .w-new{
+    width: 50%;
+}
       }
