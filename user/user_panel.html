@@ -14,106 +14,9 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- css file link  -->
+    <link rel="stylesheet" href="/assets/css/user-panel.css">
 
-    <style>
-      /* body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: #f8f9fa;
-      } */
-
-      .btn-tenent {
-  position: relative;
-  display: inline-block;
-  padding: 12px 10px;
-  border-radius: 10px; /* pill style */
-  font-size: 15px;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(135deg, #4a90e2, #357abd);
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 6px 12px rgba(74, 144, 226, 0.25);
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-  overflow: hidden;
-}
-
-.active-btn{
-  color: black;
-}
-.active-btn:active{
-  border: none;
-  outline: none;
-  /* background-color: rgba(255, 255, 255, 0.36); */
-  box-shadow: none;
-}
-      /* Sidebar */
-      .user-panel-sidebar {
-        background: #1a1d20;
-        color: #fff;
-        min-height: 100vh;
-        padding-top: 20px;
-      }
-
-      .user-panel-sidebar h4 {
-        padding-left: 20px;
-        margin-bottom: 20px;
-        font-size: 1.2rem;
-      }
-
-      .user-panel-sidebar .nav-link {
-        color: #adb5bd;
-        margin: 6px 0;
-        border-radius: 6px;
-        transition: 0.3s;
-        cursor: pointer;
-        padding: 10px 20px;
-        font-size: 0.95rem;
-      }
-
-      .user-panel-sidebar .nav-link.active,
-      .user-panel-sidebar .nav-link:hover {
-        background: #0d6efd;
-        color: #fff;
-      }
-
-      /* Main content */
-      .user-panel-content {
-        padding: 20px;
-      }
-
-      .user-panel-card {
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        transition: 0.3s;
-        padding: 20px;
-        background: #fff;
-      }
-
-      .user-panel-card:hover {
-        transform: translateY(-3px);
-      }
-
-      .user-panel-hidden {
-        display: none;
-      }
-
-      /* Table Responsive */
-      .table-responsive {
-        border-radius: 8px;
-        overflow-x: auto;
-      }
-
-      /* Small Devices Fix */
-      @media (max-width: 991px) {
-        .desktop-sidebar {
-          display: none;
-        }
-        .user-panel-content {
-          padding: 15px;
-        }
-      }
-    </style>
   </head>
   <body>
     <!-- Navbar -->
@@ -812,110 +715,116 @@
         
            <!-- Add Tenant Modal -->
 <div class="modal fade" id="addTenantModal" tabindex="-1" aria-labelledby="addTenantModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content shadow-lg border-0 rounded-3">
-      
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+
       <!-- Header -->
-      <div class="modal-header bg-black text-white">
-        <h5 class="modal-title" id="addTenantModalLabel">
+      <div class="modal-header py-3 text-white" style="background: linear-gradient(135deg, #0d6efd, #6610f2);">
+        <h5 class="modal-title fw-bold" id="addTenantModalLabel">
           <i class="fas fa-user-plus me-2"></i> Add New Tenant
         </h5>
-        <button type="button" class="btn-close btn-close-white active-btn " data-bs-dismiss="modal"></button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
 
       <!-- Body -->
-      <div class="modal-body p-4">
-        <form id="tenantForm" class="row g-3">
-          
-          <!-- Full Name -->
-          <div class="col-md-6">
-            <label for="tenantName" class="form-label">Full Name</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-user"></i></span>
-              <input type="text" class="form-control" id="tenantName" placeholder="Enter full name" required>
+      <div class="modal-body p-5" style="background: #f9f9fb;">
+        <form id="tenantForm" class="row g-4">
+
+          <!-- Section: Basic Info -->
+          <div class="p-4 rounded-4 bg-white shadow-sm mb-4">
+            <h6 class="fw-bold text-primary mb-3"><i class="fas fa-id-badge me-2"></i>Basic Information</h6>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Full Name</label>
+                <input type="text" class="form-control form-control-lg shadow-sm" id="tenantName" placeholder="Enter full name" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Phone</label>
+                <input type="tel" class="form-control form-control-lg shadow-sm" id="tenantPhone" placeholder="+8801XXXXXXXXX" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Email</label>
+                <input type="email" class="form-control form-control-lg shadow-sm" id="tenantEmail" placeholder="example@email.com">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Flat</label>
+                <input type="text" class="form-control form-control-lg shadow-sm" id="tenantFlat" placeholder="C1, 1st Floor" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold">Address</label>
+                <textarea class="form-control shadow-sm" id="tenantAddress" rows="2" placeholder="Enter address"></textarea>
+              </div>
             </div>
           </div>
 
-          <!-- Phone -->
-          <div class="col-md-6">
-            <label for="tenantPhone" class="form-label">Phone</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-phone"></i></span>
-              <input type="tel" class="form-control" id="tenantPhone" placeholder="+8801XXXXXXXXX" required>
+          <!-- Section: Profile Photo -->
+          <div class="p-4 rounded-4 bg-white shadow-sm mb-4">
+            <h6 class="fw-bold text-primary mb-3"><i class="fas fa-camera me-2"></i>Profile Photo</h6>
+            <div class="row align-items-center g-3">
+              <div class="col-md-6">
+                <input type="file" class="form-control shadow-sm" id="tenantPhoto" accept="image/*">
+                <small class="text-muted">Supported formats: JPG, PNG</small>
+              </div>
+              <div class="col-md-6 text-center">
+                <img id="photoPreview" src="https://via.placeholder.com/120x120?text=Photo"
+                     class="rounded-circle border shadow-sm" width="120" height="120" alt="Preview">
+              </div>
             </div>
           </div>
 
-          <!-- Email -->
-          <div class="col-md-6">
-            <label for="tenantEmail" class="form-label">Email</label>
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-              <input type="email" class="form-control" id="tenantEmail" placeholder="example@email.com">
+          <!-- Section: House Info -->
+          <div class="p-4 rounded-4 bg-white shadow-sm mb-4">
+            <h6 class="fw-bold text-primary mb-3"><i class="fas fa-home me-2"></i>House Information</h6>
+            <div class="row g-3">
+              <div class="col-md-3">
+                <label class="form-label fw-semibold">Bedrooms</label>
+                <input type="number" class="form-control shadow-sm" id="tenantBedrooms" value="1" min="0">
+              </div>
+              <div class="col-md-3">
+                <label class="form-label fw-semibold">Washrooms</label>
+                <input type="number" class="form-control shadow-sm" id="tenantWashrooms" value="1" min="0">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Rent (per month)</label>
+                <div class="input-group shadow-sm">
+                  <span class="input-group-text bg-light">৳</span>
+                  <input type="number" class="form-control" id="tenantRent" placeholder="30000" required>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Flat -->
-          <div class="col-md-6">
-            <label for="tenantFlat" class="form-label">Flat</label>
-            <input type="text" class="form-control" id="tenantFlat" placeholder="C1, 1st Floor" required>
-          </div>
-
-          <!-- Address -->
-          <div class="col-12">
-            <label for="tenantAddress" class="form-label">Address</label>
-            <textarea id="tenantAddress" class="form-control" rows="2" placeholder="Enter address"></textarea>
-          </div>
-
-          <!-- Bedrooms -->
-          <div class="col-md-4">
-            <label for="tenantBedrooms" class="form-label">Bedrooms</label>
-            <input type="number" class="form-control" id="tenantBedrooms" value="1">
-          </div>
-
-          <!-- Washrooms -->
-          <div class="col-md-4">
-            <label for="tenantWashrooms" class="form-label">Washrooms</label>
-            <input type="number" class="form-control" id="tenantWashrooms" value="1">
-          </div>
-
-          <!-- Rent -->
-          <div class="col-md-4">
-            <label for="tenantRent" class="form-label">Rent (per month)</label>
-            <div class="input-group">
-              <span class="input-group-text">৳</span>
-              <input type="number" class="form-control" id="tenantRent" placeholder="30000" required>
+          <!-- Section: Payment Details -->
+          <div class="p-4 rounded-4 bg-white shadow-sm">
+            <h6 class="fw-bold text-primary mb-3"><i class="fas fa-money-check-alt me-2"></i>Payment Details</h6>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Paid Months</label>
+                <input type="number" class="form-control shadow-sm" id="tenantPaid" value="0" min="0">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Due Months</label>
+                <input type="number" class="form-control shadow-sm" id="tenantDue" value="0" min="0">
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold">Payment Status</label>
+                <select id="tenantStatus" class="form-select shadow-sm">
+                  <option value="Fully Paid">✅ Fully Paid</option>
+                  <option value="Due">⚠️ Due</option>
+                </select>
+              </div>
             </div>
           </div>
 
-          <!-- Paid Months -->
-          <div class="col-md-6">
-            <label for="tenantPaid" class="form-label">Paid Months</label>
-            <input type="number" class="form-control" id="tenantPaid" value="0">
-          </div>
-
-          <!-- Due Months -->
-          <div class="col-md-6">
-            <label for="tenantDue" class="form-label">Due Months</label>
-            <input type="number" class="form-control" id="tenantDue" value="0">
-          </div>
-
-          <!-- Status -->
-          <div class="col-12">
-            <label for="tenantStatus" class="form-label">Payment Status</label>
-            <select id="tenantStatus" class="form-select">
-              <option value="Fully Paid">✅ Fully Paid</option>
-              <option value="Due">⚠️ Due</option>
-            </select>
-          </div>
         </form>
       </div>
 
       <!-- Footer -->
-      <div class="modal-footer">
-        <button class="btn btn-light border" data-bs-dismiss="modal">
+      <div class="modal-footer bg-white py-3 border-top">
+        <button class="btn btn-outline-secondary px-4 fw-semibold" data-bs-dismiss="modal">
           <i class="fas fa-times me-1"></i> Cancel
         </button>
-        <button type="submit" form="tenantForm" class="btn btn-success">
+        <button type="submit" form="tenantForm" class="btn btn-primary px-5 fw-semibold shadow-sm">
           <i class="fas fa-save me-1"></i> Save Tenant
         </button>
       </div>
@@ -1390,7 +1299,18 @@
         },
       });
 
-      // this is for add tenent funtionality       
+      // this is for add tenent image preview
+       // Image preview
+  document.getElementById("tenantPhoto").addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById("photoPreview").src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });       
     </script>
 
   </body>
