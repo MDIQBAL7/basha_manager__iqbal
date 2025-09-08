@@ -381,6 +381,12 @@
                 ><i class="fa-solid fa-calculator me-2"></i>Walet</a
               >
             </li>
+            <li>
+            <!-- Add To-Let Button -->
+           <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addToLetModal">
+             Add To-Let
+          </a>
+            </li>
           </ul>
         </div>
 
@@ -446,6 +452,12 @@
               <a class="nav-link" data-target="user-walet"
                 ><i class="fa-solid fa-calculator me-2"></i>Walet</a
               >
+            </li>
+              <li>
+            <!-- Add To-Let Button -->
+           <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addToLetModal">
+             Add To-Let
+          </a>
             </li>
             </ul>
           </div>
@@ -1693,9 +1705,52 @@
     </form>
   </div>
 </div>
-    </div>
     
+<!-- Modal for add to-let card -->
 
+<!-- Add To-Let Modal -->
+<div class="modal fade" id="addToLetModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form class="modal-content" id="toLetForm">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Add To-Let Property</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+          <input type="text" class="form-control" id="propertyTitle" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Location</label>
+          <input type="text" class="form-control" id="propertyLocation" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Rent</label>
+          <input type="number" class="form-control" id="propertyRent" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Bedrooms</label>
+          <input type="number" class="form-control" id="propertyBedrooms" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Bathrooms</label>
+          <input type="number" class="form-control" id="propertyBathrooms" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Image URL</label>
+          <input type="text" class="form-control" id="propertyImage" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+</div>
         </main>
       </div>
     </div>
@@ -2092,7 +2147,11 @@
   // পেজ লোড হলে আগের ডেটা দেখাও
   renderList("income");
   renderList("expense");
+
+
+
     </script>
+    <script src="user-panel.js"></script>
    
   </body>
 </html>
