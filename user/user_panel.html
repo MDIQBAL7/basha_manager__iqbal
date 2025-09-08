@@ -1542,8 +1542,8 @@
             </div>
           </div>
        <!-- calander -->
-      <div id="user-panel-calender"  class="cal user-panel-hidden user-panel-content">
-    <div class="container-fluid py-3">
+      <div   class="">
+    <div id="user-panel-calender" class="container-fluid py-3 user-panel-section user-panel-hidden">
     <div class="row justify-content-center">
       <div class="col-12">
         <div class="calendar-card">
@@ -1557,7 +1557,8 @@
   </div>
       </div>
           <!-- walet id="user-walet user-panel-section user-panel-hidden-->
- <div id="user-walet" class="container py-4 user-panel-section user-panel-hidden">
+
+<div id="user-walet" class="container py-4 user-panel-section user-panel-hidden">
   <div class="row g-4">
 
     <!-- Income Card -->
@@ -1576,7 +1577,20 @@
           </div>
           <div class="user-wallet-amount" id="totalIncome">৳ 0</div>
           <p class="user-wallet-note">Sources of income</p>
-          <div id="incomeList"></div>
+          <div id="incomeList">
+             <div class="user-list-item">
+              <span>Rent from Tenant A</span>
+              <span class="fw-bold text-success">৳ 25,000</span>
+            </div>
+            <div class="user-list-item">
+              <span>Rent from Tenant B</span>
+              <span class="fw-bold text-success">৳ 20,000</span>
+            </div>
+            <div class="user-list-item">
+              <span>Shop Rent</span>
+              <span class="fw-bold text-success">৳ 15,000</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1597,64 +1611,26 @@
           </div>
           <div class="user-wallet-amount" id="totalExpense">৳ 0</div>
           <p class="user-wallet-note">Expense breakdown</p>
-          <div id="expenseList"></div>
+          <div id="expenseList">
+             <div class="user-list-item">
+              <span>Electricity Bill</span>
+              <span class="fw-bold text-danger">৳ 5,000</span>
+            </div>
+            <div class="user-list-item">
+              <span>Water Bill</span>
+              <span class="fw-bold text-danger">৳ 3,500</span>
+            </div>
+            <div class="user-list-item">
+              <span>Maintenance</span>
+              <span class="fw-bold text-danger">৳ 7,000</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
   </div>
 </div>
-
-<!-- Income Modal -->
-<div class="modal fade" id="addIncomeModal" tabindex="-1">
-  <div class="modal-dialog">
-    <form class="modal-content" id="incomeForm">
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title">Add Income</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label class="form-label">Source</label>
-          <input type="text" class="form-control" id="incomeSource" required>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Amount (৳)</label>
-          <input type="number" class="form-control" id="incomeAmount" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success">Save</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<!-- Expense Modal -->
-<div class="modal fade" id="addExpenseModal" tabindex="-1">
-  <div class="modal-dialog">
-    <form class="modal-content" id="expenseForm">
-      <div class="modal-header bg-danger text-white">
-        <h5 class="modal-title">Add Expense</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label class="form-label">Expense Item</label>
-          <input type="text" class="form-control" id="expenseSource" required>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Amount (৳)</label>
-          <input type="number" class="form-control" id="expenseAmount" required>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-danger">Save</button>
-      </div>
-    </form>
-  </div>
-</div>
-
 
 <!-- Income Modal -->
 <div class="modal fade" id="addIncomeModal" tabindex="-1">
@@ -2062,14 +2038,7 @@
 
 
     // walet functionality  
-  // LocalStorage থেকে ডেটা লোড করো
-  let income = JSON.parse(localStorage.getItem("incomeData")) || [];
-  let expense = JSON.parse(localStorage.getItem("expenseData")) || [];
-
-  function saveData() {
-    localStorage.setItem("incomeData", JSON.stringify(income));
-    localStorage.setItem("expenseData", JSON.stringify(expense));
-  }
+  let income = [], expense = [];
 
   function renderList(type) {
     let listEl = document.getElementById(type + "List");
@@ -2095,7 +2064,6 @@
       `;
     });
     totalEl.innerText = "৳ " + total;
-    saveData(); // render এর সময় save করে দিচ্ছি
   }
 
   function editItem(type, index) {
@@ -2143,12 +2111,6 @@
 
   document.getElementById("incomeForm").onsubmit = defaultSubmit("income");
   document.getElementById("expenseForm").onsubmit = defaultSubmit("expense");
-
-  // পেজ লোড হলে আগের ডেটা দেখাও
-  renderList("income");
-  renderList("expense");
-
-
 
     </script>
     <script src="user-panel.js"></script>
