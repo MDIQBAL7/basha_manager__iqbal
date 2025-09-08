@@ -227,54 +227,44 @@
     }
 
   /* Custom wallet cards style start */
-    .user-wallet-card {
-    border: none;
-    border-radius: 18px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    overflow: hidden;
-    transition: transform .2s ease;
-  }
-  .user-wallet-card:hover {
-    transform: translateY(-4px);
-  }
-  .user-wallet-header {
-    padding: 18px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 700;
-    font-size: 1.05rem;
-    letter-spacing: .4px;
-  }
-  .user-wallet-amount {
-    font-size: clamp(1.5rem, 4vw, 2.2rem);
-    font-weight: 800;
-    margin: 12px 0 6px;
-    color: #111827;
-  }
-  .user-wallet-note {
-    color: #6b7280;
-    font-size: .9rem;
-    margin: 0;
-    word-break: break-word;
-  }
-  .user-wallet-body {
-    padding: 18px;
-    background: #fff;
-  }
-
-  /* Gradients */
-  .user-income-grad { background: linear-gradient(135deg,#34d399,#059669); }
-  .user-expense-grad { background: linear-gradient(135deg,#f87171,#b91c1c); }
-
-  /* Icon Circle */
-  .user-icon-badge {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    display: grid; place-items: center;
-    background: rgba(255,255,255,.25);
-  }
+   .user-wallet-card {
+      border: none;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform .2s ease;
+    }
+    .user-wallet-card:hover { transform: translateY(-4px); }
+    .user-wallet-header {
+      padding: 16px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .user-wallet-amount {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 12px 0 6px;
+      color: #111827;
+    }
+    .user-wallet-note { color: #6b7280; font-size: .9rem; margin: 0 0 12px; }
+    .user-wallet-body { padding: 18px; background: #fff; }
+    .user-income-grad { background: linear-gradient(135deg,#34d399,#059669); }
+    .user-expense-grad { background: linear-gradient(135deg,#f87171,#b91c1c); }
+    .user-icon-badge {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: rgba(255,255,255,.25);
+    }
+    .user-list-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 1px dashed #e5e7eb;
+    }
+    .user-list-item:last-child { border-bottom: none; }
+    .user-actions button { border: none; background: none; }
   /* Custom wallet cards style end */
   
 
@@ -1554,26 +1544,27 @@
     </div>
   </div>
       </div>
-          <!-- walet user-panel-section user-panel-hidden-->
-       <div id="user-walet" class="container py-4 user-panel-section user-panel-hidden">
-  <div class="row g-4 ">
-    
+          <!-- walet id="user-walet user-panel-section user-panel-hidden-->
+ <div id="user-walet" class="container py-4 user-panel-section user-panel-hidden">
+  <div class="row g-4">
+
     <!-- Income Card -->
     <div class="col-12 col-md-6">
       <div class="card user-wallet-card">
         <div class="user-wallet-header user-income-grad">
-          <div class="user-icon-badge">
-            <i class="fa-solid fa-arrow-trend-up"></i>
-          </div>
+          <div class="user-icon-badge"><i class="fa-solid fa-arrow-trend-up"></i></div>
           <span>Income</span>
         </div>
         <div class="user-wallet-body">
           <div class="d-flex justify-content-between align-items-center mb-2">
             <span class="text-muted fw-semibold">Total Earned</span>
-            <span class="badge bg-success-subtle text-success border border-success-subtle">This Month</span>
+            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addIncomeModal">
+              <i class="fa-solid fa-plus"></i> Add
+            </button>
           </div>
-          <div class="user-wallet-amount">৳ 75,000</div>
-          <p class="user-wallet-note">Rent collection & other income sources.</p>
+          <div class="user-wallet-amount" id="totalIncome">৳ 0</div>
+          <p class="user-wallet-note">Sources of income</p>
+          <div id="incomeList"></div>
         </div>
       </div>
     </div>
@@ -1582,22 +1573,124 @@
     <div class="col-12 col-md-6">
       <div class="card user-wallet-card">
         <div class="user-wallet-header user-expense-grad">
-          <div class="user-icon-badge">
-            <i class="fa-solid fa-arrow-trend-down"></i>
-          </div>
+          <div class="user-icon-badge"><i class="fa-solid fa-arrow-trend-down"></i></div>
           <span>Expense</span>
         </div>
         <div class="user-wallet-body">
           <div class="d-flex justify-content-between align-items-center mb-2">
             <span class="text-muted fw-semibold">Total Spent</span>
-            <span class="badge bg-danger-subtle text-danger border border-danger-subtle">This Month</span>
+            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#addExpenseModal">
+              <i class="fa-solid fa-plus"></i> Add
+            </button>
           </div>
-          <div class="user-wallet-amount">৳ 18,500</div>
-          <p class="user-wallet-note">Utilities, maintenance & services.</p>
+          <div class="user-wallet-amount" id="totalExpense">৳ 0</div>
+          <p class="user-wallet-note">Expense breakdown</p>
+          <div id="expenseList"></div>
         </div>
       </div>
     </div>
-    
+
+  </div>
+</div>
+
+<!-- Income Modal -->
+<div class="modal fade" id="addIncomeModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form class="modal-content" id="incomeForm">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">Add Income</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Source</label>
+          <input type="text" class="form-control" id="incomeSource" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Amount (৳)</label>
+          <input type="number" class="form-control" id="incomeAmount" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Expense Modal -->
+<div class="modal fade" id="addExpenseModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form class="modal-content" id="expenseForm">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Add Expense</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Expense Item</label>
+          <input type="text" class="form-control" id="expenseSource" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Amount (৳)</label>
+          <input type="number" class="form-control" id="expenseAmount" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Income Modal -->
+<div class="modal fade" id="addIncomeModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form class="modal-content" id="incomeForm">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">Add Income</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Source</label>
+          <input type="text" class="form-control" id="incomeSource" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Amount (৳)</label>
+          <input type="number" class="form-control" id="incomeAmount" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Expense Modal -->
+<div class="modal fade" id="addExpenseModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form class="modal-content" id="expenseForm">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Add Expense</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Expense Item</label>
+          <input type="text" class="form-control" id="expenseSource" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Amount (৳)</label>
+          <input type="number" class="form-control" id="expenseAmount" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger">Save</button>
+      </div>
+    </form>
   </div>
 </div>
     </div>
@@ -1911,6 +2004,94 @@
       });
       calendar.render();
     });
+
+
+    // walet functionality  
+  // LocalStorage থেকে ডেটা লোড করো
+  let income = JSON.parse(localStorage.getItem("incomeData")) || [];
+  let expense = JSON.parse(localStorage.getItem("expenseData")) || [];
+
+  function saveData() {
+    localStorage.setItem("incomeData", JSON.stringify(income));
+    localStorage.setItem("expenseData", JSON.stringify(expense));
+  }
+
+  function renderList(type) {
+    let listEl = document.getElementById(type + "List");
+    let totalEl = document.getElementById("total" + (type === "income" ? "Income" : "Expense"));
+    let data = (type === "income" ? income : expense);
+    let color = (type === "income" ? "success" : "danger");
+
+    listEl.innerHTML = "";
+    let total = 0;
+    data.forEach((item, index) => {
+      total += item.amount;
+      listEl.innerHTML += `
+        <div class="user-list-item">
+          <span>${item.source}</span>
+          <span>
+            <span class="fw-bold text-${color}">৳ ${item.amount}</span>
+            <span class="user-actions ms-2">
+              <button onclick="editItem('${type}',${index})" class="text-primary"><i class="fa-solid fa-pen"></i></button>
+              <button onclick="deleteItem('${type}',${index})" class="text-danger"><i class="fa-solid fa-trash"></i></button>
+            </span>
+          </span>
+        </div>
+      `;
+    });
+    totalEl.innerText = "৳ " + total;
+    saveData(); // render এর সময় save করে দিচ্ছি
+  }
+
+  function editItem(type, index) {
+    let item = (type === "income" ? income : expense)[index];
+    let sourceInput = document.getElementById(type + "Source");
+    let amountInput = document.getElementById(type + "Amount");
+
+    sourceInput.value = item.source;
+    amountInput.value = item.amount;
+
+    let form = document.getElementById(type + "Form");
+    let modalId = "#add" + (type === "income" ? "Income" : "Expense") + "Modal";
+    let modal = bootstrap.Modal.getOrCreateInstance(document.querySelector(modalId));
+    modal.show();
+
+    form.onsubmit = function(e) {
+      e.preventDefault();
+      item.source = sourceInput.value;
+      item.amount = parseFloat(amountInput.value);
+      renderList(type);
+      modal.hide();
+      form.reset();
+      form.onsubmit = defaultSubmit(type);
+    };
+  }
+
+  function deleteItem(type, index) {
+    if (type === "income") income.splice(index, 1);
+    else expense.splice(index, 1);
+    renderList(type);
+  }
+
+  function defaultSubmit(type) {
+    return function(e) {
+      e.preventDefault();
+      let source = document.getElementById(type + "Source").value;
+      let amount = parseFloat(document.getElementById(type + "Amount").value);
+      if (type === "income") income.push({source, amount});
+      else expense.push({source, amount});
+      renderList(type);
+      bootstrap.Modal.getInstance(document.querySelector("#add" + (type === "income" ? "Income" : "Expense") + "Modal")).hide();
+      e.target.reset();
+    };
+  }
+
+  document.getElementById("incomeForm").onsubmit = defaultSubmit("income");
+  document.getElementById("expenseForm").onsubmit = defaultSubmit("expense");
+
+  // পেজ লোড হলে আগের ডেটা দেখাও
+  renderList("income");
+  renderList("expense");
     </script>
    
   </body>
