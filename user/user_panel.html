@@ -226,6 +226,60 @@
       }
     }
 
+  /* Custom wallet cards style start */
+    .user-wallet-card {
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform .2s ease;
+  }
+  .user-wallet-card:hover {
+    transform: translateY(-4px);
+  }
+  .user-wallet-header {
+    padding: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: .4px;
+  }
+  .user-wallet-amount {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 800;
+    margin: 12px 0 6px;
+    color: #111827;
+  }
+  .user-wallet-note {
+    color: #6b7280;
+    font-size: .9rem;
+    margin: 0;
+    word-break: break-word;
+  }
+  .user-wallet-body {
+    padding: 18px;
+    background: #fff;
+  }
+
+  /* Gradients */
+  .user-income-grad { background: linear-gradient(135deg,#34d399,#059669); }
+  .user-expense-grad { background: linear-gradient(135deg,#f87171,#b91c1c); }
+
+  /* Icon Circle */
+  .user-icon-badge {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(255,255,255,.25);
+  }
+  /* Custom wallet cards style end */
+  
+
+
+
 
 
 
@@ -332,6 +386,11 @@
                 ><i class="fa-solid fa-calculator me-2"></i>Calander</a
               >
             </li>
+            <li>
+              <a class="nav-link" data-target="user-walet"
+                ><i class="fa-solid fa-calculator me-2"></i>Walet</a
+              >
+            </li>
           </ul>
         </div>
 
@@ -391,6 +450,11 @@
                 <li>
               <a class="nav-link" data-target="user-panel-calender"
                 ><i class="fa-solid fa-calculator me-2"></i>Calander</a
+              >
+            </li>
+                <li>
+              <a class="nav-link" data-target="user-walet"
+                ><i class="fa-solid fa-calculator me-2"></i>Walet</a
               >
             </li>
             </ul>
@@ -1476,7 +1540,7 @@
             </div>
           </div>
        <!-- calander -->
-<div id="user-panel-calender"  class="cal user-panel-hidden user-panel-content">
+      <div id="user-panel-calender"  class="cal user-panel-hidden user-panel-content">
     <div class="container-fluid py-3">
     <div class="row justify-content-center">
       <div class="col-12">
@@ -1489,9 +1553,56 @@
       </div>
     </div>
   </div>
+      </div>
+          <!-- walet user-panel-section user-panel-hidden-->
+       <div id="user-walet" class="container py-4 user-panel-section user-panel-hidden">
+  <div class="row g-4 ">
+    
+    <!-- Income Card -->
+    <div class="col-12 col-md-6">
+      <div class="card user-wallet-card">
+        <div class="user-wallet-header user-income-grad">
+          <div class="user-icon-badge">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+          </div>
+          <span>Income</span>
+        </div>
+        <div class="user-wallet-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-muted fw-semibold">Total Earned</span>
+            <span class="badge bg-success-subtle text-success border border-success-subtle">This Month</span>
+          </div>
+          <div class="user-wallet-amount">৳ 75,000</div>
+          <p class="user-wallet-note">Rent collection & other income sources.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expense Card -->
+    <div class="col-12 col-md-6">
+      <div class="card user-wallet-card">
+        <div class="user-wallet-header user-expense-grad">
+          <div class="user-icon-badge">
+            <i class="fa-solid fa-arrow-trend-down"></i>
+          </div>
+          <span>Expense</span>
+        </div>
+        <div class="user-wallet-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-muted fw-semibold">Total Spent</span>
+            <span class="badge bg-danger-subtle text-danger border border-danger-subtle">This Month</span>
+          </div>
+          <div class="user-wallet-amount">৳ 18,500</div>
+          <p class="user-wallet-note">Utilities, maintenance & services.</p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
 </div>
-       </div>
-            
+    </div>
+    
+
         </main>
       </div>
     </div>
