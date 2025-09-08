@@ -11,11 +11,11 @@
   <!-- html including render js -->
   <script src="assets/js/include.js" defer></script>
   <style>
-     /* body {
+      body {
       font-family: 'Inter', sans-serif;
       background: #f8fafc;
       margin: 0;
-    } */
+    }
 
     .faq-section {
       max-width: 960px;
@@ -112,7 +112,6 @@
     .faq-question i.bi-chevron-down {
       transition: transform 0.3s;
     }
-
   </style>
 </head>
 <body>
@@ -123,63 +122,61 @@
 
   <!-- start Main Content -->
  <main>
-        <div class="faq-section">
-  <div class="faq-header">
-    <h2 class="fs-2"> Your Questions, Answered</h2>
-    <p class="">Search or explore common questions below.</p>
-  </div>
+    <div class="faq-section">
+      <div class="faq-header">
+        <h2>Your Questions, Answered</h2>
+        <p>Search or explore common questions below.</p>
+      </div>
 
-  <div class="faq-search">
-    <input type="text" id="faqSearch" placeholder="Search FAQs..." oninput="filterFAQs()" />
-    <i class="bi bi-search"></i>
-  </div>
+      <div class="faq-search">
+        <input type="text" id="faqSearch" placeholder="Search FAQs..." oninput="filterFAQs()" />
+        <i class="bi bi-search"></i>
+      </div>
 
-  <!-- FAQ 1 -->
-  <div class="faq-card">
-    <div class="faq-question" onclick="toggleFAQ(this)">
-      <div class="d-block d-sm-none" style="font-size: 14px;"> What services do you offer?</div>
-      <div class="d-none d-sm-block"> What services do you offer?</div>
-    </div>
-    <div class="faq-answer text-center text-sm-start">
-      We provide custom website development, branding, e-commerce platforms, and SEO-optimized landing pages for modern businesses.
-    </div>
-  </div>
+      <!-- FAQ 1 -->
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What services do you offer?</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          We provide custom website development, branding, e-commerce platforms, and SEO-optimized landing pages for modern businesses.
+        </div>
+      </div>
 
-  <!-- FAQ 2 -->
-  <div class="faq-card">
-    <div class="faq-question" onclick="toggleFAQ(this)">
-      <div class="d-block d-sm-none" style="font-size: 14px;"> How long does a project take?</div>
-      <div class="d-none d-sm-block"> How long does a project take?</div>
-    </div>
-    <div class="faq-answer text-center text-sm-start">
-      Most projects are completed in 3 to 6 weeks depending on the complexity and client communication cycle.
-    </div>
-  </div>
+      <!-- FAQ 2 -->
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How long does a project take?</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Most projects are completed in 3 to 6 weeks depending on the complexity and client communication cycle.
+        </div>
+      </div>
 
-  <!-- FAQ 3 -->
-  <div class="faq-card">
-    <div class="faq-question" onclick="toggleFAQ(this)">
-      <div class="d-block d-sm-none" style="font-size: 14px;">Do you offer support after launch?</div>
-      <div class="d-none d-sm-block">Do you offer support after launch?</div>
-    </div>
-    <div class="faq-answer text-center text-sm-start">
-      Yes, we offer maintenance packages for updates, security monitoring, and ongoing feature improvements.
-    </div>
-  </div>
+      <!-- FAQ 3 -->
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Do you offer support after launch?</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Yes, we offer maintenance packages for updates, security monitoring, and ongoing feature improvements.
+        </div>
+      </div>
 
-  <!-- FAQ 4 -->
-  <div class="faq-card">
-    <div class="faq-question" onclick="toggleFAQ(this)">
-      <div class="d-block d-sm-none" style="font-size: 14px;">What makes your agency unique?</div>
-      <div class="d-none d-sm-block">What makes your agency unique?</div>
+      <!-- FAQ 4 -->
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What makes your agency unique?</span>
+          <i class="bi bi-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          We combine deep strategy with modern UI/UX design and performance optimization to drive real business results.
+        </div>
+      </div>
     </div>
-    <div class="faq-answer text-center text-sm-start">
-      We combine deep strategy with modern UI/UX design and performance optimization to drive real business results.
-    </div>
-  </div>
-
-</div>
-
 
   </main>
   <!-- End Main Content -->
@@ -211,7 +208,7 @@
 
 
   <!-- more link -->
-    
+    <script src="assets/js/my-js.js"></script>
 
 </body>
 </html>

@@ -1,3 +1,32 @@
+  // <======================== faq functionality start  ========================>
+  function toggleFAQ(element) {
+      const card = element.closest(".faq-card");
+
+      // একসাথে একাধিক open করতে চাইলে নিচের দুই লাইনের কমেন্ট করে দিতে হবে
+      document.querySelectorAll(".faq-card").forEach(faq => {
+        if (faq !== card) faq.classList.remove("open");
+      });
+
+      card.classList.toggle("open");
+    }
+
+    function filterFAQs() {
+      const searchValue = document.getElementById("faqSearch").value.toLowerCase();
+      const faqs = document.querySelectorAll(".faq-card");
+
+      faqs.forEach(faq => {
+        const question = faq.querySelector(".faq-question span").innerText.toLowerCase();
+        const answer = faq.querySelector(".faq-answer").innerText.toLowerCase();
+
+        if (question.includes(searchValue) || answer.includes(searchValue)) {
+          faq.style.display = "block";
+        } else {
+          faq.style.display = "none";
+        }
+      });
+    }
+// <======================== faq functionality end  ========================>
+
 
 // <======================== sweet alert for add to card ‍ start ========================>  
 
