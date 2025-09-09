@@ -11,10 +11,10 @@
   <!-- html including render js -->
   <script src="assets/js/include.js" defer></script>
   <style>
-    body {
+    /* body {
       background: linear-gradient(135deg, #f9fafc, #f1f5f9);
       font-family: "Inter", sans-serif;
-    }
+    } */
     .checkout-wrapper {
       max-width: 1000px;
       margin: 60px auto;
@@ -77,6 +77,14 @@
     .pay-btn:hover {
       transform: scale(1.05);
     }
+    .margin-top{
+        margin-top: 100px;
+    }
+    @media screen and (max-width : 450px) {
+          .margin-top{
+        margin-top: 150px;
+    }
+    }
   </style>
 </head>
 <body>
@@ -88,7 +96,7 @@
   <!-- start Main Content -->
   <main>
 
-  <div class="checkout-wrapper container">
+  <div class="checkout-wrapper container margin-top">
     <!-- Header -->
     <div class="checkout-header">
       <h2>Pay Your Rent Securely</h2>
