@@ -184,6 +184,45 @@
       border-radius: 6px;
     }
 
+    /* dashboard notece style start */
+.notice-bar {
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.notice-track {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%; /* start off-screen */
+  animation: scroll-left 20s linear infinite;
+}
+
+.notice-track span {
+  display: inline-block;
+  padding-right: 100%; /* extra space for seamless loop */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .notice-bar {
+    font-size: 14px;
+  }
+}
+    /* dashboard notece style end */
+
+
  
     /* Responsive */
     @media (max-width: 768px) {
@@ -468,7 +507,63 @@
         <main class="col-lg-10 user-panel-content">
           <!-- Dashboard -->
           <div id="user-panel-dashboard" class="user-panel-section">
-            <h2 class="mb-4 fw-bold">Dashboard</h2>
+            <h2 class="mb-4 fw-bold d-inline">Dashboard</h2>
+              <!-- Notification Button -->
+            <button type="button" class="btn btn-primary position-relative d-inline" style="margin-top: -10px;margin-bottom: 5px;" data-bs-toggle="modal" data-bs-target="#notificationModal">
+              <i class="fas fa-bell"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount">
+                3
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </button>
+            <!-- Notification Modal -->
+            <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <!-- Header -->
+                  <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="notificationModalLabel">Notifications</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <!-- Body -->
+                  <div class="modal-body">
+                    <ul class="list-group" id="notificationList">
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">New Message from Rahim</div>
+                          "Please submit the rent for September."
+                        </div>
+                        <span class="badge bg-primary rounded-pill">Now</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">New Message from Sarah</div>
+                          "Maintenance request has been completed."
+                        </div>
+                        <span class="badge bg-primary rounded-pill">2h ago</span>
+                      </li>
+                      <!-- More messages can be added dynamically -->
+                    </ul>
+                  </div>
+
+                  <!-- Footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="clearNotifications">Mark All as Read</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Professional Notice Section -->
+            <div class="notice-bar bg-dark-subtle text-black fw-bolder mb-2 py-2 px-3 ">
+              <div class="notice-track">
+                <span>
+                  ⚠️ Rent for <strong>September 2025</strong> is due by <strong>15th September</strong>. Late fees apply after the due date. 
+                </span>
+              </div>
+            </div>
 
             <!-- Top Stats Cards -->
             <div class="row g-4 mb-4">
@@ -2302,6 +2397,31 @@
     calendar.render();
   });
 
+// notification functionlaty for dashboard 
+  const notificationCount = document.getElementById('notificationCount');
+  const notificationList = document.getElementById('notificationList');
+  const clearBtn = document.getElementById('clearNotifications');
+
+  // Clear notifications
+  clearBtn.addEventListener('click', () => {
+    notificationList.innerHTML = '<li class="list-group-item text-center text-muted">No new notifications</li>';
+    notificationCount.style.display = 'none';
+  });
+
+  // Example: dynamically add a notification
+  function addNotification(sender, message, time = 'Now') {
+    const li = document.createElement('li');
+    li.className = 'list-group-item d-flex justify-content-between align-items-start';
+    li.innerHTML = `
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">New Message from ${sender}</div>
+        "${message}"
+      </div>
+      <span class="badge bg-primary rounded-pill">${time}</span>
+    `;
+    notificationList.prepend(li);
+    notificationCount.style.display = 'inline-block';
+  }
 
 
 </script>
