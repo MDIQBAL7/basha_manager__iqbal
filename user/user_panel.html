@@ -184,6 +184,7 @@
       border-radius: 6px;
     }
 
+ 
     /* Responsive */
     @media (max-width: 768px) {
       .fc .fc-toolbar {
@@ -372,7 +373,7 @@
               >
             </li>
             <li>
-              <a class="nav-link" data-target="user-panel-calender" 
+              <a id="calander-btn" class="nav-link" data-target="user-panel-calender" 
                 ><i class="fa-solid fa-calculator me-2"></i>Calander</a
               >
             </li>
@@ -1713,20 +1714,23 @@
           </div>
        <!-- calander -->
 
-<div id="user-panel-calender" class="container-fluid py-3 user-panel-section">
+<div id="user-panel-calender" class="container-fluid py-3 user-panel-section user-panel-hidden">
   <div class="row justify-content-center">
     <div class="col-12">
       <div class="calendar-card">
         <div class="calendar-header">
           <h5>User Panel Calendar</h5>
         </div>
-        <div id="user-calendar"></div>
+        <div id="user-calendar" class=""></div>
       </div>
     </div>
   </div>
 </div>
 
-          <!-- walet id="user-walet user-panel-section user-panel-hidden-->
+
+         
+
+<!-- walet id="user-walet user-panel-section user-panel-hidden-->
 
 <div id="user-walet" class="container py-4 user-panel-section user-panel-hidden">
   <div class="row g-4">
@@ -2289,6 +2293,7 @@
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
 <script>
+  
   document.addEventListener('DOMContentLoaded', function () {
     var calendarEl = document.getElementById('user-calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -2296,6 +2301,9 @@
     });
     calendar.render();
   });
+
+
+
 </script>
 
   </body>
