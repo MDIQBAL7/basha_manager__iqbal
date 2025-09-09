@@ -683,9 +683,9 @@
                 <i class="fas fa-user-plus me-2"></i> Add Tenant
               </button>
             </div>
+           
             <div class="row g-4">
-      <!-- Tenant Card 1 start-->
-        
+<!-- Tenant Card 1 start-->   
 <div class="col-md-6 col-lg-4">
   <div class="user-panel-card overflow-hidden">
     <!-- Header -->
@@ -732,6 +732,24 @@
       </div>
       <span class="badge bg-success">Active Tenant</span>
     </div>
+<!-- Hidden form for extra details -->
+<div class="collapse" id="extraDetails1">
+  <div class="p-3 border-top bg-light">
+    <form>
+      <div class="mb-2">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Occupation">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Value</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Doctor">
+      </div>
+      <button type="submit" class="btn btn-sm btn-primary">
+        <i class="fa-solid fa-save me-1"></i> Save
+      </button>
+    </form>
+  </div>
+</div>
 
     <!-- Footer buttons -->
     <div class="p-3 border-top text-end">
@@ -757,7 +775,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal for Tenant Details -->
 <div
   class="modal fade"
@@ -837,10 +854,11 @@
     </div>
   </div>
 </div>
+<!-- Tenant Card 1 end-->
 
-      <!-- Tenant Card 1 end-->
-      <!-- Tenant Card  2 start -->
-            <div class="col-md-6 col-lg-4">
+
+<!-- Tenant Card  2 start -->
+<div class="col-md-6 col-lg-4">
   <div class="user-panel-card overflow-hidden">
     <!-- Header -->
     <div class="bg-light p-3 d-flex align-items-center justify-content-between">
@@ -886,6 +904,24 @@
       </div>
       <span class="badge bg-success">Active Tenant</span>
     </div>
+<!-- Hidden form for extra details -->
+<div class="collapse" id="extraDetails2">
+  <div class="p-3 border-top bg-light">
+    <form>
+      <div class="mb-2">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Occupation">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Value</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Doctor">
+      </div>
+      <button type="submit" class="btn btn-sm btn-primary">
+        <i class="fa-solid fa-save me-1"></i> Save
+      </button>
+    </form>
+  </div>
+</div>
 
     <!-- Footer buttons -->
     <div class="p-3 border-top text-end">
@@ -893,7 +929,7 @@
       <button
         class="btn btn-sm btn-outline-secondary"
         data-bs-toggle="collapse"
-        data-bs-target="#extraDetails1"
+        data-bs-target="#extraDetails2"
       >
         <i class="fa-solid fa-gear"></i>
       </button>
@@ -911,7 +947,6 @@
     </div>
   </div>
 </div>
-
 <!-- Modal for Tenant Details -->
 <div
   class="modal fade"
@@ -991,11 +1026,179 @@
     </div>
   </div>
 </div>
+<!-- Tenant Card  2 end -->
 
-      <!-- Tenant Card  2 end -->
-      <!-- Tenant Card 3 start-->
-        
-      <!-- Tenant Card 3 end-->
+
+<!-- Tenant Card 3 start-->
+<div class="col-md-6 col-lg-4">
+  <div class="user-panel-card overflow-hidden">
+    <!-- Header -->
+    <div class="bg-light p-3 d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <img
+          src="/assets/image/reviewprf/rvwprf3.png"
+          class="rounded-circle border border-3 border-white shadow me-3"
+          alt="Tenant"
+        />
+        <div>
+          <h5 class="mb-1">Rahim Uddin</h5>
+          <small class="d-block">
+            <a href="tel:+8801712345678" class="text-decoration-none text-muted">
+              <i class="fa-solid fa-phone me-1"></i> +8801712345678
+            </a>
+          </small>
+          <small class="d-block">
+            <a href="mailto:rahim@example.com" class="text-decoration-none text-muted">
+              <i class="fa-solid fa-envelope me-1"></i> rahim@example.com
+            </a>
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flat details -->
+    <div class="p-3 border-top" id="tenantDetails1">
+      <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
+      <p class="mb-1"><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
+      <p class="mb-1">
+        <strong>Bedrooms:</strong> 2 |
+        <strong>Washrooms:</strong> 2
+      </p>
+      <div id="extraDetailList1"></div>
+    </div>
+
+    <!-- Payment info -->
+    <div class="p-3 border-top">
+      <p class="mb-1"><strong>Paid Months:</strong> 5</p>
+      <p class="mb-2"><strong>Due Months:</strong> 1</p>
+      <div class="progress mb-2" style="height: 8px">
+        <div class="progress-bar bg-success" style="width: 83%"></div>
+      </div>
+      <span class="badge bg-success">Active Tenant</span>
+    </div>
+<!-- Hidden form for extra details -->
+<div class="collapse" id="extraDetails3">
+  <div class="p-3 border-top bg-light">
+    <form>
+      <div class="mb-2">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Occupation">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Value</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Doctor">
+      </div>
+      <button type="submit" class="btn btn-sm btn-primary">
+        <i class="fa-solid fa-save me-1"></i> Save
+      </button>
+    </form>
+  </div>
+</div>
+
+    <!-- Footer buttons -->
+    <div class="p-3 border-top text-end">
+      <!-- Settings button -->
+      <button
+        class="btn btn-sm btn-outline-secondary"
+        data-bs-toggle="collapse"
+        data-bs-target="#extraDetails3"
+      >
+        <i class="fa-solid fa-gear"></i>
+      </button>
+      <!-- View button -->
+      <button
+        class="btn btn-sm btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#tenantModal1"
+      >
+        <i class="fa-solid fa-eye me-1"></i> View
+      </button>
+      <button class="btn btn-sm btn-outline-danger">
+        <i class="fa-solid fa-bell me-1"></i> Reminder
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Modal for Tenant Details -->
+<div
+  class="modal fade"
+  id="tenantModal1"
+  tabindex="-1"
+  aria-labelledby="tenantModal1Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0 rounded-3">
+      <!-- Header -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="tenantModal1Label">
+          Tenant Details - Rahim Uddin
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <div class="row">
+          <!-- Left: Profile -->
+          <div class="col-md-4 text-center">
+            <img
+              src="/assets/image/reviewprf/rvwprf3.png"
+              class="rounded-circle border shadow mb-3"
+              width="120"
+              height="120"
+              alt="Tenant"
+            />
+            <h5>Rahim Uddin</h5>
+            <p class="mb-1">
+              <i class="fa-solid fa-phone me-1 text-muted"></i> +8801712345678
+            </p>
+            <p>
+              <i class="fa-solid fa-envelope me-1 text-muted"></i>
+              rahim@example.com
+            </p>
+          </div>
+
+          <!-- Right: Details -->
+          <div class="col-md-8">
+            <p><strong>Flat:</strong> A2, 2nd Floor</p>
+            <p><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
+            <p><strong>Bedrooms:</strong> 2</p>
+            <p><strong>Washrooms:</strong> 2</p>
+            <p><strong>Occupation:</strong> Doctor</p>
+            <p><strong>Marital Status:</strong> Married</p>
+            <p><strong>NID Number:</strong> 1234 5678 9101</p>
+            <p><strong>Tenant Since:</strong> 15 March 2024</p>
+            <hr />
+            <p><strong>Paid Months:</strong> 5</p>
+            <p><strong>Due Months:</strong> 1</p>
+            <div class="progress mb-2" style="height: 8px">
+              <div class="progress-bar bg-success" style="width: 83%"></div>
+            </div>
+            <span class="badge bg-success">Active Tenant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Tenant Card 3 end-->
             </div>
           </div>
 
