@@ -159,3 +159,16 @@ overlay.addEventListener("click", closeProfilePanel);
   // });
 
 
+// checkout paage funtionality 
+    function copyNumber(id) {
+      const number = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(number).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Copied!',
+          text: number + ' copied to clipboard',
+          timer: 1500,
+          showConfirmButton: false
+        });
+      });
+    }
