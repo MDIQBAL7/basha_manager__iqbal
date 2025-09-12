@@ -26,6 +26,8 @@
 </head>
 <body>
 
+
+
 <div class="container py-4">
   <div class="row gy-3">
     <!-- Header -->
@@ -90,6 +92,23 @@
         </div>
       </div>
     </div>
+     <!-- Rent Due Section -->
+<div class="col-12">
+  <div class="card shadow-sm p-3">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h5 class="mb-0">Rent Dues</h5>
+      <small class="text-muted">Saved locally</small>
+    </div>
+    <p class="mb-2">
+      You have <strong id="dueMonths">0</strong> months due 
+      (<span id="dueAmount">0৳</span>)
+    </p>
+    <ul id="dueList" class="small text-muted"></ul>
+    <a href="/checkouts.html" id="btnPayRent" class="btn btn-success mt-2">
+      <i class="fa-solid fa-money-bill-wave me-1"></i> Pay Now
+    </a>
+  </div>
+</div>
   </div>
 </div>
 
@@ -191,6 +210,7 @@
         <button id="sendMessageBtn" class="btn btn-primary">Send</button>
         <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
       </div>
+      
     </div>
   </div>
 </div>
@@ -386,6 +406,105 @@ function escapeHtml(unsafe) {
 }       
 
 document.addEventListener('DOMContentLoaded', init);
+
+// try  
+const DUE_KEY = "tenantDueMonths_v1";
+
+// ডিফল্ট ২ মাস বাকি ধরা হলো (July & August 2025)
+if (!localStorage.getItem(DUE_KEY)) {
+  const today = new Date();
+  const months = [
+    getMonthName(today.getMonth() - 2, today.getFullYear()),
+    getMonthName(today.getMonth() - 1, today.getFullYear())
+  ];
+  localStorage.setItem(DUE_KEY, JSON.stringify(months));
+}
+
+let payRentModal;
+
+function init() {
+  // আগেরগুলো
+  editModal = new bootstrap.Modal(document.getElementById('editProfileModal'));
+  messageModal = new bootstrap.Modal(document.getElementById('messageOwnerModal'));
+  payRentModal = new bootstrap.Modal(document.getElementById('payRentModal'));
+
+  if (!localStorage.getItem(PROFILE_KEY)) localStorage.setItem(PROFILE_KEY, JSON.stringify(DEFAULT_PROFILE));
+  if (!localStorage.getItem(MESSAGES_KEY)) localStorage.setItem(MESSAGES_KEY, JSON.stringify(DEFAULT_MESSAGES));
+
+  renderProfile();
+  renderMessages();
+  renderDue();
+
+  // Event Listeners
+  document.getElementById('btnEditProfile').addEventListener('click', openEdit);
+  document.getElementById('btnMessageOwner').addEventListener('click', ()=> messageModal.show());
+  document.getElementById('saveProfileBtn').addEventListener('click', saveProfile);
+  document.getElementById('quickSendBtn').addEventListener('click', quickSend);
+  document.getElementById('contactOwnerPhone').addEventListener('click', contactOwnerPhone);
+  document.getElementById('sendMessageBtn').addEventListener('click', sendMessageFromModal);
+  document.getElementById('btnPayRent').addEventListener('click', ()=> payRentModal.show());
+  document.getElementById('confirmPayBtn').addEventListener('click', payRent);
+
+  document.getElementById('avatarUrl').addEventListener('input', (e)=>{
+    const url = e.target.value.trim();
+    const img = document.getElementById('modalAvatarPreview');
+    img.src = url || 'https://i.pravatar.cc/300?u=tenant';
+  });
+
+  document.getElementById('modalAvatarPreview').src = DEFAULT_PROFILE.avatar;
+}
+
+// মাসের নাম জেনারেটর
+function getMonthName(monthIndex, year){
+  const date = new Date(year, monthIndex, 1);
+  return date.toLocaleString("en-US", { month: "long", year: "numeric" });
+}
+
+function getDue(){
+  return JSON.parse(localStorage.getItem(DUE_KEY) || "[]");
+}
+function setDue(arr){
+  localStorage.setItem(DUE_KEY, JSON.stringify(arr));
+}
+
+function renderDue(){
+  const dueMonths = getDue();
+  const profile = getProfile();
+
+  let rent = parseInt(profile.rent) || 0; // rent field থেকে টাকা নেবে
+  let total = dueMonths.length * rent;
+
+  document.getElementById("dueMonths").innerText = dueMonths.length;
+  document.getElementById("dueAmount").innerText = total + "৳";
+
+  const list = document.getElementById("dueList");
+  list.innerHTML = "";
+  dueMonths.forEach(m => {
+    const li = document.createElement("li");
+    li.innerText = m;
+    list.appendChild(li);
+  });
+}
+
+function payRent(){
+  const months = parseInt(document.getElementById("monthsToPay").value || "0");
+  if(months <= 0){ alert("Enter valid months."); return; }
+
+  let due = getDue();
+  if(months > due.length){
+    alert("You don’t have that many months due.");
+    return;
+  }
+
+  // পুরানো মাস থেকে পেমেন্ট ক্লিয়ার হবে (সামনের দিক থেকে)
+  due = due.slice(months);
+  setDue(due);
+  renderDue();
+  payRentModal.hide();
+  document.getElementById("rentForm").reset();
+  toast(`Payment successful for ${months} month(s).`);
+}
+
 </script>
 
 </body>
