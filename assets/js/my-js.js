@@ -32,7 +32,7 @@
 
       function showDetails() {
       Swal.fire({
-        title: "House Availability",
+        title: "<span class = 'text-white fs-3'>House Availability</span>",
         html: `
           <div class="add-card-status-line">
             <button class="add-card-btn">
