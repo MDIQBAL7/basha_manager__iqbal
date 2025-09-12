@@ -1,11 +1,392 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tenant Panel</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body { 
+      background: #6c97c161; 
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .profile-card { border-radius: 16px; overflow: hidden; }
+    .avatar { width: 110px; height: 110px; object-fit: cover; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 4px 14px rgba(0,0,0,0.08); }
+    .meta-item { font-size: .95rem; }
+    .msg-list { max-height: 380px; overflow-y: auto; }
+    @media (max-width: 767px) {
+      .avatar { width: 90px; height: 90px; }
+    }
+  </style>
 </head>
 <body>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates optio tenetur est maxime pariatur sint voluptatum sit ipsum beatae dolorem.</p>
+
+<div class="container py-4">
+  <div class="row gy-3">
+    <!-- Header -->
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="mb-0">Tenant Panel</h3>
+        <div>
+          <button id="btnMessageOwner" class="btn btn-primary me-2"><i class="fa-solid fa-envelope"></i></button>
+          <button id="contactOwnerPhone" class="btn btn-primary me-2"><i class="fa-solid fa-phone"></i></button>
+          <button id="btnEditProfile" class="btn btn-outline-secondary"><i class="fa-solid fa-pen"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile -->
+    <div class="col-12">
+      <div class="card profile-card shadow-sm p-3">
+        <div class="d-flex flex-column flex-sm-row gap-3 align-items-center">
+          <img id="tenantAvatar" src="" alt="avatar" class="avatar">
+          <div class="flex-grow-1">
+            <h5 id="tenantName" class="mb-1">Tenant Name</h5>
+            <p id="tenantOccupation" class="mb-1 text-muted">Occupation</p>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+              <span class="badge bg-light text-dark p-2" id="tenantRoom">Room: -</span>
+              <span class="badge bg-light text-dark p-2" id="tenantRent">Rent: -</span>
+              <span class="badge bg-light text-dark p-2" id="tenantStatus">Status: Active</span>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <p class="meta-item mb-1"><i class="fa-solid fa-phone me-2"></i><strong>Phone:</strong> <span id="tenantPhone">-</span></p>
+            <p class="meta-item mb-1"><i class="fa-solid fa-envelope me-2"></i><strong>Email:</strong> <span id="tenantEmail">-</span></p>
+          </div>
+          <div class="col-12 col-md-6">
+            <p class="meta-item mb-1"><i class="fa-solid fa-calendar-days me-2"></i><strong>Move in:</strong> <span id="tenantMoveIn">-</span></p>
+            <p class="meta-item mb-1"><i class="fa-solid fa-house-chimney me-2"></i><strong>Address:</strong> <span id="tenantAddress">-</span></p>
+          </div>
+        </div>
+
+        <hr>
+        <h6 class="mb-2">Notes:</h6>
+        <p id="tenantNote" class="small text-muted">No notes yet.</p>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="col-12">
+      <div class="card shadow-sm p-3">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="mb-0">Message History</h5>
+          <small class="text-muted">Saved locally</small>
+        </div>
+
+        <div class="msg-list list-group mb-3" id="messagesList"></div>
+
+        <div class="d-flex gap-2">
+          <input id="quickMessageInput" type="text" class="form-control" placeholder="Write a quick message...">
+          <button id="quickSendBtn" class="btn btn-success"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="profileForm">
+          <div class="row g-3">
+            <div class="col-12 col-md-4 text-center">
+              <img id="modalAvatarPreview" src="" alt="avatar" class="avatar mb-2">
+              <input id="avatarUrl" type="url" class="form-control" placeholder="Avatar URL (optional)">
+              <small class="text-muted">Enter URL to update avatar locally.</small>
+            </div>
+            <div class="col-12 col-md-8">
+              <div class="mb-2">
+                <label class="form-label">Name</label>
+                <input id="inputName" class="form-control" required>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Occupation</label>
+                <input id="inputOccupation" class="form-control">
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-2">
+                  <label class="form-label">Phone</label>
+                  <input id="inputPhone" class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-2">
+                  <label class="form-label">Email</label>
+                  <input id="inputEmail" type="email" class="form-control">
+                </div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Address</label>
+                <input id="inputAddress" class="form-control">
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-2">
+                  <label class="form-label">Room Number</label>
+                  <input id="inputRoom" class="form-control">
+                </div>
+                <div class="col-md-6 mb-2">
+                  <label class="form-label">Monthly Rent</label>
+                  <input id="inputRent" class="form-control">
+                </div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Move in Date</label>
+                <input id="inputMoveIn" type="date" class="form-control">
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Notes</label>
+                <textarea id="inputNote" class="form-control" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="saveProfileBtn" class="btn btn-primary">Save</button>
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Message Owner Modal -->
+<div class="modal fade" id="messageOwnerModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Send Message to Owner</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="messageForm">
+          <div class="mb-2">
+            <label class="form-label">Owner</label>
+            <input id="ownerName" class="form-control" value="Owner" disabled>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Subject</label>
+            <input id="messageSubject" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Message</label>
+            <textarea id="messageBody" class="form-control" rows="5" required></textarea>
+          </div>
+        </form>
+        <div class="small text-muted">This demo version saves messages locally (no backend).</div>
+      </div>
+      <div class="modal-footer">
+        <button id="sendMessageBtn" class="btn btn-primary">Send</button>
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const PROFILE_KEY = 'tenantProfile_v1';
+const MESSAGES_KEY = 'tenantMessages_v1';
+
+const DEFAULT_PROFILE = {
+  name: 'MD Kamal',
+  occupation: 'Doctor',
+  phone: '+8801712345678',
+  email: 'kamal@example.com',
+  address: 'Dhanmondi, Dhaka',
+  room: 'B-12',
+  rent: '12000৳',
+  moveIn: '',
+  note: 'Clean and responsible person',
+  avatar: 'https://i.pravatar.cc/300?img=12'
+};
+
+const DEFAULT_MESSAGES = [
+  { id: genId(), to: 'owner', subject: 'Electricity Bill', body: 'Electric bill has increased, want to discuss.', time: now() }
+];
+
+function genId(){ return 'm_' + Math.random().toString(36).slice(2,9); }
+function now(){ return new Date().toLocaleString(); }
+
+let editModal, messageModal;
+
+function init(){
+  editModal = new bootstrap.Modal(document.getElementById('editProfileModal'));
+  messageModal = new bootstrap.Modal(document.getElementById('messageOwnerModal'));
+
+  if(!localStorage.getItem(PROFILE_KEY)) localStorage.setItem(PROFILE_KEY, JSON.stringify(DEFAULT_PROFILE));
+  if(!localStorage.getItem(MESSAGES_KEY)) localStorage.setItem(MESSAGES_KEY, JSON.stringify(DEFAULT_MESSAGES));
+
+  renderProfile();
+  renderMessages();
+
+  document.getElementById('btnEditProfile').addEventListener('click', openEdit);
+  document.getElementById('btnMessageOwner').addEventListener('click', ()=> messageModal.show());
+  document.getElementById('saveProfileBtn').addEventListener('click', saveProfile);
+  document.getElementById('quickSendBtn').addEventListener('click', quickSend);
+  document.getElementById('contactOwnerPhone').addEventListener('click', contactOwnerPhone);
+  document.getElementById('sendMessageBtn').addEventListener('click', sendMessageFromModal);
+
+  document.getElementById('avatarUrl').addEventListener('input', (e)=>{
+    const url = e.target.value.trim();
+    const img = document.getElementById('modalAvatarPreview');
+    img.src = url || 'https://i.pravatar.cc/300?u=tenant';
+  });
+
+  document.getElementById('modalAvatarPreview').src = DEFAULT_PROFILE.avatar;
+}
+
+function getProfile(){ return JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}'); }
+function setProfile(p){ localStorage.setItem(PROFILE_KEY, JSON.stringify(p)); }
+
+function renderProfile(){
+  const p = getProfile();
+  document.getElementById('tenantAvatar').src = p.avatar || 'https://i.pravatar.cc/300?u=tenant';
+  document.getElementById('tenantName').innerText = p.name || '-';
+  document.getElementById('tenantOccupation').innerText = p.occupation || '';
+  document.getElementById('tenantPhone').innerText = p.phone || '-';
+  document.getElementById('tenantEmail').innerText = p.email || '-';
+  document.getElementById('tenantAddress').innerText = p.address || '-';
+  document.getElementById('tenantRoom').innerText = 'Room: ' + (p.room || '-');
+  document.getElementById('tenantRent').innerText = 'Rent: ' + (p.rent || '-');
+  document.getElementById('tenantMoveIn').innerText = p.moveIn || '-';
+  document.getElementById('tenantNote').innerText = p.note || '-';
+}
+
+function openEdit(){
+  const p = getProfile();
+  document.getElementById('inputName').value = p.name || '';
+  document.getElementById('inputOccupation').value = p.occupation || '';
+  document.getElementById('inputPhone').value = p.phone || '';
+  document.getElementById('inputEmail').value = p.email || '';
+  document.getElementById('inputAddress').value = p.address || '';
+  document.getElementById('inputRoom').value = p.room || '';
+  document.getElementById('inputRent').value = p.rent || '';
+  document.getElementById('inputMoveIn').value = p.moveIn || '';
+  document.getElementById('inputNote').value = p.note || '';
+  document.getElementById('avatarUrl').value = p.avatar || '';
+  document.getElementById('modalAvatarPreview').src = p.avatar || 'https://i.pravatar.cc/300?u=tenant';
+  editModal.show();
+}
+
+function saveProfile(){
+  const name = document.getElementById('inputName').value.trim();
+  const phone = document.getElementById('inputPhone').value.trim();
+  if(!name || !phone){ alert('Name and Phone are required.'); return; }
+
+  const p = {
+    name,
+    occupation: document.getElementById('inputOccupation').value.trim(),
+    phone,
+    email: document.getElementById('inputEmail').value.trim(),
+    address: document.getElementById('inputAddress').value.trim(),
+    room: document.getElementById('inputRoom').value.trim(),
+    rent: document.getElementById('inputRent').value.trim(),
+    moveIn: document.getElementById('inputMoveIn').value,
+    note: document.getElementById('inputNote').value.trim(),
+    avatar: document.getElementById('avatarUrl').value.trim() || document.getElementById('modalAvatarPreview').src
+  };
+
+  setProfile(p);
+  renderProfile();
+  editModal.hide();
+  toast('Profile updated');
+}
+
+function toast(msg){
+  const t = document.createElement('div');
+  t.className = 'toast align-items-center text-bg-dark border-0 show';
+  t.style.position = 'fixed';
+  t.style.bottom = '20px';
+  t.style.right = '20px';
+  t.style.zIndex = 9999;
+  t.innerHTML = `<div class='d-flex'><div class='toast-body'>${msg}</div><button class='btn-close btn-close-white me-2 m-auto' onclick='this.closest(\".toast\").remove()'></button></div>`;
+  document.body.appendChild(t);
+  setTimeout(()=> t.remove(), 4000);
+}
+
+function getMessages(){ return JSON.parse(localStorage.getItem(MESSAGES_KEY) || '[]'); }
+function setMessages(arr){ localStorage.setItem(MESSAGES_KEY, JSON.stringify(arr)); }
+
+function renderMessages(){
+  const list = document.getElementById('messagesList');
+  list.innerHTML = '';
+  const msgs = getMessages().slice().reverse();
+  if(msgs.length === 0){ list.innerHTML = '<div class="text-muted p-3">No messages yet.</div>'; return; }
+
+  msgs.forEach(m => {
+    const el = document.createElement('div');
+    el.className = 'list-group-item';
+    el.innerHTML = `
+      <div class="d-flex w-100 justify-content-between">
+        <h6 class="mb-1">${escapeHtml(m.subject)}</h6>
+        <small class="text-muted">${m.time}</small>
+      </div>
+      <p class="mb-1">${escapeHtml(m.body)}</p>
+      <div class="small text-muted">To: ${m.to}</div>
+    `;
+    list.appendChild(el);
+  });
+}
+
+function quickSend(){
+  const txt = document.getElementById('quickMessageInput');
+  const val = txt.value.trim();
+  if(!val) return;
+  const msgs = getMessages();
+  msgs.push({ id: genId(), to: 'owner', subject: 'Quick message', body: val, time: now() });
+  setMessages(msgs);
+  txt.value = '';
+  renderMessages();
+  toast('Message sent (saved locally)');
+}
+
+function sendMessageFromModal(){
+  const subject = document.getElementById('messageSubject').value.trim();
+  const body = document.getElementById('messageBody').value.trim();
+  if(!subject || !body){ alert('Both subject and message are required.'); return; }
+
+  const msgs = getMessages();
+  msgs.push({ id: genId(), to: 'owner', subject, body, time: now() });
+  setMessages(msgs);
+  renderMessages();
+  messageModal.hide();
+  document.getElementById('messageForm').reset();
+  toast('Message saved locally');
+}
+
+function contactOwnerPhone(){
+  const ownerPhone = '+8801912345678';
+  if(confirm('Do you want to call the owner? ' + ownerPhone)){
+    window.location.href = 'tel:' + ownerPhone;
+  }
+}
+
+function escapeHtml(unsafe) {
+  return (unsafe || '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}       
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+
 </body>
 </html>
