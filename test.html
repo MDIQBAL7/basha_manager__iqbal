@@ -104,34 +104,7 @@
         transform: translateY(-5px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
       }
-      @media (max-width: 768px) {
-        .to-let-det-gallery img {
-          width: calc(50% - 10px);
-        }
-         .to-let-det-info-cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        margin-top: 20px; 
-      }
-      .to-let-det-info-cards{
-        padding: 0px 5px;
-      }
-      }
-      @media (max-width: 480px) {
-        .to-let-det-gallery img {
-          width: 100%;
-        }
-          .to-let-det-info-cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        margin-top: 20px; 
-      }
-      .to-let-det-info-cards{
-        padding: 0px 5px;
-      }
-      }
+    
 
       /* Modal */
       .to-let-det-modal {
@@ -145,6 +118,7 @@
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.9);
         animation: to-let-det-fadeIn 0.5s ease;
+        
       }
       .to-let-det-modal-content {
         margin: auto;
@@ -154,6 +128,11 @@
         border-radius: 12px;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         animation: to-let-det-zoomIn 0.4s ease;
+        padding: 50px;
+        margin-top: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
       }
       .to-let-det-modal-caption {
         text-align: center;
@@ -217,6 +196,62 @@
         to {
           opacity: 1;
         }
+      }
+
+      /* responsive  */
+
+        @media (max-width: 768px) {
+        .to-let-det-gallery img {
+          width: calc(50% - 10px);
+        }
+         .to-let-det-info-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 20px; 
+      }
+      .to-let-det-info-cards{
+        padding: 0px 5px;
+      }
+      }
+      @media (max-width: 480px) {
+        .to-let-det-gallery img {
+          width: 100%;
+        }
+          .to-let-det-info-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 20px; 
+      }
+      .to-let-det-info-cards{
+        padding: 0px 5px;
+      }
+       .to-let-det-modal-content {
+        margin: auto;
+        display: block;
+        max-width: 80%;
+        max-height: 80vh;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        animation: to-let-det-zoomIn 0.4s ease;
+        background-color: red;
+        padding: 0px;
+        margin-top: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+      }
+         .to-let-det-prev {
+        /* left: 20px;
+        top: 280px; */
+        display: none;
+      }
+      .to-let-det-next {
+        /* right: 20px;
+        top: 280px; */
+        display: none;
+      }
       }
     </style>
   </head>
