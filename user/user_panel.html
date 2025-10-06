@@ -1,0 +1,2430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Panel - Basha Manager</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- css file link  -->
+    <!-- <link rel="stylesheet" href="/assets/css/user-panel.css"> -->
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa;
+      }
+
+      .btn-tenent {
+        position: relative;
+        display: inline-block;
+        padding: 12px 10px;
+        border-radius: 10px; /* pill style */
+        font-size: 15px;
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(135deg, #4a90e2, #357abd);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 6px 12px rgba(74, 144, 226, 0.25);
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
+        overflow: hidden;
+      }
+
+      .active-btn {
+        color: black;
+      }
+      .active-btn:active {
+        border: none;
+        outline: none;
+        /* background-color: rgba(255, 255, 255, 0.36); */
+        box-shadow: none;
+      }
+      /* Sidebar */
+      .user-panel-sidebar {
+        background: #1a1d20;
+        color: #fff;
+        min-height: 100vh;
+        padding-top: 20px;
+      }
+
+      .user-panel-sidebar h4 {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      .user-panel-sidebar .nav-link {
+        color: #adb5bd;
+        margin: 6px 0;
+        border-radius: 6px;
+        transition: 0.3s;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-size: 0.95rem;
+      }
+
+      .user-panel-sidebar .nav-link.active,
+      .user-panel-sidebar .nav-link:hover {
+        background: #0d6efd;
+        color: #fff;
+      }
+
+      /* Main content */
+      .user-panel-content {
+        padding: 20px;
+      }
+
+      .user-panel-card {
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+        padding: 20px;
+        background: #fff;
+      }
+
+      .user-panel-card:hover {
+        transform: translateY(-3px);
+      }
+
+      .user-panel-hidden {
+        display: none;
+      }
+
+      /* Table Responsive */
+      .table-responsive {
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      /* footer button  */
+      .w-new {
+        width: 25%;
+      }
+
+      /* for calender style  */
+    .cal {
+      background: #f0f2f5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .calendar-card {
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      background: #fff;
+      max-width: 1200px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .calendar-header {
+      background: linear-gradient(135deg, #4a90e2, #357abd);
+      color: #fff;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .calendar-header h5 {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    #user-calendar {
+      width: 100%;
+      max-width: 100%;
+      padding: 15px;
+    }
+
+    /* Remove borders */
+    .fc-theme-standard td,
+    .fc-theme-standard th {
+      border: none !important;
+    }
+
+    .fc .fc-toolbar-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+
+    .fc-toolbar-chunk .fc-button {
+      border-radius: 6px !important;
+      padding: 6px 10px !important;
+      font-weight: 600;
+      border: none !important;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff !important;
+      transition: 0.3s;
+      font-size: 0.85rem;
+      margin-right: 5px;
+    }
+    .fc-toolbar-chunk .fc-button:hover {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+
+    .fc-daygrid-day:hover {
+      background: #f8f9fa;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .fc-day-today {
+      background: #e0e7ff !important;
+      border: 2px solid #4c51bf !important;
+      border-radius: 6px;
+    }
+
+    /* dashboard notece style start */
+.notice-bar {
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.notice-track {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%; /* start off-screen */
+  animation: scroll-left 20s linear infinite;
+}
+
+.notice-track span {
+  display: inline-block;
+  padding-right: 100%; /* extra space for seamless loop */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .notice-bar {
+    font-size: 14px;
+  }
+}
+    /* dashboard notece style end */
+
+
+ 
+    /* Responsive */
+    @media (max-width: 768px) {
+      .fc .fc-toolbar {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .fc .fc-toolbar-title {
+        font-size: 1rem;
+      }
+      .fc-toolbar-chunk {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+      }
+      .fc-toolbar-chunk .fc-button {
+        font-size: 0.75rem;
+        padding: 4px 6px !important;
+      }
+      .fc-daygrid-day-frame {
+        font-size: 0.7rem;
+        padding: 2px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calendar-header h5 {
+        font-size: 1rem;
+      }
+      .fc .fc-toolbar-title {
+        font-size: 0.9rem;
+      }
+      .fc-toolbar-chunk .fc-button {
+        font-size: 0.7rem;
+        padding: 3px 5px !important;
+      }
+      .fc-daygrid-day-frame {
+        font-size: 0.6rem;
+        padding: 1px;
+      }
+    }
+
+  /* Custom wallet cards style start */
+   .user-wallet-card {
+      border: none;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform .2s ease;
+    }
+    .user-wallet-card:hover { transform: translateY(-4px); }
+    .user-wallet-header {
+      padding: 16px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .user-wallet-amount {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 12px 0 6px;
+      color: #111827;
+    }
+    .user-wallet-note { color: #6b7280; font-size: .9rem; margin: 0 0 12px; }
+    .user-wallet-body { padding: 18px; background: #fff; }
+    .user-income-grad { background: linear-gradient(135deg,#34d399,#059669); }
+    .user-expense-grad { background: linear-gradient(135deg,#f87171,#b91c1c); }
+    .user-icon-badge {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: rgba(255,255,255,.25);
+    }
+    .user-list-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 1px dashed #e5e7eb;
+    }
+    .user-list-item:last-child { border-bottom: none; }
+    .user-actions button { border: none; background: none; }
+  /* Custom wallet cards style end */
+  
+
+
+
+
+
+
+      /* Small Devices Fix */
+      @media (max-width: 991px) {
+        .desktop-sidebar {
+          display: none;
+        }
+        .user-panel-content {
+          padding: 15px;
+        }
+        .w-new {
+          width: 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#"
+          ><i class="fa-solid fa-house-chimney me-2"></i>Basha Manager</a
+        >
+        <div class="d-flex align-items-center">
+          <!-- Profile Dropdown -->
+          <div class="dropdown me-2 d-none d-sm-block">
+            <a
+              class="btn btn-outline-light dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+            >
+              <i class="fa-solid fa-user-circle me-1"></i> User
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+            </ul>
+          </div>
+
+          <!-- Toggle Button for Mobile -->
+          <button
+            class="btn btn-outline-light d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#userPanelSidebarMobile"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Desktop Sidebar -->
+        <div
+          class="col-lg-2 d-none d-lg-block desktop-sidebar user-panel-sidebar"
+        >
+          <h4><i class="fa-solid fa-user me-2"></i>User Panel</h4>
+          <ul class="nav flex-column">
+            <li>
+              <a class="nav-link active" data-target="user-panel-dashboard"
+                ><i class="fa-solid fa-gauge me-2"></i>Dashboard</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-panel-rents"
+                ><i class="fa-solid fa-house me-2"></i>My Rents</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-panel-payments"
+                ><i class="fa-solid fa-wallet me-2"></i>Payments</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-panel-bills"
+                ><i class="fa-solid fa-file-invoice me-2"></i>Bills</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-panel-profile"
+                ><i class="fa-solid fa-user me-2"></i>Profile</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-panel-calculator"
+                ><i class="fa-solid fa-calculator me-2"></i>Calculator</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" href="Tenent-Panel.html"
+                ><i class="fa-solid fa-calculator me-2"></i>Tenent-Panel</a
+              >
+            </li>
+            <li>
+              <a id="calander-btn" class="nav-link" data-target="user-panel-calender" 
+                ><i class="fa-solid fa-calculator me-2"></i>Calander</a
+              >
+            </li>
+            <li>
+              <a class="nav-link" data-target="user-walet"
+                ><i class="fa-solid fa-calculator me-2"></i>Walet</a
+              >
+            </li>
+            <li>
+            <!-- Add To-Let Button -->
+           <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addToLetModal">
+             Add To-Let
+          </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mobile Sidebar (Offcanvas) -->
+        <div
+          class="offcanvas offcanvas-end user-panel-sidebar"
+          tabindex="-1"
+          id="userPanelSidebarMobile"
+        >
+          <div class="offcanvas-header">
+            <h4 class="offcanvas-title text-white">
+              <i class="fa-solid fa-user me-2"></i>User Panel
+            </h4>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="offcanvas"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="nav flex-column">
+              <li>
+                <a class="nav-link active" data-target="user-panel-dashboard"
+                  ><i class="fa-solid fa-gauge me-2"></i>Dashboard</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" data-target="user-panel-rents"
+                  ><i class="fa-solid fa-house me-2"></i>My Rents</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" data-target="user-panel-payments"
+                  ><i class="fa-solid fa-wallet me-2"></i>Payments</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" data-target="user-panel-bills"
+                  ><i class="fa-solid fa-file-invoice me-2"></i>Bills</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" data-target="user-panel-profile"
+                  ><i class="fa-solid fa-user me-2"></i>Profile</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" data-target="user-panel-calculator"
+                  ><i class="fa-solid fa-calculator me-2"></i>Calculator</a
+                >
+              </li>
+              <li>
+                <a class="nav-link" href="Tenent-Panel.html"
+                  ><i class="fa-solid fa-calculator me-2"></i>Tenent-Panel</a
+                >
+              </li>
+                <li>
+              <a class="nav-link" data-target="user-panel-calender"
+                ><i class="fa-solid fa-calculator me-2"></i>Calander</a
+              >
+            </li>
+                <li>
+              <a class="nav-link" data-target="user-walet"
+                ><i class="fa-solid fa-calculator me-2"></i>Walet</a
+              >
+            </li>
+              <li>
+            <!-- Add To-Let Button -->
+           <a class="nav-link" data-bs-toggle="modal" data-bs-target="#addToLetModal">
+             Add To-Let
+          </a>
+            </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="col-lg-10 user-panel-content">
+          <!-- Dashboard -->
+          <div id="user-panel-dashboard" class="user-panel-section">
+            <h2 class="mb-4 fw-bold d-inline">Dashboard</h2>
+              <!-- Notification Button -->
+            <button type="button" class="btn btn-primary position-relative d-inline" style="margin-top: -10px;margin-bottom: 5px;" data-bs-toggle="modal" data-bs-target="#notificationModal">
+              <i class="fas fa-bell"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="notificationCount">
+                3
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </button>
+            <!-- Notification Modal -->
+            <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <!-- Header -->
+                  <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="notificationModalLabel">Notifications</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <!-- Body -->
+                  <div class="modal-body">
+                    <ul class="list-group" id="notificationList">
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">New Message from Rahim</div>
+                          "Please submit the rent for September."
+                        </div>
+                        <span class="badge bg-primary rounded-pill">Now</span>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">New Message from Sarah</div>
+                          "Maintenance request has been completed."
+                        </div>
+                        <span class="badge bg-primary rounded-pill">2h ago</span>
+                      </li>
+                      <!-- More messages can be added dynamically -->
+                    </ul>
+                  </div>
+
+                  <!-- Footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="clearNotifications">Mark All as Read</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Professional Notice Section -->
+            <div class="notice-bar bg-dark-subtle text-black fw-bolder mb-2 py-2 px-3 ">
+              <div class="notice-track">
+                <span>
+                  ⚠️ Rent for <strong>September 2025</strong> is due by <strong>15th September</strong>. Late fees apply after the due date. 
+                </span>
+              </div>
+            </div>
+
+            <!-- Top Stats Cards -->
+            <div class="row g-4 mb-4">
+              <div class="col-md-3 col-sm-6">
+                <div
+                  class="user-panel-card text-white p-4 position-relative overflow-hidden"
+                  style="background: linear-gradient(135deg, #4e73df, #224abe)"
+                >
+                  <i
+                    class="fa-solid fa-users fa-2x position-absolute top-0 end-0 m-3 opacity-25"
+                  ></i>
+                  <h6>Total Tenants</h6>
+                  <p class="fs-3 fw-bold mb-0">12</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div
+                  class="user-panel-card text-white p-4 position-relative overflow-hidden"
+                  style="background: linear-gradient(135deg, #1cc88a, #0d9b64)"
+                >
+                  <i
+                    class="fa-solid fa-sack-dollar fa-2x position-absolute top-0 end-0 m-3 opacity-25"
+                  ></i>
+                  <h6>Total Rent Collected</h6>
+                  <p class="fs-3 fw-bold mb-0">৳ 75,000</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div
+                  class="user-panel-card text-white p-4 position-relative overflow-hidden"
+                  style="background: linear-gradient(135deg, #f6c23e, #dda20a)"
+                >
+                  <i
+                    class="fa-solid fa-file-invoice-dollar fa-2x position-absolute top-0 end-0 m-3 opacity-25"
+                  ></i>
+                  <h6>Pending Bills</h6>
+                  <p class="fs-3 fw-bold mb-0">৳ 5,000</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <div
+                  class="user-panel-card text-white p-4 position-relative overflow-hidden"
+                  style="background: linear-gradient(135deg, #e74a3b, #be2617)"
+                >
+                  <i
+                    class="fa-solid fa-building fa-2x position-absolute top-0 end-0 m-3 opacity-25"
+                  ></i>
+                  <h6>Empty Flats</h6>
+                  <p class="fs-3 fw-bold mb-0">3</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Charts + Progress -->
+            <div class="row g-4 mb-4">
+              <div class="col-lg-8">
+                <div class="user-panel-card p-4">
+                  <h5 class="mb-3">Rent Collection (Last 6 Months)</h5>
+                  <canvas id="rentChart" height="120"></canvas>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="user-panel-card p-4">
+                  <h5 class="mb-3">Payment Status</h5>
+                  <canvas id="dueChart" height="200"></canvas>
+                  <div class="mt-3">
+                    <p class="mb-1">Paid <span class="float-end">93%</span></p>
+                    <div class="progress mb-2" style="height: 8px">
+                      <div
+                        class="progress-bar bg-success"
+                        style="width: 93%"
+                      ></div>
+                    </div>
+                    <p class="mb-1">Due <span class="float-end">7%</span></p>
+                    <div class="progress" style="height: 8px">
+                      <div
+                        class="progress-bar bg-danger"
+                        style="width: 7%"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Payments -->
+            <div class="user-panel-card p-4 mb-4">
+              <h5 class="mb-3">Recent Payments</h5>
+
+              <!-- Table for Desktop -->
+              <div class="table-responsive d-none d-md-block">
+                <table class="table align-middle">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Date</th>
+                      <th>Tenant</th>
+                      <th>Amount</th>
+                      <th>Method</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>01 Sep 2025</td>
+                      <td>
+                        <i class="fa-solid fa-user me-2 text-primary"></i>Shafiq
+                        Ahmed
+                      </td>
+                      <td>৳ 25,000</td>
+                      <td>Bkash</td>
+                      <td><span class="badge bg-success">Paid</span></td>
+                    </tr>
+                    <tr>
+                      <td>25 Aug 2025</td>
+                      <td>
+                        <i class="fa-solid fa-user me-2 text-primary"></i>Hasan
+                        Ali
+                      </td>
+                      <td>৳ 20,000</td>
+                      <td>Cash</td>
+                      <td>
+                        <span class="badge bg-warning text-dark">Pending</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>01 Aug 2025</td>
+                      <td>
+                        <i class="fa-solid fa-user me-2 text-primary"></i>Rahim
+                        Uddin
+                      </td>
+                      <td>৳ 25,000</td>
+                      <td>Bank</td>
+                      <td><span class="badge bg-success">Paid</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Cards for Mobile -->
+              <div class="d-block d-md-none">
+                <div class="user-panel-card mb-3">
+                  <p class="mb-1"><strong>Date:</strong> 01 Sep 2025</p>
+                  <p class="mb-1"><strong>Tenant:</strong> Shafiq Ahmed</p>
+                  <p class="mb-1"><strong>Amount:</strong> ৳ 25,000</p>
+                  <p class="mb-1"><strong>Method:</strong> Bkash</p>
+                  <p>
+                    <strong>Status:</strong>
+                    <span class="badge bg-success">Paid</span>
+                  </p>
+                </div>
+
+                <div class="user-panel-card mb-3">
+                  <p class="mb-1"><strong>Date:</strong> 25 Aug 2025</p>
+                  <p class="mb-1"><strong>Tenant:</strong> Hasan Ali</p>
+                  <p class="mb-1"><strong>Amount:</strong> ৳ 20,000</p>
+                  <p class="mb-1"><strong>Method:</strong> Cash</p>
+                  <p>
+                    <strong>Status:</strong>
+                    <span class="badge bg-warning text-dark">Pending</span>
+                  </p>
+                </div>
+
+                <div class="user-panel-card mb-3">
+                  <p class="mb-1"><strong>Date:</strong> 01 Aug 2025</p>
+                  <p class="mb-1"><strong>Tenant:</strong> Rahim Uddin</p>
+                  <p class="mb-1"><strong>Amount:</strong> ৳ 25,000</p>
+                  <p class="mb-1"><strong>Method:</strong> Bank</p>
+                  <p>
+                    <strong>Status:</strong>
+                    <span class="badge bg-success">Paid</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity Timeline -->
+            <div class="user-panel-card p-4">
+              <h5 class="mb-3">Recent Activities</h5>
+              <ul class="list-unstyled timeline">
+                <li class="mb-3">
+                  <i class="fa-solid fa-check-circle text-success me-2"></i>
+                  Rent collected from <strong>Shafiq Ahmed</strong> - ৳ 25,000
+                  <small class="text-muted d-block">01 Sep 2025</small>
+                </li>
+                <li class="mb-3">
+                  <i
+                    class="fa-solid fa-exclamation-circle text-warning me-2"
+                  ></i>
+                  Pending payment alert for <strong>Hasan Ali</strong>
+                  <small class="text-muted d-block">25 Aug 2025</small>
+                </li>
+                <li>
+                  <i class="fa-solid fa-user-plus text-primary me-2"></i>
+                  New tenant <strong>Rahim Uddin</strong> added
+                  <small class="text-muted d-block">15 Aug 2025</small>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- My Rents -->
+          <div
+            id="user-panel-rents"
+            class="user-panel-section user-panel-hidden"
+          >
+            <div class="d-flex justify-content-between align-items-center py-2">
+              <h3 class="mb-4 d-inline">My Tenants</h3>
+              <button
+                class="d-inline btn-tenent"
+                data-bs-toggle="modal"
+                data-bs-target="#addTenantModal"
+              >
+                <i class="fas fa-user-plus me-2"></i> Add Tenant
+              </button>
+            </div>
+           
+            <div class="row g-4">
+<!-- Tenant Card 1 start-->   
+<div class="col-md-6 col-lg-4">
+  <div class="user-panel-card overflow-hidden">
+    <!-- Header -->
+    <div class="bg-light p-3 d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <img
+          src="/assets/image/reviewprf/rvwprf3.png"
+          class="rounded-circle border border-3 border-white shadow me-3"
+          alt="Tenant"
+        />
+        <div>
+          <h5 class="mb-1">Rahim Uddin</h5>
+          <small class="d-block">
+            <a href="tel:+8801712345678" class="text-decoration-none text-muted">
+              <i class="fa-solid fa-phone me-1"></i> +8801712345678
+            </a>
+          </small>
+          <small class="d-block">
+            <a href="mailto:rahim@example.com" class="text-decoration-none text-muted">
+              <i class="fa-solid fa-envelope me-1"></i> rahim@example.com
+            </a>
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flat details -->
+    <div class="p-3 border-top" id="tenantDetails1">
+      <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
+      <p class="mb-1"><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
+      <p class="mb-1">
+        <strong>Bedrooms:</strong> 2 |
+        <strong>Washrooms:</strong> 2
+      </p>
+      <div id="extraDetailList1"></div>
+    </div>
+
+    <!-- Payment info -->
+    <div class="p-3 border-top">
+      <p class="mb-1"><strong>Paid Months:</strong> 5</p>
+      <p class="mb-2"><strong>Due Months:</strong> 1</p>
+      <div class="progress mb-2" style="height: 8px">
+        <div class="progress-bar bg-success" style="width: 83%"></div>
+      </div>
+      <span class="badge bg-success">Active Tenant</span>
+    </div>
+<!-- Hidden form for extra details -->
+<div class="collapse" id="extraDetails1">
+  <div class="p-3 border-top bg-light">
+    <form>
+      <div class="mb-2">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Occupation">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Value</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Doctor">
+      </div>
+      <button type="submit" class="btn btn-sm btn-primary">
+        <i class="fa-solid fa-save me-1"></i> Save
+      </button>
+    </form>
+  </div>
+</div>
+
+    <!-- Footer buttons -->
+    <div class="p-3 border-top text-end">
+      <!-- Settings button -->
+      <button
+        class="btn btn-sm btn-outline-secondary"
+        data-bs-toggle="collapse"
+        data-bs-target="#extraDetails1"
+      >
+        <i class="fa-solid fa-gear"></i>
+      </button>
+      <!-- View button -->
+      <button
+        class="btn btn-sm btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#tenantModal1"
+      >
+        <i class="fa-solid fa-eye me-1"></i> View
+      </button>
+      <button class="btn btn-sm btn-outline-danger">
+        <i class="fa-solid fa-bell me-1"></i> Reminder
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Modal for Tenant Details -->
+<div
+  class="modal fade"
+  id="tenantModal1"
+  tabindex="-1"
+  aria-labelledby="tenantModal1Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0 rounded-3">
+      <!-- Header -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="tenantModal1Label">
+          Tenant Details - Rahim Uddin
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <div class="row">
+          <!-- Left: Profile -->
+          <div class="col-md-4 text-center">
+            <img
+              src="/assets/image/reviewprf/rvwprf3.png"
+              class="rounded-circle border shadow mb-3"
+              width="120"
+              height="120"
+              alt="Tenant"
+            />
+            <h5>Rahim Uddin</h5>
+            <p class="mb-1">
+              <i class="fa-solid fa-phone me-1 text-muted"></i> +8801712345678
+            </p>
+            <p>
+              <i class="fa-solid fa-envelope me-1 text-muted"></i>
+              rahim@example.com
+            </p>
+          </div>
+
+          <!-- Right: Details -->
+          <div class="col-md-8">
+            <p><strong>Flat:</strong> A2, 2nd Floor</p>
+            <p><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
+            <p><strong>Bedrooms:</strong> 2</p>
+            <p><strong>Washrooms:</strong> 2</p>
+            <p><strong>Occupation:</strong> Doctor</p>
+            <p><strong>Marital Status:</strong> Married</p>
+            <p><strong>NID Number:</strong> 1234 5678 9101</p>
+            <p><strong>Tenant Since:</strong> 15 March 2024</p>
+            <hr />
+            <p><strong>Paid Months:</strong> 5</p>
+            <p><strong>Due Months:</strong> 1</p>
+            <div class="progress mb-2" style="height: 8px">
+              <div class="progress-bar bg-success" style="width: 83%"></div>
+            </div>
+            <span class="badge bg-success">Active Tenant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Tenant Card 1 end-->
+
+
+<!-- Tenant Card  2 start -->
+<div class="col-md-6 col-lg-4">
+  <div class="user-panel-card overflow-hidden">
+    <!-- Header -->
+    <div class="bg-light p-3 d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <img
+          src="/assets/image/reviewprf/rvwprf3.png"
+          class="rounded-circle border border-3 border-white shadow me-3"
+          alt="Tenant"
+        />
+        <div>
+          <h5 class="mb-1">Rahim Uddin</h5>
+          <small class="d-block">
+            <a href="tel:+8801712345678" class="text-decoration-none text-muted">
+              <i class="fa-solid fa-phone me-1"></i> +8801712345678
+            </a>
+          </small>
+          <small class="d-block">
+            <a href="mailto:rahim@example.com" class="text-decoration-none text-muted">
+              <i class="fa-solid fa-envelope me-1"></i> rahim@example.com
+            </a>
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flat details -->
+    <div class="p-3 border-top" id="tenantDetails1">
+      <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
+      <p class="mb-1"><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
+      <p class="mb-1">
+        <strong>Bedrooms:</strong> 2 |
+        <strong>Washrooms:</strong> 2
+      </p>
+      <div id="extraDetailList1"></div>
+    </div>
+
+    <!-- Payment info -->
+    <div class="p-3 border-top">
+      <p class="mb-1"><strong>Paid Months:</strong> 5</p>
+      <p class="mb-2"><strong>Due Months:</strong> 1</p>
+      <div class="progress mb-2" style="height: 8px">
+        <div class="progress-bar bg-success" style="width: 83%"></div>
+      </div>
+      <span class="badge bg-success">Active Tenant</span>
+    </div>
+<!-- Hidden form for extra details -->
+<div class="collapse" id="extraDetails2">
+  <div class="p-3 border-top bg-light">
+    <form>
+      <div class="mb-2">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Occupation">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Value</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Doctor">
+      </div>
+      <button type="submit" class="btn btn-sm btn-primary">
+        <i class="fa-solid fa-save me-1"></i> Save
+      </button>
+    </form>
+  </div>
+</div>
+
+    <!-- Footer buttons -->
+    <div class="p-3 border-top text-end">
+      <!-- Settings button -->
+      <button
+        class="btn btn-sm btn-outline-secondary"
+        data-bs-toggle="collapse"
+        data-bs-target="#extraDetails2"
+      >
+        <i class="fa-solid fa-gear"></i>
+      </button>
+      <!-- View button -->
+      <button
+        class="btn btn-sm btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#tenantModal1"
+      >
+        <i class="fa-solid fa-eye me-1"></i> View
+      </button>
+      <button class="btn btn-sm btn-outline-danger">
+        <i class="fa-solid fa-bell me-1"></i> Reminder
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Modal for Tenant Details -->
+<div
+  class="modal fade"
+  id="tenantModal1"
+  tabindex="-1"
+  aria-labelledby="tenantModal1Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0 rounded-3">
+      <!-- Header -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="tenantModal1Label">
+          Tenant Details - Rahim Uddin
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <div class="row">
+          <!-- Left: Profile -->
+          <div class="col-md-4 text-center">
+            <img
+              src="/assets/image/reviewprf/rvwprf3.png"
+              class="rounded-circle border shadow mb-3"
+              width="120"
+              height="120"
+              alt="Tenant"
+            />
+            <h5>Rahim Uddin</h5>
+            <p class="mb-1">
+              <i class="fa-solid fa-phone me-1 text-muted"></i> +8801712345678
+            </p>
+            <p>
+              <i class="fa-solid fa-envelope me-1 text-muted"></i>
+              rahim@example.com
+            </p>
+          </div>
+
+          <!-- Right: Details -->
+          <div class="col-md-8">
+            <p><strong>Flat:</strong> A2, 2nd Floor</p>
+            <p><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
+            <p><strong>Bedrooms:</strong> 2</p>
+            <p><strong>Washrooms:</strong> 2</p>
+            <p><strong>Occupation:</strong> Doctor</p>
+            <p><strong>Marital Status:</strong> Married</p>
+            <p><strong>NID Number:</strong> 1234 5678 9101</p>
+            <p><strong>Tenant Since:</strong> 15 March 2024</p>
+            <hr />
+            <p><strong>Paid Months:</strong> 5</p>
+            <p><strong>Due Months:</strong> 1</p>
+            <div class="progress mb-2" style="height: 8px">
+              <div class="progress-bar bg-success" style="width: 83%"></div>
+            </div>
+            <span class="badge bg-success">Active Tenant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Tenant Card  2 end -->
+
+
+<!-- Tenant Card 3 start-->
+<div class="col-md-6 col-lg-4">
+  <div class="user-panel-card overflow-hidden">
+    <!-- Header -->
+    <div class="bg-light p-3 d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center">
+        <img
+          src="/assets/image/reviewprf/rvwprf3.png"
+          class="rounded-circle border border-3 border-white shadow me-3"
+          alt="Tenant"
+        />
+        <div>
+          <h5 class="mb-1">Rahim Uddin</h5>
+          <small class="d-block">
+            <a href="tel:+8801712345678" class="text-decoration-none text-muted">
+              <i class="fa-solid fa-phone me-1"></i> +8801712345678
+            </a>
+          </small>
+          <small class="d-block">
+            <a href="mailto:rahim@example.com" class="text-decoration-none text-muted">
+              <i class="fa-solid fa-envelope me-1"></i> rahim@example.com
+            </a>
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flat details -->
+    <div class="p-3 border-top" id="tenantDetails1">
+      <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
+      <p class="mb-1"><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
+      <p class="mb-1">
+        <strong>Bedrooms:</strong> 2 |
+        <strong>Washrooms:</strong> 2
+      </p>
+      <div id="extraDetailList1"></div>
+    </div>
+
+    <!-- Payment info -->
+    <div class="p-3 border-top">
+      <p class="mb-1"><strong>Paid Months:</strong> 5</p>
+      <p class="mb-2"><strong>Due Months:</strong> 1</p>
+      <div class="progress mb-2" style="height: 8px">
+        <div class="progress-bar bg-success" style="width: 83%"></div>
+      </div>
+      <span class="badge bg-success">Active Tenant</span>
+    </div>
+<!-- Hidden form for extra details -->
+<div class="collapse" id="extraDetails3">
+  <div class="p-3 border-top bg-light">
+    <form>
+      <div class="mb-2">
+        <label class="form-label">Title</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Occupation">
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Value</label>
+        <input type="text" class="form-control form-control-sm" placeholder="e.g. Doctor">
+      </div>
+      <button type="submit" class="btn btn-sm btn-primary">
+        <i class="fa-solid fa-save me-1"></i> Save
+      </button>
+    </form>
+  </div>
+</div>
+
+    <!-- Footer buttons -->
+    <div class="p-3 border-top text-end">
+      <!-- Settings button -->
+      <button
+        class="btn btn-sm btn-outline-secondary"
+        data-bs-toggle="collapse"
+        data-bs-target="#extraDetails3"
+      >
+        <i class="fa-solid fa-gear"></i>
+      </button>
+      <!-- View button -->
+      <button
+        class="btn btn-sm btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#tenantModal1"
+      >
+        <i class="fa-solid fa-eye me-1"></i> View
+      </button>
+      <button class="btn btn-sm btn-outline-danger">
+        <i class="fa-solid fa-bell me-1"></i> Reminder
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Modal for Tenant Details -->
+<div
+  class="modal fade"
+  id="tenantModal1"
+  tabindex="-1"
+  aria-labelledby="tenantModal1Label"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content shadow-lg border-0 rounded-3">
+      <!-- Header -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="tenantModal1Label">
+          Tenant Details - Rahim Uddin
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+        <div class="row">
+          <!-- Left: Profile -->
+          <div class="col-md-4 text-center">
+            <img
+              src="/assets/image/reviewprf/rvwprf3.png"
+              class="rounded-circle border shadow mb-3"
+              width="120"
+              height="120"
+              alt="Tenant"
+            />
+            <h5>Rahim Uddin</h5>
+            <p class="mb-1">
+              <i class="fa-solid fa-phone me-1 text-muted"></i> +8801712345678
+            </p>
+            <p>
+              <i class="fa-solid fa-envelope me-1 text-muted"></i>
+              rahim@example.com
+            </p>
+          </div>
+
+          <!-- Right: Details -->
+          <div class="col-md-8">
+            <p><strong>Flat:</strong> A2, 2nd Floor</p>
+            <p><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
+            <p><strong>Bedrooms:</strong> 2</p>
+            <p><strong>Washrooms:</strong> 2</p>
+            <p><strong>Occupation:</strong> Doctor</p>
+            <p><strong>Marital Status:</strong> Married</p>
+            <p><strong>NID Number:</strong> 1234 5678 9101</p>
+            <p><strong>Tenant Since:</strong> 15 March 2024</p>
+            <hr />
+            <p><strong>Paid Months:</strong> 5</p>
+            <p><strong>Due Months:</strong> 1</p>
+            <div class="progress mb-2" style="height: 8px">
+              <div class="progress-bar bg-success" style="width: 83%"></div>
+            </div>
+            <span class="badge bg-success">Active Tenant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Tenant Card 3 end-->
+            </div>
+          </div>
+
+          <!-- Add Tenant Modal -->
+          <div
+            class="modal fade"
+            id="addTenantModal"
+            tabindex="-1"
+            aria-labelledby="addTenantModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+              <div
+                class="modal-content border-0 rounded-4 shadow-lg overflow-hidden"
+              >
+                <!-- Header -->
+                <div
+                  class="modal-header py-3 text-white"
+                  style="background: linear-gradient(135deg, #0d6efd, #6610f2)"
+                >
+                  <h5 class="modal-title fw-bold" id="addTenantModalLabel">
+                    <i class="fas fa-user-plus me-2"></i> Add New Tenant
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+
+                <!-- Body -->
+                <div class="modal-body p-5" style="background: #f9f9fb">
+                  <form id="tenantForm" class="row g-4">
+                    <!-- Section: Basic Info -->
+                    <div class="p-4 rounded-4 bg-white shadow-sm mb-4">
+                      <h6 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-id-badge me-2"></i>Basic Information
+                      </h6>
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <label class="form-label fw-semibold"
+                            >Full Name</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control form-control-lg shadow-sm"
+                            id="tenantName"
+                            placeholder="Enter full name"
+                            required
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label fw-semibold">Phone</label>
+                          <input
+                            type="tel"
+                            class="form-control form-control-lg shadow-sm"
+                            id="tenantPhone"
+                            placeholder="+8801XXXXXXXXX"
+                            required
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label fw-semibold">Email</label>
+                          <input
+                            type="email"
+                            class="form-control form-control-lg shadow-sm"
+                            id="tenantEmail"
+                            placeholder="example@email.com"
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label fw-semibold">Flat</label>
+                          <input
+                            type="text"
+                            class="form-control form-control-lg shadow-sm"
+                            id="tenantFlat"
+                            placeholder="C1, 1st Floor"
+                            required
+                          />
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label fw-semibold">Address</label>
+                          <textarea
+                            class="form-control shadow-sm"
+                            id="tenantAddress"
+                            rows="2"
+                            placeholder="Enter address"
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Section: Profile Photo -->
+                    <div class="p-4 rounded-4 bg-white shadow-sm mb-4">
+                      <h6 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-camera me-2"></i>Profile Photo
+                      </h6>
+                      <div class="row align-items-center g-3">
+                        <div class="col-md-6">
+                          <input
+                            type="file"
+                            class="form-control shadow-sm"
+                            id="tenantPhoto"
+                            accept="image/*"
+                          />
+                          <small class="text-muted"
+                            >Supported formats: JPG, PNG</small
+                          >
+                        </div>
+                        <div class="col-md-6 text-center">
+                          <img
+                            id="photoPreview"
+                            src="https://via.placeholder.com/120x120?text=Photo"
+                            class="rounded-circle border shadow-sm"
+                            width="120"
+                            height="120"
+                            alt="Preview"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Section: House Info -->
+                    <div class="p-4 rounded-4 bg-white shadow-sm mb-4">
+                      <h6 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-home me-2"></i>House Information
+                      </h6>
+                      <div class="row g-3">
+                        <div class="col-md-3">
+                          <label class="form-label fw-semibold">Bedrooms</label>
+                          <input
+                            type="number"
+                            class="form-control shadow-sm"
+                            id="tenantBedrooms"
+                            value="1"
+                            min="0"
+                          />
+                        </div>
+                        <div class="col-md-3">
+                          <label class="form-label fw-semibold"
+                            >Washrooms</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control shadow-sm"
+                            id="tenantWashrooms"
+                            value="1"
+                            min="0"
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label fw-semibold"
+                            >Rent (per month)</label
+                          >
+                          <div class="input-group shadow-sm">
+                            <span class="input-group-text bg-light">৳</span>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="tenantRent"
+                              placeholder="30000"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Section: Payment Details -->
+                    <div class="p-4 rounded-4 bg-white shadow-sm">
+                      <h6 class="fw-bold text-primary mb-3">
+                        <i class="fas fa-money-check-alt me-2"></i>Payment
+                        Details
+                      </h6>
+                      <div class="row g-3">
+                        <div class="col-md-6">
+                          <label class="form-label fw-semibold"
+                            >Paid Months</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control shadow-sm"
+                            id="tenantPaid"
+                            value="0"
+                            min="0"
+                          />
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label fw-semibold"
+                            >Due Months</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control shadow-sm"
+                            id="tenantDue"
+                            value="0"
+                            min="0"
+                          />
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label fw-semibold"
+                            >Payment Status</label
+                          >
+                          <select
+                            id="tenantStatus"
+                            class="form-select shadow-sm"
+                          >
+                            <option value="Fully Paid">✅ Fully Paid</option>
+                            <option value="Due">⚠️ Due</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Footer -->
+                <div
+                  class="modal-footer bg-white py-3 border-top d-flex flex-column flex-md-row justify-content-center align-items-center w-100"
+                >
+                  <button
+                    class="btn btn-outline-secondary fw-semibold w-new btn-tenent"
+                    data-bs-dismiss="modal"
+                  >
+                    <i class="fas fa-times"></i> Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    form="tenantForm"
+                    class="btn btn-primary fw-semibold shadow-sm w-new btn-tenent"
+                  >
+                    <i class="fas fa-save"></i> Save Tenant
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payments -->
+          <div
+            id="user-panel-payments"
+            class="user-panel-section user-panel-hidden"
+          >
+            <h3>Payments</h3>
+            <div class="table-responsive mt-3">
+              <table class="table table-hover">
+                <thead class="table-light">
+                  <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>01 Sep 2025</td>
+                    <td>৳ 25,000</td>
+                    <td>Bkash</td>
+                    <td><span class="badge bg-success">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td>01 Aug 2025</td>
+                    <td>৳ 25,000</td>
+                    <td>Cash</td>
+                    <td><span class="badge bg-success">Paid</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Bills -->
+          <div
+            id="user-panel-bills"
+            class="user-panel-section user-panel-hidden"
+          >
+            <h3>Bills</h3>
+            <div class="table-responsive mt-3 d-none d-md-block">
+              <!-- Normal Table for Desktop -->
+              <table class="table table-striped">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Month</th>
+                    <th>Electric</th>
+                    <th>Gas</th>
+                    <th>Water</th>
+                    <th>Internat</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>August</td>
+                    <td>৳ 3,000</td>
+                    <td>৳ 1,200</td>
+                    <td>৳ 500</td>
+                    <td>৳ 800</td>
+                    <td>৳ 5,000</td>
+                    <td>
+                      <span class="badge bg-warning text-dark">Pending</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>July</td>
+                    <td>৳ 2,500</td>
+                    <td>৳ 1,000</td>
+                    <td>৳ 700</td>
+                    <td>৳ 500</td>
+                    <td>৳ 4,700</td>
+                    <td><span class="badge bg-success">Paid</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Card layout for Mobile -->
+            <div class="d-block d-md-none">
+              <div class="user-panel-card mb-3">
+                <h6 class="fw-bold mb-2 fs-4">Date : August, 2025</h6>
+                <p class="mb-1"><strong>Electric:</strong> ৳ 3,000</p>
+                <p class="mb-1"><strong>Gas:</strong> ৳ 1,200</p>
+                <p class="mb-1"><strong>Water:</strong> ৳ 800</p>
+                <p class="mb-1"><strong>Internet:</strong> ৳ 800</p>
+                <p class="mb-1"><strong>Total:</strong> ৳ 5,000</p>
+                <p>
+                  <strong>Status:</strong>
+                  <span class="badge bg-warning text-dark">Pending</span>
+                </p>
+              </div>
+
+              <div class="user-panel-card mb-3">
+                <h6 class="fw-bold mb-2 fs-4">Date : July, 2025</h6>
+                <p class="mb-1"><strong>Electric:</strong> ৳ 2,500</p>
+                <p class="mb-1"><strong>Gas:</strong> ৳ 1,000</p>
+                <p class="mb-1"><strong>Water:</strong> ৳ 700</p>
+                <p class="mb-1"><strong>Internet:</strong> ৳ 500</p>
+                <p class="mb-1"><strong>Total:</strong> ৳ 4,700</p>
+                <p>
+                  <strong>Status:</strong>
+                  <span class="badge bg-success">Paid</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div
+            id="user-panel-profile"
+            class="user-panel-section user-panel-hidden"
+          >
+            <h3>My Profile</h3>
+            <div class="user-panel-card mt-3">
+              <form>
+                <div class="mb-3">
+                  <label class="form-label">Full Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Iqbal Hossain"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="iqbal@example.com"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Phone</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="+8801XXXXXXXXX"
+                  />
+                </div>
+                <button class="btn btn-primary w-100">Update</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Calculator -->
+          <div
+            id="user-panel-calculator"
+            class="user-panel-section user-panel-hidden"
+          >
+            <h3>Calculator</h3>
+            <div class="user-panel-card mt-3 p-4" style="max-width: 400px">
+              <input
+                type="text"
+                id="calc-display"
+                class="form-control text-end mb-3 fs-4"
+                placeholder="0"
+                readonly
+              />
+
+              <div class="row g-2">
+                <div class="col-3">
+                  <button class="btn btn-secondary w-100" onclick="calcClear()">
+                    C
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button
+                    class="btn btn-secondary w-100"
+                    onclick="calcInput('/')"
+                  >
+                    ÷
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button
+                    class="btn btn-secondary w-100"
+                    onclick="calcInput('*')"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-danger w-100" onclick="calcBack()">
+                    ⌫
+                  </button>
+                </div>
+
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('7')">
+                    7
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('8')">
+                    8
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('9')">
+                    9
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button
+                    class="btn btn-secondary w-100"
+                    onclick="calcInput('-')"
+                  >
+                    −
+                  </button>
+                </div>
+
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('4')">
+                    4
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('5')">
+                    5
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('6')">
+                    6
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button
+                    class="btn btn-secondary w-100"
+                    onclick="calcInput('+')"
+                  >
+                    +
+                  </button>
+                </div>
+
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('1')">
+                    1
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('2')">
+                    2
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('3')">
+                    3
+                  </button>
+                </div>
+                <div class="col-3" rowspan="2">
+                  <button
+                    class="btn btn-primary w-100 h-100"
+                    onclick="calcEqual()"
+                  >
+                    =
+                  </button>
+                </div>
+
+                <div class="col-6">
+                  <button class="btn btn-light w-100" onclick="calcInput('0')">
+                    0
+                  </button>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-light w-100" onclick="calcInput('.')">
+                    .
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+       <!-- calander -->
+
+<div id="user-panel-calender" class="container-fluid py-3 user-panel-section user-panel-hidden">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="calendar-card">
+        <div class="calendar-header">
+          <h5>User Panel Calendar</h5>
+        </div>
+        <div id="user-calendar" class=""></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+         
+
+<!-- walet id="user-walet user-panel-section user-panel-hidden-->
+
+<div id="user-walet" class="container py-4 user-panel-section user-panel-hidden">
+  <div class="row g-4">
+
+    <!-- Income Card -->
+    <div class="col-12 col-md-6">
+      <div class="card user-wallet-card">
+        <div class="user-wallet-header user-income-grad">
+          <div class="user-icon-badge"><i class="fa-solid fa-arrow-trend-up"></i></div>
+          <span>Income</span>
+        </div>
+        <div class="user-wallet-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-muted fw-semibold">Total Earned</span>
+            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addIncomeModal">
+              <i class="fa-solid fa-plus"></i> Add
+            </button>
+          </div>
+          <div class="user-wallet-amount" id="totalIncome">৳ 0</div>
+          <p class="user-wallet-note">Sources of income</p>
+          <div id="incomeList">
+             <div class="user-list-item">
+              <span>Rent from Tenant A</span>
+              <span class="fw-bold text-success">৳ 25,000</span>
+            </div>
+            <div class="user-list-item">
+              <span>Rent from Tenant B</span>
+              <span class="fw-bold text-success">৳ 20,000</span>
+            </div>
+            <div class="user-list-item">
+              <span>Shop Rent</span>
+              <span class="fw-bold text-success">৳ 15,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expense Card -->
+    <div class="col-12 col-md-6">
+      <div class="card user-wallet-card">
+        <div class="user-wallet-header user-expense-grad">
+          <div class="user-icon-badge"><i class="fa-solid fa-arrow-trend-down"></i></div>
+          <span>Expense</span>
+        </div>
+        <div class="user-wallet-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="text-muted fw-semibold">Total Spent</span>
+            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#addExpenseModal">
+              <i class="fa-solid fa-plus"></i> Add
+            </button>
+          </div>
+          <div class="user-wallet-amount" id="totalExpense">৳ 0</div>
+          <p class="user-wallet-note">Expense breakdown</p>
+          <div id="expenseList">
+             <div class="user-list-item">
+              <span>Electricity Bill</span>
+              <span class="fw-bold text-danger">৳ 5,000</span>
+            </div>
+            <div class="user-list-item">
+              <span>Water Bill</span>
+              <span class="fw-bold text-danger">৳ 3,500</span>
+            </div>
+            <div class="user-list-item">
+              <span>Maintenance</span>
+              <span class="fw-bold text-danger">৳ 7,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Income Modal -->
+<div class="modal fade" id="addIncomeModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form class="modal-content" id="incomeForm">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">Add Income</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Source</label>
+          <input type="text" class="form-control" id="incomeSource" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Amount (৳)</label>
+          <input type="number" class="form-control" id="incomeAmount" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Expense Modal -->
+<div class="modal fade" id="addExpenseModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form class="modal-content" id="expenseForm">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Add Expense</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Expense Item</label>
+          <input type="text" class="form-control" id="expenseSource" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Amount (৳)</label>
+          <input type="number" class="form-control" id="expenseAmount" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+    
+<!-- Modal for add to-let card -->
+
+<!-- Add To-Let Modal -->
+<div class="modal fade" id="addToLetModal" tabindex="-1">
+  <div class="modal-dialog">
+    <form class="modal-content" id="toLetForm">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Add To-Let Property</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+          <input type="text" class="form-control" id="propertyTitle" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Location</label>
+          <input type="text" class="form-control" id="propertyLocation" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Rent</label>
+          <input type="number" class="form-control" id="propertyRent" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Bedrooms</label>
+          <input type="number" class="form-control" id="propertyBedrooms" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Bathrooms</label>
+          <input type="number" class="form-control" id="propertyBathrooms" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Image URL</label>
+          <input type="text" class="form-control" id="propertyImage" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+</div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+
+    <script>
+      // Sidebar Navigation
+      const links = document.querySelectorAll(".user-panel-sidebar .nav-link");
+      const sections = document.querySelectorAll(".user-panel-section");
+
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          links.forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+
+          sections.forEach((section) =>
+            section.classList.add("user-panel-hidden")
+          );
+          document
+            .getElementById(link.dataset.target)
+            .classList.remove("user-panel-hidden");
+        });
+      });
+
+      // Calculator Functions
+      let calcDisplay = document.getElementById("calc-display");
+
+      function calcInput(value) {
+        if (calcDisplay.value === "0") {
+          calcDisplay.value = value;
+        } else {
+          calcDisplay.value += value;
+        }
+      }
+
+      function calcClear() {
+        calcDisplay.value = "0";
+      }
+
+      function calcBack() {
+        calcDisplay.value = calcDisplay.value.slice(0, -1) || "0";
+      }
+
+      function calcEqual() {
+        try {
+          calcDisplay.value = eval(calcDisplay.value);
+        } catch {
+          calcDisplay.value = "Error";
+        }
+      }
+
+      // Dashboard function
+      // Rent Collection Chart
+      const ctx = document.getElementById("rentChart").getContext("2d");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+          datasets: [
+            {
+              label: "Collected Rent (৳)",
+              data: [30000, 28000, 32000, 25000, 27000, 30000],
+              fill: true,
+              backgroundColor: "rgba(13,110,253,0.1)",
+              borderColor: "#0d6efd",
+              tension: 0.4,
+              borderWidth: 3,
+              pointBackgroundColor: "#0d6efd",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } },
+        },
+      });
+
+      // Payment vs Due Pie Chart
+      const ctx2 = document.getElementById("dueChart").getContext("2d");
+      new Chart(ctx2, {
+        type: "doughnut",
+        data: {
+          labels: ["Paid", "Due"],
+          datasets: [
+            {
+              data: [75000, 5000],
+              backgroundColor: ["#28a745", "#dc3545"],
+              hoverOffset: 8,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { position: "bottom" } },
+        },
+      });
+    </script>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+    <script>
+      // Rent Collection Line Chart
+      const rentCtx = document.getElementById("rentChart").getContext("2d");
+      const rentGradient = rentCtx.createLinearGradient(0, 0, 0, 200);
+      rentGradient.addColorStop(0, "rgba(13,110,253,0.4)");
+      rentGradient.addColorStop(1, "rgba(13,110,253,0)");
+
+      new Chart(rentCtx, {
+        type: "line",
+        data: {
+          labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+          datasets: [
+            {
+              label: "Collected Rent (৳)",
+              data: [30000, 28000, 32000, 25000, 27000, 30000],
+              fill: true,
+              backgroundColor: rentGradient,
+              borderColor: "#0d6efd",
+              tension: 0.4,
+              borderWidth: 3,
+              pointBackgroundColor: "#0d6efd",
+              pointRadius: 6,
+              pointHoverRadius: 8,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "#1a1a1a",
+              titleColor: "#fff",
+              bodyColor: "#fff",
+              cornerRadius: 6,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { stepSize: 5000, color: "#495057" },
+              grid: { color: "rgba(0,0,0,0.05)" },
+            },
+            x: {
+              ticks: { color: "#495057" },
+              grid: { display: false },
+            },
+          },
+        },
+      });
+
+      // Payment Status Doughnut Chart
+      const dueCtx = document.getElementById("dueChart").getContext("2d");
+      new Chart(dueCtx, {
+        type: "doughnut",
+        data: {
+          labels: ["Paid", "Due"],
+          datasets: [
+            {
+              data: [75000, 5000],
+              backgroundColor: ["#28a745", "#dc3545"],
+              hoverBackgroundColor: ["#218838", "#c82333"],
+              borderWidth: 2,
+              borderColor: "#fff",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: {
+                color: "#495057",
+                boxWidth: 20,
+                padding: 15,
+              },
+            },
+            tooltip: {
+              backgroundColor: "#1a1a1a",
+              titleColor: "#fff",
+              bodyColor: "#fff",
+              cornerRadius: 6,
+            },
+          },
+          cutout: "70%",
+        },
+      });
+
+      // this is for add tenent image preview
+      // Image preview
+      document
+        .getElementById("tenantPhoto")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              document.getElementById("photoPreview").src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+      // profile edit functionality
+
+      const storageKey = "tenant1_details";
+      const listContainer = document.getElementById("extraDetailList1");
+      const form = document.getElementById("addDetailForm1");
+      const collapseEl = document.getElementById("extraDetails1");
+
+      // LocalStorage থেকে লোড
+      document.addEventListener("DOMContentLoaded", renderDetails);
+
+      // Render function
+      function renderDetails() {
+        listContainer.innerHTML = "";
+        const savedDetails = JSON.parse(localStorage.getItem(storageKey)) || [];
+        savedDetails.forEach((item, index) => {
+          const div = document.createElement("div");
+          div.classList.add(
+            "d-flex",
+            "justify-content-between",
+            "align-items-center",
+            "mb-1"
+          );
+          div.innerHTML = `
+        <p class="mb-0"><strong>${item.title}:</strong> ${item.value}</p>
+        <div>
+          <button class="btn btn-sm btn-outline-warning me-1" onclick="editDetail(${index})">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+          <button class="btn btn-sm btn-outline-danger" onclick="deleteDetail(${index})">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      `;
+          listContainer.appendChild(div);
+        });
+      }
+
+      // Save / Update
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const title = document.getElementById("detailTitle1").value.trim();
+        const value = document.getElementById("detailValue1").value.trim();
+
+        if (title && value) {
+          let savedDetails = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+          // চেক করুন title আগে আছে কিনা → থাকলে আপডেট
+          const existingIndex = savedDetails.findIndex(
+            (d) => d.title.toLowerCase() === title.toLowerCase()
+          );
+          if (existingIndex > -1) {
+            savedDetails[existingIndex].value = value;
+          } else {
+            savedDetails.push({ title, value });
+          }
+
+          localStorage.setItem(storageKey, JSON.stringify(savedDetails));
+
+          // Reset
+          this.reset();
+          bootstrap.Collapse.getOrCreateInstance(collapseEl).hide();
+          renderDetails();
+        }
+      });
+
+      // Edit
+      function editDetail(index) {
+        const savedDetails = JSON.parse(localStorage.getItem(storageKey)) || [];
+        const item = savedDetails[index];
+        document.getElementById("detailTitle1").value = item.title;
+        document.getElementById("detailValue1").value = item.value;
+
+        bootstrap.Collapse.getOrCreateInstance(collapseEl).show();
+      }
+
+      // Delete
+      function deleteDetail(index) {
+        let savedDetails = JSON.parse(localStorage.getItem(storageKey)) || [];
+        savedDetails.splice(index, 1);
+        localStorage.setItem(storageKey, JSON.stringify(savedDetails));
+        renderDetails();
+      }
+
+
+      //  FullCalendar + JS
+    document.addEventListener('DOMContentLoaded', function () {
+      var calendarEl = document.getElementById('user-calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        contentHeight: 'auto',
+        aspectRatio: 1.35,
+        expandRows: true,
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: ''   // <-- এখানে কিছুই নেই (Day/Week বাদ)
+        },
+        events: []
+      });
+      calendar.render();
+    });
+
+
+    // walet functionality  
+  let income = [], expense = [];
+
+  function renderList(type) {
+    let listEl = document.getElementById(type + "List");
+    let totalEl = document.getElementById("total" + (type === "income" ? "Income" : "Expense"));
+    let data = (type === "income" ? income : expense);
+    let color = (type === "income" ? "success" : "danger");
+
+    listEl.innerHTML = "";
+    let total = 0;
+    data.forEach((item, index) => {
+      total += item.amount;
+      listEl.innerHTML += `
+        <div class="user-list-item">
+          <span>${item.source}</span>
+          <span>
+            <span class="fw-bold text-${color}">৳ ${item.amount}</span>
+            <span class="user-actions ms-2">
+              <button onclick="editItem('${type}',${index})" class="text-primary"><i class="fa-solid fa-pen"></i></button>
+              <button onclick="deleteItem('${type}',${index})" class="text-danger"><i class="fa-solid fa-trash"></i></button>
+            </span>
+          </span>
+        </div>
+      `;
+    });
+    totalEl.innerText = "৳ " + total;
+  }
+
+  function editItem(type, index) {
+    let item = (type === "income" ? income : expense)[index];
+    let sourceInput = document.getElementById(type + "Source");
+    let amountInput = document.getElementById(type + "Amount");
+
+    sourceInput.value = item.source;
+    amountInput.value = item.amount;
+
+    let form = document.getElementById(type + "Form");
+    let modalId = "#add" + (type === "income" ? "Income" : "Expense") + "Modal";
+    let modal = bootstrap.Modal.getOrCreateInstance(document.querySelector(modalId));
+    modal.show();
+
+    form.onsubmit = function(e) {
+      e.preventDefault();
+      item.source = sourceInput.value;
+      item.amount = parseFloat(amountInput.value);
+      renderList(type);
+      modal.hide();
+      form.reset();
+      form.onsubmit = defaultSubmit(type);
+    };
+  }
+
+  function deleteItem(type, index) {
+    if (type === "income") income.splice(index, 1);
+    else expense.splice(index, 1);
+    renderList(type);
+  }
+
+  function defaultSubmit(type) {
+    return function(e) {
+      e.preventDefault();
+      let source = document.getElementById(type + "Source").value;
+      let amount = parseFloat(document.getElementById(type + "Amount").value);
+      if (type === "income") income.push({source, amount});
+      else expense.push({source, amount});
+      renderList(type);
+      bootstrap.Modal.getInstance(document.querySelector("#add" + (type === "income" ? "Income" : "Expense") + "Modal")).hide();
+      e.target.reset();
+    };
+  }
+
+  document.getElementById("incomeForm").onsubmit = defaultSubmit("income");
+  document.getElementById("expenseForm").onsubmit = defaultSubmit("expense");
+
+    </script>
+    <script src="user-panel.js"></script>
+   <!-- FullCalendar CSS & JS -->
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('user-calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+  });
+
+// notification functionlaty for dashboard 
+  const notificationCount = document.getElementById('notificationCount');
+  const notificationList = document.getElementById('notificationList');
+  const clearBtn = document.getElementById('clearNotifications');
+
+  // Clear notifications
+  clearBtn.addEventListener('click', () => {
+    notificationList.innerHTML = '<li class="list-group-item text-center text-muted">No new notifications</li>';
+    notificationCount.style.display = 'none';
+  });
+
+  // Example: dynamically add a notification
+  function addNotification(sender, message, time = 'Now') {
+    const li = document.createElement('li');
+    li.className = 'list-group-item d-flex justify-content-between align-items-start';
+    li.innerHTML = `
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">New Message from ${sender}</div>
+        "${message}"
+      </div>
+      <span class="badge bg-primary rounded-pill">${time}</span>
+    `;
+    notificationList.prepend(li);
+    notificationCount.style.display = 'inline-block';
+  }
+
+
+</script>
+
+  </body>
+</html>

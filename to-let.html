@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basha Manager - Pages</title>
+
+    <!-- Header part include (CSS, meta, etc.) -->
+    <div id="header-include"></div>
+
+    <!-- html including render js -->
+    <script src="assets/js/include.js" defer></script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div id="navbar-include"></div>
+
+    <!-- start Main Content -->
+    <main class="m-max">
+      <!--============= To-let Hero Section ===============-->
+      <section class="to-let-hero-section text-center">
+        <div>
+          <h1 class="to-let-hero-title">To-Let Properties</h1>
+          <p class="to-let-hero-sub-title">Find your perfect home for rent</p>
+        </div>
+      </section>
+
+      <!-- property searching -->
+      <section class="container my-5">
+        <div class="shadow-sm border-5 rounded-5 border-black p-4">
+          <form class="row g-3 align-items-end">
+            <!-- Location -->
+            <div class="col-md-3">
+              <label class="form-label fw-bold">Location</label>
+              <select class="form-select outline-btn">
+                <option selected>Select Location</option>
+                <option>Dhaka</option>
+                <option>Chittagong</option>
+                <option>Sylhet</option>
+              </select>
+            </div>
+
+            <!-- Property Type -->
+            <div class="col-md-2">
+              <label class="form-label fw-bold">Property Type</label>
+              <select class="form-select outline-btn">
+                <option selected>Select Type</option>
+                <option>Apartment</option>
+                <option>House</option>
+                <option>Flat</option>
+              </select>
+            </div>
+
+            <!-- Min Rent -->
+            <div class="col-md-2">
+              <label class="form-label fw-bold">Min Rent</label>
+              <div class="input-group">
+                <span class="input-group-text">৳</span>
+                <input
+                  type="number"
+                  class="form-control outline-btn"
+                  placeholder="0"
+                />
+              </div>
+            </div>
+
+            <!-- Max Rent -->
+            <div class="col-md-2">
+              <label class="form-label fw-bold">Max Rent</label>
+              <div class="input-group">
+                <span class="input-group-text">৳</span>
+                <input
+                  type="number"
+                  class="form-control outline-btn"
+                  placeholder="100,000"
+                />
+              </div>
+            </div>
+
+            <!-- Bedrooms -->
+            <div class="col-md-2">
+              <label class="form-label fw-bold">Bedrooms</label>
+              <select class="form-select outline-btn">
+                <option selected>Any</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3+</option>
+              </select>
+            </div>
+
+            <!-- Search Button -->
+            <div class="col-md-1 d-grid">
+              <button class="btn-custom btn w-100 rounded-3 outline-btn">
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Results Section -->
+      <div id="results">
+        <!-- Property cards will appear here -->
+      </div>
+      <!-- Property Listings -->
+      <section class="container my-4">
+        <div  id="toLetContainer" class="row row-cols-1 row-cols-md-3 g-4">
+          <!--  Card 1-->
+          <div class="col to-let-card">
+            <div class="card property-card">
+              <img
+                src="assets/image/feature/feature1.png"
+                class="card-img-top"
+                alt="Property"
+              />
+              <div class="card-body">
+                <h5 class="card-title">2 BHK Apartment</h5>
+                <p class="card-text">
+                  <i class="fas fa-map-marker-alt"></i> Gulshan, Dhaka
+                </p>
+                <p class="card-text">
+                  <strong>Rent:</strong> 25,000 BDT / month
+                </p>
+                <p class="card-text">
+                  <i class="fas fa-bed"></i> 2 Bedrooms &nbsp;
+                  <i class="fas fa-bath"></i> 2 Bathrooms
+                </p>
+                <div class="d-flex gap-3">
+                  <!-- left btn  -->
+                  <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >VIEW DETAILS</a> -->
+                  <a href="test.html" class="btn-custom btn w-100"
+                    >VIEW DETAILS</a>
+                  <!-- right btn  -->
+                  <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >ADD TO CART</a> -->
+                  <button onclick="showDetails()" class="btn-custom btn w-100">
+                    ADD TO CART
+                  </button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- card 2  -->
+          <div class="col to-let-card">
+            <div class="card property-card">
+              <img
+                src="assets/image/feature/feature2.png"
+                class="card-img-top"
+                alt="Property"
+              />
+              <div class="card-body">
+                <h5 class="card-title">2 BHK Apartment</h5>
+                <p class="card-text">
+                  <i class="fas fa-map-marker-alt"></i> Gulshan, Dhaka
+                </p>
+                <p class="card-text">
+                  <strong>Rent:</strong> 25,000 BDT / month
+                </p>
+                <p class="card-text">
+                  <i class="fas fa-bed"></i> 2 Bedrooms &nbsp;
+                  <i class="fas fa-bath"></i> 2 Bathrooms
+                </p>
+                <div class="d-flex gap-3">
+                  <!-- left btn  -->
+                  <a href="test.html" class="btn-custom btn w-100"
+                    >VIEW DETAILS</a>
+                  <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >VIEW DETAILS</a> -->
+                  <!-- right btn  -->
+                  <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >ADD TO CART</a> -->
+                  <button onclick="showDetails()" class="btn-custom btn w-100">
+                    ADD TO CART
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--  card 3 -->
+          <div class="col to-let-card">
+            <div class="card property-card">
+              <img
+                src="assets/image/feature/feature3.png"
+                class="card-img-top"
+                alt="Property"
+              />
+              <div class="card-body">
+                <h5 class="card-title">3 BHK House</h5>
+                <p class="card-text">
+                  <i class="fas fa-map-marker-alt"></i> Banani, Dhaka
+                </p>
+                <p class="card-text">
+                  <strong>Rent:</strong> 50,000 BDT / month
+                </p>
+                <p class="card-text">
+                  <i class="fas fa-bed"></i> 3 Bedrooms &nbsp;
+                  <i class="fas fa-bath"></i> 3 Bathrooms
+                </p>
+                <div class="d-flex gap-3">
+                  <!-- left btn  -->
+                  <a href="test.html" class="btn-custom btn w-100"
+                    >VIEW DETAILS</a>
+                  <!-- right btn  -->
+                  <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >ADD TO CART</a> -->
+                  <button onclick="showDetails()" class="btn-custom btn w-100">
+                    ADD TO CART
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- End Main Content -->
+
+    <!-- Top Footer -->
+    <div id="top-footer-include"></div>
+
+    <!-- Login Modal -->
+    <div id="login-modal-include"></div>
+
+    <!-- Register Modal -->
+    <div id="registration-modal-include"></div>
+
+    <div id="footer-include"></div>
+
+    <!--==============Scripts Link=============== -->
+
+    <!-- Bootstrap Bundle (with Popper) -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SweetAlert2 JS -->
+    <script src="assets/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- more link -->
+    <script src="assets/js/my-js.js"></script>
+
+
+    <!-- for add to-let  -->
+   <script src="user/user-panel.js"></script>
+ <script>
+    // আগের ডেমো কার্ডগুলো
+const demoProperties = [
+  {
+    title: "2 BHK Apartment",
+    location: "Gulshan, Dhaka",
+    rent: "25,000",
+    bedrooms: 2,
+    bathrooms: 2,
+    image: "assets/image/feature/feature1.png"
+  },
+  {
+    title: "2 BHK Apartment",
+    location: "Gulshan, Dhaka",
+    rent: "25,000",
+    bedrooms: 2,
+    bathrooms: 2,
+    image: "assets/image/feature/feature2.png"
+  },
+  {
+    title: "3 BHK House",
+    location: "Banani, Dhaka",
+    rent: "50,000",
+    bedrooms: 3,
+    bathrooms: 3,
+    image: "assets/image/feature/feature3.png"
+  }
+];
+
+// লোকাল স্টোরেজ থেকে ডাইনামিক কার্ড
+// const storedProperties = JSON.parse(localStorage.getItem('toLetList')) || [];
+
+// সব properties একসাথে
+// const allProperties = demoProperties.concat(storedProperties);
+// শুধু demoProperties দেখাবে
+const allProperties = demoProperties;
+const container = document.getElementById('toLetContainer');
+
+allProperties.forEach(p => {
+  const cardCol = document.createElement('div');
+  cardCol.className = 'col to-let-card';
+  cardCol.innerHTML = `
+    <div class="card property-card">
+      <img src="${p.image}" class="card-img-top" alt="Property" />
+      <div class="card-body">
+        <h5 class="card-title">${p.title}</h5>
+        <p class="card-text"><i class="fas fa-map-marker-alt"></i> ${p.location}</p>
+        <p class="card-text"><strong>Rent:</strong> ${p.rent} BDT / month</p>
+        <p class="card-text">
+          <i class="fas fa-bed"></i> ${p.bedrooms} Bedrooms &nbsp;
+          <i class="fas fa-bath"></i> ${p.bathrooms} Bathrooms
+        </p>
+        <div class="d-flex gap-3">
+          <a href="test.html" class="btn-custom btn w-100">VIEW DETAILS</a>
+          <button onclick="showDetails()" class="btn-custom btn w-100">ADD TO CART</button>
+        </div>
+      </div>
+    </div>
+  `;
+  container.appendChild(cardCol);
+});
+
+</script> 
+</body>
+</html>

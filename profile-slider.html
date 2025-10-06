@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basha Manager - Pages</title>
+
+  <!-- Header part include (CSS, meta, etc.) -->
+  <div id="header-include"></div>
+
+  <!-- html including render js -->
+  <script src="assets/js/include.js" defer></script>
+
+</head>
+<body>
+
+  <!-- navbar -->
+  <div id="navbar-include"></div>
+
+
+  <!-- start Main Content -->
+  <main>
+
+
+<!-- Toggle Button -->
+<button id="toggleBtn" class="toggle-btn d-md-none" onclick="openSidebar()">
+  <i class="bi bi-list"></i>
+</button>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- Sidebar -->
+<div class="class-sidebar-wrapper d-md-block" id="sidebar">
+  <!-- ✖ Close Button (mobile only) -->
+  <button id="closeBtn" class="close-btn d-md-none" onclick="closeSidebar()">&times;</button>
+
+  <div class="class-profile-card text-center mb-4">
+    <img src="https://i.ibb.co/1s4W3gF/avatar.png" alt="Avatar" class="rounded-circle border border-white" width="90">
+    <h5 class="mt-2">Mr. Customer</h5>
+    <p class="small">0164******38<br>customer@gmail.com</p>
+  </div>
+
+  <a href="#" class="class-nav-link"><i class="bi bi-person class-icon"></i> My Profile</a>
+  <a href="#" class="class-nav-link"><i class="bi bi-cash-coin class-icon"></i> Withdraw Payment</a>
+  <a href="#" class="class-nav-link"><i class="bi bi-card-checklist class-icon"></i> Order List</a>
+  <a href="#" class="class-nav-link"><i class="bi bi-ui-checks-grid class-icon"></i> Category</a>
+  <a href="#" class="class-nav-link"><i class="bi bi-youtube class-icon"></i> YouTube</a>
+  <a href="#" class="class-nav-link"><i class="bi bi-facebook class-icon"></i> Facebook Group</a>
+  <a href="#" class="class-nav-link"><i class="bi bi-whatsapp class-icon"></i> WhatsApp</a>
+  <a href="#" class="class-nav-link"><i class="bi bi-box-arrow-right class-icon"></i> Logout</a>
+
+  <div class="dropdown mt-4">
+    <button class="class-nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-translate class-icon"></i> Language
+    </button>
+    <ul class="dropdown-menu p-0 rounded-3 shadow border-0">
+      <li><a class="class-nav-link" href="#"><i class="bi bi-flag class-icon"></i> English</a></li>
+      <li><a class="class-nav-link" href="#"><i class="bi bi-flag class-icon"></i> বাংলা</a></li>
+      <li><a class="class-nav-link" href="#"><i class="bi bi-flag class-icon"></i> हिन्दी</a></li>
+      <li><a class="class-nav-link" href="#"><i class="bi bi-flag class-icon"></i> عربي</a></li>
+    </ul>
+  </div>
+</div>
+
+  </main>
+  <!-- End Main Content -->
+
+
+  <!-- Top Footer -->
+  <div id="top-footer-include"></div>
+
+  <!-- Login Modal -->
+  <div id="login-modal-include"></div>
+  
+  <!-- Register Modal -->
+  <div id="registration-modal-include"></div>
+
+  <div id="footer-include"></div>
+
+
+  <!--==============Scripts Link=============== -->
+
+  <!-- Bootstrap Bundle (with Popper) -->  
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- SweetAlert2 JS -->
+  <script src="assets/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
+
+
+  <!-- Custom JS -->
+  <script src="assets/js/app.js"></script>
+
+
+  <!-- more link -->
+    
+<script src="assets/js/my-js.js"></script>
+</body>
+</html>
+    

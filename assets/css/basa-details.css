@@ -1,0 +1,262 @@
+/* Enhanced Responsive Hero Section */
+.hero-section {
+  min-height: 60vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-address {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.price-tag {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 25px);
+  border-radius: 10px;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: bold;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.price-tag:hover {
+  transform: translateY(-2px);
+}
+
+.hero-image {
+  max-height: clamp(200px, 40vh, 300px);
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.02);
+}
+
+/* Feature Cards */
+.feature-card {
+  background: #f8f9fa;
+  border: none;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+/* Amenity Items */
+.amenity-item {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.amenity-item:hover {
+  border-color: #007bff;
+  background: #f8f9fa;
+}
+
+/* Contact Form */
+.contact-form {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+/* Gallery Images */
+.gallery-image {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+/* Location Map */
+.location-map {
+  background: linear-gradient(135deg, #e9ecef, #dee2e6);
+  height: 300px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+}
+
+/* Custom Buttons */
+.btn-primary-custom {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+/* Navbar */
+.navbar-brand {
+  font-weight: bold;
+  color: #007bff !important;
+}
+
+/* Utility Classes */
+.shadow-custom {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.text-primary-custom {
+  color: #007bff !important;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 991px) {
+  .hero-section {
+    min-height: 50vh;
+    padding: 30px 0;
+  }
+
+  .hero-section .row {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: auto;
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  .hero-title {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-address {
+    margin-bottom: 1.5rem;
+  }
+
+  .price-tag {
+    margin-bottom: 2rem;
+  }
+
+  .hero-image {
+    margin-top: 1.5rem;
+  }
+
+  .feature-card {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .contact-form {
+    padding: 20px;
+  }
+
+  .gallery-image {
+    height: 150px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 30px 0;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-address {
+    font-size: 1rem;
+  }
+
+  .price-tag {
+    font-size: 1.25rem;
+    padding: 8px 16px;
+  }
+
+  .feature-card {
+    padding: 15px;
+  }
+
+  .gallery-image {
+    height: 120px;
+  }
+
+  .hero-image {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-section {
+    padding: 20px 0;
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .price-tag {
+    font-size: 1.1rem;
+    padding: 6px 12px;
+  }
+}

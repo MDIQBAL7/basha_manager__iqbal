@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basha Manager - Pages</title>
+
+    <!-- Header part include (CSS, meta, etc.) -->
+    <div id="header-include"></div>
+
+    <!-- html including render js -->
+    <script src="assets/js/include.js" defer></script>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div id="navbar-include"></div>
+
+    <!-- start Main Content -->
+    <main class="m-max">
+      <div class="container house-section px-4 px-md-0">
+        <div class="row">
+          <!-- Left: Video -->
+          <div class="col-lg-6 mb-4">
+            <div class="house-video">
+              <video
+                controls
+                autoplay
+                muted
+                loop
+                width="100%"
+                poster="house1.jpg"
+              >
+                <source src="assets/Videos/video-1.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <!-- Right: House Info -->
+          <div class="col-lg-6">
+            <h2 class="To-let-details-title gradient-text">
+              Luxury Apartment in Gulshan
+            </h2>
+            <p class="To-let-details-text">
+              <strong>Location:</strong> Dhaka, Gulshan
+            </p>
+            <p class="To-let-details-text"><strong>Type:</strong> Apartment</p>
+            <p class="To-let-details-text"><strong>Bedrooms:</strong> 3</p>
+            <p class="To-let-details-text"><strong>Bathrooms:</strong> 2</p>
+            <p class="To-let-details-text"><strong>Size:</strong> 1400 sqft</p>
+            <p class="fw-bold To-let-details-text">
+              <strong>Rent:</strong> 25,000 BDT
+            </p>
+            <!-- add to cart button  -->
+            <!-- <a href="to-let-details.html" class="btn-custom btn w-25"
+                    ></a> -->
+            <button onclick="showDetails()" class="btn-custom btn w-50">
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+
+        <!-- Gallery -->
+        <!-- <div class="container mt-5">
+          <div class="row gallery g-sm-3 g-2">
+            <div class="col-6 col-md-4">
+              <img
+                src="assets/image/basa-details/house-hero.png"
+                class="img-fluid rounded gallery-img img-hover"
+                alt="Living Room"
+              />
+            </div>
+            <div class="col-6 col-md-4">
+              <img
+                src="assets/image/basa-details/phgalary2.png"
+                class="img-fluid rounded gallery-img img-hover"
+                alt="Bedroom"
+              />
+            </div>
+            <div class="col-6 col-md-4">
+              <img
+                src="assets/image/basa-details/phgalary3.png"
+                class="img-fluid rounded gallery-img img-hover"
+                alt="Kitchen"
+              />
+            </div>
+            <div class="col-6 col-md-4">
+              <img
+                src="assets/image/basa-details/phgalary6.jpg"
+                class="img-fluid rounded gallery-img img-hover"
+                alt="Bathroom"
+              />
+            </div>
+            <div class="col-6 col-md-4">
+              <img
+                src="assets/image/basa-details/phgalary7.png"
+                class="img-fluid rounded gallery-img img-hover"
+                alt="Balcony"
+              />
+            </div>
+            <div class="col-6 col-md-4">
+              <img
+                src="assets/image/basa-details/phgalary8.jpg"
+                class="img-fluid rounded gallery-img img-hover"
+                alt="Front View"
+              />
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Popup Modal -->
+        <div id="imageModal" class="image-modal">
+          <span id="closeModal" class="close-btn"
+            ><i class="fa-solid fa-xmark"></i
+          ></span>
+          <img id="modalImage" class="modal-content animate-zoom" />
+          <div id="caption"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- End Main Content -->
+
+    <!-- Top Footer -->
+    <div id="top-footer-include"></div>
+
+    <!-- Login Modal -->
+    <div id="login-modal-include"></div>
+
+    <!-- Register Modal -->
+    <div id="registration-modal-include"></div>
+
+    <div id="footer-include"></div>
+
+    <!--==============Scripts Link=============== -->
+
+    <!-- Bootstrap Bundle (with Popper) -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- SweetAlert2 JS -->
+    <script src="assets/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/app.js"></script>
+
+    <!-- more link -->
+    <!-- pop up for add to card  -->
+    <script src="assets/js/my-js.js"></script>
+  </body>
+</html>

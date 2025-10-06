@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basha Manager - Pages</title>
+
+  <!-- Header part include (CSS, meta, etc.) -->
+  <div id="header-include"></div>
+
+  <!-- html including render js -->
+  <script src="assets/js/include.js" defer></script>
+  <style>
+    /* body {
+      background: linear-gradient(135deg, #f9fafc, #f1f5f9);
+      font-family: "Inter", sans-serif;
+    } */
+    .checkout-wrapper {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+    .checkout-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .checkout-header h2 {
+      font-weight: 700;
+      font-size: 2.2rem;
+      color: #1e293b;
+    }
+    .checkout-header p {
+      color: #64748b;
+      font-size: 1rem;
+    }
+    .payment-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 30px 25px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .payment-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    }
+    .payment-logo {
+      max-height: 70px;
+      margin-bottom: 18px;
+    }
+    .payment-title {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #0f172a;
+    }
+    .payment-number {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      font-weight: 500;
+      color: #334155;
+    }
+    .copy-btn {
+      color: #2563eb;
+      cursor: pointer;
+      margin-left: 6px;
+    }
+    .pay-btn {
+      border-radius: 12px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border: none;
+      transition: all 0.3s;
+    }
+    .pay-btn:hover {
+      transform: scale(1.05);
+    }
+    .margin-top{
+        margin-top: 100px;
+    }
+    @media screen and (max-width : 450px) {
+          .margin-top{
+        margin-top: 150px;
+    }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- navbar -->
+  <div id="navbar-include"></div>
+
+
+  <!-- start Main Content -->
+  <main>
+
+  <div class="checkout-wrapper container margin-top">
+    <!-- Header -->
+    <div class="checkout-header">
+      <h2>Pay Your Rent Securely</h2>
+      <p>Choose your preferred payment method below and complete your rent payment in seconds.</p>
+    </div>
+
+    <!-- Payment Methods -->
+    <div class="row g-4">
+      <!-- bKash -->
+      <div class="col-md-4">
+        <div class="payment-card">
+          <img src="https://logos-world.net/wp-content/uploads/2024/10/Bkash-Logo.jpg" class="payment-logo" alt="bKash"/>
+          <div class="payment-title">bKash</div>
+          <div class="payment-number">
+            <span id="bkashNumber">017XXXXXXXX</span>
+            <i class="fa-regular fa-copy copy-btn" onclick="copyNumber('bkashNumber')"></i>
+          </div>
+          <button class="btn btn-danger pay-btn w-100">Pay with bKash</button>
+        </div>
+      </div>
+
+      <!-- Nagad -->
+      <div class="col-md-4">
+        <div class="payment-card">
+          <img src="https://download.logo.wine/logo/Nagad/Nagad-Logo.wine.png" class="payment-logo" alt="Nagad"/>
+          <div class="payment-title">Nagad</div>
+          <div class="payment-number">
+            <span id="nagadNumber">018XXXXXXXX</span>
+            <i class="fa-regular fa-copy copy-btn" onclick="copyNumber('nagadNumber')"></i>
+          </div>
+          <button class="btn btn-warning pay-btn w-100">Pay with Nagad</button>
+        </div>
+      </div>
+
+      <!-- Rocket -->
+      <div class="col-md-4">
+        <div class="payment-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQCNYgTLLJOBaT3YyEoW8uBnZMPMBfCSSJYG1MXVm5yI3J9sxY-F_ZeW3ZrO8RMNj9qw&usqp=CAU" class="payment-logo" alt="Rocket"/>
+          <div class="payment-title">Rocket</div>
+          <div class="payment-number">
+            <span id="rocketNumber">019XXXXXXXX</span>
+            <i class="fa-regular fa-copy copy-btn" onclick="copyNumber('rocketNumber')"></i>
+          </div>
+          <button class="btn btn-primary pay-btn w-100">Pay with Rocket</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </main>
+  <!-- End Main Content -->
+
+
+  <!-- Top Footer -->
+  <div id="top-footer-include"></div>
+
+  <!-- Login Modal -->
+  <div id="login-modal-include"></div>
+  
+  <!-- Register Modal -->
+  <div id="registration-modal-include"></div>
+
+  <div id="footer-include"></div>
+
+
+  <!--==============Scripts Link=============== -->
+
+  <!-- Bootstrap Bundle (with Popper) -->  
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- SweetAlert2 JS -->
+  <script src="assets/vendor/sweetalert2/js/sweetalert2.all.min.js"></script>
+
+
+  <!-- Custom JS -->
+  <script src="assets/js/app.js"></script>
+
+
+  <!-- more link -->
+    
+
+</body>
+</html>
+    

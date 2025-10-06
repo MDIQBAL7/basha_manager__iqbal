@@ -1,0 +1,46 @@
+<!-- My Rents -->
+<div id="user-panel-rents" class="user-panel-section user-panel-hidden">
+  <h3 class="mb-4">My Tenants</h3>
+  <div class="row g-4">
+
+    <!-- Tenant Card -->
+    <div class="col-md-6 col-lg-4">
+      <div class="user-panel-card overflow-hidden">
+        <!-- Card Header -->
+        <div class="bg-light p-3 d-flex align-items-center">
+          <img src="https://via.placeholder.com/80" class="rounded-circle border border-3 border-white shadow me-3" alt="Tenant">
+          <div>
+            <h5 class="mb-1">Rahim Uddin</h5>
+            <small class="text-muted d-block"><i class="fa-solid fa-phone me-1"></i> +8801712345678</small>
+            <small class="text-muted d-block"><i class="fa-solid fa-envelope me-1"></i> rahim@example.com</small>
+          </div>
+        </div>
+
+        <!-- Property Details -->
+        <div class="p-3 border-top">
+          <p class="mb-1"><strong>Flat:</strong> A2, 2nd Floor</p>
+          <p class="mb-1"><strong>Address:</strong> 25/3, Green Road, Dhaka</p>
+          <p class="mb-1"><strong>Bedrooms:</strong> 2 | <strong>Washrooms:</strong> 2</p>
+        </div>
+
+        <!-- Payment Status -->
+        <div class="p-3 border-top">
+          <p class="mb-1"><strong>Paid Months:</strong> 5</p>
+          <p class="mb-2"><strong>Due Months:</strong> 1</p>
+          <div class="progress mb-2" style="height:8px;">
+            <div class="progress-bar bg-success" style="width: 83%;"></div>
+          </div>
+          <span class="badge bg-success">Active Tenant</span>
+        </div>
+
+        <!-- Actions -->
+        <div class="p-3 border-top text-end">
+          <button class="btn btn-sm btn-outline-primary"><i class="fa-solid fa-eye me-1"></i> View</button>
+          <button class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-bell me-1"></i> Reminder</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- আরও কার্ড একই স্ট্রাকচারে যাবে -->
+  </div>
+</div>

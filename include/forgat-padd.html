@@ -1,0 +1,105 @@
+<!-- Login Modal -->
+<div
+  class="modal fade"
+  id="loginModal"
+  tabindex="-1"
+  aria-labelledby="loginModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content auth-modal">
+      <div class="modal-header border-0">
+        <h5 class="modal-title ms-auto" id="loginModalLabel">Login to Your Account</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm" class="form-floating">
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control auth-form-control"
+              id="email"
+              placeholder="Email Address"
+              required
+            />
+            <label for="email">Email Address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control auth-form-control"
+              id="password"
+              placeholder="Password"
+              required
+            />
+            <label for="password">Password</label>
+          </div>
+          <div class="d-flex justify-content-end mb-3">
+            <a
+              href="#"
+              class="auth-form-link"
+              data-bs-toggle="modal"
+              data-bs-target="#forgotPasswordModal"
+              data-bs-dismiss="modal"
+            >Forgot Password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-custom w-100 fs-5">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Forgot Password Modal -->
+<div
+  class="modal fade"
+  id="forgotPasswordModal"
+  tabindex="-1"
+  aria-labelledby="forgotPasswordModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content auth-modal">
+      <div class="modal-header border-0">
+        <h5 class="modal-title ms-auto" id="forgotPasswordModalLabel">
+          Reset Your Password
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="forgotPasswordForm" class="form-floating">
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control auth-form-control"
+              id="forgotEmail"
+              placeholder="Enter your email"
+              required
+            />
+            <label for="forgotEmail">Email Address</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-custom w-100 fs-5">
+            Send Reset Link
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login Button -->
+<a href="#" class="btn btn-custom nav-btn-h" data-bs-toggle="modal" data-bs-target="#loginModal">
+  Login
+</a>
