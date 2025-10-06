@@ -109,41 +109,27 @@
         width: 25%;
       }
 
-      /* for calender style  */
-    .cal {
-      background: #f0f2f5;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    .calendar-card {
-      border-radius: 16px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-      background: #fff;
-      max-width: 1200px;
-      margin: auto;
-      overflow: hidden;
-    }
-
-    .calendar-header {
-      background: linear-gradient(135deg, #4a90e2, #357abd);
-      color: #fff;
-      padding: 12px;
-      text-align: center;
-    }
-
-    .calendar-header h5 {
-      margin: 0;
-      font-weight: 600;
-    }
-
-    #user-calendar {
-      width: 100%;
-      max-width: 100%;
-      padding: 15px;
-    }
+      /* for calender style  start */
+      .calendar-day {
+  height: 60px;
+  line-height: 60px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+.calendar-day:hover {
+  background-color: #f0f4f8;
+}
+.today {
+  background-color: #0d6efd;
+  color: white;
+  font-weight: bold;
+  box-shadow: inset 0 0 0 2px white;
+}
+      /* for calender style  end*/
+    
 
     /* Remove borders */
     .fc-theme-standard td,
@@ -206,6 +192,36 @@
   padding-right: 100%; /* extra space for seamless loop */
 }
 
+
+.calendar-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  background: linear-gradient(90deg, #0d6efd, #6610f2);
+  padding: 15px;
+}
+
+.calendar-day {
+  height: 60px;
+  line-height: 60px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+.calendar-day:hover {
+  background-color: #f0f4f8;
+}
+
+.today {
+  background-color: #0d6efd;
+  color: white;
+  font-weight: bold;
+}
 @keyframes scroll-left {
   0% {
     transform: translateX(0%);
@@ -412,7 +428,7 @@
               >
             </li>
             <li>
-              <a id="calander-btn" class="nav-link" data-target="user-panel-calender" 
+              <a class="nav-link" data-target="user-panel-calender" 
                 ><i class="fa-solid fa-calculator me-2"></i>Calander</a
               >
             </li>
@@ -1808,18 +1824,38 @@
             </div>
           </div>
        <!-- calander -->
-
-<div id="user-panel-calender" class="container-fluid py-3 user-panel-section user-panel-hidden">
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <div class="calendar-card">
-        <div class="calendar-header">
-          <h5>User Panel Calendar</h5>
-        </div>
-        <div id="user-calendar" class=""></div>
+      <div
+          id="user-panel-calender"
+          class="user-panel-section user-panel-hidden"
+          >
+  <div class="container my-5">
+  <div class="card shadow border-0 rounded-4">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center px-4 py-3">
+      <button class="btn btn-light btn-sm" onclick="changeMonth(-1)">&#8592;</button>
+      <h5 id="monthYear" class="mb-0 fw-semibold"></h5>
+      <div>
+        <button class="btn btn-light btn-sm me-2" onclick="goToToday()">Today</button>
+        <button class="btn btn-light btn-sm" onclick="changeMonth(1)">&#8594;</button>
       </div>
     </div>
+    <div class="card-body px-4">
+      <div class="row text-center fw-bold text-secondary mb-2">
+        <div class="col">Sun</div>
+        <div class="col">Mon</div>
+        <div class="col">Tue</div>
+        <div class="col">Wed</div>
+        <div class="col">Thu</div>
+        <div class="col">Fri</div>
+        <div class="col">Sat</div>
+      </div>
+      <div id="calendarDates" class="row text-center"></div>
+    </div>
   </div>
+</div>
+
+
+      </div>
+
 </div>
 
 
@@ -2383,19 +2419,9 @@
 
     </script>
     <script src="user-panel.js"></script>
-   <!-- FullCalendar CSS & JS -->
-<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
 <script>
-  
-  document.addEventListener('DOMContentLoaded', function () {
-    var calendarEl = document.getElementById('user-calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth'
-    });
-    calendar.render();
-  });
+
 
 // notification functionlaty for dashboard 
   const notificationCount = document.getElementById('notificationCount');
@@ -2422,9 +2448,51 @@
     notificationList.prepend(li);
     notificationCount.style.display = 'inline-block';
   }
-
-
 </script>
 
+<!-- calander  -->
+<script>
+  let currentDate = new Date();
+
+function renderCalendar() {
+  const monthYear = document.getElementById("monthYear");
+  const calendarDates = document.getElementById("calendarDates");
+  calendarDates.innerHTML = "";
+
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth();
+
+  const firstDay = new Date(year, month, 1).getDay();
+  const lastDate = new Date(year, month + 1, 0).getDate();
+
+  monthYear.textContent = currentDate.toLocaleString("default", { month: "long", year: "numeric" });
+
+  for (let i = 0; i < firstDay; i++) {
+    calendarDates.innerHTML += `<div class="col calendar-day"></div>`;
+  }
+
+  const today = new Date();
+  for (let day = 1; day <= lastDate; day++) {
+    const isToday =
+      day === today.getDate() &&
+      month === today.getMonth() &&
+      year === today.getFullYear();
+
+    calendarDates.innerHTML += `<div class="col calendar-day ${isToday ? 'today' : ''}">${day}</div>`;
+  }
+}
+
+function changeMonth(direction) {
+  currentDate.setMonth(currentDate.getMonth() + direction);
+  renderCalendar();
+}
+
+function goToToday() {
+  currentDate = new Date();
+  renderCalendar();
+}
+
+renderCalendar();
+</script>
   </body>
 </html>
