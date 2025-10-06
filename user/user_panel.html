@@ -110,17 +110,23 @@
       }
 
       /* for calender style  start */
-      .calendar-day {
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.calendar-day {
   height: 60px;
   line-height: 60px;
   border-radius: 8px;
-  margin-bottom: 8px;
   font-weight: 500;
   color: #333;
   transition: background-color 0.2s ease;
+  background-color: #f8f9fa;
 }
 .calendar-day:hover {
-  background-color: #f0f4f8;
+  background-color: #e2e6ea;
 }
 .today {
   background-color: #0d6efd;
@@ -1828,9 +1834,9 @@
           id="user-panel-calender"
           class="user-panel-section user-panel-hidden"
           >
-  <div class="container my-5">
-  <div class="card shadow border-0 rounded-4">
-    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center px-4 py-3">
+<div class="d-flex justify-content-center my-5">
+  <div class="card shadow border-0 rounded-4" style="width: 100%; max-width: 900px;">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center px-3 py-3">
       <button class="btn btn-light btn-sm" onclick="changeMonth(-1)">&#8592;</button>
       <h5 id="monthYear" class="mb-0 fw-semibold"></h5>
       <div>
@@ -1838,21 +1844,14 @@
         <button class="btn btn-light btn-sm" onclick="changeMonth(1)">&#8594;</button>
       </div>
     </div>
-    <div class="card-body px-4">
-      <div class="row text-center fw-bold text-secondary mb-2">
-        <div class="col">Sun</div>
-        <div class="col">Mon</div>
-        <div class="col">Tue</div>
-        <div class="col">Wed</div>
-        <div class="col">Thu</div>
-        <div class="col">Fri</div>
-        <div class="col">Sat</div>
+    <div class="card-body px-3">
+      <div class="calendar-grid text-center fw-bold text-secondary mb-2">
+        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
       </div>
-      <div id="calendarDates" class="row text-center"></div>
+      <div id="calendarDates" class="calendar-grid text-center"></div>
     </div>
   </div>
 </div>
-
 
       </div>
 
@@ -2452,7 +2451,7 @@
 
 <!-- calander  -->
 <script>
-  let currentDate = new Date();
+let currentDate = new Date();
 
 function renderCalendar() {
   const monthYear = document.getElementById("monthYear");
@@ -2468,7 +2467,7 @@ function renderCalendar() {
   monthYear.textContent = currentDate.toLocaleString("default", { month: "long", year: "numeric" });
 
   for (let i = 0; i < firstDay; i++) {
-    calendarDates.innerHTML += `<div class="col calendar-day"></div>`;
+    calendarDates.innerHTML += `<div class="calendar-day"></div>`;
   }
 
   const today = new Date();
@@ -2478,7 +2477,7 @@ function renderCalendar() {
       month === today.getMonth() &&
       year === today.getFullYear();
 
-    calendarDates.innerHTML += `<div class="col calendar-day ${isToday ? 'today' : ''}">${day}</div>`;
+    calendarDates.innerHTML += `<div class="calendar-day ${isToday ? 'today' : ''}">${day}</div>`;
   }
 }
 
