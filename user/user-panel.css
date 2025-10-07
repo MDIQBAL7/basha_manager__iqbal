@@ -1,0 +1,411 @@
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa;
+      }
+
+      .btn-tenent {
+        position: relative;
+        display: inline-block;
+        padding: 12px 10px;
+        border-radius: 10px; /* pill style */
+        font-size: 15px;
+        font-weight: 600;
+        color: #fff;
+        background: linear-gradient(135deg, #4a90e2, #357abd);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 6px 12px rgba(74, 144, 226, 0.25);
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
+        overflow: hidden;
+      }
+
+      .active-btn {
+        color: black;
+      }
+      .active-btn:active {
+        border: none;
+        outline: none;
+        /* background-color: rgba(255, 255, 255, 0.36); */
+        box-shadow: none;
+      }
+      /* Sidebar */
+      .user-panel-sidebar {
+        background: #1a1d20;
+        color: #fff;
+        min-height: 100vh;
+        padding-top: 20px;
+      }
+
+      .user-panel-sidebar h4 {
+        padding-left: 20px;
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      .user-panel-sidebar .nav-link {
+        color: #adb5bd;
+        margin: 6px 0;
+        border-radius: 6px;
+        transition: 0.3s;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-size: 0.95rem;
+      }
+
+      .user-panel-sidebar .nav-link.active,
+      .user-panel-sidebar .nav-link:hover {
+        background: #0d6efd;
+        color: #fff;
+      }
+
+      /* Main content */
+      .user-panel-content {
+        padding: 20px;
+      }
+
+      .user-panel-card {
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+        padding: 20px;
+        background: #fff;
+      }
+
+      .user-panel-card:hover {
+        transform: translateY(-3px);
+      }
+
+      .user-panel-hidden {
+        display: none;
+      }
+
+      /* Table Responsive */
+      .table-responsive {
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      /* footer button  */
+      .w-new {
+        width: 25%;
+      }
+
+      /* for calender style  start */
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+
+  .calendar-day {
+    height: 60px;
+    line-height: 60px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #333;
+    transition: background-color 0.2s ease;
+    background-color: #f8f9fa;
+  }
+
+  .calendar-day:hover {
+    background-color: #e2e6ea;
+  }
+
+  .today {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: bold;
+    box-shadow: inset 0 0 0 2px white;
+  }
+
+  /* Default */
+  .calendar-header h5 {
+    font-size: 1.4rem;
+  }
+
+  /* Responsive fix for small devices */
+  @media (max-width: 576px) {
+    .calendar-header {
+      /* flex-wrap: wrap; */
+      gap: 4px;
+      text-align: center;
+      padding: 6px 10px !important;
+    }
+
+    .calendar-header h5 {
+      width: 100%;
+      order: 2;
+      font-size: 1rem !important;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .calendar-header .btn {
+      font-size: 0.8rem !important;
+      padding: 4px 8px !important;
+    }
+
+    .calendar-header .d-flex.gap-2 {
+      gap: 4px !important;
+    }
+  }
+      /* for calender style  end*/
+    
+
+    /* Remove borders */
+    .fc-theme-standard td,
+    .fc-theme-standard th {
+      border: none !important;
+    }
+
+    .fc .fc-toolbar-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2c3e50;
+    }
+
+    .fc-toolbar-chunk .fc-button {
+      border-radius: 6px !important;
+      padding: 6px 10px !important;
+      font-weight: 600;
+      border: none !important;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff !important;
+      transition: 0.3s;
+      font-size: 0.85rem;
+      margin-right: 5px;
+    }
+    .fc-toolbar-chunk .fc-button:hover {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+
+    .fc-daygrid-day:hover {
+      background: #f8f9fa;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .fc-day-today {
+      background: #e0e7ff !important;
+      border: 2px solid #4c51bf !important;
+      border-radius: 6px;
+    }
+
+    /* dashboard notece style start */
+.notice-bar {
+  overflow: hidden;
+  position: relative;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.notice-track {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%; /* start off-screen */
+  animation: scroll-left 20s linear infinite;
+}
+
+.notice-track span {
+  display: inline-block;
+  padding-right: 100%; /* extra space for seamless loop */
+}
+
+
+.calendar-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  background: linear-gradient(90deg, #0d6efd, #6610f2);
+  padding: 15px;
+}
+
+.calendar-day {
+  height: 60px;
+  line-height: 60px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+.calendar-day:hover {
+  background-color: #f0f4f8;
+}
+
+.today {
+  background-color: #0d6efd;
+  color: white;
+  font-weight: bold;
+}
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .notice-bar {
+    font-size: 14px;
+  }
+}
+    /* dashboard notece style end */
+/* invoice style start  */
+  .invoice-container {
+    max-width: 900px;
+    margin: 0px auto;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+  }
+
+  @media (max-width: 576px) {
+    .invoice-container {
+      margin:  0px -40px 0px 0px;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    table th,
+    table td {
+      font-size: 0.50rem;
+      padding: 0.2rem;
+    }
+
+    .text-md-end {
+      text-align: left !important;
+    }
+
+    .btn {
+      width: 100%;
+    }
+  }
+
+  /* Mobile PDF scaling fix */
+  @media (max-width: 768px) {
+    #invoice {
+      transform: scale(0.9);
+      transform-origin: top left;
+    }
+  }
+/* invoice style end */
+
+ 
+    /* Responsive */
+    @media (max-width: 768px) {
+      .fc .fc-toolbar {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .fc .fc-toolbar-title {
+        font-size: 1rem;
+      }
+      .fc-toolbar-chunk {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+      }
+      .fc-toolbar-chunk .fc-button {
+        font-size: 0.75rem;
+        padding: 4px 6px !important;
+      }
+      .fc-daygrid-day-frame {
+        font-size: 0.7rem;
+        padding: 2px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calendar-header h5 {
+        font-size: 1rem;
+      }
+      .fc .fc-toolbar-title {
+        font-size: 0.9rem;
+      }
+      .fc-toolbar-chunk .fc-button {
+        font-size: 0.7rem;
+        padding: 3px 5px !important;
+      }
+      .fc-daygrid-day-frame {
+        font-size: 0.6rem;
+        padding: 1px;
+      }
+    }
+
+  /* Custom wallet cards style start */
+   .user-wallet-card {
+      border: none;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: transform .2s ease;
+    }
+    .user-wallet-card:hover { transform: translateY(-4px); }
+    .user-wallet-header {
+      padding: 16px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .user-wallet-amount {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 12px 0 6px;
+      color: #111827;
+    }
+    .user-wallet-note { color: #6b7280; font-size: .9rem; margin: 0 0 12px; }
+    .user-wallet-body { padding: 18px; background: #fff; }
+    .user-income-grad { background: linear-gradient(135deg,#34d399,#059669); }
+    .user-expense-grad { background: linear-gradient(135deg,#f87171,#b91c1c); }
+    .user-icon-badge {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: rgba(255,255,255,.25);
+    }
+    .user-list-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 1px dashed #e5e7eb;
+    }
+    .user-list-item:last-child { border-bottom: none; }
+    .user-actions button { border: none; background: none; }
+  /* Custom wallet cards style end */
+  
+
+
+
+
+
+
+      /* Small Devices Fix */
+      @media (max-width: 991px) {
+        .desktop-sidebar {
+          display: none;
+        }
+        .user-panel-content {
+          padding: 15px;
+        }
+        .w-new {
+          width: 50%;
+        }
+      }
