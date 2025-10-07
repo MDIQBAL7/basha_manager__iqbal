@@ -110,30 +110,65 @@
       }
 
       /* for calender style  start */
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-}
 
-.calendar-day {
-  height: 60px;
-  line-height: 60px;
-  border-radius: 8px;
-  font-weight: 500;
-  color: #333;
-  transition: background-color 0.2s ease;
-  background-color: #f8f9fa;
-}
-.calendar-day:hover {
-  background-color: #e2e6ea;
-}
-.today {
-  background-color: #0d6efd;
-  color: white;
-  font-weight: bold;
-  box-shadow: inset 0 0 0 2px white;
-}
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+
+  .calendar-day {
+    height: 60px;
+    line-height: 60px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: #333;
+    transition: background-color 0.2s ease;
+    background-color: #f8f9fa;
+  }
+
+  .calendar-day:hover {
+    background-color: #e2e6ea;
+  }
+
+  .today {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: bold;
+    box-shadow: inset 0 0 0 2px white;
+  }
+
+  /* Default */
+  .calendar-header h5 {
+    font-size: 1.4rem;
+  }
+
+  /* Responsive fix for small devices */
+  @media (max-width: 576px) {
+    .calendar-header {
+      /* flex-wrap: wrap; */
+      gap: 4px;
+      text-align: center;
+      padding: 6px 10px !important;
+    }
+
+    .calendar-header h5 {
+      width: 100%;
+      order: 2;
+      font-size: 1rem !important;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .calendar-header .btn {
+      font-size: 0.8rem !important;
+      padding: 4px 8px !important;
+    }
+
+    .calendar-header .d-flex.gap-2 {
+      gap: 4px !important;
+    }
+  }
       /* for calender style  end*/
     
 
@@ -248,7 +283,7 @@
 /* invoice style start  */
   .invoice-container {
     max-width: 900px;
-    margin: auto;
+    margin: 0px auto;
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -257,6 +292,7 @@
 
   @media (max-width: 576px) {
     .invoice-container {
+      margin:  0px -50px 0px 0px;
       padding: 1rem;
       border-radius: 10px;
     }
@@ -1732,14 +1768,14 @@
   <hr />
 
   <div class="row g-4 mb-4">
-    <div class="col-12 col-md-6">
+    <div class="col-6">
       <h6 class="fw-bold text-secondary mb-2">Tenant Information</h6>
       <p class="mb-0"><strong>Name:</strong> <span id="tenantName">Md. Iqbal</span></p>
       <p class="mb-0"><strong>Phone:</strong> <span id="tenantPhone">01712345678</span></p>
       <p class="mb-0"><strong>Address:</strong> <span id="tenantAddress">House-12, Mirpur, Dhaka</span></p>
     </div>
 
-    <div class="col-12 col-md-6 text-md-end">
+    <div class="col-6 text-md-end">
       <h6 class="fw-bold text-secondary mb-2">Owner Information</h6>
       <p class="mb-0"><strong>Name:</strong> <span id="ownerName">Abdul Karim</span></p>
       <p class="mb-0"><strong>Phone:</strong> <span id="ownerPhone">01898765432</span></p>
@@ -1973,24 +2009,51 @@
           id="user-panel-calender"
           class="user-panel-section user-panel-hidden"
           >
-            <div class="d-flex justify-content-center my-5">
-              <div class="card shadow border-0 rounded-4" style="width: 100%; max-width: 900px;">
-                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center px-3 py-3">
-                  <button class="btn btn-light btn-sm" onclick="changeMonth(-1)">&#8592;</button>
-                  <h5 id="monthYear" class="mb-0 fw-semibold"></h5>
-                  <div>
-                    <button class="btn btn-light btn-sm me-2" onclick="goToToday()">Today</button>
-                    <button class="btn btn-light btn-sm" onclick="changeMonth(1)">&#8594;</button>
-                  </div>
-                </div>
-                <div class="card-body px-3">
-                  <div class="calendar-grid text-center fw-bold text-secondary mb-2">
-                    <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
-                  </div>
-                  <div id="calendarDates" class="calendar-grid text-center"></div>
-                </div>
-              </div>
-            </div>
+          <div class="d-flex justify-content-center my-5">
+  <div
+    class="card shadow border-0 rounded-4"
+    style="width: 100%; max-width: 900px;"
+  >
+    <!-- Calendar Header -->
+    <div
+      class="card-header text-white d-flex justify-content-between align-items-center px-3 py-3 calendar-header"
+      style="background: linear-gradient(to right, #007bff, #6f42c1);"
+    >
+      <button class="btn btn-light btn-sm nav-btn" onclick="changeMonth(-1)" style="width: 30px;">
+        &#8592;
+      </button>
+
+      <h5 id="monthYear" class="mb-0 fw-semibold text-center flex-grow-1">
+        October 2025
+      </h5>
+
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-light btn-sm nav-btn" onclick="goToToday()">
+          Today
+        </button>
+        <button class="btn btn-light btn-sm nav-btn" onclick="changeMonth(1)">
+          &#8594;
+        </button>
+      </div>
+    </div>
+
+    <!-- Calendar Body -->
+    <div class="card-body px-3">
+      <div
+        class="calendar-grid text-center fw-bold text-secondary mb-2"
+      >
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+      <div id="calendarDates" class="calendar-grid text-center"></div>
+    </div>
+  </div>
+</div>
       </div>
 </div>
 
@@ -2588,47 +2651,52 @@
 
 <!-- calander  -->
 <script>
-let currentDate = new Date();
+  let currentDate = new Date();
 
-function renderCalendar() {
-  const monthYear = document.getElementById("monthYear");
-  const calendarDates = document.getElementById("calendarDates");
-  calendarDates.innerHTML = "";
+  function renderCalendar() {
+    const monthYear = document.getElementById("monthYear");
+    const calendarDates = document.getElementById("calendarDates");
+    calendarDates.innerHTML = "";
 
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
 
-  const firstDay = new Date(year, month, 1).getDay();
-  const lastDate = new Date(year, month + 1, 0).getDate();
+    const firstDay = new Date(year, month, 1).getDay();
+    const lastDate = new Date(year, month + 1, 0).getDate();
 
-  monthYear.textContent = currentDate.toLocaleString("default", { month: "long", year: "numeric" });
+    monthYear.textContent = currentDate.toLocaleString("default", {
+      month: "long",
+      year: "numeric",
+    });
 
-  for (let i = 0; i < firstDay; i++) {
-    calendarDates.innerHTML += `<div class="calendar-day"></div>`;
+    for (let i = 0; i < firstDay; i++) {
+      calendarDates.innerHTML += `<div class="calendar-day"></div>`;
+    }
+
+    const today = new Date();
+    for (let day = 1; day <= lastDate; day++) {
+      const isToday =
+        day === today.getDate() &&
+        month === today.getMonth() &&
+        year === today.getFullYear();
+
+      calendarDates.innerHTML += `<div class="calendar-day ${
+        isToday ? "today" : ""
+      }">${day}</div>`;
+    }
   }
 
-  const today = new Date();
-  for (let day = 1; day <= lastDate; day++) {
-    const isToday =
-      day === today.getDate() &&
-      month === today.getMonth() &&
-      year === today.getFullYear();
-
-    calendarDates.innerHTML += `<div class="calendar-day ${isToday ? 'today' : ''}">${day}</div>`;
+  function changeMonth(direction) {
+    currentDate.setMonth(currentDate.getMonth() + direction);
+    renderCalendar();
   }
-}
 
-function changeMonth(direction) {
-  currentDate.setMonth(currentDate.getMonth() + direction);
+  function goToToday() {
+    currentDate = new Date();
+    renderCalendar();
+  }
+
   renderCalendar();
-}
-
-function goToToday() {
-  currentDate = new Date();
-  renderCalendar();
-}
-
-renderCalendar();
 </script>
 
 <!-- invoice  -->
