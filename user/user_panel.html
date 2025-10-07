@@ -279,6 +279,14 @@
       width: 100%;
     }
   }
+
+  /* Mobile PDF scaling fix */
+  @media (max-width: 768px) {
+    #invoice {
+      transform: scale(0.9);
+      transform-origin: top left;
+    }
+  }
 /* invoice style end */
 
  
@@ -1707,7 +1715,7 @@
             id="user-panel-invoice"
             class="user-panel-section user-panel-hidden"
           >
-            <div class="invoice-container my-4">
+      <div id="invoice" class="invoice-container my-4">
   <div
     class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2"
   >
@@ -1783,8 +1791,8 @@
   </div>
 
   <div class="text-end mt-4">
-    <button class="btn btn-danger px-4" onclick="window.print()">
-      🖨️ Print Invoice
+    <button class="btn btn-danger px-4" id="downloadPDF">
+      📥 Download Invoice (PDF)
     </button>
   </div>
 
@@ -2625,13 +2633,40 @@ renderCalendar();
 
 <!-- invoice  -->
  <script>
-  // Generate random invoice number
-  document.getElementById("invoiceNo").textContent =
-    "INV-" + Math.floor(Math.random() * 90000 + 10000);
+  // 🔹 Random invoice number
+  const invoiceNo = "INV-" + Math.floor(Math.random() * 90000 + 10000);
+  document.getElementById("invoiceNo").textContent = invoiceNo;
 
-  // Set current date
+  // 🔹 Current date
   const today = new Date();
   document.getElementById("invoiceDate").textContent = today.toLocaleDateString();
+
+  // 🔹 PDF download function (hide button while generating)
+  document.getElementById("downloadPDF").addEventListener("click", () => {
+    const button = document.getElementById("downloadPDF");
+    const invoice = document.getElementById("invoice");
+
+    button.style.display = "none"; // hide button
+
+    const opt = {
+      margin: 0.5,
+      filename: `${invoiceNo}.pdf`,
+      image: { type: "jpeg", quality: 0.98 },
+      html2canvas: { scale: 1 }, // scale reduced for mobile
+      jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+    };
+
+    html2pdf()
+      .set(opt)
+      .from(invoice)
+      .save()
+      .then(() => {
+        button.style.display = "inline-block"; // show button again
+      });
+  });
+
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
   </body>
 </html>
