@@ -238,8 +238,15 @@
 }
 
 
+
+@media (max-width: 768px) {
+  .notice-bar {
+    font-size: 14px;
+  }
+}
+    /* dashboard notece style end */
 /* invoice style start  */
- .invoice-container {
+  .invoice-container {
     max-width: 900px;
     margin: auto;
     background: #fff;
@@ -273,13 +280,6 @@
     }
   }
 /* invoice style end */
-@media (max-width: 768px) {
-  .notice-bar {
-    font-size: 14px;
-  }
-}
-    /* dashboard notece style end */
-
 
  
     /* Responsive */
@@ -1707,87 +1707,93 @@
             id="user-panel-invoice"
             class="user-panel-section user-panel-hidden"
           >
-        <div class="invoice-container my-4">
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2">
-      <div>
-        <h3 class="fw-bold text-primary mb-1">🏠 Rent Invoice</h3>
-        <p class="text-muted small mb-0">Your House Management System</p>
-      </div>
-      <div class="text-md-end">
-        <h6 class="mb-0">Invoice No: <span id="invoiceNo"></span></h6>
-        <small>Date: <span id="invoiceDate"></span></small>
-      </div>
+            <div class="invoice-container my-4">
+  <div
+    class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-2"
+  >
+    <div>
+      <h3 class="fw-bold text-danger mb-1">🏠 Rent Invoice</h3>
+      <p class="text-muted small mb-0">Your House Management System</p>
+    </div>
+    <div class="text-md-end">
+      <h6 class="mb-0">Invoice No: <span id="invoiceNo"></span></h6>
+      <small>Date: <span id="invoiceDate"></span></small>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row g-4 mb-4">
+    <div class="col-12 col-md-6">
+      <h6 class="fw-bold text-secondary mb-2">Tenant Information</h6>
+      <p class="mb-0"><strong>Name:</strong> <span id="tenantName">Md. Iqbal</span></p>
+      <p class="mb-0"><strong>Phone:</strong> <span id="tenantPhone">01712345678</span></p>
+      <p class="mb-0"><strong>Address:</strong> <span id="tenantAddress">House-12, Mirpur, Dhaka</span></p>
     </div>
 
+    <div class="col-12 col-md-6 text-md-end">
+      <h6 class="fw-bold text-secondary mb-2">Owner Information</h6>
+      <p class="mb-0"><strong>Name:</strong> <span id="ownerName">Abdul Karim</span></p>
+      <p class="mb-0"><strong>Phone:</strong> <span id="ownerPhone">01898765432</span></p>
+      <p class="mb-0"><strong>Email:</strong> <span id="ownerEmail">owner@example.com</span></p>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle text-center">
+      <thead class="table-danger">
+        <tr>
+          <th>SL</th>
+          <th>Description</th>
+          <th>Month</th>
+          <th>Date</th>
+          <th>Amount (৳)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="text-start">House Rent</td>
+          <td>September 2025</td>
+          <td>05-09-2025</td>
+          <td class="text-end">15000</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="text-start">Electricity Bill</td>
+          <td>September 2025</td>
+          <td>07-09-2025</td>
+          <td class="text-end">1200</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="text-start">Water Bill</td>
+          <td>September 2025</td>
+          <td>10-09-2025</td>
+          <td class="text-end">300</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4" class="text-end">Total</th>
+          <th class="text-end text-danger fw-bold">৳16500</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="text-end mt-4">
+    <button class="btn btn-danger px-4" onclick="window.print()">
+      🖨️ Print Invoice
+    </button>
+  </div>
+
+  <div class="text-center mt-5 small text-muted">
     <hr />
-
-    <div class="row g-4 mb-4">
-      <div class="col-12 col-md-6">
-        <h6 class="fw-bold text-secondary mb-2">Tenant Information</h6>
-        <p class="mb-0"><strong>Name:</strong> <span id="tenantName">Md. Iqbal</span></p>
-        <p class="mb-0"><strong>Phone:</strong> <span id="tenantPhone">01712345678</span></p>
-        <p class="mb-0"><strong>Address:</strong> <span id="tenantAddress">House-12, Mirpur, Dhaka</span></p>
-      </div>
-
-      <div class="col-12 col-md-6 text-md-end">
-        <h6 class="fw-bold text-secondary mb-2">Owner Information</h6>
-        <p class="mb-0"><strong>Name:</strong> <span id="ownerName">Abdul Karim</span></p>
-        <p class="mb-0"><strong>Phone:</strong> <span id="ownerPhone">01898765432</span></p>
-        <p class="mb-0"><strong>Email:</strong> <span id="ownerEmail">owner@example.com</span></p>
-      </div>
-    </div>
-
-    <div class="table-responsive">
-      <table class="table table-bordered align-middle text-center">
-        <thead class="table-primary">
-          <tr>
-            <th>SL</th>
-            <th>Description</th>
-            <th>Month</th>
-            <th>Amount (৳)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td class="text-start">House Rent</td>
-            <td>September 2025</td>
-            <td class="text-end">15000</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td class="text-start">Electricity Bill</td>
-            <td>September 2025</td>
-            <td class="text-end">1200</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td class="text-start">Water Bill</td>
-            <td>September 2025</td>
-            <td class="text-end">300</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th colspan="3" class="text-end">Total</th>
-            <th class="text-end text-danger fw-bold">৳16500</th>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-
-    <div class="text-end mt-4">
-      <button class="btn btn-primary px-4" onclick="window.print()">
-        🖨️ Print Invoice
-      </button>
-    </div>
-
-    <div class="text-center mt-5 small text-muted">
-      <hr />
-      <p class="mb-0">Thank you for your payment 💖</p>
-      <p class="mb-0">This is a computer-generated invoice. No signature required.</p>
-    </div>
-        </div>
+    <p class="mb-0">Thank you for your payment 💖</p>
+    <p class="mb-0">This is a computer-generated invoice. No signature required.</p>
+  </div>
+</div>
           </div>
           <!-- Profile -->
           <div
