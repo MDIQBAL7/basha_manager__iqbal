@@ -36,6 +36,28 @@
   --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   --transition: all 0.3s ease;
   --border-radius: 0.25rem;
+
+  /* I Add these variable permanetly */
+  /* --common-bg-nav : linear-gradient(135deg, #4777e6ce, #8d54e9b0, #8d54e9b4, #4777e6ce); */
+  /* nav style  */
+  --common-bg-nav : linear-gradient(135deg, #12d7faba, #12d7fa69, #1fa2ff93, #1fa2ff69);
+  /* why chose style  */
+  --common-bg : linear-gradient(135deg, #12d7fa34, #12d7fa4b, #1fa2ff4d, #1fa2ff7e);
+  .body-for-bg{
+    background: var(--common-bg);
+  }
+  
+  
+        /* background: rgba(255, 255, 255, 0.8); */
+      /* background: linear-gradient(135deg, #007BFF, #00C6FF) !important; */
+      /* background: linear-gradient(135deg, #8E2DE2, #FF6FD8); */
+      /* background: linear-gradient(135deg, #89f6fe90, #66a6ff3a); */
+      /* background: linear-gradient(135deg, #00b09b, #96c93d); */
+      /* background: linear-gradient(135deg, #4776E6, #8E54E9); */
+      /* background: linear-gradient(135deg, #232526, #414345); */
+      /* background: linear-gradient(135deg, rgba(31, 162, 255, 0.462), #12d7fa69, #1fa2ff69); */
+      /* background: linear-gradient(135deg, #1FA2FF, #12D8FA, #A6FFCB); */
+
 }
 /* <================== Global Styles end =====================> */
 
@@ -133,29 +155,6 @@
 }  */
  /* <===================== page loader style end ===============> */
 
-   /* <===================== Why chose style start ===============> */
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--dark-color);
-  margin-bottom: 1.5rem;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 0.5rem;
-}
-
-.section-title:after {
-  content: "";
-  position: absolute;
-  height: 4px;
-  width: 60px;
-  background-color: var(--primary-color);
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 2px;
-}
-   /* <===================== Why chose style end ===============> */
 
   /* <===================== login modal style start ===============> */
 
@@ -219,7 +218,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.8);
+      background: var(--common-bg-nav);
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       transition: background 0.3s ease-in-out;
@@ -468,9 +467,14 @@ padding: 0px auto;
   height: 42px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid #eee;
   cursor: pointer;
   transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  background-color: #1239fa4b;
+  font-size: 1.5rem;
 }
 .nav-profile-dropdown-toggle:hover {
   transform: scale(1.05);
@@ -936,14 +940,35 @@ color: black;
 
       /* <============== Registration modal style  end ==============> */
 
-    /* <============== Features section style start ==============> */
+    /* <============== why cose us section style start ==============> */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.section-title:after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 60px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
 .features-section {
   padding: 5rem 0;
-  background-color: white;
 }
 
 .feature-card {
-  background-color: white;
+  background : var(common-bg-why-chose-card);
   border-radius: 1rem;
   padding: 2rem;
   height: 100%;
@@ -970,12 +995,11 @@ color: black;
   color: var(--dark-color);
 }
 
-    /* <============== Features section style end ==============> */
+    /* <============== why chose section style end ==============> */
 
     /* <=========== Features Properties section style start ========> */
 .properties-section {
   padding: 5rem 0;
-  background-color: #f5f7fa;
 }
 
 .property-card {
@@ -1038,7 +1062,6 @@ color: black;
 
     section.testimonials {
       padding: 80px 0;
-      background: linear-gradient(180deg, #fff, #f8f9fb);
       overflow: hidden;
     }
 
