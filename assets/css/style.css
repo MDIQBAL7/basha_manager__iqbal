@@ -2,8 +2,25 @@
  * Basha Manager - Rental Management System
  * Main Stylesheet
  */
+/* 
+1. Global style         (10 - 29)
+2. Common classes       (31 - 73)
+3. Page loader style    (75 - 124)
+4. Why choose style     (127 - 149)
+5. login modal style    (151 - 203)
+6. Navbar Styles        (204 -  541)
+7. Hero section style   (544 - 607)
+8. to-let section style (613 - 667)
+9. to-let details style (671 - 747)
+10. add to card sweet alert (750 - 815)
+11. Registration modal style (834 - 936)
+12, Features section style   (938 - 972)
+13. Features Properties section style (974 - 1034)
+14. Testimonial section style (1036 - 1093)
+15. Footer style (1095 - 1164)
+*/
+/* <================== Global Styles start =====================> */
 
-/* Global Styles */
 :root {
   --bg-color :  #FAFAFA;
   --text-color : #111827;
@@ -20,9 +37,10 @@
   --transition: all 0.3s ease;
   --border-radius: 0.25rem;
 }
+/* <================== Global Styles end =====================> */
 
-    /* <========================== common classes start ============================> */
-     .btn-custom {
+    /* <=================== common classes start ==========> */
+  .btn-custom {
   position: relative;
   display: inline-block;
   padding: 12px 10px;
@@ -63,15 +81,9 @@
   transform: scale(0.97);
   box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
 }
-    /* <========================== common classes end ============================> */
-
-/* .outline-btn:focus {
-  outline: none !important;
-  box-shadow: none !important;
-  border: 2px solid black;
-} */
-
-/* page loader style  */
+    /* <===================== common classes end ===============> */
+   
+ /* <===================== page loader style start ===============> */
 
 /* #pageLoader {
   position: fixed;
@@ -119,8 +131,9 @@
   font-weight: 500;
   letter-spacing: 1px;
 }  */
+ /* <===================== page loader style end ===============> */
 
-/* Utility Classes*/
+   /* <===================== Why chose style start ===============> */
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -142,8 +155,9 @@
   transform: translateX(-50%);
   border-radius: 2px;
 }
+   /* <===================== Why chose style end ===============> */
 
-/* login modal style  */
+  /* <===================== login modal style start ===============> */
 
 .auth-modal {
   border-radius: 16px;
@@ -195,7 +209,7 @@
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
-
+  /* <===================== login modal style end ===============> */
 
 
 /* <========================= Navbar Styles start ==========================> */
@@ -538,7 +552,7 @@ padding: 0px auto;
 /*========================== Navbar Styles end ==========================> */
 
 
-/* Hero Carousel Styles */
+/* ================= Hero section style start ================= */
 
 #heroCarousel .carousel-item {
   height: 600px;
@@ -601,8 +615,9 @@ padding: 0px auto;
   }
 }
 
+/* ================= Hero section style end ================= */
 
-/* < ===================== To-let or rent section style start  ==========================>*/
+/* < ========= To-let or rent section style start ==============>*/
 
  /* To-let hero section style */
 .to-let-hero-section {
@@ -656,10 +671,10 @@ padding: 0px auto;
 .m-max{
   margin-top: 60px;
 }
-/* < ===================== To-let or rent section style end  ==========================>*/
+/* < =============== To-let or rent section style end =========>*/
 
 
-/*<====================== To-let details section style start ==========================>*/
+/*<=========== To-let details section style start =============>*/
 .gallery-img {
   transition: all 0.6s ease; 
   cursor: pointer;
@@ -735,9 +750,9 @@ color: black;
 
 
 
-/*<====================== To-let details section style end ==========================>*/
+/*<=============== To-let details section style end ================>*/
 
-    /* sweet alert style for add to cart  */
+/*<=============== add to card sweet alert start ================>*/
 
     .add-card-custom-popup {
       border-radius: 16px;
@@ -802,8 +817,9 @@ color: black;
       font-size: 16px;
     }
 
+/*<=============== add to card sweet alert end ================>*/
     /* Button in main body */
-    .trigger-btn {
+    /* .trigger-btn {
       margin: 50px auto;
       display: block;
       padding: 12px 20px;
@@ -818,8 +834,8 @@ color: black;
     }
     .trigger-btn:hover {
       background: #219150;
-    }
-                   /* <============== Registration modal style  start =================> */
+    } */
+     /* <============== Registration modal style  start ==============> */
 
 .glass-card {
   background: rgba(255, 255, 255, 0.5);
@@ -862,9 +878,65 @@ color: black;
   background: linear-gradient(135deg, #5a67d8, #6b46c1);
 }
 
-      /* <============== Registration modal style  end =================> */
 
-/* Features Section Styles */
+/* Authentication Form Styles */
+.auth-form-container {
+  padding: 1rem;
+}
+
+.auth-form-subtitle {
+  font-size: 1rem;
+  color: var(--gray-color);
+  margin-bottom: 1.5rem;
+}
+
+.auth-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.auth-form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.auth-form-control {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.auth-form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+}
+
+.auth-form-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.auth-form-link:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.auth-form-button {
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.auth-form-footer {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+      /* <============== Registration modal style  end ==============> */
+
+    /* <============== Features section style start ==============> */
 .features-section {
   padding: 5rem 0;
   background-color: white;
@@ -898,7 +970,9 @@ color: black;
   color: var(--dark-color);
 }
 
-/* Properties Section Styles */
+    /* <============== Features section style end ==============> */
+
+    /* <=========== Features Properties section style start ========> */
 .properties-section {
   padding: 5rem 0;
   background-color: #f5f7fa;
@@ -958,64 +1032,137 @@ color: black;
   font-size: 0.875rem;
   color: var(--gray-color);
 }
+    /* <=========== Features Properties section style end ========> */
 
-/* Testimonials Section Styles */
-.testimonials-section {
-  padding: 5rem 0;
-  background-color: white;
-}
+ /* <=========== Testimonials Section Styles start ========> */
 
-.testimonial-card {
-  background-color: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  height: 100%;
-  box-shadow: 0 1.5rem 2.5rem rgba(0, 0, 0, 0.2);
-  position: relative;
-}
+    section.testimonials {
+      padding: 80px 0;
+      background: linear-gradient(180deg, #fff, #f8f9fb);
+      overflow: hidden;
+    }
 
-.testimonial-quote {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  font-size: 2rem;
-  color: rgba(52, 152, 219, 0.1);
-}
+    .review-section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
 
-.testimonial-text {
-  font-style: italic;
-  margin-bottom: 1.5rem;
-  color: var(--dark-color);
-}
 
-.testimonial-author {
-  display: flex;
-  align-items: center;
-}
+    /* Swiper slides */
+    .swiper-slide {
+      height: auto;
+    }
 
-.testimonial-avatar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 1rem;
-  border: 3px solid rgba(52, 152, 219, 0.1);
-}
+    .testimonial-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+      padding: 35px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      height: 100%;
+    }
 
-.testimonial-name {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0;
-  color: var(--dark-color);
-}
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
 
-.testimonial-position {
-  font-size: 0.875rem;
-  color: var(--gray-color);
-  margin-bottom: 0;
-}
+    .testimonial-content {
+      position: relative;
+      margin-bottom: 25px;
+    }
 
-/* Footer Styles */
+    .testimonial-content::before {
+      content: "“";
+      position: absolute;
+      top: -25px;
+      left: -5px;
+      font-size: 70px;
+      color: rgba(13,110,253,0.1);
+      font-weight: bold;
+      line-height: 0;
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .client-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .client-photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(13,110,253,0.2);
+    }
+
+    .client-details h5 {
+      margin: 0;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .client-details small {
+      color: #6c757d;
+    }
+
+    .rating {
+      color: #f7b731;
+      font-size: 0.9rem;
+    }
+
+    /* Swiper Controls */
+    /* .swiper-button-prev,
+    .swiper-button-next {
+      color: #0d6efd;
+      transition: opacity 0.3s ease;
+    }
+
+    .swiper-button-prev:hover,
+    .swiper-button-next:hover {
+      opacity: 0.7;
+    } */
+
+    .swiper-pagination-bullet {
+      background: #ced4da;
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #0d6efd;
+    }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      section.testimonials {
+        padding: 60px 0;
+      }
+
+      .testimonial-card {
+        padding: 25px;
+      }
+
+      .section-title h2 {
+        font-size: 1.9rem;
+      }
+        /* .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    } */
+    }
+
+
+ /* <=========== Testimonials Section Styles end ========> */
+
+  /* <===========  Footer Styles start ========> */
 .footer {
   background-color: #2c3e50;
   color: white;
@@ -1084,61 +1231,7 @@ color: black;
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Authentication Form Styles */
-.auth-form-container {
-  padding: 1rem;
-}
-
-.auth-form-subtitle {
-  font-size: 1rem;
-  color: var(--gray-color);
-  margin-bottom: 1.5rem;
-}
-
-.auth-form-group {
-  margin-bottom: 1.5rem;
-}
-
-.auth-form-label {
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-}
-
-.auth-form-control {
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--border-color);
-}
-
-.auth-form-control:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
-}
-
-.auth-form-link {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-  transition: var(--transition);
-}
-
-.auth-form-link:hover {
-  color: var(--secondary-color);
-  text-decoration: underline;
-}
-
-.auth-form-button {
-  padding: 0.75rem 1rem;
-  font-weight: 500;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.auth-form-footer {
-  text-align: center;
-  margin-bottom: 0;
-}
-
+  /* <===========  Footer Styles end ========> */
 
 
   /*<============================ RESPONSIVE DESIGH STYLE START FROM HERE ===========> */
@@ -1210,7 +1303,7 @@ color: black;
 }
 
 
-    /*<========================== Max width 576 px ===========================>*/
+    /*<========================== Max width 576 px ================>*/
 @media (max-width: 576px) {
   #heroCarousel .carousel-item {
     height: 400px;

@@ -3,31 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Basha Manager - Rental Management System</title>
+    <title>Basha Manager</title>
 
     <!-- Header part include (CSS, meta, etc.) -->
     <div id="header-include"></div>
 
     <!-- html including render js -->
     <script src="assets/js/include.js" defer></script>
+    <!-- Bootstrap CSS -->
 
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
   </head>
   <body>
-    <!-- leader start  -->
-  <!-- <div id="pageLoader">
+    <!-- loader start  -->
+    <!-- <div id="pageLoader">
     <div class="loader-wrapper">
       <div class="loader"></div>
       <p class="loader-text">Loading...</p>
     </div>
   </div> -->
-  <!-- <div class="content">
+    <!-- <div class="content">
     <h1>Welcome to My Website</h1>
     <p>This is the main page content.</p>
   </div> -->
     <!-- loader end -->
+    <!--================= Nav bar start ==================-->
     <div id="navbar-include"></div>
-
-    <!-- Main Content -->
+    <!--================= Nav bar end ==================-->
+    <!--================= Main Content start ===================-->
     <main>
       <!-- Hero Carousel -->
       <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -248,7 +255,7 @@
             <div class="col-md-4 mb-4">
               <div class="property-card">
                 <img
-                  src="to-let-details.html"
+                  src="assets/image/feature/feature2.png"
                   class="property-img"
                   alt="Modern House"
                 />
@@ -325,92 +332,172 @@
         </div>
       </section>
 
-      <!-- Review Section -->
-      <section class="testimonials-section">
+      <!-- Review Section start -->
+      <section class="testimonials">
+        <div class="text-center mb-3">
+          <h2 class="section-title gradient-text m-0">What Our Clients Say</h2>
+        </div>
         <div class="container">
-          <div class="text-center mb-5">
-            <h2 class="section-title gradient-text">What Our Clients Say</h2>
-          </div>
-          <div class="row">
-            <div class="col-md-4 mb-4">
-              <div class="testimonial-card">
-                <div class="testimonial-quote">
-                  <i class="fas fa-quote-right"></i>
+          <!-- Swiper -->
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <!-- Slide 1 -->
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p class="testimonial-text">
+                      “Working with this team was a game changer. They delivered
+                      exactly what we needed with top-notch design and smooth
+                      communication.”
+                    </p>
+                  </div>
+                  <div class="client-info">
+                    <img
+                      src="https://i.pravatar.cc/150?img=12"
+                      class="client-photo"
+                      alt="client photo"
+                    />
+                    <div class="client-details">
+                      <h5>Arif Bhuiyan</h5>
+                      <small>Founder, BrightStart</small>
+                      <div class="rating mt-1">★★★★★</div>
+                    </div>
+                  </div>
                 </div>
-                <p class="testimonial-text">
-                  "Basha Manager has completely transformed how I manage my
-                  rental properties. The automated rent collection and
-                  maintenance tracking save me hours every week."
-                </p>
-                <div class="testimonial-author">
-                  <img
-                    src="assets/image/reviewprf/rvwprf1.png"
-                    class="testimonial-avatar"
-                    alt="Robert Johnson"
-                  />
-                  <div>
-                    <h5 class="testimonial-name">Robert Johnson</h5>
-                    <p class="testimonial-position">Property Owner</p>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p class="testimonial-text">
+                      “Highly professional and reliable. The website performance
+                      and UX improved significantly. We’ll definitely
+                      collaborate again.”
+                    </p>
+                  </div>
+                  <div class="client-info">
+                    <img
+                      src="https://i.pravatar.cc/150?img=48"
+                      class="client-photo"
+                      alt="client photo"
+                    />
+                    <div class="client-details">
+                      <h5>Maya Rahman</h5>
+                      <small>Product Manager, Nova</small>
+                      <div class="rating mt-1">★★★★☆</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p class="testimonial-text">
+                      “From planning to deployment, they stayed responsive and
+                      creative. The final outcome exceeded our expectations in
+                      every aspect.”
+                    </p>
+                  </div>
+                  <div class="client-info">
+                    <img
+                      src="https://i.pravatar.cc/150?img=33"
+                      class="client-photo"
+                      alt="client photo"
+                    />
+                    <div class="client-details">
+                      <h5>Iqbal Khan</h5>
+                      <small>Operations Lead, CarePlus</small>
+                      <div class="rating mt-1">★★★★★</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p class="testimonial-text">
+                      “From planning to deployment, they stayed responsive and
+                      creative. The final outcome exceeded our expectations in
+                      every aspect.”
+                    </p>
+                  </div>
+                  <div class="client-info">
+                    <img
+                      src="https://i.pravatar.cc/150?img=33"
+                      class="client-photo"
+                      alt="client photo"
+                    />
+                    <div class="client-details">
+                      <h5>Iqbal Khan</h5>
+                      <small>Operations Lead, CarePlus</small>
+                      <div class="rating mt-1">★★★★★</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p class="testimonial-text">
+                      “From planning to deployment, they stayed responsive and
+                      creative. The final outcome exceeded our expectations in
+                      every aspect.”
+                    </p>
+                  </div>
+                  <div class="client-info">
+                    <img
+                      src="https://i.pravatar.cc/150?img=33"
+                      class="client-photo"
+                      alt="client photo"
+                    />
+                    <div class="client-details">
+                      <h5>Iqbal Khan</h5>
+                      <small>Operations Lead, CarePlus</small>
+                      <div class="rating mt-1">★★★★★</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p class="testimonial-text">
+                      “From planning to deployment, they stayed responsive and
+                      creative. The final outcome exceeded our expectations in
+                      every aspect.”
+                    </p>
+                  </div>
+                  <div class="client-info">
+                    <img
+                      src="https://i.pravatar.cc/150?img=33"
+                      class="client-photo"
+                      alt="client photo"
+                    />
+                    <div class="client-details">
+                      <h5>Iqbal Khan</h5>
+                      <small>Operations Lead, CarePlus</small>
+                      <div class="rating mt-1">★★★★★</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-4 mb-4">
-              <div class="testimonial-card">
-                <div class="testimonial-quote">
-                  <i class="fas fa-quote-right"></i>
-                </div>
-                <p class="testimonial-text">
-                  "As a tenant, I love how easy Basha Manager makes it to pay
-                  rent and submit maintenance requests. The communication with
-                  my landlord has never been better."
-                </p>
-                <div class="testimonial-author">
-                  <img
-                    src="assets/image/reviewprf/rvwprf2.png"
-                    class="testimonial-avatar"
-                    alt="Sarah Miller"
-                  />
-                  <div>
-                    <h5 class="testimonial-name">Sarah Miller</h5>
-                    <p class="testimonial-position">Tenant</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="testimonial-card">
-                <div class="testimonial-quote">
-                  <i class="fas fa-quote-right"></i>
-                </div>
-                <p class="testimonial-text">
-                  "Since using Basha Manager, I've increased my rental income by
-                  15% and reduced vacancies. The reporting tools help me make
-                  data-driven decisions for my portfolio."
-                </p>
-                <div class="testimonial-author">
-                  <img
-                    src="assets/image/reviewprf/rvwprf3.png"
-                    class="testimonial-avatar"
-                    alt="David Thompson"
-                  />
-                  <div>
-                    <h5 class="testimonial-name">David Thompson</h5>
-                    <p class="testimonial-position">Real Estate Investor</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+            <!-- Swiper navigation -->
+            <!-- <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div> -->
+
+            <!-- Swiper pagination -->
+            <div class="swiper-pagination"></div>
           </div>
         </div>
       </section>
-    
-   
+      <!-- Review Section end-->
     </main>
-    <!-- End Main Content -->
-
-    <!-- Top Footer -->
-    <div id="top-footer-include"></div>
+    <!--================= Main Content end ===================-->
 
     <!-- Login Modal -->
     <div id="login-modal-include"></div>
@@ -418,8 +505,10 @@
     <!-- Register Modal -->
     <div id="registration-modal-include"></div>
 
-    <div id="footer-include"></div>
+    <!-- forgat pss modal  -->
     <div id="forgotPasswordModal"></div>
+    <!-- footer includes -->
+    <div id="footer-include"></div>
 
     <!--==============Scripts Link=============== -->
 
@@ -431,9 +520,41 @@
 
     <!-- Custom JS -->
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/my-js.js"></script>
 
-    <!-- more link -->
-     <script src="assets/js/my-js.js"></script>
-
+    <!-- for review section start  -->
+    <!-- Bootstrap JS -->
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        loop: true,
+        grabCursor: true,
+        centeredSlides: false,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+          },
+          1200: {
+            slidesPerView: 3,
+          },
+        },
+      });
+    </script>
+    <!-- for review section end  -->
   </body>
 </html>
