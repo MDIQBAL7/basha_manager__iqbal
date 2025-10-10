@@ -41,7 +41,10 @@
   /* --common-bg-nav : linear-gradient(135deg, #4777e6ce, #8d54e9b0, #8d54e9b4, #4777e6ce); */
   /* nav style  */
   --common-bg-nav : linear-gradient(135deg, #12d7faba, #12d7fa69, #1fa2ff93, #1fa2ff69);
-  /* why chose style  */
+  /* commo card bg  */
+  --common-bg-card : linear-gradient(135deg, #12d7fa34, #12d7fa32, #1fa2ff4d, #1fa2ff1b);
+  
+  /* common background  style  */
   --common-bg : linear-gradient(135deg, #12d7fa34, #12d7fa4b, #1fa2ff4d, #1fa2ff7e);
   .body-for-bg{
     background: var(--common-bg);
@@ -968,7 +971,7 @@ color: black;
 }
 
 .feature-card {
-  background : var(common-bg-why-chose-card);
+  background : var(--common-bg-card);
   border-radius: 1rem;
   padding: 2rem;
   height: 100%;
@@ -1003,10 +1006,10 @@ color: black;
 }
 
 .property-card {
-  background-color: white;
+  background-color: rgba(12, 100, 188, 0.05);
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
   transition: var(--transition);
   height: 100%;
 }
@@ -1077,7 +1080,7 @@ color: black;
     }
 
     .testimonial-card {
-      background: #fff;
+      background: var( --common-bg-card);
       border-radius: 20px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
       padding: 35px;
