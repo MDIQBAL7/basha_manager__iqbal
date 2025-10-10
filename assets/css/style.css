@@ -39,11 +39,17 @@
 
   /* I Add these variable permanetly */
   /* --common-bg-nav : linear-gradient(135deg, #4777e6ce, #8d54e9b0, #8d54e9b4, #4777e6ce); */
+
+  
   /* nav style  */
   --common-bg-nav : linear-gradient(135deg, #12d7faba, #12d7fa69, #1fa2ff93, #1fa2ff69);
+
   /* commo card bg  */
   --common-bg-card : linear-gradient(135deg, #12d7fa34, #12d7fa32, #1fa2ff4d, #1fa2ff1b);
-  
+
+  /* drop down bg  */
+  --common-bg-nav-dropdown : linear-gradient(135deg, #12d7fa, #12d7fab8, #12d7fa, #12d7fab4);
+
   /* common background  style  */
   --common-bg : linear-gradient(135deg, #12d7fa34, #12d7fa4b, #1fa2ff4d, #1fa2ff7e);
   .body-for-bg{
