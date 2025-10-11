@@ -560,9 +560,11 @@ padding: 0px auto;
 
 .sidebar-item{
   background: initial !important;
+  color: black;
 }
 .sidebar-item:hover{
-  background: rgba(135, 207, 235, 0.922) !important;
+  background: rgba(135, 207, 235, 0.9) !important;
+  color: black;
 }
 /*========================== Navbar Styles end ==========================> */
 
