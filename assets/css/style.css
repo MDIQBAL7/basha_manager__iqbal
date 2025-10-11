@@ -566,6 +566,11 @@ padding: 0px auto;
   background: rgba(135, 207, 235, 0.9) !important;
   color: black;
 }
+.sidebar-item:checked{
+  /* background: rgba(135, 207, 235, 0.9) !important; */
+  background: red;
+  color: black;
+}
 /*========================== Navbar Styles end ==========================> */
 
 
