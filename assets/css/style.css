@@ -48,7 +48,7 @@
   --common-bg-card : linear-gradient(135deg, #12d7fa34, #12d7fa32, #1fa2ff4d, #1fa2ff1b);
 
   /* drop down bg  */
-  --common-bg-nav-dropdown : linear-gradient(135deg, #12d7fa, #12d7fab8, #12d7fa, #12d7fab4);
+  --common-bg-nav-dropdown : linear-gradient(135deg, #12d7fac3, #12d7fa, #12d7fa, #12d7fab1);
 
   /* common background  style  */
   --common-bg : linear-gradient(135deg, #12d7fa34, #12d7fa4b, #1fa2ff4d, #1fa2ff7e);
@@ -456,9 +456,6 @@ padding: 0px auto;
       margin-right: 12px;
     }
 
-    /* .dropdown-menu {
-      background-color: rgba(37, 64, 85, 0.726);
-    } */
 
     /* @media (min-width: 768px) {
       .toggle-btn, .overlay, .close-btn {
@@ -482,7 +479,7 @@ padding: 0px auto;
   align-items: center;
   justify-content: center;
   font-weight: bolder;
-  background-color: #1239fa4b;
+  background-color: #2174af4b;
   font-size: 1.5rem;
 }
 .nav-profile-dropdown-toggle:hover {
@@ -561,7 +558,12 @@ padding: 0px auto;
   display: block;
 }
 
-
+.sidebar-item{
+  background: initial !important;
+}
+.sidebar-item:hover{
+  background: rgba(135, 207, 235, 0.922) !important;
+}
 /*========================== Navbar Styles end ==========================> */
 
 
