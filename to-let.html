@@ -11,7 +11,7 @@
     <!-- html including render js -->
     <script src="assets/js/include.js" defer></script>
   </head>
-  <body>
+  <body class="body-for-bg">
     <!-- navbar -->
     <div id="navbar-include"></div>
 
@@ -102,30 +102,36 @@
       <div id="results">
         <!-- Property cards will appear here -->
       </div>
-      <!-- Property Listings -->
+      <!-- Property Listings  -->
       <section class="container my-4">
-        <div  id="toLetContainer" class="row row-cols-1 row-cols-md-3 g-4">
-          <!--  Card 1-->
-          <div class="col to-let-card">
-            <div class="card property-card">
-              <img
-                src="assets/image/feature/feature1.png"
-                class="card-img-top"
-                alt="Property"
-              />
-              <div class="card-body">
-                <h5 class="card-title">2 BHK Apartment</h5>
-                <p class="card-text">
-                  <i class="fas fa-map-marker-alt"></i> Gulshan, Dhaka
-                </p>
-                <p class="card-text">
-                  <strong>Rent:</strong> 25,000 BDT / month
-                </p>
-                <p class="card-text">
-                  <i class="fas fa-bed"></i> 2 Bedrooms &nbsp;
-                  <i class="fas fa-bath"></i> 2 Bathrooms
-                </p>
-                <div class="d-flex gap-3">
+        <div id="toLetContainer" class="row">
+            <div class="col-md-4 mb-4">
+              <div class="property-card">
+                <img
+                  src="assets/image/feature/feature1.png"
+                  class="property-img"
+                  alt="Luxury Apartment"
+                />
+                <div class="property-info">
+                  <h3 class="property-title">Luxury Apartment</h3>
+                  <p class="property-location">
+                    <i class="fas fa-map-marker-alt me-2"></i>123 Park Avenue,
+                    New York
+                  </p>
+                  <h4 class="property-price">$2,500/month</h4>
+                  <div class="property-features">
+                    <span class="property-feature"
+                      ><i class="fas fa-bed me-1"></i> 2 Beds</span
+                    >
+                    <span class="property-feature"
+                      ><i class="fas fa-bath me-1"></i> 2 Baths</span
+                    >
+                    <span class="property-feature"
+                      ><i class="fas fa-ruler-combined me-1"></i> 1200 sq
+                      ft</span
+                    >
+                  </div>
+                    <div class="d-flex gap-3">
                   <!-- left btn  -->
                   <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
                     >VIEW DETAILS</a> -->
@@ -139,68 +145,39 @@
                   </button>
                   
                 </div>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- card 2  -->
-          <div class="col to-let-card">
-            <div class="card property-card">
-              <img
-                src="assets/image/feature/feature2.png"
-                class="card-img-top"
-                alt="Property"
-              />
-              <div class="card-body">
-                <h5 class="card-title">2 BHK Apartment</h5>
-                <p class="card-text">
-                  <i class="fas fa-map-marker-alt"></i> Gulshan, Dhaka
-                </p>
-                <p class="card-text">
-                  <strong>Rent:</strong> 25,000 BDT / month
-                </p>
-                <p class="card-text">
-                  <i class="fas fa-bed"></i> 2 Bedrooms &nbsp;
-                  <i class="fas fa-bath"></i> 2 Bathrooms
-                </p>
-                <div class="d-flex gap-3">
+            <div class="col-md-4 mb-4">
+              <div class="property-card">
+                <img
+                  src="assets/image/feature/feature2.png"
+                  class="property-img"
+                  alt="Modern House"
+                />
+                <div class="property-info">
+                  <h3 class="property-title">Modern House</h3>
+                  <p class="property-location">
+                    <i class="fas fa-map-marker-alt me-2"></i>456 Oak Street,
+                    Chicago
+                  </p>
+                  <h4 class="property-price">$3,800/month</h4>
+                  <div class="property-features">
+                    <span class="property-feature"
+                      ><i class="fas fa-bed me-1"></i> 4 Beds</span
+                    >
+                    <span class="property-feature"
+                      ><i class="fas fa-bath me-1"></i> 3 Baths</span
+                    >
+                    <span class="property-feature"
+                      ><i class="fas fa-ruler-combined me-1"></i> 2500 sq
+                      ft</span
+                    >
+                  </div>
+                    <div class="d-flex gap-3">
                   <!-- left btn  -->
-                  <a href="test.html" class="btn-custom btn w-100"
-                    >VIEW DETAILS</a>
                   <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
                     >VIEW DETAILS</a> -->
-                  <!-- right btn  -->
-                  <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
-                    >ADD TO CART</a> -->
-                  <button onclick="showDetails()" class="btn-custom btn w-100">
-                    ADD TO CART
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!--  card 3 -->
-          <div class="col to-let-card">
-            <div class="card property-card">
-              <img
-                src="assets/image/feature/feature3.png"
-                class="card-img-top"
-                alt="Property"
-              />
-              <div class="card-body">
-                <h5 class="card-title">3 BHK House</h5>
-                <p class="card-text">
-                  <i class="fas fa-map-marker-alt"></i> Banani, Dhaka
-                </p>
-                <p class="card-text">
-                  <strong>Rent:</strong> 50,000 BDT / month
-                </p>
-                <p class="card-text">
-                  <i class="fas fa-bed"></i> 3 Bedrooms &nbsp;
-                  <i class="fas fa-bath"></i> 3 Bathrooms
-                </p>
-                <div class="d-flex gap-3">
-                  <!-- left btn  -->
                   <a href="test.html" class="btn-custom btn w-100"
                     >VIEW DETAILS</a>
                   <!-- right btn  -->
@@ -209,11 +186,55 @@
                   <button onclick="showDetails()" class="btn-custom btn w-100">
                     ADD TO CART
                   </button>
+                  
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="property-card">
+                <img
+                  src="assets/image/feature/feature3.png"
+                  class="property-img"
+                  alt="Cozy Studio"
+                />
+                <div class="property-info">
+                  <h3 class="property-title">Cozy Studio</h3>
+                  <p class="property-location">
+                    <i class="fas fa-map-marker-alt me-2"></i>789 Beach Road,
+                    Miami
+                  </p>
+                  <h4 class="property-price">$1,200/month</h4>
+                  <div class="property-features">
+                    <span class="property-feature"
+                      ><i class="fas fa-bed me-1"></i> 1 Bed</span
+                    >
+                    <span class="property-feature"
+                      ><i class="fas fa-bath me-1"></i> 1 Bath</span
+                    >
+                    <span class="property-feature"
+                      ><i class="fas fa-ruler-combined me-1"></i> 600 sq
+                      ft</span
+                    >
+                  </div>
+                    <div class="d-flex gap-3">
+                  <!-- left btn  -->
+                  <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >VIEW DETAILS</a> -->
+                  <a href="test.html" class="btn-custom btn w-100"
+                    >VIEW DETAILS</a>
+                  <!-- right btn  -->
+                  <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >ADD TO CART</a> -->
+                  <button onclick="showDetails()" class="btn-custom btn w-100">
+                    ADD TO CART
+                  </button>
+                  
+                </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
     </main>
     <!-- End Main Content -->
@@ -286,24 +307,48 @@ const container = document.getElementById('toLetContainer');
 
 allProperties.forEach(p => {
   const cardCol = document.createElement('div');
-  cardCol.className = 'col to-let-card';
+  cardCol.className = 'col-md-4 mb-4';
   cardCol.innerHTML = `
-    <div class="card property-card">
-      <img src="${p.image}" class="card-img-top" alt="Property" />
-      <div class="card-body">
-        <h5 class="card-title">${p.title}</h5>
-        <p class="card-text"><i class="fas fa-map-marker-alt"></i> ${p.location}</p>
-        <p class="card-text"><strong>Rent:</strong> ${p.rent} BDT / month</p>
-        <p class="card-text">
-          <i class="fas fa-bed"></i> ${p.bedrooms} Bedrooms &nbsp;
-          <i class="fas fa-bath"></i> ${p.bathrooms} Bathrooms
-        </p>
-        <div class="d-flex gap-3">
-          <a href="test.html" class="btn-custom btn w-100">VIEW DETAILS</a>
-          <button onclick="showDetails()" class="btn-custom btn w-100">ADD TO CART</button>
-        </div>
-      </div>
-    </div>
+              <div class="property-card">
+                <img
+                  src="assets/image/feature/feature1.png"
+                  class="property-img"
+                  alt="Luxury Apartment"
+                />
+                <div class="property-info">
+                  <h3 class="property-title">Luxury Apartment</h3>
+                  <p class="property-location">
+                    <i class="fas fa-map-marker-alt me-2"></i>123 Park Avenue,
+                    New York
+                  </p>
+                  <h4 class="property-price">$2,500/month</h4>
+                  <div class="property-features">
+                    <span class="property-feature"
+                      ><i class="fas fa-bed me-1"></i> 2 Beds</span
+                    >
+                    <span class="property-feature"
+                      ><i class="fas fa-bath me-1"></i> 2 Baths</span
+                    >
+                    <span class="property-feature"
+                      ><i class="fas fa-ruler-combined me-1"></i> 1200 sq
+                      ft</span
+                    >
+                  </div>
+                    <div class="d-flex gap-3">
+                  <!-- left btn  -->
+                  <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >VIEW DETAILS</a> -->
+                  <a href="test.html" class="btn-custom btn w-100"
+                    >VIEW DETAILS</a>
+                  <!-- right btn  -->
+                  <!-- <a href="to-let-details.html" class="btn-custom btn w-100"
+                    >ADD TO CART</a> -->
+                  <button onclick="showDetails()" class="btn-custom btn w-100">
+                    ADD TO CART
+                  </button>
+                </div>
+                </div>
+              </div>
   `;
   container.appendChild(cardCol);
 });
