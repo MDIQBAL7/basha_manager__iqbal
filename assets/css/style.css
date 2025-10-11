@@ -335,7 +335,7 @@
     /* Offcanvas custom style */
 .offcanvas-start {
   width: 250px;             
-  background: #fff;    
+  background: var(--common-bg-nav-dropdown);    
   height: 80vh;              
   box-shadow: 10px 0 10px rgba(114, 106, 106, 0.5); /* হালকা shadow */
   padding-top: 10px; 
