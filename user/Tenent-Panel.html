@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <!-- <link rel="stylesheet" href="user-panel.css"> -->
+    <link rel="stylesheet" href="user-panel.css" />
     <style>
       body {
         background: #6c97c161;
@@ -42,6 +43,92 @@
       #quickMessageInput::placeholder {
         color: #aaa;
       }
+
+      
+    .member-chat-containermain {
+      /* background: #f5f7fa; */
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* min-height: 100vh; */
+      padding: 1rem;
+      flex-direction: column;
+      
+    }
+
+    .member-chat-container {
+      background: #f5f7fa;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      /* width: 100%; */
+      /* max-width: 450px; */
+      display: flex;
+      flex-direction: column;
+      /* height: 85vh; */
+      margin-top: 1rem;
+      display: none; /* শুরুতে লুকানো */
+      /* position: absolute; */
+
+    }
+
+    .member-chat-header {
+      background: #0d6efd;
+      color: white;
+      padding: 1rem;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .member-chat-box {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background: #f8f9fa;
+    }
+
+    .member-chat-msg {
+      display: inline-block;
+      margin-bottom: .5rem;
+      padding: .6rem .9rem;
+      border-radius: 14px;
+      max-width: 80%;
+      word-wrap: break-word;
+      font-size: 0.95rem;
+    }
+
+    .member-chat-msg.me {
+      background: #d1ffd1;
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    .member-chat-msg.owner {
+      background: #e8ecff;
+      align-self: flex-start;
+      text-align: left;
+    }
+
+    .member-chat-input-area {
+      display: flex;
+      gap: .5rem;
+      padding: .75rem;
+      border-top: 1px solid #dee2e6;
+      background: #fff;
+    }
+
+    @media (max-width: 575px) {
+      .member-chat-container {
+        height: 90vh;
+      }
+      .member-chat-msg {
+        max-width: 100%;
+      }
+    }
+  
     </style>
   </head>
 
@@ -59,6 +146,7 @@
           <button id="btnEditProfile" class="btn btn-outline-secondary">
             <i class="fa-solid fa-pen"></i>
           </button>
+            <button id="member-chat-toggle" class="btn btn-primary">Chat</button>
         </div>
       </div>
 
@@ -66,7 +154,7 @@
       <div class="card p-3 mb-3">
         <div class="d-flex flex-column flex-sm-row gap-3 align-items-center">
           <img
-            id="tenantAvatar"
+            id=""
             src="/assets/image/reviewprf/rvwprf2.png"
             alt="avatar"
             class="avatar"
@@ -115,66 +203,30 @@
           </button>
         </div>
       </div>
-
-      <!-- Messages -->
-      <div class="card p-4 shadow-sm">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h5 class="mb-0">💬 Message History</h5>
-          <button id="viewAllBtn" class="btn btn-outline-secondary btn-sm">
-            View All Messages
-          </button>
-        </div>
-
-     
-
-        <div class="d-flex gap-2">
-          <input
-            id="quickMessageInput"
-            class="form-control"
-            placeholder="Write a message..."
-          />
-          <button id="quickSendBtn" class="btn btn-primary">
-            <i class="fa-solid fa-paper-plane"></i>
-          </button>
-        </div>
-           <div
-          id="messagesList"
-          class="msg-list list-group mb-3"
-          style="max-height: 200px; overflow-y: auto"
-        >
-          <!-- Messages will appear here -->
-        </div>
-      </div>
-
-      <!-- Modal for full message history -->
-      <div
-        class="modal fade"
-        id="messageModal"
-        tabindex="-1"
-        aria-labelledby="messageModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-scrollable">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="messageModalLabel">
-                📜 Full Message History
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <ul id="fullMessagesList" class="list-group">
-                <!-- Full messages will appear here -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
+
+    <main class="member-chat-containermain">
+    
+      <div class="member-chat-container position-absolute" id="member-chat-container">
+        <div class="member-chat-header">💬Member</div>
+        <div
+          class="member-chat-box d-flex flex-column"
+          id="member-chat-box"
+        ></div>
+
+        <div class="member-chat-input-area">
+          <input
+            id="member-chat-msgInput"
+            type="text"
+            class="form-control"
+            placeholder="White messages..."
+          />
+          <button id="member-chat-sendBtn" class="btn btn-primary">
+            Send
+          </button>
+        </div>
+      </div>
+    </main>
 
     <!-- Edit Profile Modal start-->
     <div class="modal fade" id="editProfileModal" tabindex="-1">
@@ -479,64 +531,60 @@
       document.addEventListener("DOMContentLoaded", init);
 
       // messege functionality
-      const messagesList = document.getElementById("messagesList");
-      const fullMessagesList = document.getElementById("fullMessagesList");
-      const quickSendBtn = document.getElementById("quickSendBtn");
-      const quickMessageInput = document.getElementById("quickMessageInput");
-      const viewAllBtn = document.getElementById("viewAllBtn");
 
-      const messages = [];
+      const LS = "CHAT_SYSTEM_V1";
+      const chatBox = document.getElementById("member-chat-box");
+      const input = document.getElementById("member-chat-msgInput");
+      const btn = document.getElementById("member-chat-sendBtn");
+      const chatContainer = document.getElementById("member-chat-container");
+      const toggleBtn = document.getElementById("member-chat-toggle");
 
-      function formatDateTime() {
-        const now = new Date();
-        const date = now.toLocaleDateString("en-GB"); // e.g. 11/10/2025
-        const time = now.toLocaleTimeString("en-GB", {
-          hour: "2-digit",
-          minute: "2-digit",
-        }); // e.g. 16:15
-        return `${date} ${time}`;
-      }
-
-      function renderMessages() {
-        messagesList.innerHTML = "";
-        const recent = messages.slice(-5);
-        recent.forEach((msg) => {
-          const item = document.createElement("div");
-          item.className = "list-group-item";
-          item.innerHTML = `<strong>${msg.text}</strong><br><small class="text-muted">${msg.timestamp}</small>`;
-          messagesList.appendChild(item);
-        });
-      }
-
-      function renderFullMessages() {
-        fullMessagesList.innerHTML = "";
-        messages.forEach((msg) => {
-          const item = document.createElement("li");
-          item.className = "list-group-item";
-          item.innerHTML = `<strong>${msg.text}</strong><br><small class="text-muted">${msg.timestamp}</small>`;
-          fullMessagesList.appendChild(item);
-        });
-      }
-
-      quickSendBtn.addEventListener("click", () => {
-        const text = quickMessageInput.value.trim();
-        if (text) {
-          messages.push({
-            text: text,
-            timestamp: formatDateTime(),
-          });
-          quickMessageInput.value = "";
-          renderMessages();
+      // toggle chat box show/hide
+      toggleBtn.addEventListener("click", () => {
+        if (
+          chatContainer.style.display === "none" ||
+          chatContainer.style.display === ""
+        ) {
+          chatContainer.style.display = "flex";
+        } else {
+          chatContainer.style.display = "none";
         }
       });
 
-      viewAllBtn.addEventListener("click", () => {
-        renderFullMessages();
-        const modal = new bootstrap.Modal(
-          document.getElementById("messageModal")
-        );
-        modal.show();
+      // render messages
+      function renderMessages() {
+        const data = JSON.parse(localStorage.getItem(LS)) || [];
+        chatBox.innerHTML = "";
+        data.forEach((m) => {
+          const div = document.createElement("div");
+          div.className =
+            "member-chat-msg " +
+            (m.from === "member" ? "me ms-auto" : "owner me-2");
+          div.textContent = m.text;
+          chatBox.appendChild(div);
+        });
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+
+      // send message
+      btn.onclick = () => {
+        const text = input.value.trim();
+        if (!text) return;
+        const data = JSON.parse(localStorage.getItem(LS)) || [];
+        data.push({ from: "member", text });
+        localStorage.setItem(LS, JSON.stringify(data));
+        input.value = "";
+        renderMessages();
+      };
+
+      // listen for storage changes (from owner side)
+      window.addEventListener("storage", (e) => {
+        if (e.key === LS) renderMessages();
       });
+
+      renderMessages();
     </script>
+    <!-- js file link  -->
+    <script src="tenent-panel.js"></script>
   </body>
 </html>
