@@ -409,3 +409,98 @@
           width: 50%;
         }
       }
+
+
+
+      /* owner chat style  */
+   
+    .owner-chat-main-container {
+      background: #f5f7fa;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+      flex-direction: column;
+    }
+
+    .owner-chat-container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+      height: 85vh;
+      margin-top: 1rem;
+      position: absolute;
+      right: 0;
+      top: 1;
+      z-index: 999;
+      display: none;  
+    }
+
+    .owner-chat-header {
+      background: #0d6efd;
+      color: white;
+      padding: 1rem;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .owner-chat-box {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      background: #f8f9fa;
+    }
+
+    .owner-chat-msg {
+      display: inline-block;
+      margin-bottom: .5rem;
+      padding: .6rem .9rem;
+      border-radius: 14px;
+      max-width: 80%;
+      word-wrap: break-word;
+      font-size: 0.95rem;
+    }
+
+    .owner-chat-btn{
+      width: 60px;
+      margin-right: 10px;
+    }
+
+    .owner-chat-msg-me {
+      background: #d1ffd1;
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    .owner-chat-msg-member {
+      background: #e8ecff;
+      align-self: flex-start;
+      text-align: left;
+    }
+
+    .owner-chat-input-area {
+      display: flex;
+      gap: .5rem;
+      padding: .75rem;
+      border-top: 1px solid #dee2e6;
+      background: #fff;
+    }
+
+    @media (max-width: 575px) {
+      .owner-chat-container {
+        height: 90vh;
+      }
+      .owner-chat-msg {
+        max-width: 100%;
+      }
+    }
+ 

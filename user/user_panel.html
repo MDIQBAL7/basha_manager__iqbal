@@ -28,6 +28,7 @@
         <a class="navbar-brand fw-bold" href="#"
           ><i class="fa-solid fa-house-chimney me-2"></i>Basha Manager</a
         >
+          <button id="owner-chat-toggle" class="btn btn-primary ms-auto owner-chat-btn">Chat</button>
         <div class="d-flex align-items-center">
           <!-- Profile Dropdown -->
           <div class="dropdown me-2 d-none d-sm-block">
@@ -198,6 +199,20 @@
           </div>
         </div>
 
+        <!-- This is owner chat box start  -->
+           <div class="owner-chat-container" id="owner-chat-container">
+    <div class="owner-chat-header">
+      👑 Owner
+    </div>
+
+    <div class="owner-chat-box d-flex flex-column" id="owner-chat-box"></div>
+
+    <div class="owner-chat-input-area">
+      <input id="owner-chat-msgInput" type="text" class="form-control" placeholder="মেসেজ লিখুন...">
+      <button id="owner-chat-sendBtn" class="btn btn-primary">Send</button>
+    </div>
+            </div>
+        <!-- This is owner chat box end -->
         <!-- Main Content -->
         <main class="col-lg-10 user-panel-content">
           <!-- Dashboard -->
@@ -2322,6 +2337,55 @@
   });
 
 </script>
+<!-- owner-chat-functionalify -->
+  <script>
+    const LS = "CHAT_SYSTEM_V1";
+    const chatBox = document.getElementById("owner-chat-box");
+    const input = document.getElementById("owner-chat-msgInput");
+    const btn = document.getElementById("owner-chat-sendBtn");
+    const chatContainer = document.getElementById("owner-chat-container");
+    const toggleBtn = document.getElementById("owner-chat-toggle");
+
+    // toggle chat box show/hide
+    toggleBtn.addEventListener('click', () => {
+      if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+        chatContainer.style.display = "flex";
+      } else {
+        chatContainer.style.display = "none";
+      }
+    });
+
+    // render messages
+    function renderMessages() {
+      const data = JSON.parse(localStorage.getItem(LS)) || [];
+      chatBox.innerHTML = "";
+      data.forEach(m => {
+        const div = document.createElement("div");
+        div.className = "owner-chat-msg " + (m.from === "owner" ? "owner-chat-msg-me ms-auto" : "owner-chat-msg-member me-2");
+        div.textContent = m.text;
+        chatBox.appendChild(div);
+      });
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // send message
+    btn.onclick = () => {
+      const text = input.value.trim();
+      if (!text) return;
+      const data = JSON.parse(localStorage.getItem(LS)) || [];
+      data.push({ from: "owner", text });
+      localStorage.setItem(LS, JSON.stringify(data));
+      input.value = "";
+      renderMessages();
+    };
+
+    // listen for storage changes (from tenant side)
+    window.addEventListener("storage", e => {
+      if (e.key === LS) renderMessages();
+    });
+
+    renderMessages();
+  </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   </body>
