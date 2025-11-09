@@ -28,7 +28,7 @@
         <a class="navbar-brand fw-bold" href="#"
           ><i class="fa-solid fa-house-chimney me-2"></i>Basha Manager</a
         >
-          <button id="owner-chat-toggle" class="btn btn-primary ms-auto owner-chat-btn">Chat</button>
+          <button id="ms-toggle-btn">Chat</button>
         <div class="d-flex align-items-center">
           <!-- Profile Dropdown -->
           <div class="dropdown me-2 d-none d-sm-block">
@@ -200,20 +200,146 @@
         </div>
 
         <!-- This is owner chat box start  -->
-           <div class="owner-chat-container" id="owner-chat-container">
-    <div class="owner-chat-header">
-      👑 Owner
+          <!-- ---------------------- Messenger App ---------------------- -->
+<div class="messenger-app">
+  <!-- Sidebar / User List -->
+  <div class="ms-sidebar">
+    <div class="ms-search">
+      <input id="ms-search" placeholder="Search users..." />
+    </div>
+    <div class="ms-users" id="ms-users"></div>
+  </div>
+
+  <!-- Chat Area -->
+  <div class="ms-chat">
+    <div class="ms-header" id="ms-header" style="display:none">
+      <div class="ms-avatar" id="ms-chat-avatar">U</div>
+      <div style="flex:1;min-width:0">
+        <div class="name" id="ms-chat-name">User</div>
+        <div class="ms-last" id="ms-chat-sub">Online</div>
+      </div>
     </div>
 
-    <div class="owner-chat-box d-flex flex-column" id="owner-chat-box"></div>
+    <div class="ms-empty" id="ms-empty">Select a user from the left to start chatting</div>
 
-    <div class="owner-chat-input-area">
-      <input id="owner-chat-msgInput" type="text" class="form-control" placeholder="মেসেজ লিখুন...">
-      <button id="owner-chat-sendBtn" class="btn btn-primary">Send</button>
+    <div class="ms-messages" id="ms-messages" style="display:none"></div>
+
+    <div class="ms-input" id="ms-input" style="display:none">
+      <input id="ms-input-field" placeholder="Type a message and press Enter" />
+      <button id="ms-send">Send</button>
     </div>
-            </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ---------------------- Config / Users ----------------------
+  const INITIAL_USERS = [
+    { id: 'rana', name: 'Rana Hasan' },
+    { id: 'sakib', name: 'Sakib Ahmed' },
+    { id: 'mila', name: 'Mila Khan' },
+    { id: 'arif', name: 'Arif Hossain' }
+  ];
+
+  const USER_KEY_PREFIX = 'CHAT_USER_';
+
+  // ---------------------- Elements ----------------------
+  const msApp = document.querySelector('.messenger-app');
+  const msToggleBtn = document.getElementById('ms-toggle-btn');
+  const usersEl = document.getElementById('ms-users');
+  const searchEl = document.getElementById('ms-search');
+  const headerEl = document.getElementById('ms-header');
+  const headerName = document.getElementById('ms-chat-name');
+  const headerAvatar = document.getElementById('ms-chat-avatar');
+  const emptyEl = document.getElementById('ms-empty');
+  const messagesEl = document.getElementById('ms-messages');
+  const inputWrap = document.getElementById('ms-input');
+  const inputField = document.getElementById('ms-input-field');
+  const sendBtn = document.getElementById('ms-send');
+
+  let users = [];
+  let active = null;
+
+  // ---------------------- Storage Helpers ----------------------
+  function storageKey(id){ return USER_KEY_PREFIX + id; }
+  function saveMessages(id, msgs){ localStorage.setItem(storageKey(id), JSON.stringify(msgs)); }
+  function loadMessages(id){ return JSON.parse(localStorage.getItem(storageKey(id))) || []; }
+
+  // ---------------------- Render User List ----------------------
+  function renderUsers(filter=''){
+    usersEl.innerHTML = '';
+    const list = users.filter(u => u.name.toLowerCase().includes(filter.toLowerCase()));
+    list.forEach(u=>{
+      const div = document.createElement('div'); div.className='ms-user'; div.dataset.id=u.id;
+      const av = document.createElement('div'); av.className='ms-avatar'; av.textContent = u.name.split(' ').map(s=>s[0]).slice(0,2).join('');
+      const meta = document.createElement('div'); meta.className='ms-meta';
+      const nm = document.createElement('div'); nm.className='ms-name'; nm.textContent=u.name;
+      const last = document.createElement('div'); last.className='ms-last'; 
+      const msgs = loadMessages(u.id); last.textContent = msgs.length ? msgs[msgs.length-1].text : 'No messages yet';
+      meta.appendChild(nm); meta.appendChild(last);
+
+      const badge = document.createElement('div'); badge.className='ms-badge'; badge.style.display='none'; badge.textContent='0';
+
+      div.appendChild(av); div.appendChild(meta); div.appendChild(badge);
+      div.addEventListener('click', ()=> selectUser(u.id));
+      usersEl.appendChild(div);
+    });
+  }
+
+  // ---------------------- Select User ----------------------
+  function selectUser(id){
+    active = id;
+    const u = users.find(x=>x.id===id);
+    headerName.textContent = u.name;
+    headerAvatar.textContent = u.name.split(' ').map(s=>s[0]).slice(0,2).join('');
+    headerEl.style.display='flex';
+    messagesEl.style.display='flex';
+    inputWrap.style.display='flex';
+    emptyEl.style.display='none';
+    renderMessages();
+  }
+
+  // ---------------------- Render Messages ----------------------
+  function renderMessages(){
+    if(!active) return;
+    const msgs = loadMessages(active);
+    messagesEl.innerHTML='';
+    msgs.forEach(m=>{
+      const d = document.createElement('div'); d.className='msg '+(m.from==='owner'?'owner':'user'); d.textContent = m.text;
+      messagesEl.appendChild(d);
+    });
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  // ---------------------- Send Message ----------------------
+  function sendMessage(text){
+    if(!active || !text) return;
+    const msgs = loadMessages(active);
+    msgs.push({ from:'owner', text:text, ts:Date.now() });
+    saveMessages(active,msgs);
+    renderMessages();
+  }
+
+  // ---------------------- Toggle Messenger ----------------------
+  msToggleBtn.addEventListener('click', ()=>{
+    msApp.style.display = (msApp.style.display==='none' || msApp.style.display==='') ? 'flex' : 'none';
+  });
+
+  // ---------------------- Input Event ----------------------
+  sendBtn.addEventListener('click', ()=>{ sendMessage(inputField.value.trim()); inputField.value=''; });
+  inputField.addEventListener('keydown', e=>{ if(e.key==='Enter'){ sendMessage(inputField.value.trim()); inputField.value=''; } });
+
+  // ---------------------- Search ----------------------
+  searchEl.addEventListener('input', e=> renderUsers(e.target.value));
+
+  // ---------------------- Initialize ----------------------
+  function init(){ users = INITIAL_USERS.slice(); renderUsers(); }
+  init();
+
+})();
+</script>
         <!-- This is owner chat box end -->
-        <!-- Main Content -->
+        
         <main class="col-lg-10 user-panel-content">
           <!-- Dashboard -->
           <div id="user-panel-dashboard" class="user-panel-section">
@@ -2338,54 +2464,7 @@
 
 </script>
 <!-- owner-chat-functionalify -->
-  <script>
-    const LS = "CHAT_SYSTEM_V1";
-    const chatBox = document.getElementById("owner-chat-box");
-    const input = document.getElementById("owner-chat-msgInput");
-    const btn = document.getElementById("owner-chat-sendBtn");
-    const chatContainer = document.getElementById("owner-chat-container");
-    const toggleBtn = document.getElementById("owner-chat-toggle");
 
-    // toggle chat box show/hide
-    toggleBtn.addEventListener('click', () => {
-      if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
-        chatContainer.style.display = "flex";
-      } else {
-        chatContainer.style.display = "none";
-      }
-    });
-
-    // render messages
-    function renderMessages() {
-      const data = JSON.parse(localStorage.getItem(LS)) || [];
-      chatBox.innerHTML = "";
-      data.forEach(m => {
-        const div = document.createElement("div");
-        div.className = "owner-chat-msg " + (m.from === "owner" ? "owner-chat-msg-me ms-auto" : "owner-chat-msg-member me-2");
-        div.textContent = m.text;
-        chatBox.appendChild(div);
-      });
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    // send message
-    btn.onclick = () => {
-      const text = input.value.trim();
-      if (!text) return;
-      const data = JSON.parse(localStorage.getItem(LS)) || [];
-      data.push({ from: "owner", text });
-      localStorage.setItem(LS, JSON.stringify(data));
-      input.value = "";
-      renderMessages();
-    };
-
-    // listen for storage changes (from tenant side)
-    window.addEventListener("storage", e => {
-      if (e.key === LS) renderMessages();
-    });
-
-    renderMessages();
-  </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   </body>
