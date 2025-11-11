@@ -457,6 +457,8 @@
   padding: 10px;
   border-bottom: 1px solid #eee;
   display: flex;
+  justify-items: center;
+  column-gap: 5px;
 }
 .ms-search input {
   width: 100%;
