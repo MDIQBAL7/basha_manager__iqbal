@@ -28,7 +28,7 @@
         <a class="navbar-brand fw-bold" href="#"
           ><i class="fa-solid fa-house-chimney me-2"></i>Basha Manager</a
         >
-        <button id="ms-toggle-btn">💬 Chat</button>
+        <button id="ms-toggle-btn">Chat</button>
         <div class="d-flex align-items-center">
           <!-- Profile Dropdown -->
           <div class="dropdown me-2 d-none d-sm-block">
@@ -232,99 +232,7 @@
   </div>
 </div>
 
-<script>
-// Users
-const users = [
-  {id:"rana",name:"Rana Hasan"},
-  {id:"sakib",name:"Sakib Ahmed"},
-  {id:"mila",name:"Mila Khan"},
-  {id:"arif",name:"Arif Hossain"}
-];
 
-// Elements
-const app=document.getElementById("messenger-app"),
-toggle=document.getElementById("ms-toggle-btn"),
-usersEl=document.getElementById("ms-users"),
-chat=document.getElementById("ms-chat"),
-back=document.getElementById("ms-back"),
-closeBtn=document.getElementById("ms-close"),
-headerName=document.getElementById("ms-chat-name"),
-avatar=document.getElementById("ms-chat-avatar"),
-msgsEl=document.getElementById("ms-messages"),
-input=document.getElementById("ms-input-field"),
-send=document.getElementById("ms-send"),
-empty=document.getElementById("ms-empty");
-
-let active=null;
-
-// Storage Helpers
-function loadMsgs(id){return JSON.parse(localStorage.getItem("CHAT_"+id))||[]}
-function saveMsgs(id,m){localStorage.setItem("CHAT_"+id,JSON.stringify(m))}
-
-// Render Users
-function renderUsers(){
-  usersEl.innerHTML="";
-  users.forEach(u=>{
-    let div=document.createElement("div");
-    div.className="ms-user";
-    div.innerHTML=`<div class="ms-avatar">${u.name[0]}</div><div>${u.name}</div>`;
-    div.onclick=()=>openChat(u.id);
-    usersEl.appendChild(div);
-  })
-}
-renderUsers();
-
-// Open Chat
-function openChat(id){
-  active=id;
-  headerName.textContent = users.find(u=>u.id==id).name;
-  avatar.textContent = headerName.textContent[0];
-
-  empty.style.display = "none"; // <-- লুকানো
-  renderMsgs();
-  chat.classList.add("active");
-}
-
-// Render Messages
-function renderMsgs(){
-  msgsEl.innerHTML="";
-  loadMsgs(active).forEach(m=>{
-    let d=document.createElement("div");
-    d.className="msg "+m.from;
-    d.textContent=m.text;
-    msgsEl.appendChild(d);
-  });
-  msgsEl.scrollTop=msgsEl.scrollHeight;
-}
-
-// Send Message
-send.onclick=()=>sendMsg();
-input.onkeydown=e=>{if(e.key==="Enter")sendMsg()}
-
-function sendMsg(){
-  if(!active||!input.value.trim())return;
-  let m=loadMsgs(active);
-  m.push({from:"owner",text:input.value});
-  saveMsgs(active,m);
-  input.value="";
-  renderMsgs();
-}
-
-// Back button (mobile)
-back.onclick=()=>{
-  chat.classList.remove("active");
-  empty.style.display="flex"; // <-- আবার দেখানো
-};
-
-// Close button (hide chat)
-closeBtn.onclick=()=>{
-  app.style.display="none";
-  empty.style.display="flex"; // <-- আবার দেখানো
-};
-
-// Toggle button
-toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.display)?"flex":"none";
-</script>
 
 <!-- This is owner chat box end -->
         
@@ -1326,8 +1234,8 @@ toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.disp
                             id="tenantStatus"
                             class="form-select shadow-sm"
                           >
-                            <option value="Fully Paid">✅ Fully Paid</option>
-                            <option value="Due">⚠️ Due</option>
+                            <option value="Fully Paid"> Fully Paid</option>
+                            <option value="Due"> Due</option>
                           </select>
                         </div>
                       </div>
@@ -2201,7 +2109,7 @@ toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.disp
         if (title && value) {
           let savedDetails = JSON.parse(localStorage.getItem(storageKey)) || [];
 
-          // চেক করুন title আগে আছে কিনা → থাকলে আপডেট
+        
           const existingIndex = savedDetails.findIndex(
             (d) => d.title.toLowerCase() === title.toLowerCase()
           );
@@ -2250,7 +2158,7 @@ toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.disp
         headerToolbar: {
           left: 'prev,next today',
           center: 'title',
-          right: ''   // <-- এখানে কিছুই নেই (Day/Week বাদ)
+          right: ''   
         },
         events: []
       });
@@ -2418,15 +2326,15 @@ toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.disp
 
 <!-- invoice  -->
  <script>
-  // 🔹 Random invoice number
+  //  Random invoice number
   const invoiceNo = "INV-" + Math.floor(Math.random() * 90000 + 10000);
   document.getElementById("invoiceNo").textContent = invoiceNo;
 
-  // 🔹 Current date
+  //  Current date
   const today = new Date();
   document.getElementById("invoiceDate").textContent = today.toLocaleDateString();
 
-  // 🔹 PDF download function (hide button while generating)
+  //  PDF download 
   document.getElementById("downloadPDF").addEventListener("click", () => {
     const button = document.getElementById("downloadPDF");
     const invoice = document.getElementById("invoice");
@@ -2437,7 +2345,7 @@ toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.disp
       margin: 0.5,
       filename: `${invoiceNo}.pdf`,
       image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 1 }, // scale reduced for mobile
+      html2canvas: { scale: 1 }, 
       jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
     };
 
@@ -2446,7 +2354,7 @@ toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.disp
       .from(invoice)
       .save()
       .then(() => {
-        button.style.display = "inline-block"; // show button again
+        button.style.display = "inline-block"; 
       });
   });
 
