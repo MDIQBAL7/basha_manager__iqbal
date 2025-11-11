@@ -428,7 +428,12 @@
   font-size: 16px;
   cursor: pointer;
 }
-
+#ms-close{
+  margin-left: 10px;
+  margin-right: 5px;
+  cursor:pointer; 
+  font-size:18px;
+}
 /* Messenger App */
 .messenger-app {
   position: fixed;
@@ -457,13 +462,10 @@
   padding: 10px;
   border-bottom: 1px solid #eee;
   display: flex;
-  justify-items: center;
-  column-gap: 5px;
-  background-color: red;
-  color: #357abd;
+  align-items: center;
 }
 .ms-search input {
-  width: 100%;
+  width: 90%;
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #ddd;

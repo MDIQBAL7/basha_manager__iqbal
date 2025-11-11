@@ -205,7 +205,7 @@
   <div class="ms-sidebar" id="ms-sidebar">
     <div class="ms-search">
       <input id="ms-search" placeholder="Search users..." />
-      <span id="ms-close" style="margin-left:auto; cursor:pointer; font-size:18px;">✖</span>
+      <span id="ms-close">✖</span>
     </div>
     <div class="ms-users" id="ms-users"></div>
   </div>
@@ -231,6 +231,7 @@
     </div>
   </div>
 </div>
+
 <script>
 // Users
 const users = [
@@ -251,7 +252,8 @@ headerName=document.getElementById("ms-chat-name"),
 avatar=document.getElementById("ms-chat-avatar"),
 msgsEl=document.getElementById("ms-messages"),
 input=document.getElementById("ms-input-field"),
-send=document.getElementById("ms-send");
+send=document.getElementById("ms-send"),
+empty=document.getElementById("ms-empty");
 
 let active=null;
 
@@ -275,8 +277,10 @@ renderUsers();
 // Open Chat
 function openChat(id){
   active=id;
-  headerName.textContent=users.find(u=>u.id==id).name;
-  avatar.textContent=headerName.textContent[0];
+  headerName.textContent = users.find(u=>u.id==id).name;
+  avatar.textContent = headerName.textContent[0];
+
+  empty.style.display = "none"; // <-- লুকানো
   renderMsgs();
   chat.classList.add("active");
 }
@@ -307,14 +311,21 @@ function sendMsg(){
 }
 
 // Back button (mobile)
-back.onclick=()=>chat.classList.remove("active");
+back.onclick=()=>{
+  chat.classList.remove("active");
+  empty.style.display="flex"; // <-- আবার দেখানো
+};
 
 // Close button (hide chat)
-closeBtn.onclick=()=>app.style.display="none";
+closeBtn.onclick=()=>{
+  app.style.display="none";
+  empty.style.display="flex"; // <-- আবার দেখানো
+};
 
 // Toggle button
 toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.display)?"flex":"none";
 </script>
+
 <!-- This is owner chat box end -->
         
         <main class="col-lg-10 user-panel-content">
