@@ -28,7 +28,7 @@
         <a class="navbar-brand fw-bold" href="#"
           ><i class="fa-solid fa-house-chimney me-2"></i>Basha Manager</a
         >
-          <button id="ms-toggle-btn">Chat</button>
+          <button id="ms-toggle-btn">💬 Chat</button>
         <div class="d-flex align-items-center">
           <!-- Profile Dropdown -->
           <div class="dropdown me-2 d-none d-sm-block">
@@ -201,9 +201,9 @@
 
         <!-- This is owner chat box start  -->
           <!-- ---------------------- Messenger App ---------------------- -->
-<div class="messenger-app">
+<div class="messenger-app" id="messenger-app">
   <!-- Sidebar / User List -->
-  <div class="ms-sidebar">
+  <div class="ms-sidebar" id="ms-sidebar">
     <div class="ms-search">
       <input id="ms-search" placeholder="Search users..." />
     </div>
@@ -211,11 +211,11 @@
   </div>
 
   <!-- Chat Area -->
-  <div class="ms-chat">
-    <div class="ms-header" id="ms-header" style="display:none">
-      <div id="ms-back" style="display:none;cursor:pointer;font-size:20px;margin-right:10px;">←</div>
+  <div class="ms-chat" id="ms-chat">
+    <div class="ms-header" id="ms-header">
+      <span id="ms-back">←</span>
       <div class="ms-avatar" id="ms-chat-avatar">U</div>
-      <div style="flex:1;min-width:0">
+      <div class="ms-chat-info">
         <div class="name" id="ms-chat-name">User</div>
         <div class="ms-last" id="ms-chat-sub">Online</div>
       </div>
@@ -223,91 +223,85 @@
 
     <div class="ms-empty" id="ms-empty">Select a user to start chatting</div>
 
-    <div class="ms-messages" id="ms-messages" style="display:none"></div>
+    <div class="ms-messages" id="ms-messages"></div>
 
-    <div class="ms-input" id="ms-input" style="display:none">
+    <div class="ms-input" id="ms-input">
       <input id="ms-input-field" placeholder="Type a message..." />
       <button id="ms-send">Send</button>
     </div>
   </div>
 </div>
+<SCRipt>
+  const users = [
+  {id:"rana",name:"Rana"},
+  {id:"sakib",name:"Sakib"},
+  {id:"mila",name:"Mila"},
+  {id:"arif",name:"Arif"}
+];
 
-<script>
-  (function(){
-  const USERS = [
-    { id:'rana', name:'Rana Hasan' },
-    { id:'sakib', name:'Sakib Ahmed' },
-    { id:'mila', name:'Mila Khan' }
-  ];
+const app=document.getElementById("messenger-app"),
+toggle=document.getElementById("ms-toggle-btn"),
+usersEl=document.getElementById("ms-users"),
+chat=document.getElementById("ms-chat"),
+back=document.getElementById("ms-back"),
+headerName=document.getElementById("ms-chat-name"),
+avatar=document.getElementById("ms-chat-avatar"),
+msgsEl=document.getElementById("ms-messages"),
+input=document.getElementById("ms-input-field"),
+send=document.getElementById("ms-send");
 
-  const usersEl=document.getElementById('ms-users');
-  const header=document.getElementById('ms-header');
-  const avatar=document.getElementById('ms-chat-avatar');
-  const nameEl=document.getElementById('ms-chat-name');
-  const empty=document.getElementById('ms-empty');
-  const msgsEl=document.getElementById('ms-messages');
-  const inputWrap=document.getElementById('ms-input');
-  const input=document.getElementById('ms-input-field');
-  const send=document.getElementById('ms-send');
-  const chat=document.querySelector('.ms-chat');
-  const toggle=document.getElementById('ms-toggle-btn');
-  const back=document.getElementById('ms-back');
+let active=null;
 
-  let active=null;
+function loadMsgs(id){return JSON.parse(localStorage.getItem("CHAT_"+id))||[]}
+function saveMsgs(id,m){localStorage.setItem("CHAT_"+id,JSON.stringify(m))}
 
-  function key(id){ return 'CHAT_'+id; }
-  function load(id){ return JSON.parse(localStorage.getItem(key(id)))||[]; }
-  function save(id,data){ localStorage.setItem(key(id),JSON.stringify(data)); }
+function renderUsers(){
+  usersEl.innerHTML="";
+  users.forEach(u=>{
+    let div=document.createElement("div");
+    div.className="ms-user";
+    div.innerHTML=`<div class="ms-avatar">${u.name[0]}</div><div>${u.name}</div>`;
+    div.onclick=()=>openChat(u.id);
+    usersEl.appendChild(div);
+  })
+}
+renderUsers();
 
-  function renderUsers(){
-    usersEl.innerHTML='';
-    USERS.forEach(u=>{
-      const el=document.createElement('div');
-      el.className='ms-user';
-      el.dataset.id=u.id;
-      el.innerHTML=`<div class="ms-avatar">${u.name[0]}</div><div class="ms-meta">${u.name}</div>`;
-      el.onclick=()=>select(u.id);
-      usersEl.appendChild(el);
-    });
-  }
+function openChat(id){
+  active=id;
+  headerName.textContent=users.find(u=>u.id==id).name;
+  avatar.textContent=headerName.textContent[0];
+  renderMsgs();
+  chat.classList.add("active");
+}
 
-  function select(id){
-    active=id;
-    const u=USERS.find(x=>x.id==id);
-    avatar.textContent=u.name[0];
-    nameEl.textContent=u.name;
-    header.style.display='flex';
-    msgsEl.style.display='flex';
-    inputWrap.style.display='flex';
-    empty.style.display='none';
-    chat.classList.add('active');
-    renderMessages();
-  }
+function renderMsgs(){
+  msgsEl.innerHTML="";
+  loadMsgs(active).forEach(m=>{
+    let d=document.createElement("div");
+    d.className="msg "+m.from;
+    d.textContent=m.text;
+    msgsEl.appendChild(d);
+  });
+  msgsEl.scrollTop=msgsEl.scrollHeight;
+}
 
-  function renderMessages(){
-    msgsEl.innerHTML='';
-    load(active).forEach(m=>{
-      msgsEl.innerHTML+=`<div class="msg ${m.from}">${m.text}</div>`;
-    });
-    msgsEl.scrollTop=msgsEl.scrollHeight;
-  }
+send.onclick=()=>sendMsg();
+input.onkeydown=e=>{if(e.key==="Enter")sendMsg()}
 
-  send.onclick=()=>{
-    if(!input.value.trim())return;
-    const data=load(active);
-    data.push({from:'owner',text:input.value});
-    save(active,data);
-    input.value='';
-    renderMessages();
-  };
+function sendMsg(){
+  if(!active||!input.value.trim())return;
+  let m=loadMsgs(active);
+  m.push({from:"owner",text:input.value});
+  saveMsgs(active,m);
+  input.value="";
+  renderMsgs();
+}
 
-  back.onclick=()=> chat.classList.remove('active');
-  toggle.onclick=()=> document.querySelector('.messenger-app').style.display='flex';
+back.onclick=()=>chat.classList.remove("active");
+toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.display)?"flex":"none";
 
-  renderUsers();
-})();
-
-</script>
+</SCRipt>
 <!-- This is owner chat box end -->
         
         <main class="col-lg-10 user-panel-content">
