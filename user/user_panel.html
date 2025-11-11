@@ -28,7 +28,7 @@
         <a class="navbar-brand fw-bold" href="#"
           ><i class="fa-solid fa-house-chimney me-2"></i>Basha Manager</a
         >
-          <button id="ms-toggle-btn">💬 Chat</button>
+        <button id="ms-toggle-btn">💬 Chat</button>
         <div class="d-flex align-items-center">
           <!-- Profile Dropdown -->
           <div class="dropdown me-2 d-none d-sm-block">
@@ -202,15 +202,14 @@
         <!-- This is owner chat box start  -->
           <!-- ---------------------- Messenger App ---------------------- -->
 <div class="messenger-app" id="messenger-app">
-  <!-- Sidebar / User List -->
   <div class="ms-sidebar" id="ms-sidebar">
     <div class="ms-search">
       <input id="ms-search" placeholder="Search users..." />
+      <span id="ms-close" style="margin-left:auto; cursor:pointer; font-size:18px;">✖</span>
     </div>
     <div class="ms-users" id="ms-users"></div>
   </div>
 
-  <!-- Chat Area -->
   <div class="ms-chat" id="ms-chat">
     <div class="ms-header" id="ms-header">
       <span id="ms-back">←</span>
@@ -219,6 +218,7 @@
         <div class="name" id="ms-chat-name">User</div>
         <div class="ms-last" id="ms-chat-sub">Online</div>
       </div>
+      <!-- <span id="ms-close" style="margin-left:auto; cursor:pointer; font-size:18px;">✖</span> -->
     </div>
 
     <div class="ms-empty" id="ms-empty">Select a user to start chatting</div>
@@ -231,19 +231,22 @@
     </div>
   </div>
 </div>
-<SCRipt>
-  const users = [
-  {id:"rana",name:"Rana"},
-  {id:"sakib",name:"Sakib"},
-  {id:"mila",name:"Mila"},
-  {id:"arif",name:"Arif"}
+<script>
+// Users
+const users = [
+  {id:"rana",name:"Rana Hasan"},
+  {id:"sakib",name:"Sakib Ahmed"},
+  {id:"mila",name:"Mila Khan"},
+  {id:"arif",name:"Arif Hossain"}
 ];
 
+// Elements
 const app=document.getElementById("messenger-app"),
 toggle=document.getElementById("ms-toggle-btn"),
 usersEl=document.getElementById("ms-users"),
 chat=document.getElementById("ms-chat"),
 back=document.getElementById("ms-back"),
+closeBtn=document.getElementById("ms-close"),
 headerName=document.getElementById("ms-chat-name"),
 avatar=document.getElementById("ms-chat-avatar"),
 msgsEl=document.getElementById("ms-messages"),
@@ -252,9 +255,11 @@ send=document.getElementById("ms-send");
 
 let active=null;
 
+// Storage Helpers
 function loadMsgs(id){return JSON.parse(localStorage.getItem("CHAT_"+id))||[]}
 function saveMsgs(id,m){localStorage.setItem("CHAT_"+id,JSON.stringify(m))}
 
+// Render Users
 function renderUsers(){
   usersEl.innerHTML="";
   users.forEach(u=>{
@@ -267,6 +272,7 @@ function renderUsers(){
 }
 renderUsers();
 
+// Open Chat
 function openChat(id){
   active=id;
   headerName.textContent=users.find(u=>u.id==id).name;
@@ -275,6 +281,7 @@ function openChat(id){
   chat.classList.add("active");
 }
 
+// Render Messages
 function renderMsgs(){
   msgsEl.innerHTML="";
   loadMsgs(active).forEach(m=>{
@@ -286,6 +293,7 @@ function renderMsgs(){
   msgsEl.scrollTop=msgsEl.scrollHeight;
 }
 
+// Send Message
 send.onclick=()=>sendMsg();
 input.onkeydown=e=>{if(e.key==="Enter")sendMsg()}
 
@@ -298,10 +306,15 @@ function sendMsg(){
   renderMsgs();
 }
 
+// Back button (mobile)
 back.onclick=()=>chat.classList.remove("active");
-toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.display)?"flex":"none";
 
-</SCRipt>
+// Close button (hide chat)
+closeBtn.onclick=()=>app.style.display="none";
+
+// Toggle button
+toggle.onclick=()=>app.style.display=(app.style.display=="none"||!app.style.display)?"flex":"none";
+</script>
 <!-- This is owner chat box end -->
         
         <main class="col-lg-10 user-panel-content">
