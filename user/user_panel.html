@@ -213,6 +213,7 @@
   <!-- Chat Area -->
   <div class="ms-chat">
     <div class="ms-header" id="ms-header" style="display:none">
+      <div id="ms-back" style="display:none;cursor:pointer;font-size:20px;margin-right:10px;">←</div>
       <div class="ms-avatar" id="ms-chat-avatar">U</div>
       <div style="flex:1;min-width:0">
         <div class="name" id="ms-chat-name">User</div>
@@ -220,125 +221,94 @@
       </div>
     </div>
 
-    <div class="ms-empty" id="ms-empty">Select a user from the left to start chatting</div>
+    <div class="ms-empty" id="ms-empty">Select a user to start chatting</div>
 
     <div class="ms-messages" id="ms-messages" style="display:none"></div>
 
     <div class="ms-input" id="ms-input" style="display:none">
-      <input id="ms-input-field" placeholder="Type a message and press Enter" />
+      <input id="ms-input-field" placeholder="Type a message..." />
       <button id="ms-send">Send</button>
     </div>
   </div>
 </div>
 
 <script>
-(function(){
-  // ---------------------- Config / Users ----------------------
-  const INITIAL_USERS = [
-    { id: 'rana', name: 'Rana Hasan' },
-    { id: 'sakib', name: 'Sakib Ahmed' },
-    { id: 'mila', name: 'Mila Khan' },
-    { id: 'arif', name: 'Arif Hossain' }
+  (function(){
+  const USERS = [
+    { id:'rana', name:'Rana Hasan' },
+    { id:'sakib', name:'Sakib Ahmed' },
+    { id:'mila', name:'Mila Khan' }
   ];
 
-  const USER_KEY_PREFIX = 'CHAT_USER_';
+  const usersEl=document.getElementById('ms-users');
+  const header=document.getElementById('ms-header');
+  const avatar=document.getElementById('ms-chat-avatar');
+  const nameEl=document.getElementById('ms-chat-name');
+  const empty=document.getElementById('ms-empty');
+  const msgsEl=document.getElementById('ms-messages');
+  const inputWrap=document.getElementById('ms-input');
+  const input=document.getElementById('ms-input-field');
+  const send=document.getElementById('ms-send');
+  const chat=document.querySelector('.ms-chat');
+  const toggle=document.getElementById('ms-toggle-btn');
+  const back=document.getElementById('ms-back');
 
-  // ---------------------- Elements ----------------------
-  const msApp = document.querySelector('.messenger-app');
-  const msToggleBtn = document.getElementById('ms-toggle-btn');
-  const usersEl = document.getElementById('ms-users');
-  const searchEl = document.getElementById('ms-search');
-  const headerEl = document.getElementById('ms-header');
-  const headerName = document.getElementById('ms-chat-name');
-  const headerAvatar = document.getElementById('ms-chat-avatar');
-  const emptyEl = document.getElementById('ms-empty');
-  const messagesEl = document.getElementById('ms-messages');
-  const inputWrap = document.getElementById('ms-input');
-  const inputField = document.getElementById('ms-input-field');
-  const sendBtn = document.getElementById('ms-send');
+  let active=null;
 
-  let users = [];
-  let active = null;
+  function key(id){ return 'CHAT_'+id; }
+  function load(id){ return JSON.parse(localStorage.getItem(key(id)))||[]; }
+  function save(id,data){ localStorage.setItem(key(id),JSON.stringify(data)); }
 
-  // ---------------------- Storage Helpers ----------------------
-  function storageKey(id){ return USER_KEY_PREFIX + id; }
-  function saveMessages(id, msgs){ localStorage.setItem(storageKey(id), JSON.stringify(msgs)); }
-  function loadMessages(id){ return JSON.parse(localStorage.getItem(storageKey(id))) || []; }
-
-  // ---------------------- Render User List ----------------------
-  function renderUsers(filter=''){
-    usersEl.innerHTML = '';
-    const list = users.filter(u => u.name.toLowerCase().includes(filter.toLowerCase()));
-    list.forEach(u=>{
-      const div = document.createElement('div'); div.className='ms-user'; div.dataset.id=u.id;
-      const av = document.createElement('div'); av.className='ms-avatar'; av.textContent = u.name.split(' ').map(s=>s[0]).slice(0,2).join('');
-      const meta = document.createElement('div'); meta.className='ms-meta';
-      const nm = document.createElement('div'); nm.className='ms-name'; nm.textContent=u.name;
-      const last = document.createElement('div'); last.className='ms-last'; 
-      const msgs = loadMessages(u.id); last.textContent = msgs.length ? msgs[msgs.length-1].text : 'No messages yet';
-      meta.appendChild(nm); meta.appendChild(last);
-
-      const badge = document.createElement('div'); badge.className='ms-badge'; badge.style.display='none'; badge.textContent='0';
-
-      div.appendChild(av); div.appendChild(meta); div.appendChild(badge);
-      div.addEventListener('click', ()=> selectUser(u.id));
-      usersEl.appendChild(div);
+  function renderUsers(){
+    usersEl.innerHTML='';
+    USERS.forEach(u=>{
+      const el=document.createElement('div');
+      el.className='ms-user';
+      el.dataset.id=u.id;
+      el.innerHTML=`<div class="ms-avatar">${u.name[0]}</div><div class="ms-meta">${u.name}</div>`;
+      el.onclick=()=>select(u.id);
+      usersEl.appendChild(el);
     });
   }
 
-  // ---------------------- Select User ----------------------
-  function selectUser(id){
-    active = id;
-    const u = users.find(x=>x.id===id);
-    headerName.textContent = u.name;
-    headerAvatar.textContent = u.name.split(' ').map(s=>s[0]).slice(0,2).join('');
-    headerEl.style.display='flex';
-    messagesEl.style.display='flex';
+  function select(id){
+    active=id;
+    const u=USERS.find(x=>x.id==id);
+    avatar.textContent=u.name[0];
+    nameEl.textContent=u.name;
+    header.style.display='flex';
+    msgsEl.style.display='flex';
     inputWrap.style.display='flex';
-    emptyEl.style.display='none';
+    empty.style.display='none';
+    chat.classList.add('active');
     renderMessages();
   }
 
-  // ---------------------- Render Messages ----------------------
   function renderMessages(){
-    if(!active) return;
-    const msgs = loadMessages(active);
-    messagesEl.innerHTML='';
-    msgs.forEach(m=>{
-      const d = document.createElement('div'); d.className='msg '+(m.from==='owner'?'owner':'user'); d.textContent = m.text;
-      messagesEl.appendChild(d);
+    msgsEl.innerHTML='';
+    load(active).forEach(m=>{
+      msgsEl.innerHTML+=`<div class="msg ${m.from}">${m.text}</div>`;
     });
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+    msgsEl.scrollTop=msgsEl.scrollHeight;
   }
 
-  // ---------------------- Send Message ----------------------
-  function sendMessage(text){
-    if(!active || !text) return;
-    const msgs = loadMessages(active);
-    msgs.push({ from:'owner', text:text, ts:Date.now() });
-    saveMessages(active,msgs);
+  send.onclick=()=>{
+    if(!input.value.trim())return;
+    const data=load(active);
+    data.push({from:'owner',text:input.value});
+    save(active,data);
+    input.value='';
     renderMessages();
-  }
+  };
 
-  // ---------------------- Toggle Messenger ----------------------
-  msToggleBtn.addEventListener('click', ()=>{
-    msApp.style.display = (msApp.style.display==='none' || msApp.style.display==='') ? 'flex' : 'none';
-  });
+  back.onclick=()=> chat.classList.remove('active');
+  toggle.onclick=()=> document.querySelector('.messenger-app').style.display='flex';
 
-  // ---------------------- Input Event ----------------------
-  sendBtn.addEventListener('click', ()=>{ sendMessage(inputField.value.trim()); inputField.value=''; });
-  inputField.addEventListener('keydown', e=>{ if(e.key==='Enter'){ sendMessage(inputField.value.trim()); inputField.value=''; } });
-
-  // ---------------------- Search ----------------------
-  searchEl.addEventListener('input', e=> renderUsers(e.target.value));
-
-  // ---------------------- Initialize ----------------------
-  function init(){ users = INITIAL_USERS.slice(); renderUsers(); }
-  init();
-
+  renderUsers();
 })();
+
 </script>
-        <!-- This is owner chat box end -->
+<!-- This is owner chat box end -->
         
         <main class="col-lg-10 user-panel-content">
           <!-- Dashboard -->
