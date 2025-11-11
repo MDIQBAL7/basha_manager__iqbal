@@ -459,6 +459,8 @@
   display: flex;
   justify-items: center;
   column-gap: 5px;
+  background-color: red;
+  color: #357abd;
 }
 .ms-search input {
   width: 100%;
